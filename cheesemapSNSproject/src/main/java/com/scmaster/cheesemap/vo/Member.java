@@ -2,7 +2,7 @@ package com.scmaster.cheesemap.vo;
 
 public class Member {
 	private String mem_id;
-	private String mem_password;
+	private String mem_pw;
 	private int mem_birth;
 	private String mem_gender;
 	private String mem_nickname;
@@ -11,11 +11,11 @@ public class Member {
 	private String mem_originalfile;
 	private String mem_savefile;
 
-	public Member(String mem_id, String mem_password, int mem_birth, String mem_gender, String mem_nickname,
+	public Member(String mem_id, String mem_pw, int mem_birth, String mem_gender, String mem_nickname,
 			String mem_join_date, String mem_leave_date, String mem_originalfile, String mem_savefile) {
 		super();
 		this.mem_id = mem_id;
-		this.mem_password = mem_password;
+		this.mem_pw = mem_pw;
 		this.mem_birth = mem_birth;
 		this.mem_gender = mem_gender;
 		this.mem_nickname = mem_nickname;
@@ -37,12 +37,12 @@ public class Member {
 		this.mem_id = mem_id;
 	}
 
-	public String getMem_password() {
-		return mem_password;
+	public String getMem_pw() {
+		return mem_pw;
 	}
 
-	public void setMem_password(String mem_password) {
-		this.mem_password = mem_password;
+	public void setMem_pw(String mem_pw) {
+		this.mem_pw = mem_pw;
 	}
 
 	public int getMem_birth() {
@@ -103,7 +103,7 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [mem_id=" + mem_id + ", mem_password=" + mem_password + ", mem_birth=" + mem_birth
+		return "Member [mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_birth=" + mem_birth
 				+ ", mem_gender=" + mem_gender + ", mem_nickname=" + mem_nickname + ", mem_join_date=" + mem_join_date
 				+ ", mem_leave_date=" + mem_leave_date + ", mem_originalfile=" + mem_originalfile + ", mem_savefile="
 				+ mem_savefile + "]";
