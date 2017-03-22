@@ -86,7 +86,6 @@
 						<h1 class="name">Cheese</h1>
 						<hr class="star-light">
 						<a href="#" class="btn btn-lg btn-outline">Join</a>
-						<a href="#login" class="btn btn-lg btn-outline">Login</a>
 					</div>
 				</div>
 			</div>
