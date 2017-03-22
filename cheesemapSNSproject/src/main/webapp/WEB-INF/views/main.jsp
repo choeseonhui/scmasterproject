@@ -15,8 +15,8 @@
 
 	<!-- Theme CSS -->
 	<link href="./resources/css/freelancer.css" rel="stylesheet">
-	<!--  선희 -->
-	
+
+	<!-- 선희 -->
 	<link href="./resources/css/cheese.css" rel="stylesheet">
 
 	<!-- Custom Fonts -->
