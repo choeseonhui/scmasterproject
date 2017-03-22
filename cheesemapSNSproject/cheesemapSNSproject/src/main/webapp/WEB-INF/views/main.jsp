@@ -15,9 +15,6 @@
 
 	<!-- Theme CSS -->
 	<link href="./resources/css/freelancer.css" rel="stylesheet">
-	<!--  선희 -->
-	
-	<link href="./resources/css/cheese.css" rel="stylesheet">
 
 	<!-- Custom Fonts -->
 	<link href="./resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -70,31 +67,7 @@
     </nav>
 
     <!-- Header -->
-    
-    
-    
-    
     <header>
-    
-    
-    
-<!-- 메인 map DIV 입니다. -->    
-
-<div id="map">
-<jsp:include page="map.jsp" flush="true"></jsp:include>
-</div>
-
-<!-- 메뉴 버튼 -->
-    
-<div id ="pollSlider-button"><h1>&#9776;</h1></div>
-
-<!-- 타임 라인 -->
-<div class="pollSlider">
-<jsp:include page="timeline.jsp" flush="true"></jsp:include></div>
-
-
-    <!--  main div 필요는 없음. -->
-    
 		<div class="container" id="maincontent" tabindex="-1">
 			<div class="row">
 				<div class="col-lg-12">
@@ -218,9 +191,6 @@
     <script src="./resources/js/jqBootstrapValidation.js"></script>
     <script src="./resources/js/contact_me.js"></script>
 
-    <!-- cheese.js -->
-    <script src="./resources/js/cheese.js"></script>
-    
     <!-- Theme JavaScript -->
     <script src="./resources/js/freelancer.js"></script>
 
