@@ -1,20 +1,20 @@
 package com.scmaster.cheesemap.vo;
 
 public class BoardComment {
-	private String com_board_id;
-	private String com_board_content;
-	private String com_board_create_date;
-	private String com_boardmodify_date;
+	private String com_id;
+	private String com_content;
+	private String com_create_date;
+	private String com_modify_date;
 	private String mem_id;
 	private String boa_id;
 
-	public BoardComment(String com_board_id, String com_board_content, String com_board_create_date,
-			String com_boardmodify_date, String mem_id, String boa_id) {
+	public BoardComment(String com_id, String com_content, String com_create_date,
+			String com_modify_date, String mem_id, String boa_id) {
 		super();
-		this.com_board_id = com_board_id;
-		this.com_board_content = com_board_content;
-		this.com_board_create_date = com_board_create_date;
-		this.com_boardmodify_date = com_boardmodify_date;
+		this.com_id = com_id;
+		this.com_content = com_content;
+		this.com_create_date = com_create_date;
+		this.com_modify_date = com_modify_date;
 		this.mem_id = mem_id;
 		this.boa_id = boa_id;
 	}
@@ -23,36 +23,36 @@ public class BoardComment {
 		super();
 	}
 
-	public String getCom_board_id() {
-		return com_board_id;
+	public String getCom_id() {
+		return com_id;
 	}
 
-	public void setCom_board_id(String com_board_id) {
-		this.com_board_id = com_board_id;
+	public void setCom_id(String com_id) {
+		this.com_id = com_id;
 	}
 
-	public String getCom_board_content() {
-		return com_board_content;
+	public String getCom_content() {
+		return com_content;
 	}
 
-	public void setCom_board_content(String com_board_content) {
-		this.com_board_content = com_board_content;
+	public void setCom_content(String com_content) {
+		this.com_content = com_content;
 	}
 
-	public String getCom_board_create_date() {
-		return com_board_create_date;
+	public String getCom_create_date() {
+		return com_create_date;
 	}
 
-	public void setCom_board_create_date(String com_board_create_date) {
-		this.com_board_create_date = com_board_create_date;
+	public void setCom_create_date(String com_create_date) {
+		this.com_create_date = com_create_date;
 	}
 
-	public String getCom_boardmodify_date() {
-		return com_boardmodify_date;
+	public String getCom_modify_date() {
+		return com_modify_date;
 	}
 
-	public void setCom_boardmodify_date(String com_boardmodify_date) {
-		this.com_boardmodify_date = com_boardmodify_date;
+	public void setCom_modify_date(String com_modify_date) {
+		this.com_modify_date = com_modify_date;
 	}
 
 	public String getMem_id() {
@@ -73,8 +73,8 @@ public class BoardComment {
 
 	@Override
 	public String toString() {
-		return "BoardComment [com_board_id=" + com_board_id + ", com_board_content=" + com_board_content
-				+ ", com_board_create_date=" + com_board_create_date + ", com_boardmodify_date=" + com_boardmodify_date
+		return "BoardComment [com_id=" + com_id + ", com_content=" + com_content
+				+ ", com_create_date=" + com_create_date + ", com_modify_date=" + com_modify_date
 				+ ", mem_id=" + mem_id + ", boa_id=" + boa_id + "]";
 	}
 

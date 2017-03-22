@@ -36,4 +36,9 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "main", method = RequestMethod.POST)
+	public String main() {
+		return "main";
+	}
+	
 }
