@@ -69,6 +69,9 @@
 					<li class="page-scroll">
 						<a href="#about">about</a>
 					</li>
+					<li class="page-scroll">
+						<a href="#join">join</a>
+					</li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -85,7 +88,6 @@
 					<div class="intro-text">
 						<h1 class="name">Cheese</h1>
 						<hr class="star-light">
-						<a href="#" class="btn btn-lg btn-outline">Join</a>
 					</div>
 				</div>
 			</div>
@@ -113,7 +115,7 @@
 						</div>
 						<div class="row control-group">
 							<div class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="passwordd">password</label>
+								<label for="password">password</label>
 								<input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="Please enter your Password.">
 								<p class="help-block text-danger"></p>
 							</div>
@@ -147,10 +149,14 @@
 			</div>
 		</div>
 	</section>
+	
 	<!-- join Grid Section -->
-	<div>
-	<jsp:include page="joinForm.jsp" flush="true"></jsp:include>
-	</div>
+	<section id="join">
+		<div class="row">
+			<jsp:include page="joinForm.jsp" flush="true"></jsp:include>
+		</div>
+	</section>
+	
 	<!-- Footer -->
 	<footer class="text-center">
 		<div class="footer-above">
