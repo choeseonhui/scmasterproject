@@ -147,7 +147,10 @@
 			</div>
 		</div>
 	</section>
-
+	<!-- join Grid Section -->
+	<div>
+	<jsp:include page="joinForm.jsp" flush="true"></jsp:include>
+	</div>
 	<!-- Footer -->
 	<footer class="text-center">
 		<div class="footer-above">
