@@ -1,4 +1,4 @@
-package com.scmaster.cheesemap;
+package com.scmaster.cheesemap.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
