@@ -30,22 +30,7 @@
 	<!-- Theme JavaScript -->
 	<script src="./resources/js/freelancer.js"></script>
 
-	<!-- Test JavaScript -->
-	<script type="text/javascript">
-		function formCheck() {
-			var idcheck = document.getElementById("id").value;
-			if(idcheck.length == 0) {
-				alert("id error");
-				return false;
-			}
-			var passwordcheck = document.getElementById("password").value;
-			if(passwordcheck.length == 0) {
-				alert("password error");
-				return false;
-			}
-			return true;
-		}
-	</script>
+
 </head>
 
 <body id="page-top" class="index">
@@ -94,39 +79,10 @@
 		</div>
 	</header>
 
-	<!-- login Grid Section -->
+		<!-- login Grid Section -->
 	<section id="login">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h2>Login</h2>
-					<hr class="star-primary">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<form action="main" method="post" onsubmit="return formCheck();">
-						<div class="row control-group">
-							<div class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="id">ID</label>
-								<input type="text" class="form-control" placeholder="ID" id="id" required data-validation-required-message="Please enter your ID.">
-								<p class="help-block text-danger"></p>
-							</div>
-						</div>
-						<div class="row control-group">
-							<div class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="password">password</label>
-								<input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="Please enter your Password.">
-								<p class="help-block text-danger"></p>
-							</div>
-						</div>
-						<div class="row control-group">
-							<br>
-							<input type="submit" class="btn btn-success btn-lg" value="Login">
-						</div>
-					</form>
-				</div>
-			</div>
+			<jsp:include page="login.jsp" flush="true"></jsp:include>
 		</div>
 	</section>
 
