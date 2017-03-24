@@ -8,9 +8,7 @@ import com.scmaster.cheesemap.vo.Member;
 
 @Repository
 public class memberDAO implements Mapper {
-	
-	
-	
+
 	@Autowired
 	private SqlSession sqlsession;
 
@@ -24,8 +22,18 @@ public class memberDAO implements Mapper {
 	public Member searchMember(String id) {
 		// TODO Auto-generated method stub
 		return null;
-	}	
-	
-	
+	}
+
+	public int idCheck(String mem_id) {
+		MemberMapper mapper = sqlsession.getMapper(MemberMapper.class);
+		int result = mapper.idCheck(mem_id);
+		return result;
+	}
+
+	public int nicknameCheck(String mem_nickname) {
+		MemberMapper mapper = sqlsession.getMapper(MemberMapper.class);
+		int result = mapper.nicknameCheck(mem_nickname);
+		return result;
+	}
 
 }
