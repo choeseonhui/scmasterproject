@@ -6,11 +6,6 @@
 	top: 15%;
 }
 
-#map {
-	margin-top: 100px;
-	height: 600px;
-}
-
 .pollSlider {
 	position: fixed;
 	height: 100%;
@@ -20,4 +15,9 @@
 	margin-right: -500px;
 	top: 100px;
 	overflow: auto;
+}
+
+#map {
+	margin-top: 100px;
+	height: 600px;
 }

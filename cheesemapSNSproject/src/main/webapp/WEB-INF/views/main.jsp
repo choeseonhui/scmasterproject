@@ -16,8 +16,8 @@
 <!-- Theme CSS -->
 <link href="./resources/css/freelancer.css" rel="stylesheet">
 
-<!-- 선희 -->
-<link href="./resources/css/cheese.css" rel="stylesheet">
+<!-- board_list -->
+<link href="./resources/css/board_list.css" rel="stylesheet">
 
 <!-- my_menu -->
 <link href="./resources/css/my_menu.css" rel="stylesheet">
