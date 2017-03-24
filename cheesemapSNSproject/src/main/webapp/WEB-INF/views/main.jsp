@@ -16,8 +16,11 @@
 <!-- Theme CSS -->
 <link href="./resources/css/freelancer.css" rel="stylesheet">
 
-<!-- 선희 -->
-<link href="./resources/css/cheese.css" rel="stylesheet">
+<!-- board_list -->
+<link href="./resources/css/board_list.css" rel="stylesheet">
+
+<!-- my_menu -->
+<link href="./resources/css/my_menu.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link href="./resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -43,10 +46,10 @@
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header page-scroll">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+ 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
 				</button>
-				<a class="navbar-brand" href="#page-top">We Are Cheese</a>
+				<a id="menu-home" class="navbar-brand" href="#page-top">We Are Cheese</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -54,8 +57,8 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="hidden"><a href="#page-top"></a></li>
 					<li><a onclick="logout();">logout</a></li>
-					<li><a>My Menu</a></li>
-					<li class="page-scroll"><a href="#contact">contact</a></li>
+					<li><a id="menu-my-menu">My Menu</a></li>
+					<li class="page-scroll"><a id="menu-contact" href="#contact">contact</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -78,6 +81,10 @@
 		<!-- 타임 라인 -->
 		<div class="pollSlider">
 			<jsp:include page="timeline.jsp" flush="true"></jsp:include>
+		</div>
+		
+		<div class="menu-slider">
+			<jsp:include page="myMenu.jsp" flush="true"></jsp:include>
 		</div>
 
 		<!--  main div 필요는 없음. -->
@@ -201,9 +208,9 @@
 	<!-- Contact Form JavaScript -->
 	<script src="./resources/js/jqBootstrapValidation.js"></script>
 	<script src="./resources/js/contact_me.js"></script>
-
-	<!-- cheese.js -->
-	<script src="./resources/js/cheese.js"></script>
+	
+	<!-- main.js -->
+	<script src="./resources/js/main.js"></script>
 
 	<!-- Theme JavaScript -->
 	<script src="./resources/js/freelancer.js"></script>
