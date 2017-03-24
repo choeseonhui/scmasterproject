@@ -1,0 +1,10 @@
+.menu-slider {
+	position: fixed;
+	height: 500px;
+	background: skyblue;
+	width: 300px;
+	left: 0px;
+	margin-left: -500px;
+	top: 200px;
+	overflow: auto;
+}
