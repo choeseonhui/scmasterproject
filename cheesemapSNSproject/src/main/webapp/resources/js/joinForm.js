@@ -77,7 +77,6 @@ $(document).ready(function(){
 				// ajax통신 성공 시
 				// (중복되는 것이 없으면)반환값이 0
 				// (중복되는 것이 있으면)반환값이 1
-				console.log(data);
 				if(data==0&&regExp.test(idJoin)){
 					$("#idLabel").removeAttr("check");
 					$("#idLabel").attr("check", "yes");
@@ -95,21 +94,20 @@ $(document).ready(function(){
 		});
 		}
 	});
-/* id 중복확인을 하는 ajax */
+/* nickname 중복확인을 하는 ajax */
 	$("#nickname").keyup(function(){
-		var idJoin=$(this).val();
-		if(idJoin.length>0){
+		var nickname=$(this).val();
+		if(nickname.length>0){
 		$.ajax({
 			type : "get",
-			url : "idCheck",
+			url : "nicknameCheck",
 			data : {
-				mem_id : idJoin
+				mem_nickname : nickname
 			},
 			success : function(data){
 				// ajax통신 성공 시
 				// (중복되는 것이 없으면)반환값이 0
 				// (중복되는 것이 있으면)반환값이 1
-				console.log(data);
 				if(data==0){
 					$("#nnLabel").removeAttr("check");
 					$("#nnLabel").attr("check", "yes");
@@ -125,9 +123,6 @@ $(document).ready(function(){
 				console.log(e);
 			}
 		});
-		}
-		if(idJoin.length==0){
-			$("#nnLabel").text("ID");
 		}
 	});
 	
