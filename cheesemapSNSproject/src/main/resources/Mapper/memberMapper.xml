@@ -9,17 +9,37 @@
 	<!-- mem_id(email address)중복체크 -->
 	<select id="idCheck" parameterType="String" resultType="int">
 		select
-		count(mem_id) 
-		from cs_Member 
+		count(mem_id)
+		from cs_Member
 		where mem_id = #{mem_id}
 	</select>
 
 	<!-- mem_nickname(nickname address)중복체크 -->
 	<select id="nicknameCheck" parameterType="String" resultType="int">
-		select 
-		count(mem_nickname) 
-		from cs_Member 
+		select
+		count(mem_nickname)
+		from cs_Member
 		where mem_nickname = #{mem_nickname}
 	</select>
 
+	<!-- CS_MEMBER 회원가입 -->
+	<insert id="join" parameterType="Member">
+		insert into CS_MEMBER
+		(mem_id
+		, mem_pw
+		, mem_birth
+		, mem_gender
+		, mem_nickname
+		, mem_originalfile
+		, mem_savefile
+		)values(
+		#{mem_id}
+		, #{mem_pw}
+		, #{mem_birth}
+		, #{mem_gender}
+		, #{mem_nickname}
+		, #{mem_originalfile}
+		, #{mem_savefile}
+		)
+	</insert>
 </mapper>

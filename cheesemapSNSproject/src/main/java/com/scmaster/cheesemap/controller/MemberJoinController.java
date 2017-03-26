@@ -15,10 +15,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.scmaster.cheesemap.dao.memberDAO;
 import com.scmaster.cheesemap.util.FileService;
+import com.scmaster.cheesemap.vo.Member;
 
 @Controller
 public class MemberJoinController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberLoginController.class);
+
+	final String uploadPath = "/memberfile";
 
 	@Autowired
 	private memberDAO dao;
@@ -71,6 +74,24 @@ public class MemberJoinController {
 		} else {
 			return fullpath;
 		}
+	}
+
+	@RequestMapping(value = "join", method = RequestMethod.POST)
+	public String boardWrite(Member mb, MultipartFile upload) {
+		// 파일이 있는지 확인
+		// 경로만 얻어냄
+		if (!upload.isEmpty()) {
+			String savedfile = FileService.saveFile(upload, uploadPath);
+			mb.setMem_originalfile(upload.getOriginalFilename());
+			mb.setMem_savefile(savedfile);
+		}
+		try {
+			dao.join(mb);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "joinForm";
+		}
+		return "home";
 	}
 
 }

@@ -11,12 +11,12 @@ function joinFormCheck() {
 			return false;
 		}
 		var passwordcheck = document.getElementById("passwordCheck").value;
-		if (passwordcheck.value != password.value) {
+		if (password != passwordcheck) {
 			alert("password check error");
 			return false;
 		}
 		var birth = document.getElementById("birth").value;
-		if (birth.length == 6) {
+		if (birth.length != 6||isNaN(birth)==true) {
 			alert("birth error");
 			return false;
 		}
@@ -30,7 +30,7 @@ function joinFormCheck() {
 			alert("id error");
 			return false;
 		}
-		var idTypeCheck=$("#nnLabel").attr("check");
+		var nameTypeCheck=$("#nnLabel").attr("check");
 		if(nameTypeCheck=="no"){
 			alert("nickname error");
 			return false;
