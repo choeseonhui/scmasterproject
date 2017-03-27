@@ -12,7 +12,19 @@ $(function() {
 				mem_pw : password
 			},
 			success : function(data) {
-				alert("succcc");
+				if(data == 'a'){
+					var aaa = document.getElementById("loginalert");
+					aaa.innerHTML = "<div class='alert alert-danger'><strong>login error ! </strong> incorrect id or password </div>";
+	
+			
+				}else{
+					
+					location.href="main";
+					
+					
+				}
+				
+				
 			},
 			error : function(e) {
 				alert("fals");
