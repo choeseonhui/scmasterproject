@@ -8,4 +8,6 @@ public interface MemberMapper {
 	public int nicknameCheck(String mem_nickname);
 
 	public void join(Member mb);
+	
+	public Member searchMember(String id);
 }

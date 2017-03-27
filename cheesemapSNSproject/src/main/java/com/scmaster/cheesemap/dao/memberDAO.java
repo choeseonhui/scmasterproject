@@ -7,20 +7,20 @@ import org.springframework.stereotype.Repository;
 import com.scmaster.cheesemap.vo.Member;
 
 @Repository
-public class memberDAO implements Mapper {
+public class memberDAO implements MemberMapper {
 
 	@Autowired
 	private SqlSession sqlsession;
 
 	@Override
-	public int joinMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public Member searchMember(String id) {
-		// TODO Auto-generated method stub
+		MemberMapper mapper = sqlsession.getMapper(MemberMapper.class);
+		Member member = mapper.searchMember(id);
+
+		if (member != null) {
+			return member;
+		}
+
 		return null;
 	}
 

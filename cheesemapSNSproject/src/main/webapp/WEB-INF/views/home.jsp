@@ -166,7 +166,7 @@
 	<script src="./resources/js/contact_me.js"></script>
 	
 	<!-- main.js -->
-	<script src="./resources/js/main.js"></script>
+	<script src="./resources/js/login.js"></script>
 
 	<!-- Theme JavaScript -->
 	<script src="./resources/js/freelancer.js"></script>
