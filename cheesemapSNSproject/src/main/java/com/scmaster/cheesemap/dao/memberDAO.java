@@ -36,9 +36,15 @@ public class memberDAO implements MemberMapper {
 		return result;
 	}
 
-	public void join(Member mb) {
+	public int join(Member mb) {
 		MemberMapper mapper = sqlsession.getMapper(MemberMapper.class);
-		mapper.join(mb);
+		int result = mapper.join(mb);
+		return result;
 	}
 
+	public int authenticate(String mem_id) {
+		MemberMapper mapper = sqlsession.getMapper(MemberMapper.class);
+		int result = mapper.authenticate(mem_id);
+		return result;
+	}
 }

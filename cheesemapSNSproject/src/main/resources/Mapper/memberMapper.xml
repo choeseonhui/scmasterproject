@@ -26,15 +26,13 @@
 	<!-- CS_MEMBER 회원가입 -->
 	<insert id="join" parameterType="Member">
 		insert into CS_MEMBER
-		(mem_id
-		,
-		mem_pw
+		(mem_id	
+		, mem_pw
 		, mem_birth
 		, mem_gender
 		, mem_nickname
 		, mem_originalfile
-		,
-		mem_savefile
+		, mem_savefile
 		)values(
 		#{mem_id}
 		, #{mem_pw}
@@ -45,6 +43,14 @@
 		, #{mem_savefile}
 		)
 	</insert>
+
+	<!-- CS_MEMBER 본인인증 -->
+	<update id="authenticate" parameterType="String">
+		update CS_MEMBER
+		set mem_check=1
+		where mem_id=#{mem_id}
+	</update>
+	
 
 	<select id="searchMember" parameterType="String" resultType="Member">
 		select

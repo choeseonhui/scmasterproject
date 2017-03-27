@@ -1,11 +1,5 @@
 <html lang="en">
 <head>
-
-<title>B Class - Cheese Map</title>
-
-<!-- CSS 추가부분-->
-<link href="./resources/css/joinForm.css" rel="stylesheet" type="text/css">
-
 </head>
 
 <body>
@@ -66,7 +60,7 @@
 									<span id="imgDiv">
 										<img id="userPhoto" src="http://placehold.it/150x170">
 									</span>
-									<input type="file" id="upload" name="upload">
+									<input type="file" id="upload" name="originalfile">
 								</span>
 								<p class="help-block text-danger"></p>
 							</div>
@@ -80,9 +74,5 @@
 			</div>
 		</div>
 	</section>
-
-	<!-- JS -->
-	<script src="./resources/js/joinForm.js"></script>
-	
 </body>
 </html>
