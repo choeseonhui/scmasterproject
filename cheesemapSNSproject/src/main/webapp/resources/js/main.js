@@ -28,6 +28,15 @@ $(function() {
 				"margin-right" : '-=500'
 			});
 		}
+		
+		if (flag_my_menu) {
+		} else {
+			flag_my_menu = true;
+			$('.menu-slider').animate({
+				"margin-left" : '-=500'
+			});
+		}
+		
 		flag_contact = false;		
 	});
 
