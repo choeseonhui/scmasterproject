@@ -1,12 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
+    <!-- Portfolio Grid Section -->
+    <section id="mymenu">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>My menu</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="portfolio-item img-responsive portfolio-link">
+                    <a class="portfolio-link">
+                        <img>
+                    </a>
+                </div>
+			</div>
+			<div class="container">
+				<div id="temp" class="row">
+					<div class="col-lg-12 text-center">
+						<p>update</p>
+						<p>follower : 0 / following : 1</p>
+					</div>
+				</div>
+			</div>
+        </div>
+    </section>
 
 </body>
 </html>
