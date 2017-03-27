@@ -4,11 +4,31 @@ $(function() {
 	var flag_contact = true;
 
 	$('#menu-home').click(function() {
+		if (flag_timeline) {
+		} else {
+			flag_timeline = true;
+			$('#pollSlider-button').animate({
+				"margin-right" : '-=500'
+			});
+			$('.pollSlider').animate({
+				"margin-right" : '-=500'
+			});
+		}
 		flag_contact = true;
 	});
 
 	$('#menu-contact').click(function() {
-		flag_contact = false;
+		if (flag_timeline) {
+		} else {
+			flag_timeline = true;
+			$('#pollSlider-button').animate({
+				"margin-right" : '-=500'
+			});
+			$('.pollSlider').animate({
+				"margin-right" : '-=500'
+			});
+		}
+		flag_contact = false;		
 	});
 
 	$('#menu-my-menu').click(function() {
