@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.scmaster.cheesemap.dao.memberDAO;
 import com.scmaster.cheesemap.util.FileService;
+import com.scmaster.cheesemap.util.MailTest;
 import com.scmaster.cheesemap.vo.Member;
 
 @Controller
@@ -53,6 +54,7 @@ public class MemberJoinController {
 	@ResponseBody
 	@RequestMapping(value = "fileupload", method = RequestMethod.POST)
 	public String fileupload(MultipartHttpServletRequest request) {
+		System.out.println("왱 안들어와!!!");
 		Iterator<String> itr = request.getFileNames();
 		String fullpath = "";
 		if (itr.hasNext()) {
@@ -77,21 +79,42 @@ public class MemberJoinController {
 	}
 
 	@RequestMapping(value = "join", method = RequestMethod.POST)
-	public String boardWrite(Member mb, MultipartFile upload) {
+	public String boardWrite(Member mb, MultipartFile originalfile) {
 		// 파일이 있는지 확인
 		// 경로만 얻어냄
-		if (!upload.isEmpty()) {
-			String savedfile = FileService.saveFile(upload, uploadPath);
-			mb.setMem_originalfile(upload.getOriginalFilename());
+		if (!originalfile.isEmpty()) {
+			String savedfile = FileService.saveFile(originalfile, uploadPath);
+			mb.setMem_originalfile(originalfile.getOriginalFilename());
 			mb.setMem_savefile(savedfile);
 		}
+		// 회원가입 성공 여부 flag
+		int result = 0;
 		try {
-			dao.join(mb);
+			result = dao.join(mb);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "joinForm";
 		}
+		// 회원가입 성공시
+		if (result == 1) {
+			MailTest mailtest = new MailTest();
+			String cheese_id = "cocohello010@gmail.net";// 보내는 사람
+			String subjectTxt = "[Cheese]본인인증확인 메일입니다";// 제목
+			String msgTxt = "본인 인증을 위하여 아래의 버튼을 눌러주세요."
+					+ "<br><a href='http://203.233.196.106:8888/cheesemap/authentication?" 
+					+ "mem_id=" + mb.getMem_id()
+					+ "'>본인인증 확인</a>"; // 내용
+			mailtest.testMailSend(mb.getMem_id(), cheese_id, subjectTxt, msgTxt);
+		}
+
 		return "home";
 	}
 
+	@RequestMapping(value = "authentication", method = RequestMethod.GET)
+	public String authentication(String mem_id) {
+		if(mem_id!=null){
+			dao.authenticate(mem_id);
+		}
+		return "redirect:/";
+	}
 }

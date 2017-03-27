@@ -3,15 +3,6 @@
 <head>
 
 <title>B Class - Cheese Map</title>
-<script type="text/javascript">
-window.onload = function(){
-	if(${not empty loginErr}){			
-		$('#login').get(0).scrollIntoView(true);
-		var aaa = document.getElementById("loginalert");
-		aaa.innerHTML = "<div class='alert alert-danger'><strong>error!</strong> please input your id and password correctly</div>";
-	}
-}
-</script>
 
 </head>
 <!-- login Grid Section -->
@@ -25,37 +16,33 @@ window.onload = function(){
 			</div>
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2">
-					<form action="loginCheck" method="post"
-						onsubmit="return formCheck();">
-						<div class="row control-group">
-							<div
-								class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="id">ID</label> <input type="text" name="id"
-									class="form-control" placeholder="ID" id="id" required
-									data-validation-required-message="Please enter your ID.">
-								<p class="help-block text-danger"></p>
-							</div>
+					<div class="row control-group">
+						<div class="form-group col-xs-12 floating-label-form-group controls">
+							<label for="id">ID</label>
+							<input type="text" name="id" class="form-control" placeholder="ID" id="mem_id" required data-validation-required-message="Please enter your ID.">
+							<p class="help-block text-danger"></p>
 						</div>
-						<div class="row control-group">
-							<div
-								class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="password">password</label> <input type="password"
-									name="password" class="form-control" placeholder="Password"
-									id="password" required
-									data-validation-required-message="Please enter your Password.">
-								<p class="help-block text-danger"></p>
-							</div>
+					</div>
+					<div class="row control-group">
+						<div class="form-group col-xs-12 floating-label-form-group controls">
+							<label for="password">password</label>
+							<input type="password" name="password" class="form-control" placeholder="Password" id="mem_pw" required	data-validation-required-message="Please enter your Password.">
+							<p class="help-block text-danger"></p>
 						</div>
-	
-						<div id="loginalert"></div>
-						<div class="row control-group">
-							<br> <input type="submit" class="btn btn-success btn-lg"
-								id="login" value="Login">
-						</div>
-					</form>
+					</div>
+
+					<div id="loginalert"></div>
+					<div class="row control-group">
+						<br> 
+						<input type="button" class="btn btn-success btn-lg"	id="login_btn" value="Login">
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	
+	<!-- Login JavaScript -->
+	<script src="./resources/js/login.js"></script>
+	
 </body>
 </html>

@@ -19,13 +19,14 @@
 		select
 		count(mem_nickname)
 		from cs_Member
-		where mem_nickname = #{mem_nickname}
+		where mem_nickname =
+		#{mem_nickname}
 	</select>
 
 	<!-- CS_MEMBER 회원가입 -->
 	<insert id="join" parameterType="Member">
 		insert into CS_MEMBER
-		(mem_id
+		(mem_id	
 		, mem_pw
 		, mem_birth
 		, mem_gender
@@ -42,4 +43,32 @@
 		, #{mem_savefile}
 		)
 	</insert>
+
+	<!-- CS_MEMBER 본인인증 -->
+	<update id="authenticate" parameterType="String">
+		update CS_MEMBER
+		set mem_check=1
+		where mem_id=#{mem_id}
+	</update>
+	
+
+	<select id="searchMember" parameterType="String" resultType="Member">
+		select
+			mem_id
+			, mem_pw
+			, mem_birth
+			, mem_gender
+			, mem_nickname
+			,TO_CHAR(mem_join_date, 'yyyyMMdd') mem_join_date
+			,TO_CHAR(mem_leave_date,'yyyyMMdd') mem_leave_date
+			,mem_originalfile
+			,mem_savefile
+		from
+			CS_MEMBER
+		where
+			mem_id=#{mem_id}
+		and
+			MEM_CHECK=1
+	</select>
+
 </mapper>

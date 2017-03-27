@@ -183,6 +183,23 @@
     		<version>2.8.6</version>
     	</dependency>
     	
+    	
+		<!-- Java mail API -->
+		<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+
+		<!-- mail API activation -->
+		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+    	
 	</dependencies>
 	
     <build>

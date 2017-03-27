@@ -21,6 +21,9 @@
 	<!-- my_menu -->
 	<link href="./resources/css/my_menu.css" rel="stylesheet">
 	
+	<!-- joinForm -->
+	<link href="./resources/css/joinForm.css" rel="stylesheet" type="text/css">
+	
 	<!-- Custom Fonts -->
 	<link href="./resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -165,11 +168,14 @@
 	<script src="./resources/js/jqBootstrapValidation.js"></script>
 	<script src="./resources/js/contact_me.js"></script>
 	
-	<!-- main.js -->
-	<script src="./resources/js/main.js"></script>
+	<!-- login.js -->
+	<script src="./resources/js/login.js"></script>
 
 	<!-- Theme JavaScript -->
 	<script src="./resources/js/freelancer.js"></script>
+	
+	<!-- joinForm.js -->
+	<script src="./resources/js/joinForm.js"></script>
 
 </body>
 
