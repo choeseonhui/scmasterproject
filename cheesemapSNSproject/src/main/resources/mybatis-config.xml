@@ -6,9 +6,11 @@
 
 	<typeAliases>
 		<typeAlias type="com.scmaster.cheesemap.vo.Member" alias="Member" />
+		<typeAlias type="com.scmaster.cheesemap.vo.MyMenu" alias="MyMenu" />
 	</typeAliases>
 
 	<mappers>
+		<mapper resource="Mapper/memberMapper.xml" />
 		<mapper resource="Mapper/memberMapper.xml" />
 	</mappers>
 </configuration>

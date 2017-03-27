@@ -6,7 +6,7 @@
 	<h2>My menu</h2>
 	<hr>
 	<div class="row">
-		<img>
+		<img src="" height="150" width="170" alt="profile">
 	</div>
 	<div id="temp" class="row">
 		<p>update</p>
