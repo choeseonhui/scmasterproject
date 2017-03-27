@@ -3,9 +3,6 @@
 <head>
 
 <title>B Class - Cheese Map</title>
-<script type="text/javascript">
-
-</script>
 
 </head>
 <!-- login Grid Section -->
@@ -44,7 +41,7 @@
 		</div>
 	</section>
 	
-	<!-- Theme JavaScript -->
+	<!-- Login JavaScript -->
 	<script src="./resources/js/login.js"></script>
 	
 </body>

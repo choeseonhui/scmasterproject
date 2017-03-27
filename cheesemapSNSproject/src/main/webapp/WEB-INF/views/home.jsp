@@ -165,7 +165,7 @@
 	<script src="./resources/js/jqBootstrapValidation.js"></script>
 	<script src="./resources/js/contact_me.js"></script>
 	
-	<!-- main.js -->
+	<!-- login.js -->
 	<script src="./resources/js/login.js"></script>
 
 	<!-- Theme JavaScript -->

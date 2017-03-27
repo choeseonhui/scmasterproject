@@ -1,12 +1,7 @@
 $(function() {
-	alert("fff!!!!!");
-	
 	$("#login_btn").on("click", function() {
-		alert("asdf!!!!!");
 		var id = $("#mem_id").val();
 		var password = $("#mem_pw").val();
-
-		console.log(id);
 
 		// ajax 함수
 		$.ajax({
