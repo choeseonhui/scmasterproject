@@ -92,7 +92,7 @@ public class MemberJoinController {
 			result = dao.join(mb);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "/";
+			return "redirect:/";
 		}
 		// 회원가입 성공시
 		if (result == 1) {
