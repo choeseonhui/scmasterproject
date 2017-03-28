@@ -35,23 +35,49 @@ $(function() {
 			$('.menu-slider').animate({
 				"margin-left" : '-=500'
 			});
+			$('.map-control').animate({
+				"margin-left" : '-=300'
+			});
 		}
 		
 		flag_contact = false;		
 	});
 
 	$('#menu-my-menu').click(function() {
+		var mem_id = $("#mem_id").val();
 		if (flag_contact) {
 			if (flag_my_menu) {
+				$.ajax({
+					type : "POST",
+					url : "mymenu",
+					data : {
+						mem_id : mem_id
+					},
+					success : function(data) {
+						var myMenu = document.getElementById("myMenu2");
+						var follow = '';
+						follow += "<p>follower : " + data.fol_follower + "</p>";
+						follow += "<p>following : " + data.fol_following + "</p>";
+						myMenu.innerHTML = follow;
+					},
+					error : function(e) {
+						console.log(e);
+					}
+				});
 				flag_my_menu = false;
 				$('.menu-slider').animate({
 					"margin-left" : '+=500'
 				});
-
+				$('.map-control').animate({
+					"margin-left" : '+=300'
+				});
 			} else {
 				flag_my_menu = true;
 				$('.menu-slider').animate({
 					"margin-left" : '-=500'
+				});
+				$('.map-control').animate({
+					"margin-left" : '-=300'
 				});
 			}
 		}

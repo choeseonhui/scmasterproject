@@ -226,3 +226,40 @@ CREATE SEQUENCE CS_BOARD_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE CS_BOARD_COMMENT_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE CS_MYMAP_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE CS_MYMAP_COMMENT_SEQ START WITH 1 INCREMENT BY 1;
+
+select * from CS_MEMBER;
+select * from CS_FOLLOW;
+
+select
+	mem_id
+	, mem_nickname
+	, mem_originalfile
+	, mem_savefile
+	, (select count(fol_following) fol_following
+		from CS_FOLLOW f1
+		where f1.fol_follower = m.mem_id
+	) as fol_following
+	, (select count(fol_follower) fol_following
+		from CS_FOLLOW f2
+		where f2.fol_following = m.mem_id
+	) as fol_follower
+from
+	cs_member m
+where
+	mem_id = 'jw@naver.com';
+
+select
+	count(fol_follower) fol_follower
+from
+	CS_FOLLOW
+where
+	fol_following = 'jw@naver.com';
+
+select
+	count(fol_following) fol_following
+from
+	CS_FOLLOW
+where
+	fol_follower = 'jw@naver.com';
+	
+select * from cs_member;

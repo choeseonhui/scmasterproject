@@ -15,19 +15,11 @@ $(function() {
 				if(data == 'a'){
 					var aaa = document.getElementById("loginalert");
 					aaa.innerHTML = "<div class='alert alert-danger'><strong>login error ! </strong> incorrect id or password </div>";
-	
-			
 				}else{
-					
 					location.href="main";
-					
-					
 				}
-				
-				
 			},
 			error : function(e) {
-				alert("fals");
 				// ajax통신 실패시
 				console.log(e);
 			}
