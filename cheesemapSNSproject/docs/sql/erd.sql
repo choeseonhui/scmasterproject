@@ -261,3 +261,5 @@ from
 	CS_FOLLOW
 where
 	fol_follower = 'jw@naver.com';
+	
+select * from cs_member;
