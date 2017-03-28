@@ -35,6 +35,9 @@ $(function() {
 			$('.menu-slider').animate({
 				"margin-left" : '-=500'
 			});
+			$('.map-control').animate({
+				"margin-left" : '-=300'
+			});
 		}
 		
 		flag_contact = false;		
@@ -65,11 +68,16 @@ $(function() {
 				$('.menu-slider').animate({
 					"margin-left" : '+=500'
 				});
-
+				$('.map-control').animate({
+					"margin-left" : '+=300'
+				});
 			} else {
 				flag_my_menu = true;
 				$('.menu-slider').animate({
 					"margin-left" : '-=500'
+				});
+				$('.map-control').animate({
+					"margin-left" : '-=300'
 				});
 			}
 		}

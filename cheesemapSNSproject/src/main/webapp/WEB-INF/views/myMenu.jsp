@@ -5,6 +5,7 @@
 	<input type="hidden" id="mem_id" value="${mem_id }">
 </div>
 <div id="myMenu1" class="row">
+	<p>${mem_nickname }</p>
 	<p><a>update</a></p>
 </div>
 <br>
