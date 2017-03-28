@@ -54,7 +54,6 @@ public class MemberJoinController {
 	@ResponseBody
 	@RequestMapping(value = "fileupload", method = RequestMethod.POST)
 	public String fileupload(MultipartHttpServletRequest request) {
-		System.out.println("왱 안들어와!!!");
 		Iterator<String> itr = request.getFileNames();
 		String fullpath = "";
 		if (itr.hasNext()) {
@@ -79,7 +78,7 @@ public class MemberJoinController {
 	}
 
 	@RequestMapping(value = "join", method = RequestMethod.POST)
-	public String boardWrite(Member mb, MultipartFile originalfile) {
+	public String join(Member mb, MultipartFile originalfile) {
 		// 파일이 있는지 확인
 		// 경로만 얻어냄
 		if (!originalfile.isEmpty()) {
@@ -93,7 +92,7 @@ public class MemberJoinController {
 			result = dao.join(mb);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "joinForm";
+			return "/";
 		}
 		// 회원가입 성공시
 		if (result == 1) {
@@ -106,7 +105,6 @@ public class MemberJoinController {
 					+ "'>본인인증 확인</a>"; // 내용
 			mailtest.testMailSend(mb.getMem_id(), cheese_id, subjectTxt, msgTxt);
 		}
-
 		return "home";
 	}
 
