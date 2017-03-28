@@ -13,8 +13,10 @@ public class MyMenuDAO implements MyMenuMapper {
 	private SqlSession sqlsession;
 
 	@Override
-	public MyMenu searchMyMenu(String id) {
+	public MyMenu getMyMenu(String mem_id) {
 		MyMenuMapper mapper = sqlsession.getMapper(MyMenuMapper.class);
-		return null;
+		MyMenu result = mapper.getMyMenu(mem_id);
+		
+		return result;
 	}
 }

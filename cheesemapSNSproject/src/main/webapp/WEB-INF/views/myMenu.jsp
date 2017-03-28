@@ -7,11 +7,13 @@
 	<hr>
 	<div class="row">
 		<img src="" height="150" width="170" alt="profile">
+		<input type="hidden" id="mem_id" value="${mem_id }">
 	</div>
-	<div id="temp" class="row">
-		<p>update</p>
-		<p>follower : 0
-		<p>following : 1</p>
+	<div id="myMenu1" class="row">
+		<p><a>update</a></p>
+	</div>
+	<br>
+	<div id="myMenu2" class="row">
 	</div>
 </body>
 </html>

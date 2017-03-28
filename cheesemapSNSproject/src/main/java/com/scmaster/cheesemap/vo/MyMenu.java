@@ -5,22 +5,22 @@ public class MyMenu {
 	private String mem_nickname;
 	private String mem_originalfile;
 	private String mem_savefile;
-	private int follower;
-	private int following;
+	private int fol_follower;
+	private int fol_following;
 
 	public MyMenu() {
 	}
-	
-	public MyMenu(String mem_id, String mem_nickname, String mem_originalfile, String mem_savefile, int follower,
-			int following) {
+
+	public MyMenu(String mem_id, String mem_nickname, String mem_originalfile, String mem_savefile, int fol_follower,
+			int fol_following) {
 		this.mem_id = mem_id;
 		this.mem_nickname = mem_nickname;
 		this.mem_originalfile = mem_originalfile;
 		this.mem_savefile = mem_savefile;
-		this.follower = follower;
-		this.following = following;
+		this.fol_follower = fol_follower;
+		this.fol_following = fol_following;
 	}
-
+	
 	public String getMem_id() {
 		return mem_id;
 	}
@@ -53,25 +53,27 @@ public class MyMenu {
 		this.mem_savefile = mem_savefile;
 	}
 
-	public int getFollower() {
-		return follower;
+	public int getFol_follower() {
+		return fol_follower;
 	}
 
-	public void setFollower(int follower) {
-		this.follower = follower;
+	public void setFol_follower(int fol_follower) {
+		this.fol_follower = fol_follower;
 	}
 
-	public int getFollowing() {
-		return following;
+	public int getFol_following() {
+		return fol_following;
 	}
 
-	public void setFollowing(int following) {
-		this.following = following;
+	public void setFol_following(int fol_following) {
+		this.fol_following = fol_following;
 	}
 
 	@Override
 	public String toString() {
 		return "MyMenu [mem_id=" + mem_id + ", mem_nickname=" + mem_nickname + ", mem_originalfile=" + mem_originalfile
-				+ ", mem_savefile=" + mem_savefile + ", follower=" + follower + ", following=" + following + "]";
+				+ ", mem_savefile=" + mem_savefile + ", fol_follower=" + fol_follower + ", fol_following="
+				+ fol_following + "]";
 	}
+
 }

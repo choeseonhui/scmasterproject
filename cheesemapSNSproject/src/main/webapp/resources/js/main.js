@@ -41,8 +41,22 @@ $(function() {
 	});
 
 	$('#menu-my-menu').click(function() {
+		var mem_id = $("#mem_id").val();
 		if (flag_contact) {
 			if (flag_my_menu) {
+				$.ajax({
+					type : "POST",
+					url : "mymenu",
+					data : {
+						mem_id : mem_id
+					},
+					success : function(data) {
+						console.log(data);
+					},
+					error : function(e) {
+						console.log(e);
+					}
+				});
 				flag_my_menu = false;
 				$('.menu-slider').animate({
 					"margin-left" : '+=500'

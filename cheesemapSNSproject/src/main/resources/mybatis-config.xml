@@ -11,6 +11,6 @@
 
 	<mappers>
 		<mapper resource="Mapper/memberMapper.xml" />
-		<mapper resource="Mapper/memberMapper.xml" />
+		<mapper resource="Mapper/MyMenuMaper.xml" />
 	</mappers>
 </configuration>
