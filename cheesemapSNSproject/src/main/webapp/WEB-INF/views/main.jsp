@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file = "./CheckJSP/loginCheck.jsp" %>  
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -56,7 +60,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden"><a href="#page-top"></a></li>
-						<li><a onclick="logout();">logout</a></li>
+						<li><a  href="#" id="logout">logout</a></li>
 						<li><a id="menu-my-menu">My Menu</a></li>
 						<li class="page-scroll"><a id="menu-contact" href="#contact">contact</a></li>
 					</ul>
@@ -232,6 +236,9 @@
 		
 		<!-- Theme JavaScript -->
 		<script src="./resources/js/freelancer.js"></script>
+		
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+	<script src="./resources/js/logout.js"></script>
 
 	</body>
 </html>
