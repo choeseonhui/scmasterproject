@@ -22,7 +22,10 @@
 	<link href="./resources/css/my_menu.css" rel="stylesheet">
 	
 	<!-- joinForm -->
-	<link href="./resources/css/joinForm.css" rel="stylesheet" type="text/css">
+	<link href="./resources/css/joinForm.css" rel="stylesheet">
+	
+	<!-- map -->
+	<link href="./resources/css/map.css" rel="stylesheet">
 	
 	<!-- Custom Fonts -->
 	<link href="./resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -38,7 +41,8 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header page-scroll">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+					<span class="sr-only">Toggle navigation</span>
+					Menu<i class="fa fa-bars"></i>
 				</button>
 				<a class="navbar-brand" href="#page-top">We Are Cheese</a>
 			</div>
