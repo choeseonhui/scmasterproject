@@ -51,7 +51,11 @@ $(function() {
 						mem_id : mem_id
 					},
 					success : function(data) {
-						console.log(data);
+						var myMenu = document.getElementById("myMenu2");
+						var follow = '';
+						follow += "<p>follower : " + data.fol_follower + "</p>";
+						follow += "<p>following : " + data.fol_following + "</p>";
+						myMenu.innerHTML = follow;
 					},
 					error : function(e) {
 						console.log(e);
