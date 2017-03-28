@@ -31,16 +31,20 @@
 		, mem_birth
 		, mem_gender
 		, mem_nickname
+		<if test="mem_originalfile != null and mem_savefile != null">
 		, mem_originalfile
 		, mem_savefile
+		</if>
 		)values(
 		#{mem_id}
 		, #{mem_pw}
 		, #{mem_birth}
 		, #{mem_gender}
 		, #{mem_nickname}
+		<if test="mem_originalfile != null and mem_savefile != null">
 		, #{mem_originalfile}
 		, #{mem_savefile}
+		</if>
 		)
 	</insert>
 
