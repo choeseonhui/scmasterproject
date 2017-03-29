@@ -1,5 +1,6 @@
 <application>
   <component name="CodeInsightSettings">
     <EXCLUDED_PACKAGE NAME="com.google.gson.Gson" />
+    <EXCLUDED_PACKAGE NAME="org.springframework.jdbc.support.lob.OracleLobHandler" />
   </component>
 </application>
