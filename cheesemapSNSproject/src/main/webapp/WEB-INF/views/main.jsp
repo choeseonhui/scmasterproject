@@ -129,19 +129,13 @@
 						<form name="sentMessage" id="contactForm" novalidate>
 							<div class="row control-group">
 								<div class="form-group col-xs-12 floating-label-form-group controls">
-									<label for="name">Name</label> <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+									<label for="name">Subject</label> <input type="text" class="form-control" placeholder="Subject" id="subject" required data-validation-required-message="Please enter the subject of this mail.">
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
 							<div class="row control-group">
 								<div class="form-group col-xs-12 floating-label-form-group controls">
 									<label for="email">Email Address</label> <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
-									<p class="help-block text-danger"></p>
-								</div>
-							</div>
-							<div class="row control-group">
-								<div class="form-group col-xs-12 floating-label-form-group controls">
-									<label for="phone">Phone Number</label> <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
@@ -156,7 +150,7 @@
 							<div id="success"></div>
 							<div class="row">
 								<div class="form-group col-xs-12">
-									<button type="submit" class="btn btn-success btn-lg">Send</button>
+									<button type="button" id="sendMsg" class="btn btn-success btn-lg">Send</button>
 								</div>
 							</div>
 						</form>

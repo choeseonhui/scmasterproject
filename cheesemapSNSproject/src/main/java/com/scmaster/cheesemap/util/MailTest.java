@@ -17,7 +17,7 @@ public class MailTest {
 			String[] emailList = { mem_id };// 메일 보낼사람 리스트
 			String emailFromAddress = cheese_id;// 메일 보내는 사람
 			postMail(emailList, subjectTxt, msgTxt, emailFromAddress);
-			System.out.println("사용자에게 본인인증 메일이 성공적으로 보내졌음~~");
+			System.out.println("메일이 성공적으로 보내졌습니다");
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}

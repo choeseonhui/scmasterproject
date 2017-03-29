@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.scmaster.cheesemap.dao.MyMenuDAO;
+import com.scmaster.cheesemap.util.MailTest;
 import com.scmaster.cheesemap.vo.MyMenu;
 
 @Controller
@@ -60,5 +61,14 @@ public class MyMenuController {
 		}
 
 		return null;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="contactme", method=RequestMethod.POST)
+	public void contactme(String subject, String email, String message){
+			MailTest mailtest = new MailTest();
+			String cheese_id = "cocohello010@gmail.net";// cheese team address
+			//보내는 사람, 서버메일주소, subject
+			mailtest.testMailSend(email, cheese_id, subject, message);
 	}
 }
