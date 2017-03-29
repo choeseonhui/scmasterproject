@@ -227,6 +227,7 @@ CREATE SEQUENCE CS_BOARD_COMMENT_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE CS_MYMAP_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE CS_MYMAP_COMMENT_SEQ START WITH 1 INCREMENT BY 1;
 
+/* test */
 select * from CS_MEMBER;
 select * from CS_FOLLOW;
 
@@ -261,5 +262,21 @@ from
 	CS_FOLLOW
 where
 	fol_follower = 'jw@naver.com';
+
+insert into
+	CS_FOLLOW
+values (
+	'jw@naver.com'
+	, 'jwnamkung@naver.com'
+);
+
+delete from 
+	CS_MEMBER
+where
+	mem_id = 'jwnamkung@naver.com';
+
+update
+	cs_member
+set
+	mem_check = 1;
 	
-select * from cs_member;
