@@ -266,7 +266,7 @@ where
 insert into
 	CS_FOLLOW
 values (
-	'jw@naver.com'
+	'jwnamkung@naver.com'
 	, 'jwnamkung@naver.com'
 );
 

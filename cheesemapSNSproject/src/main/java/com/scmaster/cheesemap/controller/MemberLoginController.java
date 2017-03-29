@@ -34,6 +34,7 @@ public class MemberLoginController {
 	}else if(mem_id.equals(member.getMem_id())&&mem_pw.equals(member.getMem_pw())){
 		session.setAttribute("mem_id", member.getMem_id());
 		session.setAttribute("mem_nickname", member.getMem_nickname());
+		session.setAttribute("mem_savefile", member.getMem_savefile());
 		
 		result = "b";
 	}
