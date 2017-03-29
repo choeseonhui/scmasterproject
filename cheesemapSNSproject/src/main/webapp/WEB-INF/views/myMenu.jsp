@@ -3,7 +3,7 @@
 <hr>
 <div id="profilePhoto" class="row">
 	<c:choose>
-		<c:when test="${mem_savefile != null }">
+		<c:when test="${mem_savefile == null }">
 		<img class="img-responsive" src="./resources/img/logo.png" alt="">
 		</c:when>
 		<c:otherwise>
