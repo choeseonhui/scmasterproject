@@ -93,6 +93,13 @@ $(function() {
 				$('.pollSlider').animate({
 					"margin-right" : '+=500'
 				});
+				
+				$('.searchClass').animate({					
+					"margin-right" : '+=500'
+				});
+				
+				
+				
 			} else {
 				flag_timeline = true;
 				$('#pollSlider-button').animate({
@@ -101,6 +108,11 @@ $(function() {
 				$('.pollSlider').animate({
 					"margin-right" : '-=500'
 				});
+				
+				$('.searchClass').animate({					
+					"margin-right" : '-=500'
+				});
+				
 			}
 		}
 	});
