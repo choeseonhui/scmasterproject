@@ -12,25 +12,24 @@
 			, mem_nickname
 			, mem_originalfile
 			, mem_savefile
-			, (	select
+			, (select
 					count(fol_following) fol_following
 				from
-					cs_follow f1
+					cs_follow
 				where
-					f1.fol_follower = m.mem_id
-			) as fol_following
-			, (	select
+					fol_follower = #{mem_id}
+			) fol_following
+			, (select
 					count(fol_follower) fol_following
 				from
-					cs_follow f2
+					cs_follow
 				where
-					f2.fol_following = m.mem_id
-			) as fol_follower
+					fol_following = #{mem_id}
+			) fol_follower
 		from
 			cs_member m
 		where
 			mem_id = #{mem_id}
-
 	</select>
 
 </mapper>

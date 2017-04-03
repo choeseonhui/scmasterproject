@@ -236,38 +236,44 @@ select
 	, mem_nickname
 	, mem_originalfile
 	, mem_savefile
-	, (select count(fol_following) fol_following
-		from CS_FOLLOW f1
-		where f1.fol_follower = m.mem_id
-	) as fol_following
-	, (select count(fol_follower) fol_following
-		from CS_FOLLOW f2
-		where f2.fol_following = m.mem_id
-	) as fol_follower
+	, (select
+			count(fol_following) fol_following
+		from
+			cs_follow
+		where
+			fol_follower = 'jwnamkung@gmail.com'
+	) fol_following
+	, (select
+			count(fol_follower) fol_following
+		from
+			cs_follow
+		where
+			fol_following = 'jwnamkung@gmail.com'
+	) fol_follower
 from
 	cs_member m
 where
-	mem_id = 'jw@naver.com';
+	mem_id = 'jwnamkung@gmail.com';
 
 select
 	count(fol_follower) fol_follower
 from
 	CS_FOLLOW
 where
-	fol_following = 'jw@naver.com';
+	fol_following = 'jwnamkung@gmail.com';
 
 select
 	count(fol_following) fol_following
 from
 	CS_FOLLOW
 where
-	fol_follower = 'jw@naver.com';
+	fol_follower = 'jwnamkung@gmail.com';
 
 insert into
 	CS_FOLLOW
 values (
-	'jwnamkung@naver.com'
-	, 'jwnamkung@naver.com'
+	'jwnamkung@gmail.com'
+	, 'hey921226@naver.com'
 );
 
 delete from 
@@ -279,4 +285,3 @@ update
 	cs_member
 set
 	mem_check = 1;
-	
