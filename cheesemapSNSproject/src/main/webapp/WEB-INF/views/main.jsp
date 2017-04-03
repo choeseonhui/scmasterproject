@@ -118,8 +118,7 @@
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</button>
 					</span>
-					<div id="suggestions-container"
-						style="position: relative; float: left; width: 400px; margin: 10px;"></div>
+					
 				</div>
 				<!-- /input-group -->
 				<!-- <input type="text" id="autocomplete"> -->
