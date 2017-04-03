@@ -222,7 +222,6 @@
 	
 		<!-- map JavaScript -->
 		<script src="./resources/js/map.js"></script>
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
 		<script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv9XZk_I25-M0V2IrvyqtJQTQ9k7UfoTA&callback=initMap" async defer></script>
 		
 		<!-- Login JavaScript -->
@@ -231,8 +230,8 @@
 		<!-- Theme JavaScript -->
 		<script src="./resources/js/freelancer.js"></script>
 		
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-	<script src="./resources/js/logout.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+		<script src="./resources/js/logout.js"></script>
 
 	</body>
 </html>
