@@ -3,6 +3,9 @@ package com.scmaster.cheesemap.controller;
 import java.io.IOException;
 import java.util.Iterator;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,10 +102,8 @@ public class MemberJoinController {
 			MailTest mailtest = new MailTest();
 			String cheese_id = "cocohello010@gmail.net";// 보내는 사람
 			String subjectTxt = "[Cheese]본인인증확인 메일입니다";// 제목
-			String msgTxt = "본인 인증을 위하여 아래의 버튼을 눌러주세요."
-					+ "<br><a href='http://localhost:8888/cheesemap/authentication?" 
-					+ "mem_id=" + mb.getMem_id()
-					+ "'>본인인증 확인</a>"; // 내용
+			String msgTxt = "본인 인증을 위하여 아래의 버튼을 눌러주세요." + "<br><a href='http://localhost:8888/cheesemap/authentication?"
+					+ "mem_id=" + mb.getMem_id() + "'>본인인증 확인</a>"; // 내용
 			mailtest.testMailSend(mb.getMem_id(), cheese_id, subjectTxt, msgTxt);
 		}
 		return "home";
@@ -110,9 +111,52 @@ public class MemberJoinController {
 
 	@RequestMapping(value = "authentication", method = RequestMethod.GET)
 	public String authentication(String mem_id) {
-		if(mem_id!=null){
+		if (mem_id != null) {
 			dao.authenticate(mem_id);
 		}
 		return "redirect:/";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "searchMember", method = RequestMethod.GET)
+	public Member searchMember(HttpSession session, HttpServletResponse response) {
+		String mem_id = (String) session.getAttribute("mem_id");
+		Member result = dao.searchMember(mem_id);
+		return result;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "modifyMem", method = RequestMethod.POST)
+	public int modifyMem(Member mb, MultipartHttpServletRequest request) {
+		int result = 0;
+		if (request != null) {
+			Iterator<String> itr = request.getFileNames();
+			if (itr.hasNext()) {
+				MultipartFile mpf = request.getFile(itr.next());
+				System.out.println(mpf.getOriginalFilename() + " uploaded!");
+				try {
+					System.out.println("file length : " + mpf.getBytes().length);
+					System.out.println("file name : " + mpf.getOriginalFilename());
+					if (!mpf.isEmpty()) {
+						String savedfile = FileService.saveFile(mpf, uploadPath);
+						mb.setMem_originalfile(mpf.getOriginalFilename());
+						mb.setMem_savefile(savedfile);
+					}
+				} catch (IOException e) {
+					System.out.println(e.getMessage());
+					e.printStackTrace();
+				}
+			}
+		}
+		result = dao.modifyMem(mb);
+		return result;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "closeAccount", method = RequestMethod.GET)
+	public int closeAccount(HttpSession session) {
+		int result = 0;
+		result = dao.closeAccount((String) session.getAttribute("mem_id"));
+		return result;
 	}
 }

@@ -64,13 +64,13 @@
 		select
 			mem_id
 			, mem_pw
-			, mem_birth
+			, TO_CHAR(mem_birth, 'yyMMdd') mem_birth
 			, mem_gender
 			, mem_nickname
 			, TO_CHAR(mem_join_date, 'yyyyMMdd') mem_join_date
 			, TO_CHAR(mem_leave_date,'yyyyMMdd') mem_leave_date
-			, mem_originalfile
-			, mem_savefile
+			,mem_originalfile
+			,mem_savefile
 		from
 			CS_MEMBER
 		where
@@ -78,5 +78,25 @@
 		and
 			MEM_CHECK=1
 	</select>
+
+	<!-- 회원정보수정 -->
+	<update id="modifyMem" parameterType="Member">
+		update CS_MEMBER
+			set mem_pw=#{mem_pw}
+			, mem_birth=TO_DATE(#{mem_birth}, 'yyMMdd')
+			, mem_gender=#{mem_gender}
+			, mem_nickname=#{mem_nickname}
+			<if test="mem_originalfile != null and mem_savefile != null">
+			, mem_originalfile=#{mem_originalfile}
+			, mem_savefile=#{mem_savefile}
+			</if>
+	</update>
+
+	<!-- 회원탈퇴 -->
+		<update id="closeAccount" parameterType="String">
+		update CS_MEMBER
+			set mem_leave_date=sysdate
+			where mem_id=#{mem_id}
+	</update>
 
 </mapper>

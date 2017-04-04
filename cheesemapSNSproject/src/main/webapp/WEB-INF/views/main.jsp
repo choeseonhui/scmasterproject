@@ -43,6 +43,10 @@
 	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
 	rel="stylesheet" type="text/css">
 
+<!-- modifyMem -->
+		<link href="./resources/css/modifyMem.css" rel="stylesheet">
+		<link href="./resources/css/joinForm.css" rel="stylesheet">
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -141,6 +145,16 @@
         <!-- My Menu -->
 		<div class="menu-slider">
 			<jsp:include page="myMenu.jsp" flush="true"></jsp:include>
+		</div>
+
+		<!-- 회원정보수정 팝업 -->
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+		<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<jsp:include page="modifyMem.jsp" flush="true"></jsp:include>
+			</div>
 		</div>
 
 		<!--  main div -->
@@ -282,6 +296,9 @@
 
 	<!-- Theme JavaScript -->
 	<script src="./resources/js/freelancer.js"></script>
+
+	<!-- Modify JavaScript -->
+	<script src="./resources/js/modifyMem.js"></script>
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
