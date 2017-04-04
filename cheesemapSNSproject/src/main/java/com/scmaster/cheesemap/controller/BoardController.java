@@ -1,5 +1,7 @@
 package com.scmaster.cheesemap.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +20,12 @@ public class BoardController {
 
 	@ResponseBody
 	@RequestMapping(value = "boardSave", method = RequestMethod.POST)
-	public int boardSave(Board board) {
-		System.out.println(board);
-		board.setMem_id("123");
+	public int boardSave(Board board, HttpSession session) {
+		String mem_id = (String) session.getAttribute("mem_id");
+		System.out.println(mem_id);
+		board.setMem_id(mem_id);
+		
 		int result = dao.boardSave(board);
-		System.out.println(result);
 		return result;
 	}
 
