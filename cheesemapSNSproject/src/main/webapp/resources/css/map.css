@@ -17,3 +17,9 @@
 	padding-left: 5px;
 	padding-right: 5px;
 }
+
+#pac-input {
+	padding: 5px;
+	margin: 5px;
+	width: 300px;
+}

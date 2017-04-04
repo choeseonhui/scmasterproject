@@ -88,9 +88,9 @@
 	<!-- Header -->
 	<header>
 		<!-- map  -->
-		<div id="map">
-			<jsp:include page="map.jsp" flush="true"></jsp:include>
-		</div>
+		<!-- 장소 검색창 -->
+		 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+		<div id="map"></div>
 
 		<div id="style-selector-control" class="map-control">
 			<select id="style-selector" class="selector-control">
@@ -106,7 +106,10 @@
 		<div id="pollSlider-button">
 			<h1>&#9776;</h1>
 		</div>
-
+		<!-- write btn -->
+		<div id="write-button" data-flag="false">
+			     <img src="./resources/img/pencil.png"/>
+		</div>
 
 		<!-- search -->
 		<div class="row">
@@ -126,15 +129,13 @@
 			<!-- /.col-lg-6 -->
 		</div>
 
-
-
-
-
-
 		<!-- timeline -->
 		<div class="pollSlider">
 			<jsp:include page="timeline.jsp" flush="true"></jsp:include>
 		</div>
+		
+		<!-- write form -->
+		<div class="write-slider"></div>
 
 		<div class="menu-slider">
 			<jsp:include page="myMenu.jsp" flush="true"></jsp:include>
@@ -271,10 +272,8 @@
 	<script src="./resources/js/main.js"></script>
 
 	<!-- map JavaScript -->
-	<script src="./resources/js/map.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv9XZk_I25-M0V2IrvyqtJQTQ9k7UfoTA&callback=initMap"
-		async defer></script>
+	<script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApHkc_70xfMcN5SF0_8T6uNpspm-GXyDo&callback=initMap&libraries=places" async defer></script>
+		<script src="./resources/js/map.js"></script>
 
 	<!-- Login JavaScript -->
 	<script src="./resources/js/login.js"></script>

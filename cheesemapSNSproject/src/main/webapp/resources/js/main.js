@@ -88,14 +88,14 @@ $(function() {
 			if (flag_timeline) {
 				flag_timeline = false;
 				$('#pollSlider-button').animate({
-					"margin-right" : '+=500'
+					"margin-right" : '+=600'
 				});
 				$('.pollSlider').animate({
-					"margin-right" : '+=500'
+					"margin-right" : '+=600'
 				});
 				
 				$('.searchClass').animate({					
-					"margin-right" : '+=500'
+					"margin-right" : '+=600'
 				});
 				
 				
@@ -103,14 +103,14 @@ $(function() {
 			} else {
 				flag_timeline = true;
 				$('#pollSlider-button').animate({
-					"margin-right" : '-=500'
+					"margin-right" : '-=600'
 				});
 				$('.pollSlider').animate({
-					"margin-right" : '-=500'
+					"margin-right" : '-=600'
 				});
 				
 				$('.searchClass').animate({					
-					"margin-right" : '-=500'
+					"margin-right" : '-=600'
 				});
 				
 			}
