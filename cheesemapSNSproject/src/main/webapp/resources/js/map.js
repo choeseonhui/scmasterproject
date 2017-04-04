@@ -61,6 +61,12 @@ function initMap() {
                 placeId: place.place_id,
                 location: place.geometry.location
             });
+            
+            marker_searched.addListener('rightclick', function (event) {
+            	marker_searched.setMap(null);
+                markers.pop(marker_searched);
+            });
+            
             marker_searched.addListener('click',function(event) {
                     if (marker_searched.getAnimation() !== null) {
                         marker_searched.setAnimation(null);
@@ -130,6 +136,11 @@ function addMarker(latlng,title,map) {
         title: title,
         animation: google.maps.Animation.DROP,
         draggable:true
+    });
+    
+    marker.addListener('rightclick', function (event) {
+        marker.setMap(null);
+        markers.pop(marker);
     });
 
     marker.addListener('click',function(event) {
