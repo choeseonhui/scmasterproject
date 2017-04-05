@@ -8,11 +8,14 @@
 		<typeAlias type="com.scmaster.cheesemap.vo.Member" alias="Member" />
 		<typeAlias type="com.scmaster.cheesemap.vo.MyMenu" alias="MyMenu" />
 		<typeAlias type="com.scmaster.cheesemap.vo.Board" alias="Board" />
+		<typeAlias type="com.scmaster.cheesemap.vo.BoardTag" alias="BoardTag" />
+		<typeAlias type="com.scmaster.cheesemap.vo.MymapTag" alias="MymapTag" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="Mapper/memberMapper.xml" />
 		<mapper resource="Mapper/MyMenuMaper.xml" />
 		<mapper resource="Mapper/BoardMapper.xml"/>
+		<mapper resource="Mapper/SearchMapper.xml" />
 	</mappers>
 </configuration>
