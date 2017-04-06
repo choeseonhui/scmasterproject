@@ -236,6 +236,10 @@ CREATE SEQUENCE CS_MYMAP_COMMENT_SEQ START WITH 1 INCREMENT BY 1;
 /* test */
 select * from CS_MEMBER;
 select * from CS_FOLLOW;
+select * from CS_BOARD;
+select * from CS_BOARD_COMMENT;
+select * from CS_BOARD_TAG;
+select * from CS_BOARD_LIKE;
 
 select
 	mem_id
@@ -291,3 +295,10 @@ update
 	cs_member
 set
 	mem_check = 1;
+	
+insert into
+	CS_BOARD_LIKE
+values (
+	'jwnamkung@naver.com'
+	, '23'
+);

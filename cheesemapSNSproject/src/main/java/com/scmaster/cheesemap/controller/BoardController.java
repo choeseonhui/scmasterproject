@@ -27,9 +27,6 @@ public class BoardController {
         board.setMem_id(mem_id);
         int result = dao.boardSave(board);
 
-        System.out.println("게시물 저장하고 왔따");
-        System.out.println(board.getBoa_id());
-
         String test = tag_name.substring(1);
         String tag_name_list[] = test.split("#");
         ArrayList<String> list = new ArrayList<String>(Arrays.asList(tag_name_list));

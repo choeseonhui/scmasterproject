@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 마이메뉴 처리 SQL -->
+<mapper namespace="com.scmaster.cheesemap.dao.TimelineMapper">
+	<select id="getTimeline" resultType="Board" parameterType="String">
+		select
+			boa_id
+			, boa_content
+			, boa_create_date
+			, boa_modify_date
+			, boa_latitude
+			, boa_longitude
+			, boa_photo_savefile
+			, boa_photo_originalfile
+			, boa_video_originalfile
+			, boa_video_savefile
+			, mem_id
+		from
+			CS_BOARD
+		where
+			boa_id = #{boa_id}
+		order by
+			boa_id desc
+	</select>
+	
+	<select id="getBoardComment" resultType="BoardComment" parameterType="String">
+		select
+			com_id
+			, com_content
+			, com_create_date
+			, com_modify_date
+			, mem_id
+			, boa_id
+		from
+			CS_BOARD_COMMENT
+		where
+			boa_id = #{boa_id}
+		order by
+			com_id desc
+	</select>
+	
+	<select id="getBoardTag"  resultType="BoardTag" parameterType="String">
+		select
+			tag_name
+			, boa_id
+		from
+			CS_BOARD_TAG
+		where
+			boa_id = #{boa_id}
+		order by
+			tag_name
+	</select>
+	
+	<select id="getBoardLike" resultType="BoardLike" parameterType="String">
+		select
+			mem_id
+			, boa_id
+		from
+			CS_BOARD_LIKE
+		where
+			boa_id = #{boa_id}
+		order by
+			boa_id
+	</select>
+</mapper>

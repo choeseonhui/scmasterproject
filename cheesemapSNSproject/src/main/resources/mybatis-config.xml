@@ -10,6 +10,10 @@
 		<typeAlias type="com.scmaster.cheesemap.vo.Board" alias="Board" />
 		<typeAlias type="com.scmaster.cheesemap.vo.BoardTag" alias="BoardTag" />
 		<typeAlias type="com.scmaster.cheesemap.vo.MymapTag" alias="MymapTag" />
+		<typeAlias type="com.scmaster.cheesemap.vo.Timeline" alias="Timeline" />
+		<typeAlias type="com.scmaster.cheesemap.vo.BoardComment" alias="BoardComment" />
+		<typeAlias type="com.scmaster.cheesemap.vo.BoardTag" alias="BoardTag" />
+		<typeAlias type="com.scmaster.cheesemap.vo.BoardLike" alias="BoardLike" />
 	</typeAliases>
 
 	<mappers>
@@ -17,5 +21,6 @@
 		<mapper resource="Mapper/MyMenuMaper.xml" />
 		<mapper resource="Mapper/BoardMapper.xml"/>
 		<mapper resource="Mapper/SearchMapper.xml" />
+		<mapper resource="Mapper/TimelineMapper.xml"/>
 	</mappers>
 </configuration>

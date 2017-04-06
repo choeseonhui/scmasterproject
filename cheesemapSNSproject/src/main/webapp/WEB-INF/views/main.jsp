@@ -109,15 +109,15 @@
 			<select id="style-selector" class="selector-control">
 				<option value="default">Default</option>
 				<option value="silver">Silver</option>
-				<option value="night" selected="selected">Night mode</option>
+				<option value="night">Night mode</option>
 				<option value="retro">Retro</option>
-				<option value="hiding">Hide features</option>
+				<option value="hiding" selected="selected">Hide features</option>
 			</select>
 		</div>
 
 		<!-- menu btn -->
 		<div id="pollSlider-button">
-			<h1>&#9776;</h1>
+			<h1 id="timeline_btn">&#9776;</h1>
 		</div>
 		<!-- write btn -->
 		<div id="write-button" data-flag="false">
@@ -144,9 +144,7 @@
 
 
 		<!-- timeline -->
-		<div class="pollSlider">
-			<jsp:include page="timeline.jsp" flush="true"></jsp:include>
-		</div>
+		<div id="timeline_div" class="pollSlider"></div>
 		
 		<!-- write form -->
 		<div class="write-slider"></div>
@@ -309,13 +307,15 @@
 	<!-- Modify JavaScript -->
 	<script src="./resources/js/modifyMem.js"></script>
 
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+	<!-- logout.js -->
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 	<script src="./resources/js/logout.js"></script>
 	
 	<!--search.js  -->
-	
 	<script src="./resources/js/search.js"></script>
+	
+	<!-- timeline JavaScript -->
+	<script src="./resources/js/timeline.js"></script>
 
 </body>
 </html>
