@@ -43,6 +43,10 @@
 	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
 	rel="stylesheet" type="text/css">
 
+<!-- modifyMem -->
+		<link href="./resources/css/modifyMem.css" rel="stylesheet">
+		<link href="./resources/css/joinForm.css" rel="stylesheet">
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -84,6 +88,14 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
+	
+	
+	
+<!-- hidden  -->
+<input type="hidden" id="flag_my_menu" value="true">
+<input type="hidden" id="flag_timeline" value="true">
+<input type="hidden" id="flag_contact" value="true">
+	
 
 	<!-- Header -->
 	<header>
@@ -112,13 +124,13 @@
             <img src="./resources/img/pencil.png"/>
 		</div>
 
-		<!-- search -->
+	<!-- search -->
 		<div class="row">
 			<div class="searchClass">
 				<div class="input-group">
 					<input type="text" class="search_input_form" placeholder="search"
 						id="search"> <span class="input-group-btn">
-						<button class="btn btn-default" type="button">
+						<button class="btn btn-default" id="searchButton" type="button">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</button>
 					</span>
@@ -129,6 +141,7 @@
 			</div>
 			<!-- /.col-lg-6 -->
 		</div>
+
 
 		<!-- timeline -->
 		<div class="pollSlider">
@@ -141,6 +154,16 @@
         <!-- My Menu -->
 		<div class="menu-slider">
 			<jsp:include page="myMenu.jsp" flush="true"></jsp:include>
+		</div>
+
+		<!-- 회원정보수정 팝업 -->
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+		<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<jsp:include page="modifyMem.jsp" flush="true"></jsp:include>
+			</div>
 		</div>
 
 		<!--  main div -->
@@ -283,9 +306,16 @@
 	<!-- Theme JavaScript -->
 	<script src="./resources/js/freelancer.js"></script>
 
+	<!-- Modify JavaScript -->
+	<script src="./resources/js/modifyMem.js"></script>
+
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 	<script src="./resources/js/logout.js"></script>
+	
+	<!--search.js  -->
+	
+	<script src="./resources/js/search.js"></script>
 
 </body>
 </html>

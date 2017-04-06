@@ -13,4 +13,8 @@ public interface MemberMapper {
 	public int authenticate(String mem_id);
 
 	public Member searchMember(String id);
+	
+	public int modifyMem(Member mb);
+
+	public int closeAccount(String mem_id);
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원정보 처리 SQL -->
+<mapper namespace="com.scmaster.cheesemap.dao.SearchMapper">
+
+	<select  id="searchUser" parameterType="String" resultType="Member">
+	select	
+	MEM_ID,	
+	MEM_NICKNAME	
+	from
+	cs_member
+	where
+	MEM_ID
+	like'%' || #{word}|| '%'
+	or
+	mem_nickname
+	like '%' || #{word} ||'%'
+	</select>
+	
+	
+	<select  id="searchTag" parameterType="String" resultType="BoardTag">
+	select	
+	tag_name	
+	from
+	cs_board_tag
+	where
+	tag_name
+	like'%' || #{word}|| '%'	
+	</select>
+	
+	
+	
+	<select  id="searchmymapTag" parameterType="String" resultType="MymapTag">
+	select	
+	tag_name
+	from
+	cs_mymap_tag
+	where
+	tag_name
+	like'%' || #{word}|| '%'	
+	</select>
+	
+	
+</mapper>

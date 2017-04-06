@@ -14,7 +14,8 @@
 </div>
 <div id="myMenu1" class="row">
 	<p><b>${mem_nickname }</b></p>
-	<p><a>update</a></p>
+	<!-- Trigger/Open The Modal -->
+	<p><a id="myBtn">update</a></p>
 </div>
 <br>
 <div id="myMenu2" class="row">
