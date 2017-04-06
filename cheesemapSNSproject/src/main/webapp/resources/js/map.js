@@ -14,6 +14,44 @@ function initMap() {
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
 
+    var counter=0;
+    
+    google.maps.event.addListener(map, 'idle', function() {
+        var latNE = map.getBounds().getNorthEast().lat();
+        var lngNE = map.getBounds().getNorthEast().lng();
+        var latSW = map.getBounds().getSouthWest().lat();
+        var lngSW = map.getBounds().getSouthWest().lng();
+        if(counter==0){
+        	counter++;
+        	defaultList(latNE, lngNE, latSW, lngSW);
+        }
+    });
+    
+    function defaultList(latNE, lngNE, latSW, lngSW){
+    	// default markers of mylist
+    	$.ajax({
+    		type : "post",
+    		url : "defaultList",
+    		data : {
+    			latNE : latNE,
+    			lngNE : lngNE,
+    			latSW : latSW,
+    			lngSW : lngSW
+    		},
+    		success : function(mylist){
+    			console.log(mylist);
+    			$.each(mylist, function(index, item){
+    				var boa_id = item.boa_id;
+    				var latlng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
+    				addMarker(latlng, boa_id, map);
+    			});
+    		},
+    		error : function(e) {
+    			console.log(e);
+    		}
+    	});
+    }
+    
     //맵을 클릭하면 마커 생성
     map.addListener('click', function (event) {
         if ($('#write-button').attr('data-flag') == 'true') {

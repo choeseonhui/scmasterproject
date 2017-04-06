@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.scmaster.cheesemap.vo.Board;
 import com.scmaster.cheesemap.vo.BoardTag;
 import com.scmaster.cheesemap.vo.Member;
 import com.scmaster.cheesemap.vo.MymapTag;
@@ -43,4 +44,11 @@ public class SearchDAO implements SearchMapper {
 		return list;
 	}
 
+	@Override
+	public ArrayList<Board> defaultList(String mem_id, String latNE, String lngNE, String latSW, String lngSW) {
+		// TODO Auto-generated method stub
+		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);
+		ArrayList<Board> mylist = mapper.defaultList(mem_id, latNE, lngNE, latSW, lngSW);
+		return mylist;
+	}
 }
