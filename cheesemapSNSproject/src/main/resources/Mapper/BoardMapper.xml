@@ -6,7 +6,7 @@
 <mapper namespace="com.scmaster.cheesemap.dao.BoardMapper">
 
     <!--게시물 저장 테스트-->
-    <insert id="boardSave" parameterType="Board">
+    <insert id="boardSave" parameterType="Board" useGeneratedKeys="true" keyProperty="boa_id" keyColumn="boa_id">
         INSERT INTO CS_BOARD
         (BOA_ID, BOA_CONTENT, BOA_CREATE_DATE, BOA_LATITUDE, BOA_LONGITUDE
         <if test="boa_photo_originalfile != null and boa_photo_savefile != null">
@@ -24,6 +24,13 @@
         ,#{boa_video_originalfile},#{boa_video_savefile}
         </if>
         ,#{mem_id})
+        <selectKey keyProperty="boa_id" resultType="String" order="AFTER">
+            SELECT CS_BOARD_SEQ.currval From dual
+        </selectKey>
     </insert>
 
+    <!-- 태그 저장 -->
+    <insert id="tagSave" parameterType="BoardTag">
+        INSERT INTO CS_BOARD_TAG (TAG_NAME, BOA_ID) VALUES (#{tag_name}, #{boa_id})
+    </insert>
 </mapper>
