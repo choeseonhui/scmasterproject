@@ -12,14 +12,23 @@ function boardList() {
 					console.log(item2);
 					if(item2.boa_create_date != undefined) {
 						html += "<tr>";
-						html +=	"<td><img src='"+ item2.boa_photo_savefile+"' width='100'>" +
-								"</img></td>";
-						html += "<td> " + item2.boa_create_date + ", </td>";
-						html += "<td> " + item.boardComment.length + ", </td>";
-						html += "<td> " + item.boardLike.length; + " </td>";
+						if(item2.boa_photo_savefile != undefined) {
+							html +=	"<td rowspan='2'><img src='"+ item2.boa_photo_savefile +"' width='100'>" +
+									"</img></td>";
+						} else {
+							html +=	"<td rowspan='2'><img src='./resources/img/logo.png' width='100'>" +
+							"</img></td>";
+						}
+						html += "<td>" + item2.boa_create_date + ",</td>";
+						html += "<td>" + item2.mem_id + ",</td>";
+						html += "<td>" + item.boardComment.length + ",</td>";
+						html += "<td>" + item.boardLike.length + ",</td></tr>";
+						html += "<tr><td colspan='5'>" + item.boardLike.length + "</td></tr>";
 					}
 					if(item2.tag == mem_id) {
 						"<td>ⓞ</td>";
+					} else {
+						"<td>X</td>";
 					}
 					html += "</tr>";
 				});

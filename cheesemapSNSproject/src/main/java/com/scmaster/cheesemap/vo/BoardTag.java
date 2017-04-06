@@ -4,14 +4,12 @@ public class BoardTag {
 	private String tag_name;
 	private String boa_id;
 
-	public BoardTag(String tag_name, String boa_id) {
-		super();
-		this.tag_name = tag_name;
-		this.boa_id = boa_id;
+	public BoardTag() {
 	}
 
-	public BoardTag() {
-		super();
+	public BoardTag(String tag_name, String boa_id) {
+		this.tag_name = tag_name;
+		this.boa_id = boa_id;
 	}
 
 	public String getTag_name() {

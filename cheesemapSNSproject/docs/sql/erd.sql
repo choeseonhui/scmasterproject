@@ -302,3 +302,13 @@ values (
 	'jwnamkung@naver.com'
 	, '23'
 );
+
+select
+	tag_name
+	, boa_id
+from
+	CS_BOARD_TAG
+where
+	boa_id = '41'
+order by
+	tag_name;

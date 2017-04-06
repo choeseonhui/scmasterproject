@@ -29,7 +29,6 @@ $(function() {
 
 	$('#menu-contact').click(function() {
 		if ($("#flag_timeline").val() =='true') {
-			
 		} else {
 			$("#flag_timeline").val("true");
 			$('#pollSlider-button').animate({
@@ -38,14 +37,12 @@ $(function() {
 			$('.pollSlider').animate({
 				"margin-right" : '-=500'
 			});
-			
 			$('.searchClass').animate({					
 				"margin-right" : '-=500'
 			});
 		};
 		
 		if ($("#flag_my_menu").val() =='true') {
-			
 		} else {
 			$("#flag_my_menu").val("true");
 			
@@ -59,19 +56,14 @@ $(function() {
 			$('.searchClass').animate({					
 				"margin-right" : '-=500'
 			});
-			
-			
 		};		
-		
 		$("#flag_contact").val("false");	
-		
 	});
 
 	$('#menu-my-menu').click(function() {
 		var mem_id = $("#mem_id").val();
 		if ($("#flag_timeline").val() =='true') {
 			if ($("#flag_my_menu").val() =='true') {
-				
 				$.ajax({
 					type : "POST",
 					url : "mymenu",
@@ -89,16 +81,13 @@ $(function() {
 						console.log(e);
 					}
 				});
-				
 				$("#flag_my_menu").val('false');
-					
 				$('.menu-slider').animate({
 					"margin-left" : '+=500'
 				});
 				$('.map-control').animate({
 					"margin-left" : '+=300'
 				});
-				
 			} else {
 				$("#flag_my_menu").val('true');
 				$('.menu-slider').animate({
@@ -124,14 +113,10 @@ $(function() {
 				$('.pollSlider').animate({
 					"margin-right" : '+=500'
 				});
-				
-				$('.searchClass').animate({					
+				$('.searchClass').animate({	
 					"margin-right" : '+=500'
 				});
-				
-				
 			} else {
-				
 				$("#flag_timeline").val('true');
 				$('#pollSlider-button').animate({
 					"margin-right" : '-=500'
@@ -139,16 +124,11 @@ $(function() {
 				$('.pollSlider').animate({
 					"margin-right" : '-=500'
 				});
-				
 				$('.searchClass').animate({					
 					"margin-right" : '-=500'
 				});
-				
 			}
 		}
 	});
-	
-
-	
 	
 });
