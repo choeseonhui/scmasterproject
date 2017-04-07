@@ -28,20 +28,19 @@ public class SearchController {
 	private SearchDAO dao;
 
 	@ResponseBody
-	@RequestMapping(value = "search", method =RequestMethod.GET)
+	@RequestMapping(value = "search", method = RequestMethod.GET)
 	public HashMap<String, Object> search(String word) {
 		System.out.println(word);
 		HashMap<String, Object> map = new HashMap<>();
-		
-		
-		ArrayList<Member> memberlist= dao.searchUser(word);
+
+		ArrayList<Member> memberlist = dao.searchUser(word);
 		ArrayList<BoardTag> taglist = dao.searchTag(word);
 		ArrayList<MymapTag> mymaplist = dao.searchmymapTag(word);
 		map.put("memberList", memberlist);
 		map.put("tagList", taglist);
 		map.put("mymapList", mymaplist);
 		System.out.println("aaa");
-		
+
 		return map;
 	}
 
@@ -49,9 +48,18 @@ public class SearchController {
 	@RequestMapping(value = "defaultList", method = RequestMethod.POST)
 	public ArrayList<Board> defaultList(HttpSession session, String latNE, String lngNE, String latSW, String lngSW) {
 		ArrayList<Board> mylist = null;
+		ArrayList<String> boa_id_list = new ArrayList<>();
+
 		String mem_id = (String) session.getAttribute("mem_id");
-		mylist=dao.defaultList(mem_id, latNE, lngNE, latSW, lngSW);
+		mylist = dao.defaultList(mem_id, latNE, lngNE, latSW, lngSW);
+
+		for (Board board : mylist) {
+			boa_id_list.add(board.getBoa_id());
+		}
+
+		session.setAttribute("boa_id_list", boa_id_list);
+
 		return mylist;
 	}
-	
+
 }
