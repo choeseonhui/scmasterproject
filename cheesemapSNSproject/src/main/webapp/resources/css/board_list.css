@@ -8,10 +8,10 @@
 
 .pollSlider {
 	position: fixed;
-	height: 100%;
+	height: 743px;
 	background: white;
 	opacity: 0.8;
-	width: 743px;
+	width: 600px;
 	right: 0px;
 	margin-right: -600px;
 	top: 100px;
@@ -20,7 +20,7 @@
 
 #map {
 	margin-top: 100px;
-	height: 600px;
+	height: 800px;
 }
 
 #write-button {

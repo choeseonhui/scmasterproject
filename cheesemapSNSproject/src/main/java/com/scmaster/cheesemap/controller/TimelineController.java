@@ -21,16 +21,17 @@ public class TimelineController {
 	
 	@ResponseBody
 	@RequestMapping(value="timeline", method=RequestMethod.GET)
-	public ArrayList<Timeline> getTimeline(HttpSession session) {
-		ArrayList<String> boa_id_list = new ArrayList<>(); 
+	public ArrayList<Timeline> getTimeline(ArrayList<String> boa_id_list) {
+		// ArrayList<String> boa_id_list = new ArrayList<>(); 
 		// (ArrayList<String>) session.getAttribute("boa_id_list");
-		
+		/*
 		boa_id_list.add("21");
 		boa_id_list.add("22");
 		boa_id_list.add("23");
 		boa_id_list.add("41");
 		boa_id_list.add("42");
 		boa_id_list.add("43");
+		*/
 		
 		ArrayList<Timeline> result = new ArrayList<>();
 		for(String boa_id : boa_id_list) {
