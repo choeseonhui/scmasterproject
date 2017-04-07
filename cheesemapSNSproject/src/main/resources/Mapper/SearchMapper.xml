@@ -43,5 +43,21 @@
 	like'%' || #{word}|| '%'	
 	</select>
 	
+	<select  id="defaultList" parameterType="String" resultType="Board">
+	select	
+	boa_id
+	, boa_latitude
+	, boa_longitude
+	from
+	cs_board
+	where
+	(mem_id=#{0}
+	or mem_id in (
+		select fol_following 
+		from cs_follow 
+		where fol_follower=#{0}))
+	and to_number(boa_latitude) between #{3} and #{1}
+	and to_number(boa_longitude) between #{4} and #{2}
+	</select>
 	
 </mapper>

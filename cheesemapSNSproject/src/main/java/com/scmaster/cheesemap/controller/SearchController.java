@@ -3,6 +3,8 @@ package com.scmaster.cheesemap.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.scmaster.cheesemap.dao.SearchDAO;
+import com.scmaster.cheesemap.vo.Board;
 import com.scmaster.cheesemap.vo.BoardTag;
 import com.scmaster.cheesemap.vo.Member;
 import com.scmaster.cheesemap.vo.MyMenu;
@@ -42,4 +45,13 @@ public class SearchController {
 		return map;
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "defaultList", method = RequestMethod.POST)
+	public ArrayList<Board> defaultList(HttpSession session, String latNE, String lngNE, String latSW, String lngSW) {
+		ArrayList<Board> mylist = null;
+		String mem_id = (String) session.getAttribute("mem_id");
+		mylist=dao.defaultList(mem_id, latNE, lngNE, latSW, lngSW);
+		return mylist;
+	}
+	
 }
