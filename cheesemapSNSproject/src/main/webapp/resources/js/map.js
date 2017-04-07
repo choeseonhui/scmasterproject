@@ -2,7 +2,7 @@ var markers = [];
 
 function initMap() {
 
-    //지도 생성 및 기타 등에 필요한 값 선언
+    // 지도 생성 및 기타 등에 필요한 값 선언
     var geocoder = new google.maps.Geocoder;
     var infowindow = new google.maps.InfoWindow();
     var myLatlng = new google.maps.LatLng(37.51081519807654, 127.06040382385254);
@@ -14,21 +14,24 @@ function initMap() {
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
 
-    var counter=0;
-    
+    // 처음 접속시 발생한 이벤트 인식
     google.maps.event.addListener(map, 'idle', function() {
-        var latNE = map.getBounds().getNorthEast().lat();
-        var lngNE = map.getBounds().getNorthEast().lng();
-        var latSW = map.getBounds().getSouthWest().lat();
-        var lngSW = map.getBounds().getSouthWest().lng();
-        if(counter==0){
-        	counter++;
-        	defaultList(latNE, lngNE, latSW, lngSW);
-        }
+    	markers.forEach(function (marker) {
+    		marker.setMap(null);
+    	});
+    	markers = [];
+    	// 현재의 범위를 가져옴
+    	var latNE = map.getBounds().getNorthEast().lat();
+    	var lngNE = map.getBounds().getNorthEast().lng();
+    	var latSW = map.getBounds().getSouthWest().lat();
+    	var lngSW = map.getBounds().getSouthWest().lng();
+    	
+    	defaultList(latNE, lngNE, latSW, lngSW);
     });
+  
     
+    // 나와 내가 팔로잉 하고 있는 사람들의 게시물 정보를 가져와 마커 생성
     function defaultList(latNE, lngNE, latSW, lngSW){
-    	// default markers of mylist
     	$.ajax({
     		type : "post",
     		url : "defaultList",
@@ -52,14 +55,14 @@ function initMap() {
     	});
     }
     
-    //맵을 클릭하면 마커 생성
+    // 맵을 클릭하면 마커 생성
     map.addListener('click', function (event) {
         if ($('#write-button').attr('data-flag') == 'true') {
             addMarker(event.latLng, '직접 생성한 마커', map);
         }
     });
 
-    //글쓰기 버튼(연필) 클릭했을 때 주소,장소 검색창 토글
+    // 글쓰기 버튼(연필) 클릭했을 때 주소,장소 검색창 토글
     $('#write-button').on('click', function () {
         if ($('#write-button').attr('data-flag') == 'false') {
             $('#write-button').attr('data-flag', 'true');
@@ -75,12 +78,12 @@ function initMap() {
         }
     });
 
-    //보고있는 지도의 범위(?)가 변경되었을 경우 검색창 객체에 변경된 값 세팅
+    // 보고있는 지도의 범위(?)가 변경되었을 경우 검색창 객체에 변경된 값 세팅
     map.addListener('bounds_changed', function () {
         searchBox.setBounds(map.getBounds());
     });
 
-    //장소객체의 값이 변경되었을 경우
+    // 장소객체의 값이 변경되었을 경우
     searchBox.addListener('places_changed', function () {
         var places = searchBox.getPlaces();
 
@@ -94,7 +97,7 @@ function initMap() {
         });
         markers = [];
 
-        //각 장소(place객체)에 대해 아이콘, 이름, 위치정보 받아옴
+        // 각 장소(place객체)에 대해 아이콘, 이름, 위치정보 받아옴
         var bounds = new google.maps.LatLngBounds();
 
         // 각 장소에 대한 마커 생성
@@ -119,7 +122,7 @@ function initMap() {
                 markers.pop(marker_searched);
             });
 
-            //마커를 클릭했을 때 글쓰기 창을 불러옴(이미 불러져 있다면 없앰)
+            // 마커를 클릭했을 때 글쓰기 창을 불러옴(이미 불러져 있다면 없앰)
             marker_searched.addListener('click', function (event) {
                 var latitude = event.latLng.lat();
                 var longitude = event.latLng.lng();
@@ -170,7 +173,7 @@ function initMap() {
                 infowindow.setContent(place.name);
                 infowindow.open(map, marker_searched);
             });
-            //생성된 마커를 markers 배열에 저장
+            // 생성된 마커를 markers 배열에 저장
             markers.push(marker_searched);
 
             if (place.geometry.viewport) {
