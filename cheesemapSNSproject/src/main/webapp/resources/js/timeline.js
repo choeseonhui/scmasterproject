@@ -3,7 +3,6 @@ function boardList() {
 	$.ajax({
 		type : "get",
 		url : "timeline",
-		data : {},
 		dataType : "json",
 		success : function(data) {
 			var mem_id = $("#mem_id").val();

@@ -21,21 +21,13 @@ public class TimelineController {
 	
 	@ResponseBody
 	@RequestMapping(value="timeline", method=RequestMethod.GET)
-	public ArrayList<Timeline> getTimeline(HttpSession session) {
+	public ArrayList<Timeline> timeline(HttpSession session) {
 		System.out.println("asdfasdf");
 		
 		session.removeAttribute("boa_id_list");
-		ArrayList<String> boa_id_list = (ArrayList<String>) session.getAttribute("boa_id_list");
-		
-		/*
-		boa_id_list.add("21");
-		boa_id_list.add("22");
-		boa_id_list.add("23");
-		boa_id_list.add("41");
-		boa_id_list.add("42");
-		boa_id_list.add("43");
-		*/
-		
+		ArrayList<String> boa_id_list = new ArrayList<>();
+		boa_id_list = (ArrayList<String>) session.getAttribute("boa_id_list");
+		System.out.println(boa_id_list);
 		ArrayList<Timeline> result = new ArrayList<>();
 		for(String boa_id : boa_id_list) {
 			Timeline temp = new Timeline();
@@ -46,8 +38,6 @@ public class TimelineController {
 			result.add(temp);
 			System.out.println(temp);
 		}
-		
 		return result;
 	}
-	
 }
