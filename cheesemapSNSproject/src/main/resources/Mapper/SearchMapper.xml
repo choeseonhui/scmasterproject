@@ -36,6 +36,7 @@
 	<select  id="searchmymapTag" parameterType="String" resultType="MymapTag">
 	select	
 	tag_name
+	map_id
 	from
 	cs_mymap_tag
 	where
@@ -59,5 +60,41 @@
 	and to_number(boa_latitude) between #{3} and #{1}
 	and to_number(boa_longitude) between #{4} and #{2}
 	</select>
+	
+	
+	
+	<select id="resultTag" parameterType="String" resultType="String">
+	select
+	boa_id
+	from
+	cs_board_tag
+	where
+	tag_name
+	=#{tagName}
+	
+	</select>
+	
+	
+	<select id="resultUser" parameterType="String" resultType="String">
+	select
+	boa_id
+	from
+	cs_board
+	where
+	mem_id =#{userId}
+	</select>
+	
+	
+	<select id="resultMymap" parameterType="String" resultType="String">
+	select
+	map_id
+	from
+	cs_mymap_tag
+	where
+	tag_name
+	=#{mymapTag}	
+	</select>
+	
+	
 	
 </mapper>

@@ -1,15 +1,12 @@
+
 $(function(){
-
-/*	var flag_my_menu=  $("#flag_my_menu").val();
-	var flag_timeline = $("#flag_timeline").val();
-	var flag_contact = $("#flag_contact").val();*/
-	
-
 	
 	 $('#search').keydown(function(e) {
 		    if(e.keyCode === 13) {
+		    	
+		    	
 		    	$('#searchButton').click();
-	    	 	    	 
+		    	
 	    		if ($("#flag_contact").val() == 'true') {  		
 	    		if ($("#flag_timeline").val() == 'true') {   		
 	    				
@@ -33,7 +30,21 @@ $(function(){
 	 });
 	
 	 $('#searchButton').on('click',function(){
-		
+		 
+		 
+		 var divhtml = "";
+	    	
+	    	divhtml +="<ul class='nav nav-tabs'>";
+	    	divhtml +="<li role='presentation' class='active' id='comp-first'><a id='tagcomp'>#tag</a></li>";
+	    	divhtml +="<li role='presentation' id='comp-second' class='none' ><a id='usercomp'>User </a></li>";
+	    	divhtml +="<li role='presentation' id='comp-third' class='none' ><a id='mymapcomp'>My Map</a></li>";
+	    	divhtml +="</ul><br><div id='userList'></div><div id='tagList'></div><div id='mymapList'></div>";
+	    	
+	    	$(".pollSlider").html(divhtml);
+	    	
+		 
+		 
+		 
 		$("#tagList").html('');
 		$("#userList").html('');
 		$("#mymapList").html('');
@@ -79,37 +90,118 @@ $(function(){
 				var taghtml ='';
 				
 				if(taglist !=null){
+			
 				 $.each(taglist, function(index, value ) {
-					 taghtml += "<br><a><h2>#"+value.tag_name+"</h2></a><br>";					
-					 $("#tagList").show();
-					 $("#tagList").html(taghtml);
-			                 
-	                });	
+				
+					 taghtml += '<br><a id="fir-tag-search'+index+'" class="'+value.boa_id+'">'+value.tag_name+'</a><br>';
+					   
+					 
+					 $(document).on("click","#fir-tag-search"+index+"",function(){
+						var searchTag = $("#fir-tag-search"+index+"").text();	
+
+						$.ajax({
+							
+							type:"GET",
+							url : "seachResult",
+							data: {
+							tagName : searchTag								
+							},
+							success: function(data){
+								boardList();
+							},
+							error : function(e){
+								console.log(e);
+							}
+							
+						});
+								
+						
+						
+						
+						
+					 });
+					 
+	                });					 
+				 
 				};
 				
 				
+				 $("#tagList").show();
+				 $("#tagList").html(taghtml);
+				 
+				 
+				 
 				var userhtml ='';	
 				
 			
 				 $.each(userlist, function(index, value ) {
-					 userhtml += "<br><a><h1>"+value.mem_id+"</h1></a><br>";
-					 userhtml += value.mem_nickname+"<br><hr>";
-					$("#userList").hide();
-					$("#userList").html(userhtml);
+					 userhtml += '<br><h1><a id="sec-user-search'+index+'">'+value.mem_id+'<br></a><hr>';			
+					 
+					$(document).on("click","#sec-user-search"+index+"",function(){
+							var searchUser = $("#sec-user-search"+index+"").text();						
+						$("#resultUserlist").val(searchUser);	
+						
+	                         $.ajax({
+							
+							type:"GET",
+							url : "seachResult",
+							data: {
+							userId : searchUser								
+							},
+							success: function(data){
+								boardList();
+							},
+							error : function(e){
+								console.log(e);
+							}
+							
+						});
+						
+						
+						
+						
+							
+					 });
 				 });
-				
+				 
+				 $("#userList").hide();
+					$("#userList").html(userhtml);
 				 
 				 var mymaphtml = '';
 				 
 				 $.each(mymaplist, function(index, value) {				
-					 mymaphtml += "<br><a><h1>"+value.tag_name+"</h1></a><br>";
-					 console.log(value.tag_name);
-					 $("#mymapList").hide();
-					 $("#mymapList").html(mymaphtml);
-			                 
+					 mymaphtml += '<br><a id="thir-mymap-search'+index+'">'+value.tag_name+'</a><br>';
+					 
 	                });
 				 
+				 $("#mymapList").hide();
+				 $("#mymapList").html(mymaphtml);
 				
+				 
+				 
+				 $.each(mymaplist, function(index, value) {		
+					 
+					 $(document).on("click","#thir-mymap-search"+index+"",function(){
+							var searchMymap = $("#thir-mymap-search"+index+"").text();
+							 $.ajax({
+									
+									type:"GET",
+									url : "seachResult",
+									data: {
+									mymapTag : searchMymap								
+									},
+									success: function(data){
+										boardList();
+									},
+									error : function(e){
+										console.log(e);
+									}
+									
+								});
+							
+						 });
+					 
+	                });
 				
 			},
 			error : function(e){
@@ -123,9 +215,13 @@ $(function(){
 		
 		
 	});
+	 
+	 
 	
 		
-$("#usercomp").on('click', function() {
+	 
+		
+	 $(document).on("click","#usercomp", function() {
 		$("#tagList").hide();
 		$("#mymapList").hide();
 		$("#userList").show();
@@ -136,7 +232,7 @@ $("#usercomp").on('click', function() {
 
 	});
 
-	$("#mymapcomp").on('click', function() {
+ $(document).on("click","#mymapcomp", function() {
 		$("#userList").hide();
 		$("#tagList").hide();		
 		$("#mymapList").show();
@@ -147,7 +243,7 @@ $("#usercomp").on('click', function() {
 
 	});
 	
-	$("#tagcomp").on('click', function() {
+	 $(document).on("click","#tagcomp", function() {
 		$("#userList").hide();		
 		$("#mymapList").hide();
 		$("#tagList").show();
@@ -155,7 +251,6 @@ $("#usercomp").on('click', function() {
 		$("#comp-first").attr("class","active");
 		$("#comp-second").attr("class","none");
 		$("#comp-third").attr("class","none");
-		
 
 	});	
 

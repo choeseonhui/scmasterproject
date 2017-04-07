@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.scmaster.cheesemap.dao.SearchDAO;
 import com.scmaster.cheesemap.dao.TimelineDAO;
 import com.scmaster.cheesemap.vo.Timeline;
 
@@ -18,6 +19,9 @@ public class TimelineController {
 	
 	@Autowired
 	private TimelineDAO timelineDAO;
+	
+	@Autowired
+	private SearchDAO searchDAO;
 	
 	@ResponseBody
 	@RequestMapping(value="timeline", method=RequestMethod.GET)
@@ -38,5 +42,34 @@ public class TimelineController {
 			System.out.println(temp);
 		}
 		return result;
+	}
+	
+	
+	
+
+	
+	
+	@ResponseBody
+	@RequestMapping(value="seachResult", method=RequestMethod.GET)
+	public void seachResult(String tagName, String userId, String mymapTag,HttpSession session) {
+		
+		 
+		if(tagName != null){
+			ArrayList<String> result = searchDAO.resultTag(tagName);
+		
+						session.setAttribute("boa_id_list", result);
+			
+		}else if(userId !=null){
+			ArrayList<String> result=	searchDAO.resultUser(userId);
+			session.setAttribute("boa_id_list", result);
+			
+			
+		}else if(mymapTag !=null){
+			ArrayList<String> result = searchDAO.resultMymap(mymapTag);
+			session.setAttribute("boa_id_list", result);
+			
+			
+		}
+		
 	}
 }
