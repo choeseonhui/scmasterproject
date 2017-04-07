@@ -55,9 +55,10 @@ public class SearchController {
 		for (Board board : mylist) {
 			boa_id_list.add(board.getBoa_id());
 		}
-		System.out.println(boa_id_list);
+		// System.out.println(boa_id_list);
 		session.removeAttribute("boa_id_list");
 		session.setAttribute("boa_id_list", boa_id_list);
+		System.out.println(session.getAttribute("boa_id_list"));
 		return mylist;
 	}
 }

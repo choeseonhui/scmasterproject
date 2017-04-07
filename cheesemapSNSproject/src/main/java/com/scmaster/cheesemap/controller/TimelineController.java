@@ -24,7 +24,6 @@ public class TimelineController {
 	public ArrayList<Timeline> timeline(HttpSession session) {
 		System.out.println("asdfasdf");
 		
-		session.removeAttribute("boa_id_list");
 		ArrayList<String> boa_id_list = new ArrayList<>();
 		boa_id_list = (ArrayList<String>) session.getAttribute("boa_id_list");
 		System.out.println(boa_id_list);

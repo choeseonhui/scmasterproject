@@ -1,10 +1,10 @@
 function boardList() {
-	console.log("여기까지");
 	$.ajax({
 		type : "get",
 		url : "timeline",
 		dataType : "json",
 		success : function(data) {
+			console.log("여기까지");
 			var mem_id = $("#mem_id").val();
 			var html ="";
 			html += "<table>";
@@ -44,12 +44,13 @@ function boardList() {
 }
 
 $(function() {
-	$("#timeline_btn").on("click", function() {
+	$(document).on("click", "#timeline_btn", function() {
 		console.log("ajdi");
 		/*var html ="";
 		html += '<div class="pollSlider">';
 		html += '<jsp:include page="timeline.jsp" flush="true"></jsp:include>';
 		html += '</div>';*/
+		//event.preventDefault();
 		boardList();
 	});
 });
