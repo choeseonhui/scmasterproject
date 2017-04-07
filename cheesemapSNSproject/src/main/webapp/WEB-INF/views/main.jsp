@@ -159,7 +159,18 @@
 				<jsp:include page="modifyMem.jsp" flush="true"></jsp:include>
 			</div>
 		</div>
-
+		
+		<!-- 게시판 팝업 -->
+		<!-- The Modal -->
+		<div id="myModalBoard" class="modal">
+		<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<!-- jsp수정요 -->
+				<jsp:include page="modifyMem.jsp" flush="true"></jsp:include>
+			</div>
+		</div>
+		
 		<!--  main div -->
 		<div class="container" id="maincontent" tabindex="-1">
 			<div class="row">
