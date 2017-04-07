@@ -8,10 +8,10 @@
 
 .pollSlider {
 	position: fixed;
-	height: 743px;
+	height: 100%;
 	background: white;
 	opacity: 0.8;
-	width: 600px;
+	width: 743px;
 	right: 0px;
 	margin-right: -600px;
 	top: 100px;
@@ -19,8 +19,8 @@
 }
 
 #map {
-	/* margin-top: 100px; */
-	height: 800px;
+	margin-top: 100px;
+	height: 600px;
 }
 
 #write-button {
@@ -32,7 +32,7 @@
 
 .write-slider{
 	position: fixed;
-	height: 800px;
+	height: 100%;
 	background: white;
 	width: 600px;
 	right: 0px;

@@ -31,7 +31,6 @@ public class TimelineController {
 		boa_id_list.add("41");
 		boa_id_list.add("42");
 		boa_id_list.add("43");
-		boa_id_list.add("45");
 		
 		ArrayList<Timeline> result = new ArrayList<>();
 		for(String boa_id : boa_id_list) {
