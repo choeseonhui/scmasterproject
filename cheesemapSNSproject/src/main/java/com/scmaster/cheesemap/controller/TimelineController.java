@@ -22,7 +22,8 @@ public class TimelineController {
 	@ResponseBody
 	@RequestMapping(value="timeline", method=RequestMethod.GET)
 	public ArrayList<Timeline> getTimeline(HttpSession session) {
-		@SuppressWarnings("unchecked")
+		System.out.println("asdfasdf");
+		
 		ArrayList<String> boa_id_list = (ArrayList<String>) session.getAttribute("boa_id_list");
 		
 		/*
@@ -44,6 +45,7 @@ public class TimelineController {
 			result.add(temp);
 			System.out.println(temp);
 		}
+		System.out.println("제발 오늘 이건 끝내자");
 		
 		return result;
 	}

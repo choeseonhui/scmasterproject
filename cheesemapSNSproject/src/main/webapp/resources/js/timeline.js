@@ -1,7 +1,9 @@
 function boardList() {
+	console.log("여기까지");
 	$.ajax({
 		type : "get",
 		url : "timeline",
+		data : {},
 		dataType : "json",
 		success : function(data) {
 			var mem_id = $("#mem_id").val();
@@ -44,6 +46,7 @@ function boardList() {
 
 $(function() {
 	$("#timeline_btn").on("click", function() {
+		console.log("ajdi");
 		/*var html ="";
 		html += '<div class="pollSlider">';
 		html += '<jsp:include page="timeline.jsp" flush="true"></jsp:include>';
