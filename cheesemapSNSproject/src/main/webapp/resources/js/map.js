@@ -42,7 +42,6 @@ function initMap() {
     			lngSW : lngSW
     		},
     		success : function(mylist){
-    			console.log(mylist);
     			$.each(mylist, function(index, item){
     				var boa_id = item.boa_id;
     				var latlng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
@@ -121,7 +120,6 @@ function initMap() {
                 marker_searched.setMap(null);
                 markers.pop(marker_searched);
             });
-
             // 마커를 클릭했을 때 글쓰기 창을 불러옴(이미 불러져 있다면 없앰)
             marker_searched.addListener('click', function (event) {
                 var latitude = event.latLng.lat();
@@ -214,8 +212,10 @@ function addMarker(latlng, title, map) {
     });
 
     marker.addListener('rightclick', function (event) {
-        marker.setMap(null);
+     	if ($('#write-button').attr('data-flag') == 'true') {
+    	marker.setMap(null);
         markers.pop(marker);
+     	}
     });
 
     marker.addListener('click', function (event) {
@@ -229,6 +229,7 @@ function addMarker(latlng, title, map) {
             marker.setAnimation(google.maps.Animation.BOUNCE);
         }
 
+        if ($('#write-button').attr('data-flag') == 'true') {
         if (called === 0) {
             $.ajax({
                 url: 'boardWrite',
@@ -244,14 +245,14 @@ function addMarker(latlng, title, map) {
                 }
             });
         }
-
         if (hide_flag === 1 && called === 1) {
-            console.log('글읽기 사라져라');
-            $('.write-slider').css('margin-right', '-600px');
-            hide_flag = 0;
-            called = 0;
+        	console.log('글읽기 사라져라');
+        	$('.write-slider').css('margin-right', '-600px');
+        	hide_flag = 0;
+        	called = 0;
         }
-
+        }
+        
         geocoder.geocode({'location': latlng}, function (results, status) {
             console.log(results);
             if (status === google.maps.GeocoderStatus.OK) {
