@@ -21,9 +21,10 @@ public class TimelineController {
 	
 	@ResponseBody
 	@RequestMapping(value="timeline", method=RequestMethod.GET)
-	public ArrayList<Timeline> getTimeline(ArrayList<String> boa_id_list) {
-		// ArrayList<String> boa_id_list = new ArrayList<>(); 
-		// (ArrayList<String>) session.getAttribute("boa_id_list");
+	public ArrayList<Timeline> getTimeline(HttpSession session) {
+		@SuppressWarnings("unchecked")
+		ArrayList<String> boa_id_list = (ArrayList<String>) session.getAttribute("boa_id_list");
+		
 		/*
 		boa_id_list.add("21");
 		boa_id_list.add("22");

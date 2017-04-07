@@ -49,17 +49,14 @@ public class SearchController {
 	public ArrayList<Board> defaultList(HttpSession session, String latNE, String lngNE, String latSW, String lngSW) {
 		ArrayList<Board> mylist = null;
 		ArrayList<String> boa_id_list = new ArrayList<>();
-
 		String mem_id = (String) session.getAttribute("mem_id");
 		mylist = dao.defaultList(mem_id, latNE, lngNE, latSW, lngSW);
 
 		for (Board board : mylist) {
 			boa_id_list.add(board.getBoa_id());
+			System.out.println(board.getBoa_id());
 		}
-
 		session.setAttribute("boa_id_list", boa_id_list);
-
 		return mylist;
 	}
-
 }
