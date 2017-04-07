@@ -1,7 +1,9 @@
 function boardList() {
+	console.log("여기까지");
 	$.ajax({
 		type : "get",
 		url : "timeline",
+		data : {},
 		dataType : "json",
 		success : function(data) {
 			var mem_id = $("#mem_id").val();
@@ -13,10 +15,10 @@ function boardList() {
 					if(item2.boa_create_date != undefined) {
 						html += "<tr>";
 						if(item2.boa_photo_savefile != undefined) {
-							html +=	"<td rowspan='2'><img src='"+ item2.boa_photo_savefile +"' width='100'>" +
+							html +=	"<td rowspan='2'><img src='"+ item2.boa_photo_savefile +"' width='150' height='150'>" +
 									"</img></td>";
 						} else {
-							html +=	"<td rowspan='2'><img src='./resources/img/logo.png' width='100'>" +
+							html +=	"<td rowspan='2'><img src='./resources/img/logo.png' width='150' height='150'>" +
 							"</img></td>";
 						}
 						html += "<td>" + item2.boa_create_date + ",</td>";
@@ -44,6 +46,7 @@ function boardList() {
 
 $(function() {
 	$("#timeline_btn").on("click", function() {
+		console.log("ajdi");
 		/*var html ="";
 		html += '<div class="pollSlider">';
 		html += '<jsp:include page="timeline.jsp" flush="true"></jsp:include>';
