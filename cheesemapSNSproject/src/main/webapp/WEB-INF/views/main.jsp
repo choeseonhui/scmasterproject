@@ -119,8 +119,12 @@
 		<div id="pollSlider-button">
 			<h1 id="timeline_btn">&#9776;</h1>
 		</div>
+		<!-- write btn -->
+		<div id="write-button" data-flag="false">
+            <img src="./resources/img/pencil.png"/>
+		</div>
 
-		<!-- search -->
+	<!-- search -->
 		<div class="row">
 			<div class="searchClass">
 				<div class="input-group">
