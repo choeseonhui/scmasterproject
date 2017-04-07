@@ -18,6 +18,15 @@
 	<p><a id="myBtn">update</a></p>
 </div>
 <br>
+
 <div id="myMenu2" class="row">
 </div>
+
+<!-- write btn -->
+<div id="write-button" data-flag="false">
+	<img src="./resources/img/pencil.png"/>
+</div>
+
 <input type="hidden" id="mem_id" value="${mem_id }">
+
+
