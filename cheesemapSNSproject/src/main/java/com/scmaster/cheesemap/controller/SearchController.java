@@ -26,15 +26,15 @@ public class SearchController {
 
 	@Autowired
 	private SearchDAO dao;
-
+	
+	
 	@ResponseBody
 	@RequestMapping(value = "search", method = RequestMethod.GET)
 	public HashMap<String, Object> search(String word) {
 		System.out.println(word);
 		HashMap<String, Object> map = new HashMap<>();
-
-		ArrayList<Member> memberlist = dao.searchUser(word);
-		ArrayList<BoardTag> taglist = dao.searchTag(word);
+        ArrayList<Member> memberlist = dao.searchUser(word);        
+        ArrayList<HashMap<String, Object>> taglist = dao.searchTag(word);
 		ArrayList<MymapTag> mymaplist = dao.searchmymapTag(word);
 		map.put("memberList", memberlist);
 		map.put("tagList", taglist);
