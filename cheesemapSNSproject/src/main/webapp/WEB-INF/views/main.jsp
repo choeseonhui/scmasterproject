@@ -13,6 +13,9 @@
 
 <title>Main - CheeseMap</title>
 
+<!-- W3 CSS -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <!-- Bootstrap Core CSS -->
 <link href="./resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">

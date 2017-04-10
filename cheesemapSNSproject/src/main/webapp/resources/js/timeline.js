@@ -4,33 +4,30 @@ function boardList() {
 		url : "timeline",
 		dataType : "json",
 		success : function(data) {
-			console.log("여기까지");
 			var mem_id = $("#mem_id").val();
-			var html ="";
+			var html = "";
 			$.each(data, function(index, item) {
 				$.each(item, function(index2, item2) {
 					console.log(item2);
 					if(item2.boa_create_date != undefined) {
 						html += "<div class='board' datano='" +
-							+item2.boa_id		
-							+"'><table><tr>";
+							+ item2.boa_id		
+							+ "'><table border='1' cellspadding='5' cellspacing='10'><tr>";
 						if(item2.boa_photo_savefile != undefined) {
-							html +=	"<td rowspan='2'><img src='"+ item2.boa_photo_savefile +"' width='100'>" +
+							html +=	"<td rowspan='3'><img class='w3-circle' src='"+ item2.boa_photo_savefile +"' width='100' height='100'>" +
 									"</img></td>";
-						} else {
-							html +=	"<td rowspan='2'><img src='./resources/img/logo.png' width='100'>" +
+						} else if(item2.boa_video_savefile != undefined) {
+							html +=	"<td rowspan='3'><video src='"+ item2.boa_video_savefile +"' width='100' height='100'>" +
+							"</video></td>";
+						}
+						else {
+							html +=	"<td rowspan='3'><img src='./resources/img/logo.png' width='100' height='100'>" +
 							"</img></td>";
 						}
-						html += "<td>" + item2.boa_create_date + ",</td>";
-						html += "<td>" + item2.mem_id + ",</td>";
-						html += "<td>" + item.boardComment.length + ",</td>";
-						html += "<td>" + item.boardLike.length + ",</td></tr>";
-						html += "<tr><td colspan='5'>" + item.boardLike.length + "</td></tr>";
-					}
-					if(item2.tag == mem_id) {
-						"<td>ⓞ</td>";
-					} else {
-						"<td>X</td>";
+						html += "<td>" + item2.mem_id + "</td>";
+						html += "<td>좋아요" + item.boardLike.length + " 코멘트" + item.boardComment.length + "</td></tr>";
+						html += "<tr><td align='left' colspan='2'>#임시태그</td></tr>"
+						html += "<tr><td align='right' colspan='2'>" + item2.boa_create_date + "</td>";
 					}
 					html += "</tr></table></div>";
 				});
