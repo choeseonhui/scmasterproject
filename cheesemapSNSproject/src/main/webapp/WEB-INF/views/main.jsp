@@ -44,9 +44,11 @@
 	rel="stylesheet" type="text/css">
 
 <!-- modifyMem -->
-		<link href="./resources/css/modifyMem.css" rel="stylesheet">
-		<link href="./resources/css/joinForm.css" rel="stylesheet">
+	<link href="./resources/css/modifyMem.css" rel="stylesheet">
+	<link href="./resources/css/joinForm.css" rel="stylesheet">
 
+<!-- boardRead -->
+	<link href="./resources/css/boardRead.css" rel="stylesheet">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -166,8 +168,7 @@
 		<!-- Modal content -->
 			<div class="modal-content">
 				<span class="close">&times;</span>
-				<!-- jsp수정요 -->
-				<jsp:include page="modifyMem.jsp" flush="true"></jsp:include>
+				<jsp:include page="boardRead.jsp" flush="true"></jsp:include>
 			</div>
 		</div>
 		

@@ -1,0 +1,11 @@
+#asideBoard{
+	width : 65%;
+	float : left;
+}
+#sectionBoard{
+	width : 35%;
+	float : left;
+}
+#wrapBoard{
+overflow : hidden;	
+}
