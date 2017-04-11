@@ -32,6 +32,8 @@
 <!-- map -->
 <link href="./resources/css/map.css" rel="stylesheet">
 
+<!-- map -->
+<link href="./resources/css/table.css" rel="stylesheet">
 
 <!-- searchForm.css -->
 <link href="./resources/css/searchForm.css" rel="stylesheet">
