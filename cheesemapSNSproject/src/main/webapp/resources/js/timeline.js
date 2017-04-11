@@ -7,11 +7,7 @@ function boardList() {
 			var mem_id = $("#mem_id").val();
 			var html = "";
 			$.each(data, function(index, item) {
-				/*console.log("큰포문");
-				console.log(item);*/
 				$.each(item, function(index2, item2) {
-					/*console.log("작은포문");
-					console.log(item2);*/
 					if(item2.boa_create_date != undefined) {
 						html += "<div class='board' datano='" +
 							+ item2.boa_id		
@@ -42,6 +38,19 @@ function boardList() {
 				});
 			});
 			$("#timeline_div").html(html);
+			if ($("#flag_timeline").val() =='true') {
+				$("#flag_timeline").val("true");
+				$('#pollSlider-button').animate({
+					"margin-right" : '+=500'
+				});
+				$('.pollSlider').animate({
+					"margin-right" : '+=500'
+				});
+				$('.searchClass').animate({					
+					"margin-right" : '+=500'
+				});
+			} else {
+			}
 			clickBoard(data);
 		},
 		error : function(e) {
@@ -87,12 +96,6 @@ window.onclick = function(event) {
 });
 $(function() {
 	$(document).on("click", "#timeline_btn", function() {
-		console.log("ajdi");
-		/*var html ="";
-		html += '<div class="pollSlider">';
-		html += '<jsp:include page="timeline.jsp" flush="true"></jsp:include>';
-		html += '</div>';*/
-		//event.preventDefault();
 		boardList();
 	});
 });
