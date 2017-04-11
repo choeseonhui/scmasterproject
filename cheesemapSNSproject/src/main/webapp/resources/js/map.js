@@ -25,8 +25,7 @@ function initMap() {
         var lngSW = map.getBounds().getSouthWest().lng();
 
         defaultList(latNE, lngNE, latSW, lngSW);
-
-
+        sliderInit();
     });
 
 
