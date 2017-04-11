@@ -46,32 +46,18 @@ public class TimelineController {
 		return result;
 	}
 	
-	
-	
-
-	
-	
 	@ResponseBody
 	@RequestMapping(value="seachResult", method=RequestMethod.GET)
 	public void seachResult(String tagName, String userId, String mymapTag,HttpSession session) {
-		
-		 
 		if(tagName != null){
 			ArrayList<String> result = searchDAO.resultTag(tagName);
-		
-						session.setAttribute("boa_id_list", result);
-			
+			session.setAttribute("boa_id_list", result);
 		}else if(userId !=null){
 			ArrayList<String> result=	searchDAO.resultUser(userId);
 			session.setAttribute("boa_id_list", result);
-			
-			
 		}else if(mymapTag !=null){
 			ArrayList<String> result = searchDAO.resultMymap(mymapTag);
 			session.setAttribute("boa_id_list", result);
-			
-			
 		}
-		
 	}
 }
