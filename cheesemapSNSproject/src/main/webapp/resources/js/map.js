@@ -283,7 +283,7 @@ function addMarker(latlng, title, map) {
         });
         infowindow.open(map, marker);
 
-        if (called === 0) {
+        if (called === 0 && $('#write-button').attr('data-flag') === 'true') {
             $.ajax({
                 url: 'boardWrite',
                 type: 'GET',
