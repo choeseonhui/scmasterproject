@@ -8,8 +8,10 @@
 
 	<select  id="searchUser" parameterType="String" resultType="Member">
 	select	
-	MEM_ID,	
-	MEM_NICKNAME	
+	MEM_ID
+	,MEM_NICKNAME
+	, mem_originalfile
+	, mem_savefile	
 	from
 	cs_member
 	where
@@ -21,19 +23,21 @@
 	</select>
 	
 	
-	<select  id="searchTag" parameterType="String" resultType="BoardTag">
-	select	
-	tag_name	
+	<select  id="searchTag" parameterType="String" resultType="HashMap">
+	select
+	count(*) as COUNT	
+	,tag_name	
 	from
 	cs_board_tag
 	where
 	tag_name
-	like'%' || #{word}|| '%'	
+	like'%' || #{word}|| '%'
+	group by
+	tag_name	
 	</select>
 	
-	
-	
 	<select  id="searchmymapTag" parameterType="String" resultType="MymapTag">
+	
 	select	
 	tag_name
 	map_id

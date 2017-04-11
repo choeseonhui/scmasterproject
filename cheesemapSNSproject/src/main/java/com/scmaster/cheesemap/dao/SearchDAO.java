@@ -1,6 +1,7 @@
 package com.scmaster.cheesemap.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +29,13 @@ public class SearchDAO implements SearchMapper {
 
 
 	@Override
-	public ArrayList<BoardTag> searchTag(String word) {
+	public ArrayList<HashMap<String, Object>> searchTag(String word) {
 		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);
 		
-		ArrayList<BoardTag> list = mapper.searchTag(word);		
+		ArrayList<HashMap<String, Object>> list = mapper.searchTag(word);	
+		System.out.println(list);
 		return list;
 	}
-
 
 	@Override
 	public ArrayList<MymapTag> searchmymapTag(String word) {
