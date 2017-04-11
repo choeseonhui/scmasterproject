@@ -38,19 +38,6 @@ function boardList() {
 				});
 			});
 			$("#timeline_div").html(html);
-			if ($("#flag_timeline").val() =='true') {
-				$("#flag_timeline").val("true");
-				$('#pollSlider-button').animate({
-					"margin-right" : '+=500'
-				});
-				$('.pollSlider').animate({
-					"margin-right" : '+=500'
-				});
-				$('.searchClass').animate({					
-					"margin-right" : '+=500'
-				});
-			} else {
-			}
 			clickBoard(data);
 		},
 		error : function(e) {
