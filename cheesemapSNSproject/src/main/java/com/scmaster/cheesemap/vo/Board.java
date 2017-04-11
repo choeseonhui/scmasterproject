@@ -17,7 +17,6 @@ public class Board {
 	public Board(String boa_id, String boa_content, String boa_create_date, String boa_modify_date, String boa_latitude,
 			String boa_longitude, String boa_photo_savefile, String boa_photo_originalfile,
 			String boa_video_originalfile, String boa_video_savefile, String mem_id) {
-		super();
 		this.boa_id = boa_id;
 		this.boa_content = boa_content;
 		this.boa_create_date = boa_create_date;
@@ -32,7 +31,6 @@ public class Board {
 	}
 
 	public Board() {
-		super();
 	}
 
 	public String getBoa_id() {

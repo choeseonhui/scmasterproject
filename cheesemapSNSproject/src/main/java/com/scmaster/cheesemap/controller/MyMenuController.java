@@ -30,7 +30,6 @@ public class MyMenuController {
 	@RequestMapping(value = "mymenu", method = RequestMethod.POST)
 	public MyMenu getMyMenu(String mem_id) {
 		MyMenu result = myMenuDao.getMyMenu(mem_id);
-		System.out.println(result);
 		return result;
 	}
 	

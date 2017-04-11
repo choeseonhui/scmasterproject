@@ -22,8 +22,6 @@
 			CS_BOARD
 		where
 			boa_id = #{boa_id}
-		order by
-			boa_id desc
 	</select>
 	
 	<select id="getBoardComment" resultType="BoardComment" parameterType="String">
@@ -38,8 +36,6 @@
 			CS_BOARD_COMMENT
 		where
 			boa_id = #{boa_id}
-		order by
-			com_id desc
 	</select>
 	
 	<select id="getBoardTag"  resultType="BoardTag" parameterType="String">
@@ -62,7 +58,5 @@
 			CS_BOARD_LIKE
 		where
 			boa_id = #{boa_id}
-		order by
-			boa_id
 	</select>
 </mapper>

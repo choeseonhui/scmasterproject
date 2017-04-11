@@ -1,6 +1,8 @@
 package com.scmaster.cheesemap.controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,14 +25,15 @@ public class TimelineController {
 	@Autowired
 	private SearchDAO searchDAO;
 	
+	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@RequestMapping(value="timeline", method=RequestMethod.GET)
 	public ArrayList<Timeline> timeline(HttpSession session) {
-		System.out.println("asdfasdf");
 		
 		ArrayList<String> boa_id_list = new ArrayList<>();
 		boa_id_list = (ArrayList<String>) session.getAttribute("boa_id_list");
-		System.out.println(boa_id_list);
+		Collections.sort(boa_id_list);
+		Collections.reverse(boa_id_list);
 		ArrayList<Timeline> result = new ArrayList<>();
 		for(String boa_id : boa_id_list) {
 			Timeline temp = new Timeline();
@@ -39,7 +42,6 @@ public class TimelineController {
 			temp.setBoardTag(timelineDAO.getBoardTag(boa_id));
 			temp.setBoardLike(timelineDAO.getBoardLike(boa_id));
 			result.add(temp);
-			System.out.println(temp);
 		}
 		return result;
 	}

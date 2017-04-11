@@ -38,8 +38,6 @@ public class BoardController {
             result2 += dao.tagSave(tag);
         }
 
-        System.out.println(result2);
-
         int result3 = result + result2;
 
         return result3;
