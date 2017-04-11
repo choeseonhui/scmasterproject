@@ -126,6 +126,9 @@
 		<div id="pollSlider-button">
 			<h1 id="timeline_btn">&#9776;</h1>
 		</div>
+		
+		<!-- 장바구니 영역 -->
+		<div id="divView"></div>
 
 		<!-- search -->
 		<div class="row">

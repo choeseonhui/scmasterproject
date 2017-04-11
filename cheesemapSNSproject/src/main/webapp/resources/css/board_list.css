@@ -30,7 +30,7 @@
 	top: 80%;
 }
 */
-.write-slider{
+.write-slider {
 	position: fixed;
 	height: 100%;
 	background: white;
@@ -39,4 +39,16 @@
 	margin-right: -600px;
 	top: 100px;
 	overflow: auto;
+}
+
+#divView {
+	position: absolute;
+	display: none;
+	background-color: #ffffff;
+	border: solid 2px #d0d0d0;
+	width: 360px;
+	height: 150px;
+	padding: 10px;
+	overflow-x: hidden;
+	overflow-y: auto;
 }

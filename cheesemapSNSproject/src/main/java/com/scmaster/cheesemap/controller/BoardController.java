@@ -1,8 +1,10 @@
 package com.scmaster.cheesemap.controller;
 
-import com.scmaster.cheesemap.dao.BoardDAO;
-import com.scmaster.cheesemap.vo.Board;
-import com.scmaster.cheesemap.vo.BoardTag;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.scmaster.cheesemap.dao.BoardDAO;
+import com.scmaster.cheesemap.vo.Board;
+import com.scmaster.cheesemap.vo.BoardTag;
+import com.scmaster.cheesemap.vo.MyBasket;
 
 @Controller
 public class BoardController {
@@ -20,6 +23,28 @@ public class BoardController {
     @Autowired
     private BoardDAO dao;
 
+    @ResponseBody
+    @RequestMapping(value = "deleteBasketItem", method = RequestMethod.POST)
+    public int deleteBasketItem(String mem_id, String place_name){
+        int result = dao.deleteBasketItem(mem_id, place_name);
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "getMyBasket", method = RequestMethod.POST)
+    public ArrayList<MyBasket> getMyBasket(String mem_id){
+        System.out.println(mem_id);
+        ArrayList<MyBasket> result = dao.getMyBasket(mem_id);
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "insertBasket", method = RequestMethod.POST)
+    public int insertBasket(String mem_id, String boa_latitude, String boa_longitude, String place_name){
+        int result = dao.saveToBasket(mem_id, boa_latitude, boa_longitude, place_name);
+        return result;
+    }
+    
     @ResponseBody
     @RequestMapping(value = "boardSave", method = RequestMethod.POST)
     public int boardSave(Board board, HttpSession session, String tag_name) {

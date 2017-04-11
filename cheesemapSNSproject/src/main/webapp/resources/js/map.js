@@ -2,9 +2,7 @@ var markers = [];
 
 function initMap() {
 
-    // 지도 생성 및 기타 등에 필요한 값 선언
-    var geocoder = new google.maps.Geocoder;
-    var infowindow = new google.maps.InfoWindow();
+    //지도 생성 및 기타 등에 필요한 값 선언
     var myLatlng = new google.maps.LatLng(37.51081519807654, 127.06040382385254);
     var myOptions = {
         zoom: 15,
@@ -16,54 +14,54 @@ function initMap() {
 
     // 처음 접속시 발생한 이벤트 인식
     google.maps.event.addListener(map, 'idle', function() {
-    	markers.forEach(function (marker) {
-    		marker.setMap(null);
-    	});
-    	markers = [];
-    	// 현재의 범위를 가져옴
-    	var latNE = map.getBounds().getNorthEast().lat();
-    	var lngNE = map.getBounds().getNorthEast().lng();
-    	var latSW = map.getBounds().getSouthWest().lat();
-    	var lngSW = map.getBounds().getSouthWest().lng();
-    	
-    	defaultList(latNE, lngNE, latSW, lngSW);
-    	
-    	
+        markers.forEach(function (marker) {
+            marker.setMap(null);
+        });
+        markers = [];
+        // 현재의 범위를 가져옴
+        var latNE = map.getBounds().getNorthEast().lat();
+        var lngNE = map.getBounds().getNorthEast().lng();
+        var latSW = map.getBounds().getSouthWest().lat();
+        var lngSW = map.getBounds().getSouthWest().lng();
+
+        defaultList(latNE, lngNE, latSW, lngSW);
+
+
     });
-  
-    
+
+
     // 나와 내가 팔로잉 하고 있는 사람들의 게시물 정보를 가져와 마커 생성
     function defaultList(latNE, lngNE, latSW, lngSW){
-    	$.ajax({
-    		type : "post",
-    		url : "defaultList",
-    		data : {
-    			latNE : latNE,
-    			lngNE : lngNE,
-    			latSW : latSW,
-    			lngSW : lngSW
-    		},
-    		success : function(mylist){
-    			$.each(mylist, function(index, item){
-    				var boa_id = item.boa_id;
-    				var latlng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
-    				addMarker(latlng, boa_id, map);
-    			});
-    		},
-    		error : function(e) {
-    			console.log(e);
-    		}
-    	});
+        $.ajax({
+            type : "post",
+            url : "defaultList",
+            data : {
+                latNE : latNE,
+                lngNE : lngNE,
+                latSW : latSW,
+                lngSW : lngSW
+            },
+            success : function(mylist){
+                $.each(mylist, function(index, item){
+                    var boa_id = item.boa_id;
+                    var latlng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
+                    addMarker(latlng, boa_id, map);
+                });
+            },
+            error : function(e) {
+                console.log(e);
+            }
+        });
     }
-    
-    // 맵을 클릭하면 마커 생성
+
+    //맵을 클릭하면 마커 생성
     map.addListener('click', function (event) {
         if ($('#write-button').attr('data-flag') == 'true') {
-            addMarker(event.latLng, '직접 생성한 마커', map);
+            addMarker(event.latLng, 'self', map);
         }
     });
 
-    // 글쓰기 버튼(연필) 클릭했을 때 주소,장소 검색창 토글
+    //글쓰기 버튼(연필) 클릭했을 때 주소,장소 검색창 토글
     $('#write-button').on('click', function () {
         if ($('#write-button').attr('data-flag') == 'false') {
             $('#write-button').attr('data-flag', 'true');
@@ -79,12 +77,12 @@ function initMap() {
         }
     });
 
-    // 보고있는 지도의 범위(?)가 변경되었을 경우 검색창 객체에 변경된 값 세팅
+    //보고있는 지도의 범위(?)가 변경되었을 경우 검색창 객체에 변경된 값 세팅
     map.addListener('bounds_changed', function () {
         searchBox.setBounds(map.getBounds());
     });
 
-    // 장소객체의 값이 변경되었을 경우
+    //장소객체의 값이 변경되었을 경우
     searchBox.addListener('places_changed', function () {
         var places = searchBox.getPlaces();
 
@@ -98,83 +96,11 @@ function initMap() {
         });
         markers = [];
 
-        // 각 장소(place객체)에 대해 아이콘, 이름, 위치정보 받아옴
         var bounds = new google.maps.LatLngBounds();
 
-        // 각 장소에 대한 마커 생성
+        // 각 검색된 장소에 대한 마커 생성
         places.forEach(function (place) {
-            var hide_flag = 0;
-            var called = 0;
-            var marker_searched = new google.maps.Marker({
-                map: map,
-                title: place.name,
-                position: place.geometry.location,
-                animation: google.maps.Animation.DROP
-            });
-
-            marker_searched.setPlace({
-                placeId: place.place_id,
-                location: place.geometry.location
-            });
-
-            // 마커를 오른쪽 클릭 했을 때 삭제
-            marker_searched.addListener('rightclick', function (event) {
-                marker_searched.setMap(null);
-                markers.pop(marker_searched);
-            });
-            // 마커를 클릭했을 때 글쓰기 창을 불러옴(이미 불러져 있다면 없앰)
-            marker_searched.addListener('click', function (event) {
-                var latitude = event.latLng.lat();
-                var longitude = event.latLng.lng();
-                var latlng = {lat: latitude, lng: longitude};
-
-                if (marker_searched.getAnimation() !== null) {
-                    marker_searched.setAnimation(null);
-                } else {
-                    marker_searched.setAnimation(google.maps.Animation.BOUNCE);
-                }
-
-                if (called === 0) {
-                    $.ajax({
-                        url: 'boardWrite',
-                        type: 'GET',
-                        data: latlng,
-                        success: function (data) {
-                            $('.write-slider').animate({
-                                "margin-right": '+=600'
-                            });
-                            $('.write-slider').html(data);
-                            hide_flag = 1;
-                            called = 1;
-                        }
-                    });
-                }
-
-                if (hide_flag === 1 && called === 1) {
-                    console.log('검색한 거 글쓰기 사라져라');
-                    $('.write-slider').css('margin-right', '-600px');
-                    hide_flag = 0;
-                    called = 0;
-                }
-
-                // 장소명을 가져오는 부분 (가져와서 infowindow객체를 이용해서 마커위에 띄워준다)
-                geocoder.geocode({'location': latlng}, function (results, status) {
-                    console.log(results);
-                    if (status === google.maps.GeocoderStatus.OK) {
-                        if (results[1]) {
-                            $('#placeID').val(results[0].place_id);
-                        } else {
-                            window.alert('No results found');
-                        }
-                    } else {
-                        window.alert('Geocoder failed due to: ' + status);
-                    }
-                });
-                infowindow.setContent(place.name);
-                infowindow.open(map, marker_searched);
-            });
-            // 생성된 마커를 markers 배열에 저장
-            markers.push(marker_searched);
+            addMarker(place.geometry.location, place.name, map);
 
             if (place.geometry.viewport) {
                 // 잘은 모르겠으나 축적 바꿔주는 부분인듯...
@@ -183,9 +109,11 @@ function initMap() {
                 bounds.extend(place.geometry.location);
             }
         });
+
         map.fitBounds(bounds);
     });
 
+    //지도 스타일
     var styleControl = document.getElementById('style-selector-control');
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(styleControl);
 
@@ -197,10 +125,95 @@ function initMap() {
     });
 }
 
-// 사용자가 직접 지도에서 위치를 지정했을 때 마커 생성
-// 대부분 위에 검색 후 마커 생성과정과 비슷하다
+//바스켓 아이템 삭제
+function deleteBasketItem(place_name) {
+    var mem_id = document.getElementById('mem_id').value;
+    $.ajax({
+        url: 'deleteBasketItem',
+        type: 'POST',
+        data: {
+            mem_id: mem_id,
+            place_name: place_name
+        },
+        success: function (data) {
+            console.log('삭제하고왓숨둥');
+            getMyBasket(mem_id);
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
+}
+
+//나의 바스켓 정보 가져오기
+function getMyBasket(mem_id) {
+    $.ajax({
+        url: 'getMyBasket',
+        type: 'POST',
+        data: {
+            mem_id: mem_id
+        },
+        success: function (data) {
+            console.log('잘 다녀왔습니당');
+            var html = '';
+            html += '<div style="position:absolute;top:-4px;right:4px"><span id="close" style="cursor:pointer;font-size:1.5em" title="닫기">X</span></div>';
+            if (data != null) {
+                data.forEach(function (item, index) {
+                    html += '어디: ' + item.place_name + '위치정보: ' + item.boa_latitude + '  ' + item.boa_longitude + '<br>';
+                    html += '<div><span id="deleteBasketItem" style="cursor:pointer;font-size:1em" title="닫기" ' + 'onclick="' + 'deleteBasketItem(' + '\'' + item.place_name + '\'' + ')"' + '>X</span></div>';
+                });
+            }
+            $('#divView').html(html);
+            var divTop = '68%';
+            var divLeft = '20%';
+            $('#divView').css({
+                "top": divTop
+                , "left": divLeft
+                , "position": "absolute"
+            }).show();
+            $('#close').click(function () {
+                document.getElementById('divView').style.display = 'none'
+            });
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
+}
+
+
+// insertBasket
+function insertBasket(original_latlng, place_name) {
+    var lat = original_latlng.lat();
+    var lng = original_latlng.lng();
+    var mem_id = document.getElementById('mem_id').value;
+    $.ajax({
+        url: 'insertBasket',
+        type: 'POST',
+        data: {
+            mem_id: mem_id,
+            boa_latitude: lat,
+            boa_longitude: lng,
+            place_name: place_name
+        },
+        success: function (data) {
+            if (data == 1) {
+                console.log('바구니에 넣엇당');
+                getMyBasket(mem_id);
+                $('#divView').attr('data-drag', 'false');
+                $('#divView').css('cursor', '');
+            }
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
+}
+
+// 마커 생성
 function addMarker(latlng, title, map) {
     var hide_flag = 0;
+    var original_latlng = latlng;
     var called = 0;
     var service = new google.maps.places.PlacesService(map);
     var geocoder = new google.maps.Geocoder;
@@ -213,14 +226,30 @@ function addMarker(latlng, title, map) {
         draggable: true
     });
 
-    marker.addListener('rightclick', function (event) {
-     	if ($('#write-button').attr('data-flag') == 'true') {
-    	marker.setMap(null);
+    marker.addListener('drag', function () {
+        $('#divView').attr('data-drag', 'true');
+    });
+
+    //장바구니에 담기위해 드래그이벤트 걸었슴다
+    marker.addListener('dragend', function () {
+        $('#divView').attr('data-drag', 'false');
+        marker.setPosition(original_latlng);
+        marker.setMap(map);
+        console.log($('#divView').attr('data-on-flag'));
+        if ($('#divView').attr('data-on-flag') === 'true') {
+            //인썰트바스켓함수들어갈자리
+            insertBasket(original_latlng, title);
+        }
+    });
+
+    // 마우스 오른쪽 클릭하면 마커가 삭제됨
+    marker.addListener('rightclick', function () {
+        marker.setMap(null);
         markers.pop(marker);
-     	}
     });
 
     marker.addListener('click', function (event) {
+        console.log('클릭됨');
         var latitude = event.latLng.lat();
         var longitude = event.latLng.lng();
         var latlng2 = {lat: latitude, lng: longitude};
@@ -230,8 +259,30 @@ function addMarker(latlng, title, map) {
         } else {
             marker.setAnimation(google.maps.Animation.BOUNCE);
         }
+        
+        geocoder.geocode({'location': latlng}, function (results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                $('#placeID').val(results[1].place_id);
+                service.getDetails({
+                    placeId: results[1].place_id
+                }, function (place, status) {
+                    if (status === google.maps.places.PlacesServiceStatus.OK) {
+                        if (title === 'self') {
+                            infowindow.setContent(place.formatted_address);
+                            title = place.formatted_address;
+                        } else {
+                            infowindow.setContent(title);
+                        }
+                    } else {
+                        console.log('장소이름가져오기실패');
+                    }
+                })
+            } else {
+                window.alert('Geocoder failed due to: ' + status);
+            }
+        });
+        infowindow.open(map, marker);
 
-        if ($('#write-button').attr('data-flag') == 'true') {
         if (called === 0) {
             $.ajax({
                 url: 'boardWrite',
@@ -247,39 +298,19 @@ function addMarker(latlng, title, map) {
                 }
             });
         }
+
         if (hide_flag === 1 && called === 1) {
-        	console.log('글읽기 사라져라');
-        	$('.write-slider').css('margin-right', '-600px');
-        	hide_flag = 0;
-        	called = 0;
+            console.log('글읽기 사라져라');
+            $('.write-slider').css('margin-right', '-600px');
+            hide_flag = 0;
+            called = 0;
         }
-        }
-        
-        geocoder.geocode({'location': latlng}, function (results, status) {
-            console.log(results);
-            if (status === google.maps.GeocoderStatus.OK) {
-                $('#placeID').val(results[1].place_id);
-                service.getDetails({
-                    placeId: results[1].place_id
-                }, function (place, status) {
-                    console.log(status);
-                    if (status === google.maps.places.PlacesServiceStatus.OK) {
-                        infowindow.setContent(place.formatted_address);
-                    } else {
-                        console.log('장소이름가져오기실패');
-                    }
-                })
 
-            } else {
-                window.alert('Geocoder failed due to: ' + status);
-            }
-        });
-        infowindow.open(map, marker);
     });
-
     markers.push(marker);
 }
 
+//지도 스타일 관련
 var styles = {
     default: null,
     silver: [

@@ -9,6 +9,29 @@ $(function() {
 	var flag_contact = $("#flag_contact").val();
 	*/
 	
+	//내 코드엔 이게 필요해요.. by.태권
+	var mem_id = document.getElementById('mem_id').value;
+	
+	$('#basket').click(function (e) {
+        getMyBasket(mem_id);
+    });
+
+    $('#divView').mouseenter(function (e) {
+        $('#divView').attr('data-on-flag', true);
+        if ($('#divView').attr('data-drag') === 'true') {
+            $('#divView').css('cursor', 'url(resources/cursor.cur), auto');
+        } else {
+            $('#divView').css('cursor', '');
+        }
+        console.log($('#divView').attr('data-on-flag'));
+    });
+
+    $('#divView').mouseleave(function (e) {
+        $('#divView').attr('data-on-flag', false);
+        $('#divView').css('cursor', '');
+        console.log($('#divView').attr('data-on-flag'));
+    });
+	
 	$('#menu-home').click(function() {
 		if ($("#flag_my_menu").val() =='true') {
 		} else {
