@@ -38,6 +38,10 @@
 <!-- searchForm.css -->
 <link href="./resources/css/searchForm.css" rel="stylesheet">
 
+<!--  autocomplete.css -->
+
+<link href="./resources/css/autocomplete.css" rel="stylesheet">
+
 
 <!-- Custom Fonts -->
 <link href="./resources/vendor/font-awesome/css/font-awesome.min.css"
@@ -134,8 +138,9 @@
 		<div class="row">
 			<div class="searchClass">
 				<div class="input-group">
-					<input type="text" class="search_input_form" placeholder="search"
-						id="search"> <span class="input-group-btn">
+					<input type="text" class="search_input_form" placeholder="search" id="tags">
+					
+					<span class="input-group-btn">
 						<button class="btn btn-default" id="searchButton" type="button">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</button>
@@ -295,6 +300,13 @@
 
 	<!-- jQuery -->
 	<script src="./resources/vendor/jquery/jquery.min.js"></script>
+	
+	
+	<!--search  -->
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="./resources/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -332,6 +344,14 @@
 	
 	<!-- timeline JavaScript -->
 	<script src="./resources/js/timeline.js"></script>
+	
+	
+	
+	<!--  auto compelete -->
+	<script src="./resources/vendor/jquery/jquery.autocomplete.js"></script>
+	<script src="./resources/vendor/jquery/jquery.autocomplete.min.js"></script>
+	
+	
 
 </body>
 </html>

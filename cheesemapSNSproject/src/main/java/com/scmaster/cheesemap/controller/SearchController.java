@@ -58,4 +58,27 @@ public class SearchController {
 		session.setAttribute("boa_id_list", boa_id_list);
 		return mylist;
 	}
+	
+	
+	
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "autocomplete", method = RequestMethod.GET)
+	public ArrayList<String> autocomplete(@RequestParam("input")String input) {
+	System.out.println(input);
+	System.out.println("여기까지");
+	ArrayList<String> list = new ArrayList<>();
+	if(input !=null){
+	list = dao.autocomplete(input);
+	};
+	
+	System.out.println(list);
+	
+	return list;
+	}
+	
+	
 }
+	
+	

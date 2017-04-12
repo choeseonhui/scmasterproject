@@ -1,7 +1,33 @@
 
 $(function(){
 	
-	 $('#search').keydown(function(e) {
+	
+	 var searchText = $('#tags').val();
+	 
+	 $('#tags').keyup(function(){
+		 $.ajax({
+			 type: 'GET',		 
+            url: "autocomplete",
+            data: {
+                input: searchText
+            },
+            success: function (data) {
+           	 $("#tags").autocomplete({
+           		 
+           		source : data
+           	 });
+           	 
+            }
+			 
+		 });
+		 
+		 
+	 });
+	
+	
+	 
+	 
+	 $('#tags').keydown(function(e) {
 		    if(e.keyCode === 13) {
 		    	
 		    	
@@ -55,7 +81,7 @@ $(function(){
 		
 		
 		
-		var searchWord  = $('#search').val();
+		var searchWord  = $('#tags').val();
 		
 		$.ajax({
 			type : "GET",			//type of request Method

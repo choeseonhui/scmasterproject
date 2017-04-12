@@ -6,99 +6,109 @@
 <!-- 회원정보 처리 SQL -->
 <mapper namespace="com.scmaster.cheesemap.dao.SearchMapper">
 
-	<select  id="searchUser" parameterType="String" resultType="Member">
-	select	
-	MEM_ID
-	,MEM_NICKNAME
-	, mem_originalfile
-	, mem_savefile	
-	from
-	cs_member
-	where
-	MEM_ID
-	like'%' || #{word}|| '%'
-	or
-	mem_nickname
-	like '%' || #{word} ||'%'
+	<select id="searchUser" parameterType="String" resultType="Member">
+		select
+		MEM_ID
+		,MEM_NICKNAME
+		, mem_originalfile
+		, mem_savefile
+		from
+		cs_member
+		where
+		MEM_ID
+		like'%' || #{word}|| '%'
+		or
+		mem_nickname
+		like '%' || #{word} ||'%'
 	</select>
-	
-	
-	<select  id="searchTag" parameterType="String" resultType="HashMap">
-	select
-	count(*) as COUNT	
-	,tag_name	
-	from
-	cs_board_tag
-	where
-	tag_name
-	like'%' || #{word}|| '%'
-	group by
-	tag_name	
+
+
+	<select id="searchTag" parameterType="String" resultType="HashMap">
+		select
+		count(*) as COUNT
+		,tag_name
+		from
+		cs_board_tag
+		where
+		tag_name
+		like'%' || #{word}|| '%'
+		group by
+		tag_name
 	</select>
-	
-	<select  id="searchmymapTag" parameterType="String" resultType="MymapTag">
-	
-	select	
-	tag_name
-	map_id
-	from
-	cs_mymap_tag
-	where
-	tag_name
-	like'%' || #{word}|| '%'	
+
+	<select id="searchmymapTag" parameterType="String" resultType="MymapTag">
+
+		select
+		tag_name
+		map_id
+		from
+		cs_mymap_tag
+		where
+		tag_name
+		like'%' || #{word}|| '%'
 	</select>
-	
-	<select  id="defaultList" parameterType="String" resultType="Board">
-	select	
-	boa_id
-	, boa_latitude
-	, boa_longitude
-	from
-	cs_board
-	where
-	(mem_id=#{0}
-	or mem_id in (
-		select fol_following 
-		from cs_follow 
+
+	<select id="defaultList" parameterType="String" resultType="Board">
+		select
+		boa_id
+		, boa_latitude
+		, boa_longitude
+		from
+		cs_board
+		where
+		(mem_id=#{0}
+		or mem_id in (
+		select fol_following
+		from cs_follow
 		where fol_follower=#{0}))
-	and to_number(boa_latitude) between #{3} and #{1}
-	and to_number(boa_longitude) between #{4} and #{2}
+		and to_number(boa_latitude) between #{3} and #{1}
+		and to_number(boa_longitude) between #{4} and #{2}
 	</select>
-	
-	
-	
+
+
+
 	<select id="resultTag" parameterType="String" resultType="String">
-	select
-	boa_id
-	from
-	cs_board_tag
-	where
-	tag_name
-	=#{tagName}
-	
+		select
+		boa_id
+		from
+		cs_board_tag
+		where
+		tag_name
+		=#{tagName}
+
 	</select>
-	
-	
+
+
 	<select id="resultUser" parameterType="String" resultType="String">
-	select
-	boa_id
-	from
-	cs_board
-	where
-	mem_id =#{userId}
+		select
+		boa_id
+		from
+		cs_board
+		where
+		mem_id =#{userId}
 	</select>
-	
-	
+
+
 	<select id="resultMymap" parameterType="String" resultType="String">
-	select
-	map_id
-	from
-	cs_mymap_tag
-	where
-	tag_name
-	=#{mymapTag}	
+		select
+		map_id
+		from
+		cs_mymap_tag
+		where
+		tag_name
+		=#{mymapTag}
 	</select>
-	
-	
-	
+
+	<select id="autocomplete" parameterType="String" resultType="String">
+		select
+		distinct tag_name
+		from
+		cs_board_tag
+		 <if test = " _parameter != null " >
+		where
+		tag_name like '%' ||#{0}|| '%'		
+		</if>
+	</select>
+
+
 </mapper>

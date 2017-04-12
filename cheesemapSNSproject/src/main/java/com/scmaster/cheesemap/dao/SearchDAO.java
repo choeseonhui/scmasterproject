@@ -76,5 +76,15 @@ public class SearchDAO implements SearchMapper {
 		ArrayList<String> result = mapper.resultMymap(mymapTag);
 		return result;
 	}
+
+
+	@Override
+	public ArrayList<String> autocomplete(String input) {
+
+		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);   
+		ArrayList<String> list = mapper.autocomplete(input);			
+			return list;
+	
+	}
 	
 }

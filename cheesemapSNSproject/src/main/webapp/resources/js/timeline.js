@@ -7,11 +7,7 @@ function boardList() {
 			var mem_id = $("#mem_id").val();
 			var html = "";
 			$.each(data, function(index, item) {
-				/*console.log("큰포문");
-				console.log(item);*/
 				$.each(item, function(index2, item2) {
-					/*console.log("작은포문");
-					console.log(item2);*/
 					if(item2.boa_create_date != undefined) {
 						html += "<div class='board' datano='" +
 							+ item2.boa_id		
@@ -87,12 +83,6 @@ window.onclick = function(event) {
 });
 $(function() {
 	$(document).on("click", "#timeline_btn", function() {
-		console.log("ajdi");
-		/*var html ="";
-		html += '<div class="pollSlider">';
-		html += '<jsp:include page="timeline.jsp" flush="true"></jsp:include>';
-		html += '</div>';*/
-		//event.preventDefault();
 		boardList();
 	});
 });

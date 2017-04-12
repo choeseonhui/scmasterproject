@@ -14,6 +14,7 @@ function initMap() {
 
     // 처음 접속시 발생한 이벤트 인식
     google.maps.event.addListener(map, 'idle', function() {
+        //sliderInit();
         markers.forEach(function (marker) {
             marker.setMap(null);
         });
@@ -25,8 +26,7 @@ function initMap() {
         var lngSW = map.getBounds().getSouthWest().lng();
 
         defaultList(latNE, lngNE, latSW, lngSW);
-
-
+        boardList();
     });
 
 
