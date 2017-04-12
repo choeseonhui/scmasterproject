@@ -1,8 +1,9 @@
 var markers = [];
+var timeout = 0;
 
 function initMap() {
 
-    //지도 생성 및 기타 등에 필요한 값 선언
+    // 지도 생성 및 기타 등에 필요한 값 선언
     var myLatlng = new google.maps.LatLng(37.51081519807654, 127.06040382385254);
     var myOptions = {
         zoom: 15,
@@ -14,7 +15,7 @@ function initMap() {
 
     // 처음 접속시 발생한 이벤트 인식
     google.maps.event.addListener(map, 'idle', function() {
-        //sliderInit();
+        // sliderInit();
         markers.forEach(function (marker) {
             marker.setMap(null);
         });
@@ -43,9 +44,12 @@ function initMap() {
             },
             success : function(mylist){
                 $.each(mylist, function(index, item){
+                	timeout = index * 300;
                     var boa_id = item.boa_id;
                     var latlng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
-                    addMarker(latlng, boa_id, map);
+                    setTimeout(function () {
+                        addMarker(latlng, boa_id, map)
+                    }, timeout);
                 });
             },
             error : function(e) {
@@ -54,14 +58,14 @@ function initMap() {
         });
     }
 
-    //맵을 클릭하면 마커 생성
+    // 맵을 클릭하면 마커 생성
     map.addListener('click', function (event) {
         if ($('#write-button').attr('data-flag') == 'true') {
             addMarker(event.latLng, 'self', map);
         }
     });
 
-    //글쓰기 버튼(연필) 클릭했을 때 주소,장소 검색창 토글
+    // 글쓰기 버튼(연필) 클릭했을 때 주소,장소 검색창 토글
     $('#write-button').on('click', function () {
         if ($('#write-button').attr('data-flag') == 'false') {
             $('#write-button').attr('data-flag', 'true');
@@ -77,12 +81,12 @@ function initMap() {
         }
     });
 
-    //보고있는 지도의 범위(?)가 변경되었을 경우 검색창 객체에 변경된 값 세팅
+    // 보고있는 지도의 범위(?)가 변경되었을 경우 검색창 객체에 변경된 값 세팅
     map.addListener('bounds_changed', function () {
         searchBox.setBounds(map.getBounds());
     });
 
-    //장소객체의 값이 변경되었을 경우
+    // 장소객체의 값이 변경되었을 경우
     searchBox.addListener('places_changed', function () {
         var places = searchBox.getPlaces();
 
@@ -113,7 +117,7 @@ function initMap() {
         map.fitBounds(bounds);
     });
 
-    //지도 스타일
+    // 지도 스타일
     var styleControl = document.getElementById('style-selector-control');
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(styleControl);
 
@@ -125,7 +129,7 @@ function initMap() {
     });
 }
 
-//바스켓 아이템 삭제
+// 바스켓 아이템 삭제
 function deleteBasketItem(place_name) {
     var mem_id = document.getElementById('mem_id').value;
     $.ajax({
@@ -145,7 +149,7 @@ function deleteBasketItem(place_name) {
     });
 }
 
-//나의 바스켓 정보 가져오기
+// 나의 바스켓 정보 가져오기
 function getMyBasket(mem_id) {
     $.ajax({
         url: 'getMyBasket',
@@ -230,14 +234,14 @@ function addMarker(latlng, title, map) {
         $('#divView').attr('data-drag', 'true');
     });
 
-    //장바구니에 담기위해 드래그이벤트 걸었슴다
+    // 장바구니에 담기위해 드래그이벤트 걸었슴다
     marker.addListener('dragend', function () {
         $('#divView').attr('data-drag', 'false');
         marker.setPosition(original_latlng);
         marker.setMap(map);
         console.log($('#divView').attr('data-on-flag'));
         if ($('#divView').attr('data-on-flag') === 'true') {
-            //인썰트바스켓함수들어갈자리
+            // 인썰트바스켓함수들어갈자리
             insertBasket(original_latlng, title);
         }
     });
@@ -310,7 +314,7 @@ function addMarker(latlng, title, map) {
     markers.push(marker);
 }
 
-//지도 스타일 관련
+// 지도 스타일 관련
 var styles = {
     default: null,
     silver: [
