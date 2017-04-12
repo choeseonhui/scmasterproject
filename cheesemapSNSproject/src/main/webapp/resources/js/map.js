@@ -129,91 +129,6 @@ function initMap() {
     });
 }
 
-// 바스켓 아이템 삭제
-function deleteBasketItem(place_name) {
-    var mem_id = document.getElementById('mem_id').value;
-    $.ajax({
-        url: 'deleteBasketItem',
-        type: 'POST',
-        data: {
-            mem_id: mem_id,
-            place_name: place_name
-        },
-        success: function (data) {
-            console.log('삭제하고왓숨둥');
-            getMyBasket(mem_id);
-        },
-        error: function (e) {
-            console.log(e);
-        }
-    });
-}
-
-// 나의 바스켓 정보 가져오기
-function getMyBasket(mem_id) {
-    $.ajax({
-        url: 'getMyBasket',
-        type: 'POST',
-        data: {
-            mem_id: mem_id
-        },
-        success: function (data) {
-            console.log('잘 다녀왔습니당');
-            var html = '';
-            html += '<div style="position:absolute;top:-4px;right:4px"><span id="close" style="cursor:pointer;font-size:1.5em" title="닫기">X</span></div>';
-            if (data != null) {
-                data.forEach(function (item, index) {
-                    html += '어디: ' + item.place_name + '위치정보: ' + item.boa_latitude + '  ' + item.boa_longitude + '<br>';
-                    html += '<div><span id="deleteBasketItem" style="cursor:pointer;font-size:1em" title="닫기" ' + 'onclick="' + 'deleteBasketItem(' + '\'' + item.place_name + '\'' + ')"' + '>X</span></div>';
-                });
-            }
-            $('#divView').html(html);
-            var divTop = '68%';
-            var divLeft = '20%';
-            $('#divView').css({
-                "top": divTop
-                , "left": divLeft
-                , "position": "absolute"
-            }).show();
-            $('#close').click(function () {
-                document.getElementById('divView').style.display = 'none'
-            });
-        },
-        error: function (e) {
-            console.log(e);
-        }
-    });
-}
-
-
-// insertBasket
-function insertBasket(original_latlng, place_name) {
-    var lat = original_latlng.lat();
-    var lng = original_latlng.lng();
-    var mem_id = document.getElementById('mem_id').value;
-    $.ajax({
-        url: 'insertBasket',
-        type: 'POST',
-        data: {
-            mem_id: mem_id,
-            boa_latitude: lat,
-            boa_longitude: lng,
-            place_name: place_name
-        },
-        success: function (data) {
-            if (data == 1) {
-                console.log('바구니에 넣엇당');
-                getMyBasket(mem_id);
-                $('#divView').attr('data-drag', 'false');
-                $('#divView').css('cursor', '');
-            }
-        },
-        error: function (e) {
-            console.log(e);
-        }
-    });
-}
-
 // 마커 생성
 function addMarker(latlng, title, map) {
     var hide_flag = 0;
@@ -227,23 +142,6 @@ function addMarker(latlng, title, map) {
         map: map,
         title: title,
         animation: google.maps.Animation.DROP,
-        draggable: true
-    });
-
-    marker.addListener('drag', function () {
-        $('#divView').attr('data-drag', 'true');
-    });
-
-    // 장바구니에 담기위해 드래그이벤트 걸었슴다
-    marker.addListener('dragend', function () {
-        $('#divView').attr('data-drag', 'false');
-        marker.setPosition(original_latlng);
-        marker.setMap(map);
-        console.log($('#divView').attr('data-on-flag'));
-        if ($('#divView').attr('data-on-flag') === 'true') {
-            // 인썰트바스켓함수들어갈자리
-            insertBasket(original_latlng, title);
-        }
     });
 
     // 마우스 오른쪽 클릭하면 마커가 삭제됨

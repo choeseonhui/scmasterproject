@@ -132,9 +132,6 @@
 		<!-- 장소 검색창 -->
 		 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 		
-		<!-- 장바구니 영역 -->
-		<div id="divView"></div>
-
 		<!-- search -->
 		<div class="row">
 			<div class="searchClass">

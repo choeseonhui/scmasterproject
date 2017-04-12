@@ -27,11 +27,6 @@
 	<img src="./resources/img/pencil.png"/>
 </div>
 
-<!-- 장바구니 버튼-->
-<div id="basket" data-toggle="false">
-	<img src="./resources/img/cart.png" style="height: 50px; width: auto" />
-</div>
-
 <input type="hidden" id="mem_id" value="${mem_id }">
 
 
