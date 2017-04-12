@@ -111,8 +111,6 @@
 	<!-- Header -->
 	<header>
 
-		<!-- 장소 검색창 -->
-		 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 		<!-- map  -->
 		<div id="map"></div>
 
@@ -130,6 +128,9 @@
 		<div id="pollSlider-button">
 			<h1 id="timeline_btn">&#9776;</h1>
 		</div>
+		
+		<!-- 장소 검색창 -->
+		 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 		
 		<!-- 장바구니 영역 -->
 		<div id="divView"></div>
