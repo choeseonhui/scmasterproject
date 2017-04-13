@@ -34,7 +34,7 @@ public class LoadImage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String fileRoute = "resources\\img\\";
+		String fileRoute = "userUpload\\";
 		ArrayList<Object> responseData;
 		try {
 			responseData = Image.list(request, fileRoute);

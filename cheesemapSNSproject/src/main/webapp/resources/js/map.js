@@ -14,37 +14,38 @@ function initMap() {
     var searchBox = new google.maps.places.SearchBox(input);
 
     // 처음 접속시 발생한 이벤트 인식
-    google.maps.event.addListener(map, 'idle', function() {
-        // sliderInit();
-        markers.forEach(function (marker) {
-            marker.setMap(null);
-        });
-        markers = [];
-        // 현재의 범위를 가져옴
-        var latNE = map.getBounds().getNorthEast().lat();
-        var lngNE = map.getBounds().getNorthEast().lng();
-        var latSW = map.getBounds().getSouthWest().lat();
-        var lngSW = map.getBounds().getSouthWest().lng();
-
-        defaultList(latNE, lngNE, latSW, lngSW);
-        boardList();
+    google.maps.event.addListener(map, 'idle', function () {
+        if ($('#write-button').attr('data-flag') == 'false') {
+            // sliderInit();
+            markers.forEach(function (marker) {
+                marker.setMap(null);
+            });
+            markers = [];
+            // 현재의 범위를 가져옴
+            var latNE = map.getBounds().getNorthEast().lat();
+            var lngNE = map.getBounds().getNorthEast().lng();
+            var latSW = map.getBounds().getSouthWest().lat();
+            var lngSW = map.getBounds().getSouthWest().lng();
+            defaultList(latNE, lngNE, latSW, lngSW);
+            boardList();
+        }
     });
 
 
     // 나와 내가 팔로잉 하고 있는 사람들의 게시물 정보를 가져와 마커 생성
-    function defaultList(latNE, lngNE, latSW, lngSW){
+    function defaultList(latNE, lngNE, latSW, lngSW) {
         $.ajax({
-            type : "post",
-            url : "defaultList",
-            data : {
-                latNE : latNE,
-                lngNE : lngNE,
-                latSW : latSW,
-                lngSW : lngSW
+            type: "post",
+            url: "defaultList",
+            data: {
+                latNE: latNE,
+                lngNE: lngNE,
+                latSW: latSW,
+                lngSW: lngSW
             },
-            success : function(mylist){
-                $.each(mylist, function(index, item){
-                	timeout = index * 300;
+            success: function (mylist) {
+                $.each(mylist, function (index, item) {
+                    timeout = index * 300;
                     var boa_id = item.boa_id;
                     var latlng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
                     setTimeout(function () {
@@ -52,7 +53,7 @@ function initMap() {
                     }, timeout);
                 });
             },
-            error : function(e) {
+            error: function (e) {
                 console.log(e);
             }
         });
@@ -161,7 +162,7 @@ function addMarker(latlng, title, map) {
         } else {
             marker.setAnimation(google.maps.Animation.BOUNCE);
         }
-        
+
         geocoder.geocode({'location': latlng}, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
                 $('#placeID').val(results[1].place_id);

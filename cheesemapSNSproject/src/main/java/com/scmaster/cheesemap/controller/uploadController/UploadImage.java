@@ -25,7 +25,7 @@ public class UploadImage extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String fileRoute = "resources\\img\\";
+		String fileRoute = "userUpload\\";
 		String originalFileName = "#" + request.getPart("file").getSubmittedFileName() + "%";
 		Map<Object, Object> responseData;
 		try {

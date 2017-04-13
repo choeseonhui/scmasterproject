@@ -37,7 +37,7 @@ public class UploadFile extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String fileRoute = "resources\\file\\";
+        String fileRoute = "userUpload\\";
 
         // No validation.
         FileOptions options = new FileOptions();

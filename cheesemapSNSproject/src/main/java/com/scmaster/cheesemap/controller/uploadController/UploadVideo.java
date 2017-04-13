@@ -22,7 +22,7 @@ public class UploadVideo extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String fileRoute = "resources\\video\\";
+        String fileRoute = "userUpload\\";
         String originalFileName = "#" + req.getPart("file").getSubmittedFileName() + "%";
         Map<Object, Object> responseData;
         try {
