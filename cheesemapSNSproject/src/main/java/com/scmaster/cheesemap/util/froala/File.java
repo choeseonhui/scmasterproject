@@ -100,7 +100,7 @@ public final class File {
 		String linkName = fileRoute + name;
 
 		InputStream fileContent = filePart.getInputStream();
-		String absoluteServerPath = getAbsoluteServerPath(req, linkName);
+		String absoluteServerPath = "c:\\" + linkName;
 
 		java.io.File targetFile = new java.io.File(absoluteServerPath);
 
@@ -160,7 +160,7 @@ public final class File {
 	 */
 	public static void delete(HttpServletRequest req, String src) {
 
-		String filePath = getAbsoluteServerPath(req, src);
+		String filePath = "c:\\" + src;
 
 		java.io.File file = new java.io.File(filePath);
 		if (file.exists()) {
