@@ -346,6 +346,9 @@
 	<!-- timeline JavaScript -->
 	<script src="./resources/js/timeline.js"></script>
 	
+	<!-- makebook JavaScript -->
+	<script src="./resources/js/makebook.js"></script>
+	
 	<!--  auto compelete -->
 	<script src="./resources/vendor/jquery/jquery.autocomplete.js"></script>
 	<script src="./resources/vendor/jquery/jquery.autocomplete.min.js"></script>
