@@ -32,16 +32,18 @@ public class TimelineController {
 		
 		ArrayList<String> boa_id_list = new ArrayList<>();
 		boa_id_list = (ArrayList<String>) session.getAttribute("boa_id_list");
-		Collections.sort(boa_id_list);
-		Collections.reverse(boa_id_list);
 		ArrayList<Timeline> result = new ArrayList<>();
-		for(String boa_id : boa_id_list) {
-			Timeline temp = new Timeline();
-			temp.setBoard(timelineDAO.getTimeline(boa_id));
-			temp.setBoardComment(timelineDAO.getBoardComment(boa_id));
-			temp.setBoardTag(timelineDAO.getBoardTag(boa_id));
-			temp.setBoardLike(timelineDAO.getBoardLike(boa_id));
-			result.add(temp);
+		if(boa_id_list != null) {
+			Collections.sort(boa_id_list);
+			Collections.reverse(boa_id_list);
+			for(String boa_id : boa_id_list) {
+				Timeline temp = new Timeline();
+				temp.setBoard(timelineDAO.getTimeline(boa_id));
+				temp.setBoardComment(timelineDAO.getBoardComment(boa_id));
+				temp.setBoardTag(timelineDAO.getBoardTag(boa_id));
+				temp.setBoardLike(timelineDAO.getBoardLike(boa_id));
+				result.add(temp);
+			}
 		}
 		return result;
 	}

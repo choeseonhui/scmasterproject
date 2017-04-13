@@ -1,8 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
     <style>
         #hashtag {
             width: 600px;
@@ -106,9 +101,6 @@
     <!-- Include Editor style. -->
     <link href=".\resources\froala_editor_2.5.1\css\froala_editor.pkgd.min.css" rel="stylesheet" type="text/css"/>
     <link href=".\resources\froala_editor_2.5.1\css\froala_style.min.css" rel="stylesheet" type="text/css"/>
-</head>
-
-<body>
 <!-- Create a tag that we will use as the editable area. -->
 <!-- You can use a div tag as well. -->
 <textarea name="editor_content" id="myEditor"></textarea>
@@ -223,8 +215,4 @@
             });
 
     });
-
-
 </script>
-</body>
-</html>
