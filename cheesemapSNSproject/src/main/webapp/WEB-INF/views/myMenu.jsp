@@ -27,6 +27,10 @@
 	<img src="./resources/img/pencil.png"/>
 </div>
 
+<div id="makebook-button" data-flag="false">
+	<img src="./resources/img/cart.png"/>
+</div>
+
 <input type="hidden" id="mem_id" value="${mem_id }">
 
 

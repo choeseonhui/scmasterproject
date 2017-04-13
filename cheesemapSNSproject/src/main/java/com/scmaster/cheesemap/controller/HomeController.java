@@ -64,5 +64,11 @@ public class HomeController {
 	
 		return "redirect:home";
 	}
+	
+	@RequestMapping(value = "makebook", method = RequestMethod.GET)
+	public String bookmake() {
+		return "makebook";
+	}
+	
 
 }
