@@ -113,6 +113,8 @@
 
 		<!-- map  -->
 		<div id="map"></div>
+		
+		<input type="hidden" id="firstLoading" value="true">
 
 		<div id="style-selector-control" class="map-control">
 			<select id="style-selector" class="selector-control">
@@ -322,7 +324,8 @@
 
 	<!-- map JavaScript -->
 	<script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApHkc_70xfMcN5SF0_8T6uNpspm-GXyDo&callback=initMap&libraries=places" async defer></script>
-		<script src="./resources/js/map.js"></script>
+	<script src="./resources/js/markerclusterer.js"></script>
+	<script src="./resources/js/map.js"></script>
 
 	<!-- Login JavaScript -->
 	<script src="./resources/js/login.js"></script>
@@ -343,13 +346,9 @@
 	<!-- timeline JavaScript -->
 	<script src="./resources/js/timeline.js"></script>
 	
-	
-	
 	<!--  auto compelete -->
 	<script src="./resources/vendor/jquery/jquery.autocomplete.js"></script>
 	<script src="./resources/vendor/jquery/jquery.autocomplete.min.js"></script>
-	
-	
 
 </body>
 </html>
