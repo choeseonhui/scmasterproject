@@ -38,14 +38,6 @@ function boardList() {
 				});
 			});
 			$("#timeline_div").html(html);
-            $('.board').mouseenter(function () {
-                $(this).on('drag',function () {
-                    $(this).attr('data-mouse-on','true');
-                });
-            });
-            $('.board').mouseleave(function () {
-                $(this).attr('data-mouse-on','false');
-            });
 			clickBoard(data);
 		},
 		error : function(e) {
