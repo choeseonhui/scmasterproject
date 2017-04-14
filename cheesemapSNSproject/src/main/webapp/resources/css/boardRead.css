@@ -1,11 +1,79 @@
-#asideBoard{
-	width : 65%;
-	float : left;
+#asideBoard {
+	height: 500px;
+	width: 600px;
+	float: left;
 }
-#sectionBoard{
-	width : 35%;
-	float : left;
+
+#sectionBoard {
+	width: 335px;
+	float: left;
+	text-align: left;
+	align-items: center;
 }
-#wrapBoard{
-overflow : hidden;	
+
+#headerBoard {
+	border-bottom: 1px solid #efefef;
+	height: 85px;
+}
+
+#likedate {
+	height: 30px;
+}
+
+#wrapBoard {
+	overflow: hidden;
+}
+
+#memberPhoto {
+	border-radius: 50%;
+	overflow: hidden;
+	width: 70px;
+	height: 70px;
+	margin: 2px 10px 2px 2px;
+	display: inline;
+}
+
+#heart {
+	width: 30px;
+	height: 30px;
+	margin: 2px 10px 2px 2px;
+	display: inline;
+}
+
+#time {
+	float: right;
+}
+
+#replyBoard {
+	height: 313px;
+	margin-left: -24px;
+	margin-right: -24px;
+	padding-left: 24px;
+	padding-right: 24px;
+	margin-top: -5px;
+	padding-top: 5px;
+	font-size: 19px !important;
+}
+
+#footerBoard {
+	
+}
+
+#okBtn {
+	padding: 6px 10px !important;
+	font-size: 10px !important;
+	line-height: 1.3333333 !important;
+	border-radius: 6px !important;
+}
+
+.replyNick {
+	padding-right: 10px;
+	font-size: 17px !important;
+	color: #565858 !important;
+	font-weight: bold !important;
+}
+
+ul {
+	list-style: none;
+	padding-left: 0px;
 }

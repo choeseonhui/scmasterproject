@@ -169,17 +169,17 @@
 		<!-- The Modal -->
 		<div id="myModal" class="modal">
 		<!-- Modal content -->
-			<div class="modal-content">
+			<div class="modal-content modalBoard">
 				<span class="close">&times;</span>
 				<jsp:include page="modifyMem.jsp" flush="true"></jsp:include>
 			</div>
 		</div>
-		
+		</div>
 		<!-- 게시판 팝업 -->
 		<!-- The Modal -->
 		<div id="myModalBoard" class="modal">
 		<!-- Modal content -->
-			<div class="modal-content">
+			<div class="modal-content modalBoard">
 				<span class="close">&times;</span>
 				<jsp:include page="boardRead.jsp" flush="true"></jsp:include>
 			</div>
