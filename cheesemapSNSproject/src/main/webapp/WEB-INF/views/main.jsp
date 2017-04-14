@@ -174,7 +174,7 @@
 				<jsp:include page="modifyMem.jsp" flush="true"></jsp:include>
 			</div>
 		</div>
-		
+		</div>
 		<!-- 게시판 팝업 -->
 		<!-- The Modal -->
 		<div id="myModalBoard" class="modal">

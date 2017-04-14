@@ -34,4 +34,81 @@
         INSERT INTO CS_BOARD_TAG (TAG_NAME, BOA_ID) VALUES (#{tag_name}, #{boa_id})
     </insert>
 
+	<!-- 게시글 읽기 -->
+	<select id="boardRead" parameterType="String" resultType="Board">
+		select
+			boa_id
+			, boa_content
+			, to_char(boa_create_date, 'YY.MM.DD, HH24:MI') boa_create_date
+			, boa_latitude
+			, boa_longitude
+			, boa_photo_savefile
+			, boa_video_savefile
+			, mem_id
+		from cs_board
+		where boa_id=#{boa_id}
+	</select>
+	
+	<!-- 댓글등록 -->
+	<insert id="replyWrite" parameterType="BoardComment">
+		insert 
+		into cs_board_comment(
+			com_id
+			, com_content
+			, mem_id
+			, boa_id
+		)values(
+			cs_board_comment_seq.nextval
+			, #{com_content}
+			, #{mem_id}
+			, #{boa_id}
+		)
+	</insert>
+
+	<!-- 댓글 삭제 -->
+	<delete id="delReply" parameterType="String">
+		delete
+			cs_board_comment 
+		where
+			com_id=#{com_id}
+	</delete>
+	
+	<!-- 댓글 읽기 nickname -->
+	<select id="getBoaCommentNick" resultType="Hashmap" parameterType="String">
+		select
+			c.com_id
+			, c.com_content
+			, c.mem_id
+			, c.boa_id
+			, m.mem_nickname
+		from
+			CS_BOARD_COMMENT c join cs_member m
+		on c.mem_id=m.mem_id
+		where
+			boa_id = #{boa_id}
+		order by
+			com_id desc
+	</select>
+	
+	<!-- 좋아요 등록 -->
+	<insert id="likeInsert" parameterType="BoardLike">
+		insert 
+		into cs_board_like(
+			mem_id
+			, boa_id
+		)values(
+			#{mem_id}
+			, #{boa_id}
+		)
+	</insert>
+	
+	<!-- 좋아요 삭제 -->
+	<delete id="likeDelete" parameterType="BoardLike">
+		delete
+			cs_board_like
+		where
+			mem_id=#{mem_id}
+		and
+			boa_id=#{boa_id}
+	</delete>
 </mapper>
