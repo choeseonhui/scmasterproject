@@ -21,5 +21,11 @@
 			CS_BOARD
 		where
 			mem_id = #{mem_id}
+		and
+			boa_video_originalfile is null
+		and
+			boa_photo_originalfile is not null
+		order by
+			boa_id
 	</select>
 </mapper>
