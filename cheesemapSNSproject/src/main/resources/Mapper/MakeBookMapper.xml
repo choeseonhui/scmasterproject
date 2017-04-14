@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.scmaster.cheesemap.dao.MakeBookMapper">
+	<select id="getMyBoard" resultType="Board" parameterType="String">
+		select
+			boa_id
+			, boa_content
+			, boa_create_date
+			, boa_modify_date
+			, boa_latitude
+			, boa_longitude
+			, boa_photo_savefile
+			, boa_photo_originalfile
+			, boa_video_originalfile
+			, boa_video_savefile
+			, mem_id
+		from
+			CS_BOARD
+		where
+			mem_id = #{mem_id}
+	</select>
+</mapper>

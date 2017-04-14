@@ -15,27 +15,23 @@ $(function() {
 				var mem_id = $("#mem_id").val();
 				if ($("#flag_contact").val() == 'true') {
 					if ($("#flag_my_menu").val() == 'true') {
-						$
-								.ajax({
-									type : "POST",
-									url : "mymenu",
-									data : {
-										mem_id : mem_id
-									},
-									success : function(data) {
-										var myMenu = document
-												.getElementById("myMenu2");
-										var follow = '';
-										follow += "<p>follower : "
-												+ data.fol_follower + "</p>";
-										follow += "<p>following : "
-												+ data.fol_following + "</p>";
-										myMenu.innerHTML = follow;
-									},
-									error : function(e) {
-										console.log(e);
-									}
-								});
+						$.ajax({
+							type : "POST",
+							url : "mymenu",
+							data : {
+								mem_id : mem_id
+							},
+							success : function(data) {
+								var myMenu = document.getElementById("myMenu2");
+								var follow = '';
+								follow += "<p>follower : " + data.fol_follower + "</p>";
+								follow += "<p>following : " + data.fol_following + "</p>";
+								myMenu.innerHTML = follow;
+							},
+							error : function(e) {
+								console.log(e);
+							}
+						});
 						$('.menu-slider').animate({
 							"margin-left" : '+=500'
 						});
