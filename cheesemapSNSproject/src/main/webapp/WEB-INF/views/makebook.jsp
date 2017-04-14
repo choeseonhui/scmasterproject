@@ -1,152 +1,453 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ko">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-		<meta name="keywords" content="">
-		<meta name="description" content="">
-		<title>Cheese - MAKE BOOK</title>
-		<!--[if lt IE 9]>
-		<script src="../../js/html5shiv.min.js"></script>
-		<script src="../../js/respond.min.js"></script>
-		<![endif]-->
-		<link rel="stylesheet" href="./resources/css/makebook.css" />
-		<script type="text/javascript" src="./resources/js/makebook.js"></script>
-		<script src="./resources/js/makebookEtc.js"></script>
-	</head>
-	
-	<body>
-		<header>
-			<h1>TITLE</h1>
-			
-			<nav><!-- load common.html .nav --><script type="text/javascript" src="/js/gnb_nav.js"></script></nav>
-		</header>
-		
-		<!-- page -->
-		<section class="container bookSetting">
-			
-			<!-- stepbar -->
-			<div class="bar_step">
-				<ul class="wrap_step">
-					<li class="btn_pre_step">
-						<a href="/html/logbook/intro.html">
-							<span>PREV</span>
-						</a>
-					</li>
-					<li class="step step1 active">
-						<span class="progress"> </span>
-						<div>Title</div>
-					</li>
-					<li class="step step2">
-						<span class="progress"> </span>
-						<div>Select Item</div>
-					</li>
-					<li class="step step3">
-						<span class="progress"> </span>
-						<div>Layout</div>
-					</li>
-					<li class="btn_next_step">
-						<a href="javascript:void(0)">
-							<span>NEXT</span>
-						</a>
-					</li>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MakeBook - Cheese Map</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="./resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="./resources/css/freelancer.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="./resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" class="index">
+<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">WE ARE CHEESE</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="hidden"><a href="#page-top"></a></li>
+					<li><a href="#" id="makeMapCancel">cancel</a></li>
 				</ul>
 			</div>
-			<!-- //stepbar -->
-			
-			<div class="bar_setting"><script type="text/javascript" src="/js/gnb_logbook.js"></script></div>
-			
-			<!-- edit -->
-			<section class="editArea">
-				<div>
-					<aside>
-						<div class="wrap_profile change_user">
-							<div class="inner_profile">
-								<div class="centered ph_img">
-									<!-- <img src="https://goo.gl/uZKVBR" alt="프로필 이미지" /> -->
-								</div>
-							</div>
-						</div>
-						
-						<div class="sns_name name">계정을 선택해주세요.</div>
-					</aside>
-					
-					<section class="set_book">
-						
-						<dl class="set_title">
-							<dt>
-								로그북의 제목을 입력해주세요.
-								<small>
-									미입력 시 'BOOK OF LIFE LOG' 로 자동 입력됩니다.<br>
-									이모티콘(그림문자)을 넣을 경우 실제 책에는 표현되지 않을 수 있습니다.
-								</small>
-							</dt>
-							<dd>
-								<input type="text" id="tf_cover_title" name="tf_cover_title" value="" class="log_tit" placeholder="책의 제목으로 사용됩니다. (한글 최대 10자/영문 최대 20자 이내)" />
-							</dd>
-						</dl>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
-						<dl class="set_term">
-							<dt>로그북을 제작할 기간을 지정해주세요.</dt>
-							<dd>
-								<input type="hidden" id="tf_frdate_max" name="tf_frdate_max" value="" />
-								<input type="hidden" id="tf_todate_max" name="tf_todate_max" value="" />
-								<input type="hidden" id="tf_frdate_r" name="tf_frdate_r" value="" />
-								<input type="hidden" id="tf_todate_r" name="tf_todate_r" value="" />
-								<input type="hidden" id="before_frdate" name="before_frdate" value="" />
-								<input type="hidden" id="before_todate" name="before_todate" value="" />
-								<input type="text" id="tf_frdate" name="tf_frdate" class="datepicker " value="" readonly>
-								~
-								<input type="text" id="tf_todate" name="tf_todate" class="datepicker " value="" readonly>
-							</dd>
-						</dl>
-						
-						<!-- <dl class="set_date">
-							<dt>
-								커버와 내지에 삽입되는 날짜 표시를 설정할 수 있습니다.
-								<small>선택하신 기간과 책에 표시되는 날짜를 다르게 설정하고 싶은 경우 변경해주세요.</small>
-							</dt>
-							<dd>
-								<div>
-									<input id="term_sel" type="radio" name="set_term_cover" value="S" disabled="disabled" checked="checked" />
-	  								<label for="term_sel"><span> </span>선택 기간 <i class="opt_term_show_S">(2015-01-01 - 2015-12-31)</i></label>
-  									<small>· 위에 선택한 로그북 제작 기간과 동일한 날짜입니다.</small>
-  								</div>
-  								<div>
-	  								<input id="term_real" type="radio" name="set_term_cover" value="R" disabled="disabled" />
-	  								<label for="term_real"><span> </span>실제 기간 <i class="opt_term_show_R">(2015-01-05 - 2015-12-25)</i></label>
-	  								<small>· 선택한 기간 중 (처음~마지막) 게시물이 작성된 날짜입니다.</small>
-	  							</div>
-							</dd>
-						</dl>
-						
-						<div class="ex_date">
-							<img src="/img/info/log_setting.jpg" alt="커버 내 날짜 표시 영역">
-							<p>
-								커버 내 날짜가 표시되는 부분입니다.<br>
-								각 표지별 날짜 스타일(크기/위치)은 상이하며,<br>
-								스타일 선택 화면에서 자세히 확인할 수 있습니다.
-							</p>
-						</div> -->
-						
-					</section>
-					
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="row">
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Make Map</h2>
+                <hr class="star-primary">
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="./resources/img/logo.png" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="./resources/img/logo.png" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="./resources/img/logo.png" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="./resources/img/logo.png" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="./resources/img/logo.png" class="img-responsive" alt="Safe">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="./resources/img/logo.png" class="img-responsive">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization.</p>
+                </div>
+                <div class="col-lg-4">
+                    <p>Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</p>
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="#" class="btn btn-lg btn-outline">
+                        <i class="fa fa-download"></i> Download Theme
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+	<!-- Footer -->
+	<footer class="text-center">
+		<div class="footer-above">
+			<div class="container">
+				<div class="row">
+					<div class="footer-col col-md-4">
+						<h3>Location</h3>
+						<p>Seoul Gangnam-gu Samseong-dong Trade Center COEX</p>
+					</div>
+					<div class="footer-col col-md-4">
+						<h3>Around the Web</h3>
+						<ul class="list-inline">
+							<li><a href="http://facebook.com/"
+								class="btn-social btn-outline"> <span class="sr-only">Facebook</span><i
+									class="fa fa-fw fa-facebook"></i></a></li>
+							<li><a href="http://plus.google.com/"
+								class="btn-social btn-outline"> <span class="sr-only">Google
+										Plus</span><i class="fa fa-fw fa-google-plus"></i></a></li>
+							<li><a href="http://twitter.com/"
+								class="btn-social btn-outline"> <span class="sr-only">Twitter</span><i
+									class="fa fa-fw fa-twitter"></i></a></li>
+							<li><a href="http://www.instagram.com/"
+								class="btn-social btn-outline"> <span class="sr-only">Instagram</span><i
+									class="fa fa-fw fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+					<div class="footer-col col-md-4">
+						<h3>About Cheese Member</h3>
+						<p>Namkung JI-woong / Lee Soo Kyoung / Oh Tae Gwan / Choi Seon
+							Hee</p>
+					</div>
 				</div>
-				
-				
-			</section>
-			<!-- //edit -->
-			
-			
-		</section>
-		<!-- //page-->
+			</div>
+		</div>
+		<div class="footer-below">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">Copyright &copy; Your Website 2017</div>
+				</div>
+			</div>
+		</div>
+	</footer>
 
-		<script type="text/javascript">bNeedLogin = true; </script>
-		<script src="./resources/js/makebook.js"></script>
-		<script src="./resources/js/makebookSetting.js"></script>
-		
-	</body>
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="./resources/img/portfolio/cabin.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="./resources/img/portfolio/cake.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="./resources/img/portfolio/circus.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="./resources/img/portfolio/game.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="./resources/img/portfolio/safe.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/submarine.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button id="btnSubmit" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="./resources/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="./resources/js/jqBootstrapValidation.js"></script>
+    <script src="./resources/js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="./resources/js/freelancer.min.js"></script>
+
+</body>
+
 </html>
