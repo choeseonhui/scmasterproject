@@ -30,8 +30,9 @@
 </head>
 
 <body id="page-top" class="index">
-<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
-
+	<div id="skipnav">
+		<a href="#maincontent">Skip to main content</a>
+	</div>
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
@@ -66,7 +67,7 @@
             </div>
         </div>
         <div id="myBoardList" class="container">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-4 portfolio-item">
                     <a href="#" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
@@ -137,7 +138,7 @@
                         <img src="./resources/img/logo.png" class="img-responsive">
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -153,18 +154,30 @@
 					<div class="footer-col col-md-4">
 						<h3>Around the Web</h3>
 						<ul class="list-inline">
-							<li><a href="http://facebook.com/"
-								class="btn-social btn-outline"> <span class="sr-only">Facebook</span><i
-									class="fa fa-fw fa-facebook"></i></a></li>
-							<li><a href="http://plus.google.com/"
-								class="btn-social btn-outline"> <span class="sr-only">Google
-										Plus</span><i class="fa fa-fw fa-google-plus"></i></a></li>
-							<li><a href="http://twitter.com/"
-								class="btn-social btn-outline"> <span class="sr-only">Twitter</span><i
-									class="fa fa-fw fa-twitter"></i></a></li>
-							<li><a href="http://www.instagram.com/"
-								class="btn-social btn-outline"> <span class="sr-only">Instagram</span><i
-									class="fa fa-fw fa-linkedin"></i></a></li>
+							<li>
+								<a href="http://facebook.com/" class="btn-social btn-outline">
+									<span class="sr-only">Facebook</span>
+									<i class="fa fa-fw fa-facebook"></i>
+								</a>
+							</li>
+							<li>
+								<a href="http://plus.google.com/" class="btn-social btn-outline">
+									<span class="sr-only">Google Plus</span>
+									<i class="fa fa-fw fa-google-plus"></i>
+								</a>
+							</li>
+							<li>
+								<a href="http://twitter.com/" class="btn-social btn-outline">
+									<span class="sr-only">Twitter</span>
+									<i class="fa fa-fw fa-twitter"></i>
+								</a>
+							</li>
+							<li>
+								<a href="http://www.instagram.com/" class="btn-social btn-outline">
+									<span class="sr-only">Instagram</span>
+									<i class="fa fa-fw fa-linkedin"></i>
+								</a>
+							</li>
 						</ul>
 					</div>
 					<div class="footer-col col-md-4">
@@ -208,7 +221,8 @@
     
     <!-- MakeBook JavaScript -->
     <script src="./resources/js/makebook.js"></script>
-
+	
+	<input type="hidden" id="myBoard" value='${myBoard }'>
 </body>
 
 </html>

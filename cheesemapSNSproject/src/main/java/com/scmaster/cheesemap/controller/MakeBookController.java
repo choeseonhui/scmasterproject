@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.google.gson.Gson;
 import com.scmaster.cheesemap.dao.MakeBookDAO;
 import com.scmaster.cheesemap.vo.Board;
 
@@ -23,8 +24,11 @@ public class MakeBookController {
 		String mem_id = (String) session.getAttribute("mem_id");
 		
 		ArrayList<Board> myBoard = makeBookDAO.getMyBoard(mem_id);
-		session.setAttribute("myBoard", myBoard);
-		
+		Gson gson = new Gson();
+		session.setAttribute("myBoard", gson.toJson(myBoard));
+		for (Board board : myBoard) {
+			System.out.println(board);
+		}
 		return "makebook";
 	}
 }
