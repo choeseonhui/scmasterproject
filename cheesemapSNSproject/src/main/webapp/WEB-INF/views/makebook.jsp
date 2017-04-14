@@ -59,16 +59,13 @@
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
         <div class="row">
-            
-        </div>
-        <div class="row">
             <div class="col-lg-12 text-center">
             	<hr class="star-primary">
-                <h2>Make Map</h2>
+                <h2>Make Book</h2>
                 <hr class="star-primary">
             </div>
         </div>
-        <div class="container">
+        <div id="myBoardList" class="container">
             <div class="row">
                 <div class="col-sm-4 portfolio-item">
                     <a href="#" class="portfolio-link" data-toggle="modal">
@@ -118,6 +115,16 @@
                             </div>
                         </div>
                         <img src="./resources/img/logo.png" class="img-responsive" alt="Safe">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="./resources/img/logo.png" class="img-responsive">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -198,6 +205,9 @@
 
     <!-- Theme JavaScript -->
     <script src="./resources/js/freelancer.min.js"></script>
+    
+    <!-- MakeBook JavaScript -->
+    <script src="./resources/js/makebook.js"></script>
 
 </body>
 
