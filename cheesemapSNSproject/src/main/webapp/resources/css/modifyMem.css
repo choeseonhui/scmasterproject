@@ -3,7 +3,7 @@
 .modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
+	z-index: 1050; /* Sit on top */
 	padding-top: 100px; /* Location of the box */
 	left: 0;
 	top: 0;
@@ -15,7 +15,7 @@
 }
 
 /* Modal Content */
-.modal-content.modalBoard{
+.modal-content.modalBoard {
 	background-color: #fefefe;
 	margin: auto;
 	padding: 20px;

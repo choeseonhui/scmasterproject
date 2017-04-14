@@ -2,6 +2,8 @@
 	height: 500px;
 	width: 600px;
 	float: left;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 #sectionBoard {
@@ -9,6 +11,7 @@
 	float: left;
 	text-align: left;
 	align-items: center;
+	padding-left: 30px;
 }
 
 #headerBoard {
@@ -45,7 +48,7 @@
 }
 
 #replyBoard {
-	height: 313px;
+	height: 340px;
 	margin-left: -24px;
 	margin-right: -24px;
 	padding-left: 24px;
@@ -53,6 +56,9 @@
 	margin-top: -5px;
 	padding-top: 5px;
 	font-size: 19px !important;
+	overflow-x: hidden;
+	overflow-y: auto;
+	word-wrap: break-word;
 }
 
 #footerBoard {
