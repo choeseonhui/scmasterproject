@@ -4,6 +4,7 @@
 	float: left;
 	overflow-x: hidden;
 	overflow-y: auto;
+	padding-right : 30px;
 }
 
 #sectionBoard {
