@@ -1,5 +1,5 @@
 #asideBoard {
-	height : 500px;
+	height: 500px;
 	width: 600px;
 	float: left;
 }
@@ -59,10 +59,17 @@
 	
 }
 
+#okBtn {
+	padding: 6px 10px !important;
+	font-size: 10px !important;
+	line-height: 1.3333333 !important;
+	border-radius: 6px !important;
+}
+
 .replyNick {
 	padding-right: 10px;
 	font-size: 17px !important;
-	color : #565858 !important;
+	color: #565858 !important;
 	font-weight: bold !important;
 }
 

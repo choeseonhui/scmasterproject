@@ -27,7 +27,7 @@
 				<span id="likeHeart"></span>
 				<span id="replyWrite">
 				<input type="text" name="com_content" id="comContent" /> 
-				<input type="button" id="okBtn" value="OK" />
+				<input type="button" id="okBtn" class="btn btn-success btn-lg" value="OK" />
 				</span>
 			</div>
 		</div>

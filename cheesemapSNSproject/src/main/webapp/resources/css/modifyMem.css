@@ -15,12 +15,12 @@
 }
 
 /* Modal Content */
-.modal-content {
+.modal-content.modalBoard{
 	background-color: #fefefe;
 	margin: auto;
 	padding: 20px;
 	border: 1px solid #888;
-	width: 55%;
+	width: 1000px;
 }
 
 /* The Close Button */
