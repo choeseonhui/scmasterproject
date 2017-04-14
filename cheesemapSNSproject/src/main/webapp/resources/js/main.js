@@ -93,8 +93,7 @@ function sliderInit() {
 		$('.searchClass').animate({
 			"margin-right" : '-=500'
 		});
-	}
-	;
+	};
 
 	if ($("#flag_my_menu").val() == 'true') {
 	} else {
@@ -105,6 +104,5 @@ function sliderInit() {
 		$('.map-control').animate({
 			"margin-left" : '-=250'
 		});
-	}
-	;
+	};
 };
