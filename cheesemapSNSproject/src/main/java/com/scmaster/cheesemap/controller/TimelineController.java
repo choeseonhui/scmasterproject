@@ -34,8 +34,6 @@ public class TimelineController {
 		boa_id_list = (ArrayList<String>) session.getAttribute("boa_id_list");
 		ArrayList<Timeline> result = new ArrayList<>();
 		if(boa_id_list != null) {
-			Collections.sort(boa_id_list);
-			Collections.reverse(boa_id_list);
 			for(String boa_id : boa_id_list) {
 				Timeline temp = new Timeline();
 				temp.setBoard(timelineDAO.getTimeline(boa_id));
