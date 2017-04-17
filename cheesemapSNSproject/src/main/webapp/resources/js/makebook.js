@@ -6,7 +6,9 @@ $(function() {
 	});
 	
 	$("#select-img").on("click", function() {
-		select_img.add(get);
+		console.log("신비로운너의모습");
+		select_img.push($(this).attr("img_no"));
+		console.log(select_img);
 	});
 	
 	getMyBoard();
@@ -29,7 +31,7 @@ function getMyBoard() {
 			myBoard += '</div>';
 			myBoard += '</div>';
 			/*myBoard += "<option data-img-src='"+ item.boa_photo_savefile +"' value='"+item.boa_id+"' class='j-img-responsive img-responsive'>";*/
-			myBoard += "<img src='"+ item.boa_photo_savefile +"' id='"+item.boa_id+"' class='j-img-responsive img-responsive'>";
+			myBoard += "<img src='"+ item.boa_photo_savefile +"' img_no='"+item.boa_id+"' class='j-img-responsive img-responsive'>";
 			myBoard += '</a>'
 			myBoard += '</div>';
 		});

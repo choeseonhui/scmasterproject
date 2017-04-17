@@ -91,9 +91,6 @@ function initMap() {
     	if (markerClusterer) {
     		markerClusterer.clearMarkers();
 		}
-    	console.log('클러스터 불렸다');
-    	console.log(map);
-    	console.log(markers);
     	markerClusterer = new MarkerClusterer(map, markers, {
             imagePath: './resources/img/m'
         });
