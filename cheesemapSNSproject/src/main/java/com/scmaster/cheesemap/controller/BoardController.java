@@ -23,43 +23,38 @@ import com.scmaster.cheesemap.vo.BoardTag;
 @Controller
 public class BoardController {
 
-    @Autowired
-    private BoardDAO dao;
-    
+	@Autowired
+	private BoardDAO dao;
+
 	@Autowired
 	private TimelineDAO daoT;
 
-    @ResponseBody
-    @RequestMapping(value = "boardSave", method = RequestMethod.POST)
-    public int boardSave(Board board, HttpSession session, String tag_name) {
-    	String mem_id = (String) session.getAttribute("mem_id");
-        board.setMem_id(mem_id);
-        int result = dao.boardSave(board);
+	@ResponseBody
+	@RequestMapping(value = "boardSave", method = RequestMethod.POST)
+	public int boardSave(Board board, HttpSession session, String tag_name) {
+		String mem_id = (String) session.getAttribute("mem_id");
+		board.setMem_id(mem_id);
+		int result = dao.boardSave(board);
+		String test = tag_name.substring(1);
+		String tag_name_list[] = test.split("#");
+		ArrayList<String> list = new ArrayList<String>(Arrays.asList(tag_name_list));
+		int result2 = 0;
+		for (String tags : list) {
+			BoardTag tag = new BoardTag(tags, board.getBoa_id());
+			result2 += dao.tagSave(tag);
+		}
+		int result3 = result + result2;
+		return result3;
+	}
 
-        String test = tag_name.substring(1);
-        String tag_name_list[] = test.split("#");
-        ArrayList<String> list = new ArrayList<String>(Arrays.asList(tag_name_list));
+	@RequestMapping(value = "boardWrite", method = RequestMethod.GET)
+	public String boardWrite(String lat, String lng, Model model) {
+		model.addAttribute("lat", lat);
+		model.addAttribute("lng", lng);
+		return "boardWrite";
+	}
 
-        int result2 = 0;
-
-        for (String tags : list) {
-            BoardTag tag = new BoardTag(tags, board.getBoa_id());
-            result2 += dao.tagSave(tag);
-        }
-
-        int result3 = result + result2;
-
-        return result3;
-    }
-
-    @RequestMapping(value = "boardWrite", method = RequestMethod.GET)
-    public String boardWrite(String lat, String lng, Model model) {
-        model.addAttribute("lat", lat);
-        model.addAttribute("lng", lng);
-        return "boardWrite";
-    }
-
-    @ResponseBody
+	@ResponseBody
 	@RequestMapping(value = "boardRead", method = RequestMethod.POST)
 	public Board boardRead(String boa_id) {
 		Board result = dao.boardRead(boa_id);

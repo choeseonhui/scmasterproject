@@ -26,9 +26,6 @@ public class MakeBookController {
 		ArrayList<Board> myBoard = makeBookDAO.getMyBoard(mem_id);
 		Gson gson = new Gson();
 		session.setAttribute("myBoard", gson.toJson(myBoard));
-		for (Board board : myBoard) {
-			System.out.println(board);
-		}
 		return "makebook";
 	}
 }

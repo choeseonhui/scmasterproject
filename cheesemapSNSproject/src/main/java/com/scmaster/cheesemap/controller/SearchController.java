@@ -26,20 +26,17 @@ public class SearchController {
 
 	@Autowired
 	private SearchDAO dao;
-	
-	
+
 	@ResponseBody
 	@RequestMapping(value = "search", method = RequestMethod.GET)
 	public HashMap<String, Object> search(String word) {
-		System.out.println(word);
 		HashMap<String, Object> map = new HashMap<>();
-        ArrayList<Member> memberlist = dao.searchUser(word);        
-        ArrayList<HashMap<String, Object>> taglist = dao.searchTag(word);
+		ArrayList<Member> memberlist = dao.searchUser(word);
+		ArrayList<HashMap<String, Object>> taglist = dao.searchTag(word);
 		ArrayList<MymapTag> mymaplist = dao.searchmymapTag(word);
 		map.put("memberList", memberlist);
 		map.put("tagList", taglist);
 		map.put("mymapList", mymaplist);
-
 		return map;
 	}
 
@@ -50,7 +47,6 @@ public class SearchController {
 		ArrayList<String> boa_id_list = new ArrayList<>();
 		String mem_id = (String) session.getAttribute("mem_id");
 		mylist = dao.defaultList(mem_id, latNE, lngNE, latSW, lngSW);
-
 		for (Board board : mylist) {
 			boa_id_list.add(board.getBoa_id());
 		}
@@ -58,27 +54,15 @@ public class SearchController {
 		session.setAttribute("boa_id_list", boa_id_list);
 		return mylist;
 	}
-	
-	
-	
-	
-	
+
 	@ResponseBody
 	@RequestMapping(value = "autocomplete", method = RequestMethod.GET)
-	public ArrayList<String> autocomplete(@RequestParam("input")String input) {
-	System.out.println(input);
-	System.out.println("여기까지");
-	ArrayList<String> list = new ArrayList<>();
-	if(input !=null){
-	list = dao.autocomplete(input);
-	};
-	
-	System.out.println(list);
-	
-	return list;
+	public ArrayList<String> autocomplete(@RequestParam("input") String input) {
+		ArrayList<String> list = new ArrayList<>();
+		if (input != null) {
+			list = dao.autocomplete(input);
+		}
+		System.out.println(list);
+		return list;
 	}
-	
-	
 }
-	
-	
