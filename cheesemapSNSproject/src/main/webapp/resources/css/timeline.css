@@ -1,0 +1,18 @@
+.start{	
+    border: 1px solid #d4d4d4;
+    background-color: #FFFFFF;
+    opacity: 1 !important;
+    padding: 30p;
+}
+
+.board{
+border-bottom: dashed 1px #4997cd;
+
+	margin: 20px;
+}
+
+
+.glyphicon-time{
+	align-items: center;
+    content: "\e023";
+}

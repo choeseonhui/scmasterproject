@@ -11,7 +11,7 @@ function boardList() {
 					if(item2.boa_create_date != undefined) {
 						html += "<div class='board' datano='" +
 							+ item2.boa_id		
-							+ "'><table class='j-table w3-hoverable'><tr>";
+							+ "'><div class='start'><table class='j-table w3-hoverable'><tr>";
 						if(item2.boa_photo_savefile != undefined) {
 							html +=	"<td rowspan='3'><img class='w3-circle' src='"+ item2.boa_photo_savefile +"' width='120' height='120'>" +
 									"</img></td>";
@@ -32,9 +32,9 @@ function boardList() {
 							});
 						}
 						html += "</td></tr>"
-						html += "<tr><td align='right' colspan='2'>" + item2.boa_create_date + "</td>";
+						html += "<tr><td align='right' colspan='2'><i class='glyphicon glyphicon-time'>" + item2.boa_create_date + "</i></td>";
 					}
-					html += "</tr></table></div>";
+					html += "</tr></table></div></div>";
 				});
 			});
 			$("#timeline_div").html(html);

@@ -42,7 +42,7 @@
 
 <link href="./resources/css/autocomplete.css" rel="stylesheet">
 
-
+<link href="./resources/css/timeline.css" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="./resources/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">

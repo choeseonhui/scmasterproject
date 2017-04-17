@@ -1,6 +1,9 @@
 package com.scmaster.cheesemap.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.scmaster.cheesemap.dao.SearchDAO;
 import com.scmaster.cheesemap.dao.TimelineDAO;
+import com.scmaster.cheesemap.util.convertFromDate;
+import com.scmaster.cheesemap.vo.Board;
 import com.scmaster.cheesemap.vo.Timeline;
 
 @Controller
@@ -26,7 +31,7 @@ public class TimelineController {
 	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@RequestMapping(value = "timeline", method = RequestMethod.GET)
-	public ArrayList<Timeline> timeline(HttpSession session) {
+	public ArrayList<Timeline> timeline(HttpSession session) throws ParseException {
 
 		ArrayList<String> boa_id_list = new ArrayList<>();
 		boa_id_list = (ArrayList<String>) session.getAttribute("boa_id_list");
@@ -34,7 +39,20 @@ public class TimelineController {
 		if (boa_id_list != null) {
 			for (String boa_id : boa_id_list) {
 				Timeline temp = new Timeline();
-				temp.setBoard(timelineDAO.getTimeline(boa_id));
+
+				Board timelineBoard = timelineDAO.getTimeline(boa_id);
+
+				String orignDate = timelineBoard.getBoa_create_date();
+
+				SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+				Date dateFrom = transFormat.parse(orignDate);
+
+				convertFromDate convert = new convertFromDate();
+				String updateDate = convert.calculateTime(dateFrom);
+				timelineBoard.setBoa_create_date(updateDate);
+
+				temp.setBoard(timelineBoard);
 				temp.setBoardComment(timelineDAO.getBoardComment(boa_id));
 				temp.setBoardTag(timelineDAO.getBoardTag(boa_id));
 				temp.setBoardLike(timelineDAO.getBoardLike(boa_id));
