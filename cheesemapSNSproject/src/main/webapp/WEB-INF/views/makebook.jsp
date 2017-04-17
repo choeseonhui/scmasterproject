@@ -2,6 +2,18 @@
 <html lang="en">
 
 <head>
+	<script type="text/javascript">
+	$(function() {
+		var imgarray;
+		$("select").imagepicker({
+			show_label : true,
+			selected : function(select) {
+				imgarray = $("select").data("picker").selected_values();
+				console.log(imgarray);
+			}
+		});
+	});
+	</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +21,9 @@
     <meta name="author" content="">
 
     <title>MakeBook - Cheese Map</title>
+
+	<!-- Bootstrap Core CSS -->
+    <link href="./resources/css/image-picker.css" rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
     <link href="./resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -70,78 +85,6 @@
             </div>
         </div>
         <div id="myBoardList" class="container">
-            <!-- <div class="row">
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="./resources/img/logo.png" class="img-responsive">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="./resources/img/logo.png" class="img-responsive">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="./resources/img/logo.png" class="img-responsive">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="./resources/img/logo.png" class="img-responsive">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="./resources/img/logo.png" class="img-responsive" alt="Safe">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="./resources/img/logo.png" class="img-responsive">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="./resources/img/logo.png" class="img-responsive">
-                    </a>
-                </div>
-            </div> -->
         </div>
     </section>
 
@@ -224,6 +167,9 @@
     
     <!-- MakeBook JavaScript -->
     <script src="./resources/js/makebook.js"></script>
+    
+    <!-- Image-Picker JavaScript -->
+    <script src="./resources/js/image-picker.js"></script>
 	
 	<input type="hidden" id="myBoard" value='${myBoard }'>
 </body>
