@@ -51,6 +51,10 @@
             overflow-x: hidden !important;
     		overflow-y: auto !important;
         }
+        .btn .btn-success .btn-lg .bdw{
+            padding: 5px 10px !important;
+   			font-size: 15px !important;
+        }
     </style>
     <script>
         var boa_photo_originalfile = '';
@@ -112,8 +116,8 @@
 <!-- You can use a div tag as well. -->
 <textarea name="editor_content" id="myEditor"></textarea>
 <textarea name="hashtag" id="hashtag"></textarea>
-<input type="button" id="save" class="btn btn-success btn-lg" value="save" onclick="saveContent()">
-<input type="button" id="cancel" class="btn btn-success btn-lg" value="cancel" onclick="cancel()">
+<input type="button" id="save" class="btn btn-success btn-lg bdw" value="save" onclick="saveContent()">
+<input type="button" id="cancel" class="btn btn-success btn-lg bdw" value="cancel" onclick="cancel()">
 <div id="location"></div>
 <!-- Include external JS libs. -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>

@@ -1,10 +1,11 @@
 #asideBoard {
 	height: 500px;
-	width: 600px;
+	width: 630px;
 	float: left;
 	overflow-x: hidden;
 	overflow-y: auto;
 	padding-right : 30px;
+	border-right: 1px solid #efefef;
 }
 
 #sectionBoard {
@@ -63,7 +64,7 @@
 }
 
 #footerBoard {
-	
+	border-top : 1px solid #efefef;
 }
 
 #okBtn {
