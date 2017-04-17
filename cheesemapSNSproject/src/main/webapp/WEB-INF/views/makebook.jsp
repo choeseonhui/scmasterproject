@@ -2,18 +2,6 @@
 <html lang="en">
 
 <head>
-	<script type="text/javascript">
-	$(function() {
-		var imgarray;
-		$("select").imagepicker({
-			show_label : true,
-			selected : function(select) {
-				imgarray = $("select").data("picker").selected_values();
-				console.log(imgarray);
-			}
-		});
-	});
-	</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +10,7 @@
 
     <title>MakeBook - Cheese Map</title>
 
-	<!-- Bootstrap Core CSS -->
+	<!-- Image Picker CSS -->
     <link href="./resources/css/image-picker.css" rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
@@ -170,7 +158,21 @@
     
     <!-- Image-Picker JavaScript -->
     <script src="./resources/js/image-picker.js"></script>
+    <script src="./resources/js/image-picker.min.js"></script>
 	
+	<script type="text/javascript">
+	$(function() {
+		var imgarray;
+		$("select").imagepicker({
+			show_label : true,
+			selected : function(select) {
+				imgarray = $("select").data("picker").selected_values();
+				console.log(imgarray);
+			}
+		});
+	});
+	</script>
+
 	<input type="hidden" id="myBoard" value='${myBoard }'>
 </body>
 
