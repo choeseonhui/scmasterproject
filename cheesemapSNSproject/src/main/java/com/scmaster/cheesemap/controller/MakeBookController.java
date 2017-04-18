@@ -28,4 +28,5 @@ public class MakeBookController {
 		session.setAttribute("myBoard", gson.toJson(myBoard));
 		return "makebook";
 	}
+	
 }
