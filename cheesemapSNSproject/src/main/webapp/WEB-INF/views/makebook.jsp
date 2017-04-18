@@ -89,10 +89,12 @@ html{
     	</div>
         
         <div class="slider_panel">
+			<div id="title_date" class="slider_form"></div>
        		<div id="myBoardList" class="container slider_form"></div>
-			<div class="slider_form"><img src="./resources/img/heart.png"></div>
-			<div class="slider_form"><img src="./resources/img/heartfull.png"></div>
-			<div class="slider_form"><img src="./resources/img/logo.png"></div>
+			<div id="preview" class="slider_form"></div>
+			<div id="finishBk" class="slider_form"></div>
+		</div>
+		
 		</div>
     </section>
 
