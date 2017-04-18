@@ -46,9 +46,7 @@ function getMyBoard() {
 		}
 		console.log(select_img);
 	}
-}
 
-$(document).ready(function(){
 	//슬라이더를 움직여주는 함수
 	function moveSlider(index){
 		//슬라이더 이동
@@ -58,7 +56,7 @@ $(document).ready(function(){
 		//컨트롤 버튼의 active 클래를 부여/제거
 		$('.control_button[data-index]='+index+']').addClass('active');
 		$('.control_button[data-index]!='+index+']').removeClass('active');
-
+		
 	}
 	
 	//컨트롤 버튼의 클릭 리스너 지정 및 data-index할당
@@ -68,9 +66,8 @@ $(document).ready(function(){
 		var index=$(this).attr('data-index');
 		moveSlider(index);
 	});
-
+	
 	//초기 슬라이더 위치 지정
 	var positionNUmber=0;
 	moveSlider(positionNUmber);
-});
-
+}

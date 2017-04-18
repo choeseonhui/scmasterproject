@@ -23,10 +23,14 @@ public class MakeBookController {
 	public String bookmake(HttpSession session) {
 		String mem_id = (String) session.getAttribute("mem_id");
 		
-		ArrayList<Board> myBoard = makeBookDAO.getMyBoard(mem_id);
-		Gson gson = new Gson();
-		session.setAttribute("myBoard", gson.toJson(myBoard));
-		return "makebook";
+		if(mem_id != null) {
+			ArrayList<Board> myBoard = makeBookDAO.getMyBoard(mem_id);
+			Gson gson = new Gson();
+			session.setAttribute("myBoard", gson.toJson(myBoard));
+			return "makebook";
+		}
+		
+		return "home";
 	}
 	
 }
