@@ -13,9 +13,6 @@
 
     <title>MakeBook - Cheese Map</title>
 
-	<!-- Image Picker CSS -->
-    <link href="./resources/css/image-picker.css" rel="stylesheet">
-
     <!-- Bootstrap Core CSS -->
     <link href="./resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -181,23 +178,6 @@ html{
     <!-- MakeBook JavaScript -->
     <script src="./resources/js/makebook.js"></script>
     
-    <!-- Image-Picker JavaScript -->
-    <script src="./resources/js/image-picker.js"></script>
-    <script src="./resources/js/image-picker.min.js"></script>
-	
-	<script type="text/javascript">
-	$(function() {
-		var imgarray;
-		$("select").imagepicker({
-			show_label : true,
-			selected : function(select) {
-				imgarray = $("select").data("picker").selected_values();
-				console.log(imgarray);
-			}
-		});
-	});
-	</script>
-
 	<input type="hidden" id="myBoard" value='${myBoard }'>
 </body>
 

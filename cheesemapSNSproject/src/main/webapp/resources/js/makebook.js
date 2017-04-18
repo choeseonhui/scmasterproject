@@ -1,3 +1,5 @@
+var select_img;
+
 $(function() {
 	$("#makebook-button").on("click", function() {
 		location.href="makebook";
@@ -6,7 +8,7 @@ $(function() {
 });
 
 function getMyBoard() {
-	var select_img = new Array();
+	select_img = new Array();
 	var myBoardListDiv = document.getElementById("myBoardList");
 	var myBoardList = $("#myBoard").val();
 	if(myBoardList != undefined) {
