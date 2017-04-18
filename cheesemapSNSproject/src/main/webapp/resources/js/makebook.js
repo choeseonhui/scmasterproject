@@ -1,11 +1,38 @@
 var select_img;
+var bookTitle;
 
 $(function() {
 	$("#makebook-button").on("click", function() {
 		location.href="makebook";
 	});
+	titleDate();
 	getMyBoard();
+
+	$("#book_ok_btn").on("click", function() {
+		bookTitle = $("#bookTitle").val();
+		console.log(bookTitle);
+	});
 });
+
+function titleDate() {
+	var titleDate = '';
+	var titleDateDiv = document.getElementById("title_date");
+	titleDate += '<div class="col-lg-8 col-lg-offset-2">';
+	titleDate += '<div class="row control-group">';
+	titleDate += '<div class="form-group col-xs-12 floating-label-form-group controls">';
+	titleDate += '<input type="text" name="Title" class="form-control" placeholder="Title" id="bookTitle" required data-validation-required-message="Please Enter Title.">';
+	titleDate += '<p class="help-block text-danger"></p>';
+	titleDate += '</div>';
+	titleDate += '</div>';
+	titleDate += '<br>';
+	titleDate += '<div id="loginalert"></div>';
+	titleDate += '<div class="row control-group">';
+	titleDate += '<input type="button" class="btn btn-success btn-lg" id="book_ok_btn" value="OK">';
+	titleDate += '</div>';
+	titleDate += '</div>';
+	titleDate += '</div>';
+	titleDateDiv.innerHTML = titleDate;
+}
 
 function getMyBoard() {
 	select_img = new Array();
@@ -55,9 +82,9 @@ function getMyBoard() {
 		var willMoveLeft=-(index*1570);
 		$('.slider_panel').animate({left : willMoveLeft}, 'slow');
 		
-		//컨트롤 버튼의 active 클래를 부여/제거
+		/*//컨트롤 버튼의 active 클래를 부여/제거
 		$('.control_button[data-index]='+index+']').addClass('active');
-		$('.control_button[data-index]!='+index+']').removeClass('active');
+		$('.control_button[data-index]!='+index+']').removeClass('active');*/
 		
 	}
 	
