@@ -12,3 +12,48 @@
 	width: 360px;
 	height: 360px;
 }
+
+.animation_canvas {
+	position: relative;
+	height: 1270px;
+	width: 1570px;
+	/* 	overflow: hidden; */
+}
+
+.slider_panel {
+	top: 90px;
+	width: 6280px;
+	position: relative;
+}
+
+.slider_form {
+	float: left;
+	width: 1170px;
+	height: 1170px;
+	margin-left: 200px;
+	margin-right: 200px;
+}
+
+.control_panel {
+	position: absolute;
+	top: 0px;
+	left: 625px;
+	height: 60px;
+	overflow: hidden;
+}
+
+.control_button {
+	width: 100px;
+	height: 60px;
+	position: relative;
+	float: left;
+	cursor: pointer;
+}
+
+.control_button:hover {
+	top: -75px;
+}
+
+.control_button.active {
+	top: -75px;
+}

@@ -33,6 +33,13 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+<style>
+html{
+	overflow-x : hidden;
+	overflow-y : auto;
+}
+</style>
 </head>
 
 <body id="page-top" class="index">
@@ -63,7 +70,7 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <!-- Portfolio Grid Section -->
+ <!-- Portfolio Grid Section -->
     <section id="portfolio">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -72,8 +79,21 @@
                 <hr class="star-primary">
             </div>
         </div>
-        <div id="myBoardList" class="container">
-        </div>
+        <div class="animation_canvas">
+        
+        <div class="control_panel">
+	       	<div id="n1btn" class="control_button"><img src="./resources/img/n1.png"></div>
+	       	<div id="n2btn" class="control_button"><img src="./resources/img/n2.png"></div>
+	       	<div id="n3btn" class="control_button"><img src="./resources/img/n3.png"></div>
+	       	<div id="n4btn" class="control_button"><img src="./resources/img/n4.png"></div>
+    	</div>
+        
+        <div class="slider_panel">
+       		<div id="myBoardList" class="container slider_form"></div>
+			<div class="slider_form"><img src="./resources/img/heart.png"></div>
+			<div class="slider_form"><img src="./resources/img/heartfull.png"></div>
+			<div class="slider_form"><img src="./resources/img/logo.png"></div>
+		</div>
     </section>
 
 	<!-- Footer -->
