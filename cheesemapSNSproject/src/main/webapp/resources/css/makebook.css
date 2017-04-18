@@ -13,6 +13,10 @@
 	height: 360px;
 }
 
+#portfolio {
+  padding: 100px 0;
+}
+
 .animation_canvas {
 	position: relative;
 	height: 1270px;
