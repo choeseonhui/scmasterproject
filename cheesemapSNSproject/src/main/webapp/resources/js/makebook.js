@@ -22,6 +22,8 @@ function titleDate() {
 	titleDate += '<div class="form-group col-xs-12 floating-label-form-group controls">';
 	titleDate += '<input type="text" name="Title" class="form-control" placeholder="Title" id="bookTitle" required data-validation-required-message="Please Enter Title.">';
 	titleDate += '<p class="help-block text-danger"></p>';
+	titleDate += '<input type="text" name="Date" class="form-control" placeholder="Date" id="datepicker1">';
+	titleDate += '<p class="help-block text-danger"></p>';
 	titleDate += '</div>';
 	titleDate += '</div>';
 	titleDate += '<br>';
@@ -32,6 +34,10 @@ function titleDate() {
 	titleDate += '</div>';
 	titleDate += '</div>';
 	titleDateDiv.innerHTML = titleDate;
+	
+	$("#datepicker1").datepicker({
+		dateFormat : 'yy/mm/dd'
+	});
 }
 
 function getMyBoard() {

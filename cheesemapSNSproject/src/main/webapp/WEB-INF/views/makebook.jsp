@@ -21,6 +21,9 @@
 
 	<!-- makebook CSS -->
 	<link href="./resources/css/makebook.css" rel="stylesheet">
+	
+	<!-- jquery-ui CSS -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
     <!-- Custom Fonts -->
     <link href="./resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -178,6 +181,10 @@ html{
     <!-- MakeBook JavaScript -->
     <script src="./resources/js/makebook.js"></script>
     
+    <!-- jquery JavaScript -->
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
 	<input type="hidden" id="myBoard" value='${myBoard }'>
 </body>
 
