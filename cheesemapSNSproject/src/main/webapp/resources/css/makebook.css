@@ -42,7 +42,7 @@
 	position: absolute;
 	top: 0px;
 	left: 610px;
-	height: 60px;
+	height: 45px;
 	overflow: hidden;
 }
 
@@ -55,9 +55,9 @@
 }
 
 .control_button:hover {
-	top: -75px;
+	top: -49px;
 }
 
 .control_button.active {
-	top: -75px;
+	top: -49px;
 }
