@@ -17,24 +17,26 @@ $(function() {
 function titleDate() {
 	var titleDate = '';
 	var titleDateDiv = document.getElementById("title_date");
-	titleDate += '<div class="col-lg-8 col-lg-offset-2">';
-	titleDate += '<div class="row control-group">';
-	titleDate += '<div class="form-group col-xs-12 floating-label-form-group controls">';
-	titleDate += '<input type="text" name="Title" class="form-control" placeholder="Title" id="bookTitle" required data-validation-required-message="Please Enter Title.">';
-	titleDate += '<p class="help-block text-danger"></p>';
-	titleDate += '<input type="text" name="Date" class="form-control" placeholder="Date" id="datepicker1">';
-	titleDate += '<p class="help-block text-danger"></p>';
-	titleDate += '</div>';
-	titleDate += '</div>';
-	titleDate += '<br>';
-	titleDate += '<div id="loginalert"></div>';
-	titleDate += '<div class="row control-group">';
-	titleDate += '<input type="button" class="btn btn-success btn-lg" id="book_ok_btn" value="OK">';
-	titleDate += '</div>';
-	titleDate += '</div>';
-	titleDate += '</div>';
-	titleDateDiv.innerHTML = titleDate;
-	
+	console.log(titleDateDiv);
+	if(titleDateDiv != undefined) {
+		titleDate += '<div class="col-lg-8 col-lg-offset-2">';
+		titleDate += '<div class="row control-group">';
+		titleDate += '<div class="form-group col-xs-12 floating-label-form-group controls">';
+		titleDate += '<input type="text" name="Title" class="form-control" placeholder="Title" id="bookTitle" required data-validation-required-message="Please Enter Title.">';
+		titleDate += '<p class="help-block text-danger"></p>';
+		titleDate += '<input type="text" name="Date" class="form-control" placeholder="Date" id="datepicker1">';
+		titleDate += '<p class="help-block text-danger"></p>';
+		titleDate += '</div>';
+		titleDate += '</div>';
+		titleDate += '<br>';
+		titleDate += '<div id="loginalert"></div>';
+		titleDate += '<div class="row control-group">';
+		titleDate += '<input type="button" class="btn btn-success btn-lg" id="book_ok_btn" value="OK">';
+		titleDate += '</div>';
+		titleDate += '</div>';
+		titleDate += '</div>';
+		titleDateDiv.innerHTML = titleDate;
+	}
 	$("#datepicker1").datepicker({
 		dateFormat : 'yy/mm/dd'
 	});

@@ -73,33 +73,42 @@ html{
         <!-- /.container-fluid -->
     </nav>
 
- <!-- Portfolio Grid Section -->
-    <section id="portfolio">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-            	<hr class="star-primary">
-                <h2>Make Book</h2>
-                <hr class="star-primary">
-            </div>
-        </div>
-        <div class="animation_canvas">
-        
-        <div class="control_panel">
-	       	<div id="n1btn" class="control_button"><img src="./resources/img/n1.png"></div>
-	       	<div id="n2btn" class="control_button"><img src="./resources/img/n2.png"></div>
-	       	<div id="n3btn" class="control_button"><img src="./resources/img/n3.png"></div>
-	       	<div id="n4btn" class="control_button"><img src="./resources/img/n4.png"></div>
-    	</div>
-        
-        <div class="slider_panel">
-			<div id="title_date" class="slider_form"></div>
-       		<div id="myBoardList" class="container slider_form"></div>
-			<div id="preview" class="slider_form"></div>
-			<div id="finishBk" class="slider_form"></div>
+	<!-- Portfolio Grid Section -->
+	<section id="portfolio">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<hr class="star-primary">
+				<h2>Make Book</h2>
+				<hr class="star-primary">
+			</div>
 		</div>
-		
+		<div class="animation_canvas">
+			<div class="control_panel">
+				<div id="n1btn" class="control_button">
+					<img src="./resources/img/n1.png">
+				</div>
+				<div id="n2btn" class="control_button">
+					<img src="./resources/img/n2.png">
+				</div>
+				<div id="n3btn" class="control_button">
+					<img src="./resources/img/n3.png">
+				</div>
+				<div id="n4btn" class="control_button">
+					<img src="./resources/img/n4.png">
+				</div>
+			</div>
+			<div class="slider_panel">
+				<div id="title_date" class="slider_form"></div>
+				<div id="myBoardList" class="container slider_form"></div>
+				<div id="preview" class="slider_form"></div>
+				<div id="finishBk" class="slider_form">
+					<div id="editor">
+						<button id="conver2pdf">generate PDF</button>
+					</div>
+				</div>
+			</div>
 		</div>
-    </section>
+	</section>
 
 	<!-- Footer -->
 	<footer class="text-center">
@@ -180,11 +189,21 @@ html{
     
     <!-- MakeBook JavaScript -->
     <script src="./resources/js/makebook.js"></script>
+
+	<!-- jsPDF JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+	<script type="text/javascript" src="./resources/js/html2canvas.min.js"></script>
+	<script type="text/javascript">
+		$("#conver2pdf").click(function() {
+			html
+		});
+	</script>
     
     <!-- jquery JavaScript -->
     <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.3.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
+    
 	<input type="hidden" id="myBoard" value='${myBoard }'>
 </body>
 
