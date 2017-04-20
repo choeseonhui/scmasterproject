@@ -192,10 +192,18 @@ html{
 
 	<!-- jsPDF JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
-	<script type="text/javascript" src="./resources/js/html2canvas.min.js"></script>
+	<script type="text/javascript" src="./resources/js/html2canvas.js"></script>
 	<script type="text/javascript">
 		$("#conver2pdf").click(function() {
-			html
+			html2canvas(document.getElementById("report"), {
+				onrendered: function(canvas) {
+					var imgData = canvas.toDataURL("image/png");
+					console.log("Report Image URL: "+imgData);
+					var doc = new jsPDF('p', 'mm', [297,210]);
+					doc.addImage(imgData, 'PNG', 10, 10, 190, 95);
+					doc.save('sample-file.pdf');
+				}
+			});
 		});
 	</script>
     
