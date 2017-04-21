@@ -49,11 +49,12 @@ function boardList() {
 	});
 }
 
-
 // 로그인한 id
 var loginid=document.getElementById("mem_id").value;
 //좋아요 플래그
 var flag=0;
+
+var board_id;
 
 function clickBoard(boa_id){
 	//Get the modal
@@ -87,6 +88,9 @@ function clickBoard(boa_id){
 			boa_id : boa_id
 		},
 		success : function(board){
+			board_id = board.mem_id;
+			console.log(board_id);
+			followState();
 			//게시글 내용
 			$("#asideBoard").html(board.boa_content);
 			//게시글 작성자 정보
@@ -126,12 +130,10 @@ function clickBoard(boa_id){
 			console.log(e);
 		}
 	});
-
 }
 
 function searchMember(mem_id){
 	//닉네임, 프로필사진
-	console.log(mem_id);
 	$.ajax({
 		type : "get",
 		url : "searchMember",
@@ -145,7 +147,6 @@ function searchMember(mem_id){
 				$("#profilePhotoBoa").html('<img id="memberPhoto" src="./resources/img/logo.png">');
 			}
 			$("#nickNameBoa").html("<span>"+member.mem_nickname+"</span>");
-			followState(member.mem_id);
 		},
 		error : function(e) {
 			console.log(e);
@@ -153,26 +154,67 @@ function searchMember(mem_id){
 	});	
 }
 
-function followState(mem_id) {
+function followState() {
 	$.ajax({
 		type : "get",
 		url : "followCheck",
 		data : {
-			mem_id : mem_id
+			board_id : board_id
 		},
 		success : function(state){
 			if(state == 'ing') {
-				$("#followState").html('-');
+				$("#followState").html('<a id="fol_cancel">-</a>');
 			} else if(state == 'yet') {
-				$("#followState").html('+');
+				$("#followState").html('<a id="fol_add">+</a>');
 			} else if(state == 'i') {
-				$("#followState").html('X');
+				$("#followState").html('<a id="delete_board">X</a>');
 			}
+			function_fol();
 		},
 		error : function(e) {
-		console.log(e);
+			console.log(e);
 		}
 	});	
+}
+
+function function_fol() {
+	$("#fol_cancel").on("click", function() {
+		$("#followState").html('<a id="fol_add">+</a>');
+		$.ajax({
+			type : "get",
+			url : "followRemove",
+			data : {
+				board_id : board_id
+			},
+			success : function(data){
+				followState(board_id);
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	});
+	
+	$("#fol_add").on("click", function() {
+		$("#followState").html('<a id="fol_cancel">-</a>');
+		$.ajax({
+			type : "get",
+			url : "followAdd",
+			data : {
+				board_id : board_id
+			},
+			success : function(data){
+				followState(board_id);
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	});
+
+	$("#delete_board").on("click", function() {
+	
+	});
 }
 
 function likeRead(boa_id) {

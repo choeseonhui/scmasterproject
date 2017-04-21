@@ -17,6 +17,7 @@ import com.scmaster.cheesemap.dao.SearchDAO;
 import com.scmaster.cheesemap.dao.TimelineDAO;
 import com.scmaster.cheesemap.util.convertFromDate;
 import com.scmaster.cheesemap.vo.Board;
+import com.scmaster.cheesemap.vo.Follow;
 import com.scmaster.cheesemap.vo.Timeline;
 
 @Controller
@@ -79,16 +80,36 @@ public class TimelineController {
 
 	@ResponseBody
 	@RequestMapping(value = "followCheck", method = RequestMethod.GET)
-	public String followCheck(String mem_id, HttpSession session) {
+	public String followCheck(String board_id, HttpSession session) {
 		String login_id = (String) session.getAttribute("mem_id");
-		if(mem_id.equals(login_id)) {
+		Follow follow = new Follow(login_id, board_id);
+		System.out.println(board_id);
+		System.out.println(follow);
+		if(board_id.equals(login_id)) {
 			return "i";
 		}
-		String state = timelineDAO.followCheck(mem_id);
+		String state = timelineDAO.followCheck(follow);
+		
 		if(state != null) {
 			return "ing";
 		} else {
 			return "yet";
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "followAdd", method = RequestMethod.GET)
+	public void followAdd(String board_id, HttpSession session) {
+		String login_id = (String) session.getAttribute("mem_id");
+		Follow follow = new Follow(login_id, board_id);
+		timelineDAO.followAdd(follow);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "followRemove", method = RequestMethod.GET)
+	public void followRemove(String board_id, HttpSession session) {
+		String login_id = (String) session.getAttribute("mem_id");
+		Follow follow = new Follow(login_id, board_id);
+		timelineDAO.followRemove(follow);
 	}
 }

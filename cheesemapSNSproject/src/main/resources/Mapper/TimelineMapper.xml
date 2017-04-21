@@ -66,6 +66,28 @@
 		from
 			CS_FOLLOW
 		where
-			FOL_FOLLOWER = #{mem_id}
+			FOL_FOLLOWER = #{fol_follower}
+		and
+			FOL_FOLLOWING = #{fol_following}
 	</select>
+	
+	<insert id="followAdd" parameterType="Follow">
+		insert into
+			CS_Follow (
+				fol_follower
+				, fol_following
+			) values (
+				#{fol_follower}
+				, #{fol_following}
+			)
+	</insert>
+	
+	<delete id="followRemove" parameterType="Follow">
+		delete 
+			CS_Follow
+		where
+			fol_follower = #{fol_follower}
+		and
+			fol_following = #{fol_following}
+	</delete>
 </mapper>

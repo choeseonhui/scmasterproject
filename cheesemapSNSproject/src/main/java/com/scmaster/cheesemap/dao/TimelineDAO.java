@@ -10,6 +10,7 @@ import com.scmaster.cheesemap.vo.Board;
 import com.scmaster.cheesemap.vo.BoardComment;
 import com.scmaster.cheesemap.vo.BoardLike;
 import com.scmaster.cheesemap.vo.BoardTag;
+import com.scmaster.cheesemap.vo.Follow;
 
 @Repository
 public class TimelineDAO implements TimelineMapper {
@@ -37,8 +38,18 @@ public class TimelineDAO implements TimelineMapper {
 		return mapper.getBoardLike(boa_id);
 	}
 	
-	public String followCheck(String mem_id) {
+	public String followCheck(Follow follow) {
 		TimelineMapper mapper = sqlsession.getMapper(TimelineMapper.class);
-		return mapper.followCheck(mem_id);
+		return mapper.followCheck(follow);
+	}
+	
+	public void followAdd(Follow follow) {
+		TimelineMapper mapper = sqlsession.getMapper(TimelineMapper.class);
+		mapper.followAdd(follow);
+	}
+	
+	public void followRemove(Follow follow) {
+		TimelineMapper mapper = sqlsession.getMapper(TimelineMapper.class);
+		mapper.followRemove(follow);
 	}
 }
