@@ -12,7 +12,7 @@ public interface MemberMapper {
 
 	public int authenticate(String mem_id);
 
-	public Member searchMember(String id);
+	public Member searchMember(String mem_id);
 	
 	public int modifyMem(Member mb);
 

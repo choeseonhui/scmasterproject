@@ -69,14 +69,14 @@
 			, mem_nickname
 			, TO_CHAR(mem_join_date, 'yyyyMMdd') mem_join_date
 			, TO_CHAR(mem_leave_date,'yyyyMMdd') mem_leave_date
-			,mem_originalfile
-			,mem_savefile
+			, mem_originalfile
+			, mem_savefile
 		from
 			CS_MEMBER
 		where
-			mem_id=#{mem_id}
+			mem_id = #{mem_id}
 		and
-			MEM_CHECK=1
+			MEM_CHECK = 1
 	</select>
 
 	<!-- 회원정보수정 -->

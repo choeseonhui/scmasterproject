@@ -120,6 +120,7 @@ public class MemberJoinController {
 	@ResponseBody
 	@RequestMapping(value = "searchMember", method = RequestMethod.GET)
 	public Member searchMember(HttpSession session, HttpServletResponse response, String mem_id) {
+		mem_id = (String) session.getAttribute("mem_id");
 		Member result = dao.searchMember(mem_id);
 		return result;
 	}

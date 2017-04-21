@@ -13,10 +13,9 @@ public class memberDAO implements MemberMapper {
 	private SqlSession sqlsession;
 
 	@Override
-	public Member searchMember(String id) {
+	public Member searchMember(String mem_id) {
 		MemberMapper mapper = sqlsession.getMapper(MemberMapper.class);
-		Member member = mapper.searchMember(id);
-
+		Member member = mapper.searchMember(mem_id);
 		if (member != null) {
 			return member;
 		}
