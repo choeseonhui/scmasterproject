@@ -104,6 +104,7 @@ html{
 				<div id="finishBk" class="slider_form">
 					<div id="editor">
 						<button id="conver2pdf">generate PDF</button>
+						<button id="create_pdf">generate PDF2</button>
 					</div>
 				</div>
 			</div>
@@ -189,22 +190,48 @@ html{
     
     <!-- MakeBook JavaScript -->
     <script src="./resources/js/makebook.js"></script>
-
+    
 	<!-- jsPDF JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
 	<script type="text/javascript" src="./resources/js/html2canvas.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
+	<script type="text/javascript" src="//cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script>
 	<script type="text/javascript">
-		$("#conver2pdf").click(function() {
-			html2canvas(document.getElementById("report"), {
-				onrendered: function(canvas) {
-					var imgData = canvas.toDataURL("image/png");
-					console.log("Report Image URL: "+imgData);
-					var doc = new jsPDF('p', 'mm', [297,210]);
-					doc.addImage(imgData, 'PNG', 10, 10, 190, 95);
-					doc.save('sample-file.pdf');
-				}
-			});
+	(function(){
+		var 
+			form = $('.form'),
+			cache_width = form.width(),
+			a4  =[ 595.28,  841.89];  // for a4 size paper width and height
+
+		$('#create_pdf').on('click',function(){
+			$('body').scrollTop(0);
+			createPDF();
 		});
+		//create pdf
+		function createPDF(){
+			getCanvas().then(function(canvas){
+				var 
+				img = canvas.toDataURL("image/png"),
+				doc = new jsPDF({
+		          unit:'px', 
+		          format:'a4'
+		        });     
+		        doc.addImage(img, 'JPEG', 20, 20);
+		        doc.save('techumber-html-to-pdf.pdf');
+		        form.width(cache_width);
+			});
+		}
+
+		// create canvas object
+		function getCanvas(){
+			form.width((a4[0]*1.33333) -80).css('max-width','none');
+			return html2canvas(form,{
+		    	imageTimeout:2000,
+		    	removeContainer:true
+		    });	
+		}
+
+		}());
 	</script>
     
     <!-- jquery JavaScript -->
