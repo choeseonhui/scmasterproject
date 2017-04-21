@@ -62,10 +62,10 @@
 	
 	<select id="followCheck" resultType="String" parameterType="String">
 		select
-			CS_FOLLOWING
+			FOL_FOLLOWING
 		from
 			CS_FOLLOW
 		where
-			CS_FOLLOWER = #{mem_id}
+			FOL_FOLLOWER = #{mem_id}
 	</select>
 </mapper>

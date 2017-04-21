@@ -296,6 +296,11 @@ update
 set
 	mem_check = 1;
 	
+update
+	cs_member
+set
+	mem_pw = 1;
+	
 insert into
 	CS_BOARD_LIKE
 values (
@@ -312,3 +317,10 @@ where
 	boa_id = '41'
 order by
 	tag_name;
+	
+select
+	CS_FOLLOWING
+from
+	CS_FOLLOW
+where
+	CS_FOLLOWER = 'jwnamkung@naver.com';

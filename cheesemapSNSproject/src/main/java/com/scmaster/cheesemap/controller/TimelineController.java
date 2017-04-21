@@ -81,7 +81,6 @@ public class TimelineController {
 	@RequestMapping(value = "followCheck", method = RequestMethod.GET)
 	public String followCheck(String mem_id, HttpSession session) {
 		String login_id = (String) session.getAttribute("mem_id");
-		System.out.println(login_id);
 		if(mem_id.equals(login_id)) {
 			return "i";
 		}

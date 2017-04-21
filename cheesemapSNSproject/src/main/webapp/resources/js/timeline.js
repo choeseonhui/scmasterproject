@@ -52,7 +52,6 @@ function boardList() {
 
 // 로그인한 id
 var loginid=document.getElementById("mem_id").value;
-console.log(loginid);
 //좋아요 플래그
 var flag=0;
 
@@ -89,7 +88,6 @@ function clickBoard(boa_id){
 		},
 		success : function(board){
 			//게시글 내용
-			console.log(board);
 			$("#asideBoard").html(board.boa_content);
 			//게시글 작성자 정보
 			searchMember(board.mem_id);
@@ -147,11 +145,10 @@ function searchMember(mem_id){
 				$("#profilePhotoBoa").html('<img id="memberPhoto" src="./resources/img/logo.png">');
 			}
 			$("#nickNameBoa").html("<span>"+member.mem_nickname+"</span>");
-			console.log("test-"+member.mem_id);
 			followState(member.mem_id);
 		},
 		error : function(e) {
-		console.log(e);
+			console.log(e);
 		}
 	});	
 }
@@ -166,9 +163,9 @@ function followState(mem_id) {
 		success : function(state){
 			if(state == 'ing') {
 				$("#followState").html('-');
-			} else if(state = 'yet') {
+			} else if(state == 'yet') {
 				$("#followState").html('+');
-			} else if(state = 'i') {
+			} else if(state == 'i') {
 				$("#followState").html('X');
 			}
 		},
@@ -179,7 +176,6 @@ function followState(mem_id) {
 }
 
 function likeRead(boa_id) {
-	console.log(boa_id);
 	$.ajax({
 		type : "get",
 		url : "getBoardLike",
@@ -187,7 +183,6 @@ function likeRead(boa_id) {
 			boa_id : boa_id
 		},
 		success : function(data){
-			console.log(data);
 			$("#likeit").html("좋아요  "+data.length+"개");
 			$.each(data, function(index, like){
 				if(like.mem_id==loginid){
@@ -207,7 +202,6 @@ function likeRead(boa_id) {
 
 //댓글 읽기
 function replyRead(boa_id){
-	console.log(boa_id);
 	var replyBoard="<ul>";
 	$.ajax({
 		type : "get",
@@ -216,7 +210,6 @@ function replyRead(boa_id){
 			boa_id : boa_id
 		},
 		success : function(data){
-			console.log(data);
 			$("#replyBoard").html(function(){
 				$.each(data, function(index, reply){
 					replyBoard+="<li><span class='replyNick'>"+reply.MEM_NICKNAME+"</span>"
