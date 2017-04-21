@@ -76,4 +76,20 @@ public class TimelineController {
 			session.setAttribute("boa_id_list", result);
 		}
 	}
+
+	@ResponseBody
+	@RequestMapping(value = "followCheck", method = RequestMethod.GET)
+	public String followCheck(String mem_id, HttpSession session) {
+		String login_id = (String) session.getAttribute("mem_id");
+		System.out.println(login_id);
+		if(mem_id.equals(login_id)) {
+			return "i";
+		}
+		String state = timelineDAO.followCheck(mem_id);
+		if(state != null) {
+			return "ing";
+		} else {
+			return "yet";
+		}
+	}
 }

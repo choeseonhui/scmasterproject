@@ -147,6 +147,8 @@ function searchMember(mem_id){
 				$("#profilePhotoBoa").html('<img id="memberPhoto" src="./resources/img/logo.png">');
 			}
 			$("#nickNameBoa").html("<span>"+member.mem_nickname+"</span>");
+			console.log("test-"+member.mem_id);
+			followState(member.mem_id);
 		},
 		error : function(e) {
 		console.log(e);
@@ -154,7 +156,29 @@ function searchMember(mem_id){
 	});	
 }
 
-function likeRead(boa_id){
+function followState(mem_id) {
+	$.ajax({
+		type : "get",
+		url : "followCheck",
+		data : {
+			mem_id : mem_id
+		},
+		success : function(state){
+			if(state == 'ing') {
+				$("#followState").html('-');
+			} else if(state = 'yet') {
+				$("#followState").html('+');
+			} else if(state = 'i') {
+				$("#followState").html('X');
+			}
+		},
+		error : function(e) {
+		console.log(e);
+		}
+	});	
+}
+
+function likeRead(boa_id) {
 	console.log(boa_id);
 	$.ajax({
 		type : "get",

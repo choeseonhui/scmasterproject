@@ -12,4 +12,5 @@ public interface TimelineMapper {
 	public ArrayList<BoardComment> getBoardComment(String boa_id);
 	public ArrayList<BoardTag> getBoardTag(String boa_id);
 	public ArrayList<BoardLike> getBoardLike(String boa_id);
+	public String followCheck(String mem_id);
 }

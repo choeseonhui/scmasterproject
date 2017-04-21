@@ -36,4 +36,9 @@ public class TimelineDAO implements TimelineMapper {
 		TimelineMapper mapper = sqlsession.getMapper(TimelineMapper.class);
 		return mapper.getBoardLike(boa_id);
 	}
+	
+	public String followCheck(String mem_id) {
+		TimelineMapper mapper = sqlsession.getMapper(TimelineMapper.class);
+		return mapper.followCheck(mem_id);
+	}
 }

@@ -59,4 +59,13 @@
 		where
 			boa_id = #{boa_id}
 	</select>
+	
+	<select id="followCheck" resultType="String" parameterType="String">
+		select
+			CS_FOLLOWING
+		from
+			CS_FOLLOW
+		where
+			CS_FOLLOWER = #{mem_id}
+	</select>
 </mapper>

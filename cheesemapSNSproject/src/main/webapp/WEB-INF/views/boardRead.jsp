@@ -14,6 +14,7 @@
 			<div id="headerBoard">
 				<span id="profilePhotoBoa">프로필사진</span>
 				<span id="nickNameBoa">닉네임</span>
+				<span id="followState">팔로우</span>
 			</div>
 			<!-- 좋아요 & 날짜 -->
 			<div id="likedate">
