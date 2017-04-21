@@ -89,7 +89,6 @@ function clickBoard(boa_id){
 		},
 		success : function(board){
 			board_id = board.mem_id;
-			console.log(board_id);
 			followState();
 			//게시글 내용
 			$("#asideBoard").html(board.boa_content);
@@ -105,7 +104,6 @@ function clickBoard(boa_id){
 			$("#okBtn").off("click");
 			$("#okBtn").on("click", function(){
 				var comContent=$("#comContent").val();
-				console.log(comContent);
 				$.ajax({
 					type : "post",
 					url : "replyWrite",
@@ -271,7 +269,6 @@ function replyRead(boa_id){
 
 //좋아요 클릭 이벤트 처리
 function clickHeart(boa_id){
-	console.log(boa_id);
 	if(flag==0){
 		flag=1;
 	}else if(flag==1){
