@@ -112,4 +112,11 @@ public class TimelineController {
 		Follow follow = new Follow(login_id, board_id);
 		timelineDAO.followRemove(follow);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "deleteBoard", method = RequestMethod.GET)
+	public void deleteBoard(String boa_id) {
+		System.out.println(boa_id);
+		timelineDAO.deleteBoard(boa_id);
+	}
 }

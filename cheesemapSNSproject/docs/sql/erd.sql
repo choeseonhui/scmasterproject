@@ -324,3 +324,12 @@ from
 	CS_FOLLOW
 where
 	CS_FOLLOWER = 'jwnamkung@naver.com';
+	
+update
+	CS_BOARD
+set
+	boa_delete_date = sysdate
+where
+	boa_id = '21';
+	
+delete from folower;

@@ -55,6 +55,7 @@ var loginid=document.getElementById("mem_id").value;
 var flag=0;
 
 var board_id;
+var real_board_id;
 
 function clickBoard(boa_id){
 	//Get the modal
@@ -89,6 +90,7 @@ function clickBoard(boa_id){
 		},
 		success : function(board){
 			board_id = board.mem_id;
+			real_board_id = board.boa_id;
 			followState();
 			//게시글 내용
 			$("#asideBoard").html(board.boa_content);
@@ -211,7 +213,23 @@ function function_fol() {
 	});
 
 	$("#delete_board").on("click", function() {
-	
+		console.log(real_board_id);
+		$.ajax({
+			type : "get",
+			url : "deleteBoard",
+			data : {
+				boa_id : real_board_id
+			},
+			success : function(data){
+				var modalBoard = document.getElementById('myModalBoard');
+				$("#replyBoard").html("");
+				$("#likeHeart").html("");
+				modalBoard.style.display = "none";
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
 	});
 }
 
@@ -289,7 +307,7 @@ function clickHeart(boa_id){
 		},
 		error : function(e) {
 			console.log(e);
-			}
+		}
 	});
 }
 

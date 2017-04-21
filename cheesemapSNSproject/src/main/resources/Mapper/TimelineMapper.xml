@@ -83,11 +83,20 @@
 	</insert>
 	
 	<delete id="followRemove" parameterType="Follow">
-		delete 
+		delete from
 			CS_Follow
 		where
 			fol_follower = #{fol_follower}
 		and
 			fol_following = #{fol_following}
 	</delete>
+	
+	<update id="deleteBoard" parameterType="String">
+		update
+			CS_BOARD
+		set
+			boa_delete_date = sysdate
+		where
+			boa_id = #{boa_id}
+	</update>
 </mapper>

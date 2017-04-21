@@ -63,6 +63,7 @@
 		where fol_follower=#{0}))
 		and to_number(boa_latitude) between #{3} and #{1}
 		and to_number(boa_longitude) between #{4} and #{2}
+		and boa_delete_date is null
 		order by boa_create_date desc
 	</select>
 
