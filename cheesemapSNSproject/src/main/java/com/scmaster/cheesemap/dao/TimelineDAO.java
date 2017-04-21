@@ -56,5 +56,11 @@ public class TimelineDAO implements TimelineMapper {
 	public void deleteBoard(String boa_id) {
 		TimelineMapper mapper = sqlsession.getMapper(TimelineMapper.class);
 		mapper.deleteBoard(boa_id);
+		mapper.deleteBoardTag(boa_id);
+	}
+	
+	public void deleteBoardTag(String boa_id) {
+		TimelineMapper mapper = sqlsession.getMapper(TimelineMapper.class);
+		mapper.deleteBoardTag(boa_id);
 	}
 }

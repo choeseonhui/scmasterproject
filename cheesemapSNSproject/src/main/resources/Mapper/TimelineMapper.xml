@@ -99,4 +99,11 @@
 		where
 			boa_id = #{boa_id}
 	</update>
+	
+	<delete id="deleteBoardTag" parameterType="String">
+		delete from
+			CS_BOARD_TAG
+		where	
+			boa_id = #{boa_id}
+	</delete>
 </mapper>

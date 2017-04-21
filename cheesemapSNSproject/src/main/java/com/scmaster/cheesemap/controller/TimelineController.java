@@ -118,5 +118,6 @@ public class TimelineController {
 	public void deleteBoard(String boa_id) {
 		System.out.println(boa_id);
 		timelineDAO.deleteBoard(boa_id);
+		timelineDAO.deleteBoardTag(boa_id);
 	}
 }

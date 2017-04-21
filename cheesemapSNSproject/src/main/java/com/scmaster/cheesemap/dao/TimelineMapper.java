@@ -17,4 +17,5 @@ public interface TimelineMapper {
 	public void followAdd(Follow follow);
 	public void followRemove(Follow follow);
 	public void deleteBoard(String boa_id);
+	public void deleteBoardTag(String boa_id);
 }
