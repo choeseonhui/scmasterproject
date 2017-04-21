@@ -332,4 +332,3 @@ set
 where
 	boa_id = '21';
 	
-delete from folower;
