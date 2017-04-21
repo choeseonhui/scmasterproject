@@ -19,4 +19,11 @@ public class MakeBookDAO implements MakeBookMapper {
 		ArrayList<Board> result = mapper.getMyBoard(mem_id);
 		return result;
 	}
+	
+	@Override
+	public ArrayList<Board> getMyBoardfromDatetoDate(String fromDate, String toDate) {
+		MakeBookMapper mapper = session.getMapper(MakeBookMapper.class);
+		ArrayList<Board> result = mapper.getMyBoardfromDatetoDate(fromDate, toDate);
+		return result;
+	}
 }

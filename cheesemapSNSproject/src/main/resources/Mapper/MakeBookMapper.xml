@@ -28,4 +28,32 @@
 		order by
 			boa_id
 	</select>
+	
+	
+	
+	<select id="getMyBoardfromDatetoDate" parameterType="String" resultType="Board" >
+		select
+			boa_id
+			, boa_content
+			, boa_create_date
+			, boa_modify_date
+			, boa_latitude
+			, boa_longitude
+			, boa_photo_savefile
+			, boa_photo_originalfile
+			, boa_video_originalfile
+			, boa_video_savefile
+			, mem_id
+		from
+			CS_BOARD
+		where
+	     boa_create_date BETWEEN TO_DATE(#{0},'YYYY/MM/DD') AND TO_DATE(#{1},'YYYY/MM/DD')
+ 
+		and
+			boa_video_originalfile is null
+		and
+			boa_photo_originalfile is not null
+		order by
+			boa_id
+	</select>
 </mapper>

@@ -25,6 +25,10 @@
 	<!-- jquery-ui CSS -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
+<!--  date Picker-->
+    <link rel="stylesheet" type="text/css" href="./resources/css/datepicker3.css" />
+
+
     <!-- Custom Fonts -->
     <link href="./resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -38,10 +42,16 @@
     <![endif]-->
     
 <style>
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css); 
+
 html{
 	overflow-x : hidden;
 	overflow-y : auto;
-}
+	}
+	
+body{
+font-family: 'Jeju Gothic', serif; }
+
 </style>
 </head>
 
@@ -73,43 +83,33 @@ html{
         <!-- /.container-fluid -->
     </nav>
 
-	<!-- Portfolio Grid Section -->
-	<section id="portfolio">
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<hr class="star-primary">
-				<h2>Make Book</h2>
-				<hr class="star-primary">
-			</div>
+ <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+            	<hr class="star-primary">
+                <h2 style="color: white; opacity: 0.8;">Make Book</h2>
+                <hr class="star-primary">
+            </div>
+        </div>
+        <div class="animation_canvas">
+  <!--       
+        <div class="control_panel">
+	       	<div id="n1btn" class="control_button"><img src="./resources/img/n1.png"></div>
+	       	<div id="n2btn" class="control_button"><img src="./resources/img/n2.png"></div>
+	       	<div id="n3btn" class="control_button"><img src="./resources/img/n3.png"></div>
+	       	<div id="n4btn" class="control_button"><img src="./resources/img/n4.png"></div>
+    	</div> -->
+        
+        <div class="slider_panel">
+			<div id="title_date" class="slider_form"></div>
+       		<div id="myBoardList" class="container slider_form"></div>
+			<div id="preview" class="slider_form"></div>
+			<div id="finishBk" class="slider_form"></div>
 		</div>
-		<div class="animation_canvas">
-			<div class="control_panel">
-				<div id="n1btn" class="control_button">
-					<img src="./resources/img/n1.png">
-				</div>
-				<div id="n2btn" class="control_button">
-					<img src="./resources/img/n2.png">
-				</div>
-				<div id="n3btn" class="control_button">
-					<img src="./resources/img/n3.png">
-				</div>
-				<div id="n4btn" class="control_button">
-					<img src="./resources/img/n4.png">
-				</div>
-			</div>
-			<div class="slider_panel">
-				<div id="title_date" class="slider_form"></div>
-				<div id="myBoardList" class="container slider_form"></div>
-				<div id="preview" class="slider_form"></div>
-				<div id="finishBk" class="slider_form">
-					<div id="editor">
-						<button id="conver2pdf">generate PDF</button>
-						<button id="create_pdf">generate PDF2</button>
-					</div>
-				</div>
-			</div>
+		
 		</div>
-	</section>
+    </section>
 
 	<!-- Footer -->
 	<footer class="text-center">
@@ -178,6 +178,11 @@ html{
     <!-- Bootstrap Core JavaScript -->
     <script src="./resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
+<!-- ssss -->
+<script type="text/javascript" src="./resources/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="./resources/js/bootstrap-datepicker.kr.js"></script>
+
+
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
@@ -191,55 +196,16 @@ html{
     <!-- MakeBook JavaScript -->
     <script src="./resources/js/makebook.js"></script>
     
-	<!-- jsPDF JavaScript -->
-	<script type="text/javascript" src="./resources/js/html2canvas.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script type="text/javascript" src="//cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
-	<script type="text/javascript" src="//cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script>
-	<script type="text/javascript">
-	(function(){
-		var 
-			form = $('.form'),
-			cache_width = form.width(),
-			a4  =[ 595.28,  841.89];  // for a4 size paper width and height
-
-		$('#create_pdf').on('click',function(){
-			$('body').scrollTop(0);
-			createPDF();
-		});
-		//create pdf
-		function createPDF(){
-			getCanvas().then(function(canvas){
-				var 
-				img = canvas.toDataURL("image/png"),
-				doc = new jsPDF({
-		          unit:'px', 
-		          format:'a4'
-		        });     
-		        doc.addImage(img, 'JPEG', 20, 20);
-		        doc.save('techumber-html-to-pdf.pdf');
-		        form.width(cache_width);
-			});
-		}
-
-		// create canvas object
-		function getCanvas(){
-			form.width((a4[0]*1.33333) -80).css('max-width','none');
-			return html2canvas(form,{
-		    	imageTimeout:2000,
-		    	removeContainer:true
-		    });	
-		}
-
-		}());
-	</script>
-    
     <!-- jquery JavaScript -->
     <script src="//code.jquery.com/jquery.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.12.3.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    
+
 	<input type="hidden" id="myBoard" value='${myBoard }'>
+	<input type="hidden" id="mainPhoto">
+	
+
+	
+	
 </body>
 
 </html>

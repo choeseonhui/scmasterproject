@@ -1,3 +1,18 @@
+body{
+ 	background-image: url("../img/bac2.jpg");
+ 	background-size : 100%;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden; 
+
+}
+#select-img{
+	
+	height: 600px;
+	overflow-y: scroll;
+	overflow-x:hidden; 
+}
+
 .j-caption {
 	background: rgba(24, 188, 156, 0.9);
 	position: absolute;
@@ -18,6 +33,7 @@
 }
 
 .animation_canvas {
+	margin: auto;
 	position: relative;
 	height: 1270px;
 	width: 1570px;
@@ -61,3 +77,32 @@
 .control_button.active {
 	top: -49px;
 }
+#userPhoto {
+	width: 150px;
+	height: 170px;
+}
+
+.inputtitle{
+	display: inline !important;
+	margin-left: 90px;
+	
+}
+/* 
+h1{
+	display: inline !important;
+	margin: auto;
+} */
+
+.form-control{
+	font-size : 100px;
+	display: inline !important;
+	width : 60% !important;	
+	
+ 	
+}
+
+.bookbook{
+	
+	padding-left: 300px;
+}
+
