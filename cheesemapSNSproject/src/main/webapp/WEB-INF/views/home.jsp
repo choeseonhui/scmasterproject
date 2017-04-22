@@ -15,6 +15,8 @@
 	<!-- Bootstrap Core CSS -->
 	<link href="./resources/vendor/bootstrap/css/bootstrap.min.css"	rel="stylesheet">
 	
+	<!-- animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 	<!-- Theme CSS -->
 	<link href="./resources/css/freelancer.css" rel="stylesheet">
 	
@@ -29,6 +31,9 @@
 	
 	<!-- map -->
 	<link href="./resources/css/map.css" rel="stylesheet">
+	
+	<!-- home.css -->
+	<link href="./resources/css/home.css" rel="stylesheet">
 	
 	<!-- Custom Fonts -->
 	<link href="./resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -72,7 +77,29 @@
     <!-- Header -->
 	<header>
 		<div class="container" id="maincontent" tabindex="-1">
-			<div class="row">
+		
+  <section class="container">
+ <div  id ="what">
+<img src="./resources/img/cheesePin.png" class ="pin1 animated"  id="pin1" style=" display:none; position:absolute; ">
+
+<img src="./resources/img/cheesePin.png" class="pin2 animated" id="pin2" style=" display:none; position:absolute;">
+
+<img src="./resources/img/cheesePin.png" class="pin3 animated" id="pin3" style=" display:none; position:absolute;">
+
+<img src="./resources/img/cheesePin.png" class="pin4 animated" id="pin4" style=" display:none; position:absolute;">
+
+<img src="./resources/img/cheesePin.png" class="pin5 animated" id="pin5" style="display:none; position:absolute;">
+
+<img src="./resources/img/cheesePin.png" class="pin6 animated" id="pin6" style="display:none; position:absolute;">
+
+ </div>
+ 
+    <div class="fullBackground"></div>
+    
+    <div  id="mainText" class="mainText animated"><h3 style="font-weight: 200;">치즈치즈는<br>빠르고 <br>간결하고<br> 편합니다</h3></div>
+    <!-- <h2 class="caption">Full Clip</h2> -->
+  </section>
+		<!-- 	<div class="row">
 				<div class="col-lg-12">
 					<img class="img-responsive" src="./resources/img/logo.png" alt="">
 					<div class="intro-text">
@@ -80,12 +107,12 @@
 						<hr class="star-light">
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</header>
 
 	<!-- login Grid Section -->
-	<section id="login">
+	<section id="login" style="padding-top: 200px;">
 		<div class="container">
 			<jsp:include page="login.jsp" flush="true"></jsp:include>
 		</div>
@@ -167,6 +194,11 @@
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="./resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- slider  -->
+	<script src="./resources/js/fullclip.js"></script>
+	
+	
 
 	<!-- Plugin JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
@@ -183,6 +215,10 @@
 	
 	<!-- joinForm.js -->
 	<script src="./resources/js/joinForm.js"></script>
+	
+	
+	<!-- home.js -->
+	<script src="./resources/js/home.js"></script>
 
 </body>
 

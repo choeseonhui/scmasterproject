@@ -1,3 +1,5 @@
+
+
 body{
  	background-image: url("../img/bac2.jpg");
  	background-size : 100%;
@@ -5,6 +7,14 @@ body{
     background-attachment: fixed;
     overflow: hidden; 
 
+}
+input{
+   text-align:center;
+}
+
+.dateDiv{
+	 text-align:center;
+	
 }
 #select-img{
 	
@@ -49,7 +59,7 @@ body{
 .slider_form {
 	float: left;
 	width: 1170px;
-	height: 1170px;
+	height: 900px;
 	margin-left: 200px;
 	margin-right: 200px;
 }
@@ -78,31 +88,24 @@ body{
 	top: -49px;
 }
 #userPhoto {
-	width: 150px;
-	height: 170px;
+	width: 480px;
+	height: 320px;
 }
 
 .inputtitle{
-	display: inline !important;
-	margin-left: 90px;
+	display: inline !important;	
+	flex-direction :row;
+	align-items :center;
 	
 }
-/* 
-h1{
-	display: inline !important;
-	margin: auto;
-} */
 
 .form-control{
 	font-size : 100px;
 	display: inline !important;
 	width : 60% !important;	
-	
- 	
+	 	
 }
 
-.bookbook{
-	
-	padding-left: 300px;
-}
+
+
 

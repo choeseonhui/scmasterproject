@@ -13,6 +13,15 @@
 
     <title>MakeBook - Cheese Map</title>
 
+
+
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css">
+<!-- animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  
+  
     <!-- Bootstrap Core CSS -->
     <link href="./resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -83,6 +92,7 @@ font-family: 'Jeju Gothic', serif; }
         <!-- /.container-fluid -->
     </nav>
 
+ 
  <!-- Portfolio Grid Section -->
     <section id="portfolio">
         <div class="row">
@@ -90,6 +100,7 @@ font-family: 'Jeju Gothic', serif; }
             	<hr class="star-primary">
                 <h2 style="color: white; opacity: 0.8;">Make Book</h2>
                 <hr class="star-primary">
+                 <p style="color: #E3E3E3 ">가장 아름다운 책을 당신에게 선물하세요!</p>
             </div>
         </div>
         <div class="animation_canvas">
@@ -189,6 +200,9 @@ font-family: 'Jeju Gothic', serif; }
     <!-- Contact Form JavaScript -->
     <script src="./resources/js/jqBootstrapValidation.js"></script>
     <script src="./resources/js/contact_me.js"></script>
+
+   <!-- animated  -->
+<script src="./resources/js/fullclip.js"></script>
 
     <!-- Theme JavaScript -->
     <script src="./resources/js/freelancer.min.js"></script>

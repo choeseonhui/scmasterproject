@@ -9,7 +9,19 @@ var bookTitle;
 function moveSlider(index){
 		//슬라이더 이동
 		var willMoveLeft=-(index*1570);
-		$('.slider_panel').animate({left : willMoveLeft}, 'slow');
+	
+		
+		$('.slider_panel').animate({
+			left : willMoveLeft
+		      }, {
+		        duration: 500,
+		        complete: function () {
+		        	$("html, body").animate({ scrollTop: 0 });
+		        }
+		      });     
+
+
+
 		
 		/*//컨트롤 버튼의 active 클래를 부여/제거
 		$('.control_button[data-index]='+index+']').addClass('active');
@@ -114,54 +126,53 @@ function titleDate() {
 	    (day<10 ? '0' : '') + day;
 	
 	
+
 	var titleDate = '';
 	var titleDateDiv = document.getElementById("title_date");
 	if(titleDateDiv != undefined){
 	
 	titleDate += '<div class="col-lg-8 col-lg-offset-2">';
-	titleDate += '<div class="row control-group">';
+	titleDate += '<div class="row control-group ">';
 	
 
-	titleDate += '<div class="form-group col-xs-12 floating-label-form-group controls" style="padding-right: 50px; background-color: white; border-radius :30px; opacity :0.9;">';
-	titleDate += '<hr><span class="bookbook" style="text-align : center;"><h3> 책 제목을 입력해 주세요(죄송해요 css는 수정중이에요)</h3> </span><hr><br>';
-	titleDate += '<div class="inputtitle"><span class="">[&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="Title" class="form-control" placeholder="Title" id="bookTitle" required data-validation-required-message="Please Enter Title.">&nbsp&nbsp&nbsp&nbsp&nbsp]<span></div>';
+	titleDate += '<div id="firstdiv" class="form-group col-xs-12 floating-label-form-group controls animated" style=" display:none; padding-right: 50px; text-align: center; background-color: white; border-radius :30px; opacity :0.8; border-style:groove;  border: 1.5px dashed rgb(120, 94, 77); ">';
+	titleDate += '<hr><div class="bookbook" style="font-size: 22px; color: #e2bfb3;"><span style="font-size:33px; color: #dd9e89">STEP1&nbsp&nbsp&nbsp&nbsp</span>책 제목을 입력해 주세요 </div><hr><br>';
+	titleDate += '<div class="inputtitle"><span><p style="font-size: 3em; display: inline;">[&nbsp&nbsp&nbsp&nbsp&nbsp</p><input type="text" name="Title" class="form-control" placeholder="Title" id="bookTitle" required data-validation-required-message="Please Enter Title." style="height: 50px; font-size: 2em;"><p style="font-size: 3em; display: inline;">&nbsp&nbsp&nbsp&nbsp&nbsp]</p><span></div>';
 	titleDate += '<p class="help-block text-danger"></p>';
 	
-	titleDate += '<br><hr>책을 만들 게시글 기간을 설정 해 주세요.<hr><br>';
+	titleDate += '<br><hr><span style="color:lightgray;">책을 만들 게시글 기간을 설정 해 주세요.</span><hr><br>';
 
 	titleDate +='<div class="dateDiv">';
-	titleDate += 'From';
-	titleDate += '<input type="text" value="2017/01/01" data-date-format="yy/mm/dd" id="dp2" size= "5px">';
-	titleDate += 'To';
-	titleDate += '<input type="text" value="'+output+'" data-date-format="yy/mm/dd" id="dp3"  size= "5px">';
-/*	titleDate += '</div>';*/
 	
+	titleDate += '<input type="text" value="2017/01/01" data-date-format="yy/mm/dd" id="dp2" size= "10px">';
+	titleDate += '-';
+	titleDate += '<input type="text" value="'+output+'" data-date-format="yy/mm/dd" id="dp3"  size= "10px"><br><br>';
+
 	
 	titleDate += '</div>';
 
 	titleDate +='<div class="form-group col-xs-12 floating-label-form-group controls" >';
-	titleDate +='<hr><h3>표지에 들어갈 사진을 선택하세요.</h3><hr>';
+	titleDate +='<hr><span style="color: lightgray;">표지에 들어갈 사진을 선택하세요.</span><hr>';
 	titleDate += '<span id="imgDiv">';
-	titleDate += '<img id="userPhoto" src="http://placehold.it/150x170"></span>';
-	titleDate += '<input type="file" id="upload" name="originalfile">';
+	titleDate += '<img id="userPhoto" src="./resources/img/default.jpg"></span><br><br><br><br><br>';
+	titleDate += '<input type="file" id="upload" name="originalfile" style="margin: auto;"><br><br><br><br>';
 	titleDate +='</div>';
 
-/*	titleDate += '</div>';*/
+
 	
-	titleDate += '<br>';
+	
 	titleDate += '<div id="loginalert"></div>';
+	
+	
+     titleDate += '</div>';
+     
+     
+     
+	titleDate += '</div><br><br>';
+	titleDate += '<div class="row control-group" style ="padding-left: 45%;">';
+ 	titleDate += '<input type="button" class="btn btn-success btn-lg" id="book_ok_btn1" value="next" >';
+ 	titleDate += '</div>';
 
-	
-	
-	titleDate += '</div>';
-	titleDate += '</div>';
-	
-
-	
-	titleDate += '<div class="row control-group" style ="padding-left: 450px;">';
-	titleDate += '<input type="button" class="btn btn-success btn-lg" id="book_ok_btn1" value="next" >';
-	titleDate += '</div>';
-	
 
 	
 
@@ -199,8 +210,8 @@ function getMyBoard(myBoardList) {
 	if(myBoardList != null) {
 	/*	var board = JSON.parse(myBoardList);*/
 		var myBoard = '';
-		myBoard += '<hr><h2>사진을 골라주시떼</h2><hr>';
-		myBoard += '<div id="select-img" class="row">';
+		myBoard += '<div style="margin: auto; border-radius: 30px; width: 430px; text-align: center; color: rgb(226, 191, 179); font-size: 22px; opacity: 0.9; background-color: white;"><span style="font-size:33px; color: #dd9e89">STEP2&nbsp&nbsp</span>책에 넣을 사진을 골라 보세요</div><hr style="border-style: dashed; width: 600px;">';
+		myBoard += '<div id="select-img" class="row" style=" text-align: center; background-color: white; border-radius: 30px; opacity: 0.8; border: 1.5px dashed rgb(120, 94, 77);">';
 		
 		
 		$.each(myBoardList, function(index, item) {
@@ -258,5 +269,9 @@ function getMyBoard(myBoardList) {
 	//초기 슬라이더 위치 지정
 	var positionNUmber=0;
 	moveSlider(positionNUmber);
+	
+	//맨처음띠용하고나오는거
+	$("#firstdiv").addClass('animated bounceInUp');
+	$("#firstdiv").css("display","inline");
 }
 
