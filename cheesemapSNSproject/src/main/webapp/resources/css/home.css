@@ -1,6 +1,4 @@
 
-@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
-
 
 body {
 /* 	
@@ -32,8 +30,8 @@ background-position: center center;
    */
 	}
 .mainText{
-  letter-spacing :-2px;
-font-family: 'Nanum Brush Script', serif;
+ letter-spacing :-2px;
+
 background-color : black;
     position: absolute;
     top: 53%;
