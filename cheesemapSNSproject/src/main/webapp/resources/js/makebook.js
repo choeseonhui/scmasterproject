@@ -227,10 +227,9 @@ function getMyBoard(myBoardList) {
 			myBoard += '</div>';
 			
 		});
-		
 		myBoard += '</select>';
-		myBoard += '</div>';
-		myBoard += '<div class="row control-group" style ="padding-left: 450px;" >';
+		myBoard += '</div><br><br>';
+		myBoard += '<div class="row control-group" style ="padding-left: 50%;" >';
 		myBoard += '<input type="button" class="btn btn-success btn-lg" id="book_ok_btn2" value="next" >';
 		myBoard += '</div>';
 		
