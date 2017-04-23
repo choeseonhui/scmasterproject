@@ -90,6 +90,10 @@
 			, mem_originalfile=#{mem_originalfile}
 			, mem_savefile=#{mem_savefile}
 			</if>
+		where
+			mem_id = #{mem_id}
+		and
+			MEM_CHECK = 1
 	</update>
 
 	<!-- 회원탈퇴 -->
