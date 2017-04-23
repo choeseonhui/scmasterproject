@@ -41,9 +41,6 @@ $(document).ready(function(){
 		bookTitle = $("#bookTitle").val();
 		fromDate = $("#dp2").val();
 		toDate = $("#dp3").val();
-		console.log(bookTitle);
-		console.log(fromDate);
-		console.log(toDate);
 		
 		$.ajax({
 			
@@ -57,27 +54,14 @@ $(document).ready(function(){
 			success : function(data){				
 			    	getMyBoard(data);
 					moveSlider(1);
-					
-			
-				
 			},
 			error : function(e){
 				//ajax 통신 실패시
 			console.log("통신실패");
 				console.log(e);
 			}
-			
-			
-			
 		});
-		
-		
-		
 	});
-	
-	
-	
-	
 	
 	$("#upload").change(function() {
 		var formData = new FormData();
@@ -90,7 +74,6 @@ $(document).ready(function(){
 				contentType : false,
 				dataType : "text",
 				success : function(data) {
-					console.log(data);
 					$("#imgDiv").html('<img id="userPhoto" src="' + data + '">');
 					
 					$("#mainPhoto").val(data);
@@ -103,6 +86,7 @@ $(document).ready(function(){
 	
 	
 	 $(document).on("click","#book_ok_btn2",function(){
+		previewer();
 		moveSlider(2);
 		console.log("선택한 이미지 boa_id :"+select_img);
 		console.log("표지 이미지 :" + $("#mainPhoto").val());
@@ -111,9 +95,6 @@ $(document).ready(function(){
 	});
 
 });
-
-
-
 
 function titleDate() {
 	var d = new Date();
@@ -125,8 +106,6 @@ function titleDate() {
 	    (month<10 ? '0' : '') + month + '/' +
 	    (day<10 ? '0' : '') + day;
 	
-	
-
 	var titleDate = '';
 	var titleDateDiv = document.getElementById("title_date");
 	if(titleDateDiv != undefined){
@@ -184,26 +163,16 @@ function titleDate() {
 
 	}
 	
-
-   	
-	
 	$('#dp2').datepicker({
 		dateFormat: 'yy/mm/dd'
-		
 	});
 	
 	$('#dp3').datepicker({
-		
 		dateFormat: 'yy/mm/dd'
 	});
-	
-
 }
 
 function getMyBoard(myBoardList) {
-	 
-	console.log("여기에요");
-	console.log(myBoardList);
 	select_img = new Array();
 	/*var myBoardListDiv = document.getElementById("myBoardList");
 	*//*var myBoardList = $("#myBoard").val();*/
@@ -227,6 +196,7 @@ function getMyBoard(myBoardList) {
 			myBoard += '</div>';
 			
 		});
+		
 		myBoard += '</select>';
 		myBoard += '</div><br><br>';
 		myBoard += '<div class="row control-group" style ="padding-left: 50%;" >';
@@ -252,25 +222,127 @@ function getMyBoard(myBoardList) {
 		} else {
 			select_img.splice(select_img.indexOf(select_item), 1);
 		}
-		console.log(select_img);
 	}
 
 	//슬라이더를 움직여주는 함수
 	
-	//컨트롤 버튼의 클릭 리스너 지정 및 data-index할당
-	$('.control_button').each(function(index){
-		$(this).attr('data-index', index);
-	}).click(function(){
-		var index=$(this).attr('data-index');
-		moveSlider(index);
-	});
-	
 	//초기 슬라이더 위치 지정
 	var positionNUmber=0;
 	moveSlider(positionNUmber);
-	
+
 	//맨처음띠용하고나오는거
 	$("#firstdiv").addClass('animated bounceInUp');
 	$("#firstdiv").css("display","inline");
+}
+
+//2단계
+function previewer() {
+	var mem_id = $("#mem_id").val();
+	var mem_nick = "";
+	var like_div = 0;
+	var comment_div = 0;
+	var total_div = 0;
+	var memories_div = 0;
+	var cover_img=$("#mainPhoto").val();
+	var startDate=$("#dp2").val();
+	var endDate=$("#dp3").val();
+	var bList=[];
+	
+	/*0페이지*/
+	$("#cover_img").attr("src", cover_img);
+	$("#cover_title").html(bookTitle);
+	$("#cover_date").html(startDate+" ~ "+endDate);
+	
+	
+	/*0_5페이지*/
+	// 회원정보 불러오기
+	 $.ajax({ 
+		type : "get", 
+		url : "searchMember",
+		data : { mem_id : mem_id },
+		success : function(member){ 
+			/*if(member.mem_savefile!=null){
+				$("#profilePhotoBook").html('<img id="memberPhotoBook" src="download?mem_id='+ member.mem_id +'">'); }else{
+			 	$("#profilePhotoBook").html('<img id="memberPhotoBook" src="./resources/img/logo.png">'); }*/ 
+			mem_nick=member.mem_nickname;
+			$("#member_nick").html(mem_nick);
+		},
+		error : function(e) { console.log(e); }
+		});
+	 
+
+	// 가장 좋아요 많이 한 친구
+	$.ajax({
+		type : "post",
+		url : "bestOfLike",
+		contentType : "application/json; charset=utf-8",
+		data : JSON.stringify({
+			mem_id : mem_id,
+			select_img : select_img
+		}),
+		dataType : "json",
+		success : function(bList) {
+			console.log(bList);
+			$.each(bList, function(index, member) {
+				if (member.mem_savefile != null) {
+					$("#top" + (index + 1)).html(
+							"<img class='top3_img' src='top3Upload//" + member.mem_savefile
+									+ "'>");
+				} else {
+					$("#top" + (index + 1)).html(
+							"<img class='top3_img' src='./resources/img/logo.png'>");
+				}
+				$("#top" + (index + 1) + "_nick").html(member.mem_nickname);
+			});
+		},
+		error : function(e) {
+			console.log(e);
+		}
+	});
+
+	//가장 인기 많은 게시물
+/*	$.ajax({
+		type : "post",
+		url : "bestOfBoard",
+		data : {"select_img" : select_img},
+		success : function(bestBoard) {
+			$.each(bestBoard, function(index, item) {
+				bList.push(item);
+			});
+		},
+		error : function(e){
+			console.log(e);
+		}
+	});*/
+
+	// 선택한 게시글과 관련정보 불러오기
+	// tList : ArrayList<Timeline>,
+	// timeLine : timeline, timeVar : board, comment, tag, like
+	$.ajaxSettings.traditional = true;
+	$.ajax({
+		type : "post",
+		url : "selectedBoardList",
+		data : {"select_img" : select_img},
+		success : function(tList) {
+			
+			memories_div += tList.length;
+			$.each(tList, function(index, timeLine) {
+				console.log(timeLine);
+				like_div += timeLine.boardLike.length;
+				comment_div += timeLine.boardComment.length;
+				total_div += like_div + comment_div;
+				$.each(timeLine, function(index2, timeVar) {
+
+				});
+			});
+			$("#total_div").html(total_div);
+			$("#like_div").html(like_div);
+			$("#comment_div").html(comment_div);
+			$("#memories_div").html(memories_div);
+		},
+		error : function(e) {
+			console.log(e);
+		}
+	});
 }
 
