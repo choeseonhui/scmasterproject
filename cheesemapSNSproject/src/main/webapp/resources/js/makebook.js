@@ -30,6 +30,10 @@ function moveSlider(index){
 	
 
 $(document).ready(function(){
+	$("#makeBookCancel").on("click", function() {
+		location.href="main";
+	});
+	
 	$("#makebook-button").on("click", function() {
 		if ($("#flag_my_menu").val() == 'true') {
 		} else {

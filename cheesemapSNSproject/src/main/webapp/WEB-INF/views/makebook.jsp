@@ -87,7 +87,7 @@ font-family: 'Jeju Gothic', serif; }
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="hidden"><a href="#page-top"></a></li>
-					<li><a href="#" id="makeMapCancel">cancel</a></li>
+					<li><a href="#" id="makeBookCancel">cancel</a></li>
 				</ul>
 			</div>
             <!-- /.navbar-collapse -->
