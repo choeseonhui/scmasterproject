@@ -31,6 +31,16 @@ function moveSlider(index){
 
 $(document).ready(function(){
 	$("#makebook-button").on("click", function() {
+		if ($("#flag_my_menu").val() == 'true') {
+		} else {
+			$("#flag_my_menu").val("true");
+			$('.menu-slider').animate({
+				"margin-left" : '-=500'
+			});
+			$('.map-control').animate({
+				"margin-left" : '-=250'
+			});
+		};
 		location.href="makebook";
 	});
 	titleDate();
