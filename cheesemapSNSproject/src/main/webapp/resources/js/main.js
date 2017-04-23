@@ -9,46 +9,52 @@ $(function() {
 		$("#flag_contact").val("false");
 	});
 
-	$('#menu-my-menu').click(
-		function() {
-			var mem_id = $("#mem_id").val();
-			if ($("#flag_contact").val() == 'true') {
-				if ($("#flag_my_menu").val() == 'true') {
-					$.ajax({
-						type : "POST",
-						url : "mymenu",
-						data : {
-							mem_id : mem_id
-						},
-						success : function(data) {
-							var myMenu = document.getElementById("myMenu2");
-							var follow = '';
-							follow += "<p>follower : " + data.fol_follower + "</a></p>";
-							follow += "<p>following : " + data.fol_following + "</a></p>";
-							myMenu.innerHTML = follow;
-						},
-						error : function(e) {
-							console.log(e);
-						}
-					});
-					$('.menu-slider').animate({
-						"margin-left" : '+=500'
-					});
-					$('.map-control').animate({
-						"margin-left" : '+=250'
-					});
-					$("#flag_my_menu").val('false');
-				} else {
-					$('.menu-slider').animate({
-						"margin-left" : '-=500'
-					});
-					$('.map-control').animate({
-						"margin-left" : '-=250'
-					});
-					$("#flag_my_menu").val('true');
-				}
+	$('#menu-my-menu').click(function() {
+		var mem_id = $("#mem_id").val();
+		if ($("#flag_contact").val() == 'true') {
+			if ($("#flag_my_menu").val() == 'true') {
+				$.ajax({
+					type : "POST",
+					url : "mymenu",
+					data : {
+						mem_id : mem_id
+					},
+					success : function(data) {
+						var myMenu = document.getElementById("myMenu2");
+						var follow = '';
+						follow += "<p onclick='clickFollower();' id='clickFollower'>follower : " + data.fol_follower + "</p>";
+						follow += "<p onclick='clickFollowing();' id='clickFollowing'>following : " + data.fol_following + "</p>";
+						$("#clickFollower").on("click", function() {
+							console.log('1234');
+						});
+						
+						$('#clickFollowing').click(function() {
+							console.log('1234');
+						});
+						myMenu.innerHTML = follow;
+					},
+					error : function(e) {
+						console.log(e);
+					}
+				});
+				$('.menu-slider').animate({
+					"margin-left" : '+=500'
+				});
+				$('.map-control').animate({
+					"margin-left" : '+=250'
+				});
+				$("#flag_my_menu").val('false');
+			} else {
+				$('.menu-slider').animate({
+					"margin-left" : '-=500'
+				});
+				$('.map-control').animate({
+					"margin-left" : '-=250'
+				});
+				$("#flag_my_menu").val('true');
 			}
-		});
+		}
+	});
 
 	$('#pollSlider-button').click(function() {
 		if ($("#flag_contact").val() == 'true') {
@@ -78,6 +84,30 @@ $(function() {
 		}
 	});
 });
+
+function clickFollower() {
+	$.ajax({
+		type : "POST",
+		url : "clickFollower",
+		success : function(data) {
+		},
+		error : function(e) {
+			console.log(e);
+		}
+	});
+}
+
+function clickFollowing() {
+	$.ajax({
+		type : "POST",
+		url : "clickFollowing",
+		success : function(data) {
+		},
+		error : function(e) {
+			console.log(e);
+		}
+	});
+}
 
 function sliderInit() {
 	if ($("#flag_timeline").val() == 'true') {

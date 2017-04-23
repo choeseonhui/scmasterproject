@@ -13,7 +13,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		$.ajax({
 			type : "get",
-			url : "searchMember",
+			url : "searchMe",
 			success : function(mem) {
 				modal.style.display = "block";
 				document.getElementById("passwordJoin").value = mem.mem_pw;

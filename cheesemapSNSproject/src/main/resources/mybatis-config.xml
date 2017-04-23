@@ -25,5 +25,6 @@
 		<mapper resource="Mapper/SearchMapper.xml" />
 		<mapper resource="Mapper/TimelineMapper.xml"/>
 		<mapper resource="Mapper/MakeBookMapper.xml"/>
+		<mapper resource="Mapper/FollowMapper.xml"/>
 	</mappers>
 </configuration>
