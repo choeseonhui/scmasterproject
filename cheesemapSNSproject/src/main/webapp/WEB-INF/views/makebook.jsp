@@ -60,7 +60,10 @@ html{
 	
 body{
 font-family: 'Jeju Gothic', serif; }
-
+#preview{
+	overflow-x : hidden;
+	overflow-y : auto;
+}
 </style>
 </head>
 
@@ -104,18 +107,13 @@ font-family: 'Jeju Gothic', serif; }
             </div>
         </div>
         <div class="animation_canvas">
-  <!--       
-        <div class="control_panel">
-	       	<div id="n1btn" class="control_button"><img src="./resources/img/n1.png"></div>
-	       	<div id="n2btn" class="control_button"><img src="./resources/img/n2.png"></div>
-	       	<div id="n3btn" class="control_button"><img src="./resources/img/n3.png"></div>
-	       	<div id="n4btn" class="control_button"><img src="./resources/img/n4.png"></div>
-    	</div> -->
         
         <div class="slider_panel">
 			<div id="title_date" class="slider_form"></div>
        		<div id="myBoardList" class="container slider_form"></div>
-			<div id="preview" class="slider_form"></div>
+			<div id="preview" class="slider_form">
+				<jsp:include page="preview1.jsp" flush="true"></jsp:include>
+			</div>
 			<div id="finishBk" class="slider_form"></div>
 		</div>
 		
@@ -218,6 +216,7 @@ font-family: 'Jeju Gothic', serif; }
 	<input type="hidden" id="mainPhoto">
 	
 
+	<input type="hidden" id="mem_id" value="${mem_id}">
 	
 	
 </body>

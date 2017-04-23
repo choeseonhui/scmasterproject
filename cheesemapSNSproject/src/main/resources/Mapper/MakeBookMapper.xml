@@ -56,4 +56,54 @@
 		order by
 			boa_id
 	</select>
+	
+	<select id="bestOfLike" parameterType="BestLike" resultType="Member">
+		select 	
+			m.mem_id
+			, m.mem_nickname
+			, m.mem_savefile
+		from (
+			select t.*, rownum as ord
+			from (
+				select mem_id, count(*) as orderbest
+				from (
+					select mem_id
+					from CS_BOARD_LIKE
+					<trim prefix="WHERE" prefixOverrides="AND|OR">
+			         <if test="select_img != null">
+				           and boa_id in(
+				              <foreach collection="select_img" item="a" separator=",">
+				              #{a}
+				              </foreach>
+				          )
+			        </if>
+			 		</trim>
+			 		<![CDATA[and mem_id!=#{mem_id}]]>
+				)
+				group by mem_id
+				order by orderbest desc
+			) t
+		) sub join CS_MEMBER m
+		on sub.mem_id=m.mem_id
+		where <![CDATA[sub.ord<=3]]>
+	</select>
+	
+	
+	<!-- 다른 방법
+	select t.*,rank() over(order by orderbest desc) as ord
+	from (
+		select mem_id, count(*) as orderbest
+		from (select mem_id
+			from CS_BOARD_LIKE
+			where 1=1
+			and boa_id in(
+			'43', '49', '48'
+			)
+		)
+		group by mem_id
+		) t
+	order by orderbest desc
+	 -->
+	 
+	 
 </mapper>

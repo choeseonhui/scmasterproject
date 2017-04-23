@@ -6,7 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.scmaster.cheesemap.vo.BestLike;
 import com.scmaster.cheesemap.vo.Board;
+import com.scmaster.cheesemap.vo.Member;
 
 @Repository
 public class MakeBookDAO implements MakeBookMapper {
@@ -26,4 +28,21 @@ public class MakeBookDAO implements MakeBookMapper {
 		ArrayList<Board> result = mapper.getMyBoardfromDatetoDate(fromDate, toDate);
 		return result;
 	}
+	
+	@Override
+	public ArrayList<Member> bestOfLike(BestLike bLike) {
+		// TODO Auto-generated method stub
+		MakeBookMapper mapper = session.getMapper(MakeBookMapper.class);
+		ArrayList<Member> result = mapper.bestOfLike(bLike);
+		return result;
+	}
+
+	@Override
+	public ArrayList<String> bestOfBoard(String[] select_img) {
+		// TODO Auto-generated method stub
+		MakeBookMapper mapper = session.getMapper(MakeBookMapper.class);
+		ArrayList<String> result = mapper.bestOfBoard(select_img);
+		return result;
+	}
+
 }

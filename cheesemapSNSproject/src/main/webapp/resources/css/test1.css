@@ -1,0 +1,155 @@
+@charset "utf-8";
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One); /* font */
+.page {
+	width: 21cm;
+	height: 29.7cm;
+	font-family: 'Fjalla One', sans-serif;
+}
+
+#page0 {
+	background-image: url(../img/testPage0.png);
+	background-size: contain;
+}
+
+#page0_5{
+	text-align: center;
+	background-color: burlywood;
+}
+
+#page1 {
+	background-image: url(../img/testPage1.png);
+	background-size: contain;
+	color: white;
+}
+
+#page2{
+	background-color: aquamarine;
+	overflow: auto;
+}
+
+#member_nick{
+	font-size: 50px;
+	padding-top: 4.5cm;
+}
+
+#collabo{
+	font-size: 50px;
+	padding-top: 5cm;
+}
+#cover_title{
+	padding-top: 4cm;
+	text-align: center;
+	font-size: 45px;
+	font-weight: bold;
+}
+
+#cover_date{
+	padding-top: 0.5cm;
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#total_div{
+	padding-top: 5.5cm;
+	text-align: center;
+	font-size: 45px;
+	font-weight: bold;
+}
+
+#total_detail_div{
+	padding-top: 2cm;
+}
+
+#like_div{
+	width: 5cm;
+	position: relative;
+	top: 2.3cm;
+	left: 3.8cm;
+	font-size: 30px;
+	text-align: center;
+	float: left;
+}
+
+#comment_div{
+	width: 5cm;
+	position: relative;
+	top:2.3cm;
+	right: 3.7cm;
+	font-size: 30px;
+	text-align: center;
+	float: right;
+}
+
+#memories_div{
+	width: 6cm;
+	position: relative;
+	top: 7.1cm;
+	left: 7.7cm;
+	text-align: center;
+	font-size: 90px;
+}
+
+.top3_img {
+	width: 2.3cm;
+	height: 2.3cm;
+}
+
+#cover_img{
+	width: 21cm;
+	height: 18.3cm;
+}
+
+.top3_image{
+	position: relative;
+	top: 13.7cm;
+}
+
+#top1 {
+	position: relative;
+	left: 3.8cm;
+	float: left;
+}
+
+#top2 {
+	position: relative;
+	left: 7.1cm;
+	float: left;
+}
+
+#top3{
+	position: relative;
+	left: 10.3cm;
+}
+
+.nickname{
+	width: 5cm;
+	text-align: center;
+	position: relative;
+	top: 14.5cm;
+	font-size: 25px;
+}
+
+#top1_nick{
+	position: relative;
+	left: 2.4cm;
+	float: left;
+}
+
+#top2_nick{
+	position: relative;
+	left: 3.1cm;
+	float: left;
+}
+
+#top3_nick{
+	position: relative;
+	right: 2.3cm;
+	float: right;
+}
+
+#logo{
+	margin-top: 4.5cm;
+	width: 300px;
+	height: 300px;
+}

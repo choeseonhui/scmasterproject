@@ -14,6 +14,7 @@
 		<typeAlias type="com.scmaster.cheesemap.vo.BoardComment" alias="BoardComment" />
 		<typeAlias type="com.scmaster.cheesemap.vo.BoardTag" alias="BoardTag" />
 		<typeAlias type="com.scmaster.cheesemap.vo.BoardLike" alias="BoardLike" />
+		<typeAlias type="com.scmaster.cheesemap.vo.BestLike" alias="BestLike" />
 		<typeAlias type="com.scmaster.cheesemap.vo.Follow" alias="Follow" />
 	</typeAliases>
 
