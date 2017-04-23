@@ -25,6 +25,8 @@
 			boa_video_originalfile is null
 		and
 			boa_photo_originalfile is not null
+		and
+			boa_delete_date is null
 		order by
 			boa_id
 	</select>
@@ -47,12 +49,13 @@
 		from
 			CS_BOARD
 		where
-	     boa_create_date BETWEEN TO_DATE(#{0},'YYYY/MM/DD') AND TO_DATE(#{1},'YYYY/MM/DD')
- 
+			boa_create_date BETWEEN TO_DATE(#{0},'YYYY/MM/DD') AND (TO_DATE(#{1},'YYYY/MM/DD')+1)
 		and
 			boa_video_originalfile is null
 		and
 			boa_photo_originalfile is not null
+		and
+			boa_delete_date is null
 		order by
 			boa_id
 	</select>

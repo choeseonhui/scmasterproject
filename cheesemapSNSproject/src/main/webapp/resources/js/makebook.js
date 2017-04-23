@@ -58,7 +58,8 @@ $(document).ready(function(){
 			url : "first",      //value pf requestMethod
 			data : {
 				fromDate : fromDate, 
-				toDate : toDate},
+				toDate : toDate
+			},
 				
 			dataType:"json",
 			success : function(data){				
