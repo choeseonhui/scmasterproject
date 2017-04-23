@@ -332,3 +332,15 @@ set
 where
 	boa_id = '21';
 	
+select
+	mem_id
+	, mem_gender
+	, mem_nickname
+	, mem_savefile
+	, mem_birth
+from
+	CS_MEMBER, CS_FOLLOW
+WHERE
+	CS_MEMBER.mem_id = CS_FOLLOW.fol_following
+and
+	CS_FOLLOW.fol_follower = 'jwnamkung@naver.com';

@@ -19,12 +19,12 @@
 	</typeAliases>
 
 	<mappers>
+		<mapper resource="Mapper/FollowMapper.xml"/>
 		<mapper resource="Mapper/memberMapper.xml" />
 		<mapper resource="Mapper/MyMenuMaper.xml" />
 		<mapper resource="Mapper/BoardMapper.xml"/>
 		<mapper resource="Mapper/SearchMapper.xml" />
 		<mapper resource="Mapper/TimelineMapper.xml"/>
 		<mapper resource="Mapper/MakeBookMapper.xml"/>
-		<mapper resource="Mapper/FollowMapper.xml"/>
 	</mappers>
 </configuration>

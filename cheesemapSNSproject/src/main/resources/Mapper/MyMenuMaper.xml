@@ -5,7 +5,6 @@
 
 <!-- 마이메뉴 처리 SQL -->
 <mapper namespace="com.scmaster.cheesemap.dao.MyMenuMapper">
-
 	<select id="getMyMenu" parameterType="String" resultType="MyMenu">
 		select
 			mem_id
@@ -31,5 +30,4 @@
 		where
 			mem_id = #{mem_id}
 	</select>
-
 </mapper>

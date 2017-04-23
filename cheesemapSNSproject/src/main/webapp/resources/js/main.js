@@ -24,13 +24,6 @@ $(function() {
 						var follow = '';
 						follow += "<p onclick='clickFollower();' id='clickFollower'>follower : " + data.fol_follower + "</p>";
 						follow += "<p onclick='clickFollowing();' id='clickFollowing'>following : " + data.fol_following + "</p>";
-						$("#clickFollower").on("click", function() {
-							console.log('1234');
-						});
-						
-						$('#clickFollowing').click(function() {
-							console.log('1234');
-						});
 						myMenu.innerHTML = follow;
 					},
 					error : function(e) {
@@ -86,10 +79,17 @@ $(function() {
 });
 
 function clickFollower() {
+	console.log('asdf');
 	$.ajax({
 		type : "POST",
 		url : "clickFollower",
 		success : function(data) {
+			var myMenu = document.getElementById("myMenuAll");
+			var follow = '';
+			$.each(data, function(index, item) {
+				
+			});
+			myMenu.innerHTML = follow;
 		},
 		error : function(e) {
 			console.log(e);
@@ -98,10 +98,17 @@ function clickFollower() {
 }
 
 function clickFollowing() {
+	console.log('qwer');
 	$.ajax({
 		type : "POST",
 		url : "clickFollowing",
 		success : function(data) {
+			var myMenu = document.getElementById("myMenuAll");
+			var follow = '';
+			$.each(data, function(index, item) {
+				
+			});
+			myMenu.innerHTML = follow;
 		},
 		error : function(e) {
 			console.log(e);

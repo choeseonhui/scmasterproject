@@ -11,20 +11,18 @@ import com.scmaster.cheesemap.vo.Member;
 @Repository
 public class FollowDAO implements FollowMapper {
 	
-	public FollowMapper mapper;
-	
 	@Autowired
     SqlSession session;
 
 	@Override
 	public ArrayList<Member> clickFollower(String mem_id) {
-		mapper = session.getMapper(FollowDAO.class);
+		FollowMapper mapper = session.getMapper(FollowMapper.class);
 		return mapper.clickFollower(mem_id);
 	}
 
 	@Override
 	public ArrayList<Member> clickFollowing(String mem_id) {
-		mapper = session.getMapper(FollowDAO.class);
+		FollowMapper mapper = session.getMapper(FollowDAO.class);
 		return mapper.clickFollowing(mem_id);
 	}
 }

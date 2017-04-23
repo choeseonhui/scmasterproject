@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.scmaster.cheesemap.dao.FollowMapper">
+	<select id="clickFollower" resultType="Member" parameterType="String">
+		select
+			mem_id
+			, mem_gender
+			, mem_nickname
+			, mem_savefile
+			, mem_birth
+		from
+			CS_MEMBER, CS_FOLLOW
+		WHERE
+			CS_MEMBER.mem_id = CS_FOLLOW.fol_following
+		and
+			CS_FOLLOW.fol_follower = #{mem_id}
+	</select>
 	
+	<select id="clickFollowing" resultType="Member" parameterType="String">
+		select
+			mem_id
+			, mem_gender
+			, mem_nickname
+			, mem_savefile
+			, mem_birth
+		from
+			CS_MEMBER, CS_FOLLOW
+		WHERE
+			CS_MEMBER.mem_id = CS_FOLLOW.fol_following
+		and
+			CS_FOLLOW.fol_follower = #{mem_id}
+	</select>
 </mapper>
