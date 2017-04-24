@@ -38,10 +38,10 @@ public class MakeBookDAO implements MakeBookMapper {
 	}
 
 	@Override
-	public ArrayList<String> bestOfBoard(String[] select_img) {
+	public String[] bestOfBoard(String[] select_img) {
 		// TODO Auto-generated method stub
 		MakeBookMapper mapper = session.getMapper(MakeBookMapper.class);
-		ArrayList<String> result = mapper.bestOfBoard(select_img);
+		String[] result = mapper.bestOfBoard(select_img);
 		return result;
 	}
 

@@ -106,4 +106,35 @@
 		where	
 			boa_id = #{boa_id}
 	</delete>
+
+	<select id="getBoardByDivision" parameterType="String" resultType="Board">
+	SELECT 	
+		boa_id
+		, <![CDATA[CASE 
+		WHEN INSTR(BOA_CONTENT,'<img')= 0 AND INSTR(BOA_CONTENT,'<video')= 0
+		THEN BOA_CONTENT
+		WHEN INSTR(BOA_CONTENT,'<video')= 0
+		THEN SUBSTR(BOA_CONTENT,1,INSTR(BOA_CONTENT,'<img')-1)||
+       		 SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<img')+INSTR(SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<img')),'>'))
+      	WHEN INSTR(BOA_CONTENT,'<img')= 0
+		THEN SUBSTR(BOA_CONTENT,1,INSTR(BOA_CONTENT,'<video')-1)||
+       		 SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<video')+INSTR(SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<video')),'/video>')+6)
+      	WHEN (INSTR(BOA_CONTENT,'<img') < INSTR(BOA_CONTENT,'<video')) AND INSTR(BOA_CONTENT,'<video') != 0
+		THEN SUBSTR(BOA_CONTENT,1,INSTR(BOA_CONTENT,'<img')-1)||
+       		 SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<img')+INSTR(SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<img')),'>'),INSTR(BOA_CONTENT,'<video')-(INSTR(BOA_CONTENT,'<img')+INSTR(SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<img')),'>')))||
+       		 SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<video')+INSTR(SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<video')),'/video>')+6) 
+       	WHEN (INSTR(BOA_CONTENT,'<img') > INSTR(BOA_CONTENT,'<video')) AND INSTR(BOA_CONTENT,'<video') != 0
+		THEN SUBSTR(BOA_CONTENT,1,INSTR(BOA_CONTENT,'<video')-1)||
+       		 SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<video')+INSTR(SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<video')),'/video>')+6,INSTR(BOA_CONTENT,'<img')-(INSTR(BOA_CONTENT,'<video')+INSTR(SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<video')),'/video>')+6))||
+       		 SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<img')+INSTR(SUBSTR(BOA_CONTENT,INSTR(BOA_CONTENT,'<img')),'>'))
+       	END	AS BOA_CONTENT]]>
+		, to_char(boa_create_date, 'YYYY.MM.DD, DAY PM HH12:MI') boa_create_date
+		, boa_latitude
+		, boa_longitude
+		, boa_photo_savefile
+		, boa_video_savefile
+		, mem_id
+	from CS_BOARD
+	where boa_id=#{boa_id}
+	</select>
 </mapper>

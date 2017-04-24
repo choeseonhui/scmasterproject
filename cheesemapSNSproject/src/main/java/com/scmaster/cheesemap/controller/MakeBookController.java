@@ -44,7 +44,7 @@ public class MakeBookController {
 	@ResponseBody
 	@RequestMapping(value = "first", method = RequestMethod.GET)
 	public ArrayList<Board> first(String fromDate, String toDate) {
-		System.out.println(toDate);
+		
 		ArrayList<Board> myBoard = makeBookDAO.getMyBoardfromDatetoDate(fromDate, toDate);
 
 		/*
@@ -62,7 +62,7 @@ public class MakeBookController {
 			for (String boa_id : select_img) {
 				Timeline temp = new Timeline();
 
-				Board timelineBoard = timelineDAO.getTimeline(boa_id);
+				Board timelineBoard = timelineDAO.getBoardByDivision(boa_id);
 
 				temp.setBoard(timelineBoard);
 				temp.setBoardComment(timelineDAO.getBoardComment(boa_id));
@@ -86,11 +86,10 @@ public class MakeBookController {
 
 	@ResponseBody
 	@RequestMapping(value = "bestOfBoard", method = RequestMethod.POST)
-	public ArrayList<String> bestOfBoard(String[] select_img) {
-		ArrayList<String> result = new ArrayList<>();
-
-		result = makeBookDAO.bestOfBoard(select_img);
-
+	public ArrayList<Timeline> bestOfBoard(String[] select_img) {
+		ArrayList<Timeline> result = new ArrayList<>();
+		String[] bList = makeBookDAO.bestOfBoard(select_img);
+		result=selectedBoardList(bList);
 		return result;
 	}
 }

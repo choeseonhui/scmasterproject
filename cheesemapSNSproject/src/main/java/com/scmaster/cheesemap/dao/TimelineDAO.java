@@ -63,4 +63,11 @@ public class TimelineDAO implements TimelineMapper {
 		TimelineMapper mapper = sqlsession.getMapper(TimelineMapper.class);
 		mapper.deleteBoardTag(boa_id);
 	}
+
+	@Override
+	public Board getBoardByDivision(String boa_id) {
+		// TODO Auto-generated method stub
+		TimelineMapper mapper = sqlsession.getMapper(TimelineMapper.class);
+		return mapper.getBoardByDivision(boa_id);
+	}
 }

@@ -1,11 +1,6 @@
 var select_img;
 var bookTitle;
 
-
-
-
-
-
 function moveSlider(index){
 		//슬라이더 이동
 		var willMoveLeft=-(index*1570);
@@ -261,7 +256,6 @@ function previewer() {
 	var cover_img=$("#mainPhoto").val();
 	var startDate=$("#dp2").val();
 	var endDate=$("#dp3").val();
-	var bList=[];
 	
 	/*0페이지*/
 	$("#cover_img").attr("src", cover_img);
@@ -285,7 +279,7 @@ function previewer() {
 		error : function(e) { console.log(e); }
 		});
 	 
-
+	 /*1페이지*/
 	// 가장 좋아요 많이 한 친구
 	$.ajax({
 		type : "post",
@@ -297,7 +291,6 @@ function previewer() {
 		}),
 		dataType : "json",
 		success : function(bList) {
-			console.log(bList);
 			$.each(bList, function(index, member) {
 				if (member.mem_savefile != null) {
 					$("#top" + (index + 1)).html(
@@ -315,21 +308,31 @@ function previewer() {
 		}
 	});
 
+	/*2~3페이지*/
 	//가장 인기 많은 게시물
-/*	$.ajax({
+	$.ajaxSettings.traditional = true;
+	$.ajax({
 		type : "post",
 		url : "bestOfBoard",
 		data : {"select_img" : select_img},
-		success : function(bestBoard) {
-			$.each(bestBoard, function(index, item) {
-				bList.push(item);
+		success : function(bList) {
+			$.each(bList, function(index, item) {
+				console.log(item);				
+				$("#post_top" + (index + 1)+"_like").html(item.boardLike.length);
+				$("#post_top" + (index + 1)+"_comment").html(item.boardComment.length);
+				$("#post_top" + (index + 1)+"_img").attr("src", item.board.boa_photo_savefile);
+				if(index==0){
+					$("#post_top" + (index + 1)+"_date").html(item.board.boa_create_date);
+					$("#post_top" + (index + 1)+"_content").html(item.board.boa_content);
+				}
 			});
 		},
 		error : function(e){
 			console.log(e);
 		}
-	});*/
+	});
 
+	/*4페이지*/
 	// 선택한 게시글과 관련정보 불러오기
 	// tList : ArrayList<Timeline>,
 	// timeLine : timeline, timeVar : board, comment, tag, like
@@ -339,21 +342,37 @@ function previewer() {
 		url : "selectedBoardList",
 		data : {"select_img" : select_img},
 		success : function(tList) {
-			
 			memories_div += tList.length;
+			var page4="";
 			$.each(tList, function(index, timeLine) {
-				console.log(timeLine);
 				like_div += timeLine.boardLike.length;
 				comment_div += timeLine.boardComment.length;
-				total_div += like_div + comment_div;
-				$.each(timeLine, function(index2, timeVar) {
-
+				page4+="<div class='page page4' id='page4_"+index+"'>"
+					+"<div class='post_date'>"+timeLine.board.boa_create_date+"</div>" 
+					+"<img class='post_img' src="+timeLine.board.boa_photo_savefile+">"
+					+"<div class='post_content'>"+timeLine.board.boa_content+"</div>"
+					+"<div class='post_hashtag'>";
+				$.each(timeLine.boardTag, function(index2, tag){
+					page4+=" "+tag.tag_name+" ";
 				});
+				page4+="</div>"+"<div class='post_like'>"
+					+timeLine.boardLike.length+"</div>"
+					+"<div class='post_comment'>"+timeLine.boardComment.length+"</div>"
+					+"<div class='post_comment_div'>";
+				$.each(timeLine.boardComment, function(index2, comment){
+					console.log(timeLine.boardComment);
+					page4+="<div class='post_comment_nick'>"+comment.mem_id+"</div>"
+							+"<div class='post_comment_content'>"+comment.com_content+"</div>";
+				});
+				page4+="</div></div>";
 			});
+			total_div = like_div + comment_div;
 			$("#total_div").html(total_div);
 			$("#like_div").html(like_div);
 			$("#comment_div").html(comment_div);
 			$("#memories_div").html(memories_div);
+			page4+="<div class='page' id='page_last'></div>"; 
+			$("#page4").html(page4);
 		},
 		error : function(e) {
 			console.log(e);

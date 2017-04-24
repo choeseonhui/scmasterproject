@@ -40,11 +40,40 @@
 	</div>
 	
 	<div class="page" id="page2">
-	<p>11111111111111111111111</p><p><img src="./resources/img/logo.png" style="width: 300px;" class="fr-fic fr-dib" data-originalfilename="#logo.png%"></p><p>24124124124</p><p><img src="./resources/img/logo.png" style="width: 300px;" class="fr-fic fr-dib" data-originalfilename="#logo.png%"></p><p>ㅁㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㅁㄹ</p>
-	<p><img src="./resources/img/logo.png" style="width: 300px;" class="fr-fic fr-dib" data-originalfilename="#logo.png%"></p><p>ㅁㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㅁㄹ</p>
-	<p><img src="./resources/img/logo.png" style="width: 300px;" class="fr-fic fr-dib" data-originalfilename="#logo.png%"></p><p>ㅁㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㅁㄹ</p>
-	<p><img src="./resources/img/logo.png" style="width: 300px;" class="fr-fic fr-dib" data-originalfilename="#logo.png%"></p><p>ㅁㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㅁㄹ</p>
+			<div id="post_top2_div">
+				<img id="post_top2_img" src="./resources/img/logo.png">
+				<div id="post_top2_like">47</div>
+				<div id="post_top2_comment">44</div>
+			</div>
+			<div id="post_top3_div">
+				<img id="post_top3_img" src="./resources/img/logo.png">
+				<div id="post_top3_like">47</div>
+				<div id="post_top3_comment">44</div>
+			</div>
 	</div>
+	<div class="page" id="page3">
+		<div id="post_top1_div">
+			<div id="post_top1_date">2017.04.04 MONDAY PM 4:44</div>
+			<img id="post_top1_img" src="./resources/img/logo.png">
+			<div id="post_top1_content">오늘 외근합니다</div>
+			<div id="post_top1_like">44</div>
+			<div id="post_top1_comment">44</div>
+		</div>
+	</div>
+	<div class="page" id="page3_5"></div>
+	<div class="page" id="page4">
+		<div id="post_date">2017.04.04 MONDAY PM 4:44</div>
+		<img id="post_img" src="./resources/img/logo.png">
+		<div id="post_content">하하하하하하하하하즐거워라</div>
+		<div id="post_hashtag">#집에 #가고 #싶다</div>
+		<div id="post_like">123</div>
+		<div id="post_comment">123</div>
+		<div id="post_comment_div">
+			<div class="post_comment_nick">COCOHELLO</div>
+			<div class="post_comment_content">놀러가고 싶다고!!!!!!!!!!!!</div>
+		</div>
+	</div>
+	<!-- <div class="page" id="page_last"></div> -->
 
 </body>
 </html>

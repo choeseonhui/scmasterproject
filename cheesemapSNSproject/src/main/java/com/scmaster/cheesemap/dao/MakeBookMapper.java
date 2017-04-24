@@ -10,5 +10,5 @@ public interface MakeBookMapper {
 	public ArrayList<Board> getMyBoard(String mem_id);
 	public ArrayList<Board> getMyBoardfromDatetoDate(String fromDate,String toDate);
 	public ArrayList<Member> bestOfLike(BestLike bLike);
-	public ArrayList<String> bestOfBoard(String[] select_img);
+	public String[] bestOfBoard(String[] select_img);
 }

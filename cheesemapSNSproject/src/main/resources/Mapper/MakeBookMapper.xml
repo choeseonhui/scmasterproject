@@ -107,6 +107,33 @@
 		) t
 	order by orderbest desc
 	 -->
+	
+	<select id="bestOfBoard" parameterType="java.util.ArrayList" resultType="String">
+	select t.boa_id
+	from (
+		select b.boa_id,
+		       count(c.com_id)+count(l.mem_id) as total
+		from cs_board b 
+		     left outer join 
+		     cs_board_comment c
+		     on b.boa_id = c.boa_id
+		     left outer join 
+		     cs_board_like l
+		     on b.boa_id = l.boa_id 
+			<trim prefix="WHERE" prefixOverrides="AND|OR">
+				<if test="array != null">
+				and b.boa_id in (
+					<foreach collection="array" item="a" separator=",">
+				    	#{a}
+				    </foreach>
+				    )
+			    </if>
+			</trim>     
+		group by b.boa_id
+		order by total desc
+	 ) t
+	 where <![CDATA[rownum<=3]]>
+	 </select> 
 	 
 	 
 </mapper>
