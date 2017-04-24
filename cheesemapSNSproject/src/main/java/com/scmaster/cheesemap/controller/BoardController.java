@@ -1,7 +1,10 @@
 package com.scmaster.cheesemap.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.scmaster.cheesemap.dao.BoardDAO;
 import com.scmaster.cheesemap.dao.TimelineDAO;
+import com.scmaster.cheesemap.util.convertFromDate;
 import com.scmaster.cheesemap.vo.Board;
 import com.scmaster.cheesemap.vo.BoardComment;
 import com.scmaster.cheesemap.vo.BoardLike;
@@ -56,8 +60,18 @@ public class BoardController {
 
 	@ResponseBody
 	@RequestMapping(value = "boardRead", method = RequestMethod.POST)
-	public Board boardRead(String boa_id) {
+	public Board boardRead(String boa_id) throws ParseException {
 		Board result = dao.boardRead(boa_id);
+	   String orignDate  = result.getBoa_create_date();
+		
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		Date dateFrom = transFormat.parse(orignDate);
+		System.out.println(dateFrom);
+		convertFromDate convert = new convertFromDate();
+		String updateDate = convert.calculateTime(dateFrom);
+		result.setBoa_create_date(updateDate);
+		
 		return result;
 	}
 

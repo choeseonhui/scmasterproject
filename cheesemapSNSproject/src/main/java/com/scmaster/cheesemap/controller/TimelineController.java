@@ -44,7 +44,6 @@ public class TimelineController {
 				Board timelineBoard = timelineDAO.getTimeline(boa_id);
 
 				String orignDate = timelineBoard.getBoa_create_date();
-
 				SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 				Date dateFrom = transFormat.parse(orignDate);
@@ -52,7 +51,6 @@ public class TimelineController {
 				convertFromDate convert = new convertFromDate();
 				String updateDate = convert.calculateTime(dateFrom);
 				timelineBoard.setBoa_create_date(updateDate);
-
 				temp.setBoard(timelineBoard);
 				temp.setBoardComment(timelineDAO.getBoardComment(boa_id));
 				temp.setBoardTag(timelineDAO.getBoardTag(boa_id));

@@ -39,7 +39,7 @@
 		select
 			boa_id
 			, boa_content
-			, to_char(boa_create_date, 'YY.MM.DD, HH24:MI') boa_create_date
+			, boa_create_date
 			, boa_latitude
 			, boa_longitude
 			, boa_photo_savefile
