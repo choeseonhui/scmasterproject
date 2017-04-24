@@ -45,7 +45,6 @@ public class BoardDAO {
 	}
 
 	public int delReply(String com_id) {
-		// TODO Auto-generated method stub
 		mapper = session.getMapper(BoardMapper.class);
 		return mapper.delReply(com_id);
 	}

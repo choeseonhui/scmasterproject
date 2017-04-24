@@ -83,8 +83,6 @@ public class TimelineController {
 	public String followCheck(String board_id, HttpSession session) {
 		String login_id = (String) session.getAttribute("mem_id");
 		Follow follow = new Follow(login_id, board_id);
-		System.out.println(board_id);
-		System.out.println(follow);
 		if(board_id.equals(login_id)) {
 			return "i";
 		}
@@ -116,7 +114,6 @@ public class TimelineController {
 	@ResponseBody
 	@RequestMapping(value = "deleteBoard", method = RequestMethod.GET)
 	public void deleteBoard(String boa_id) {
-		System.out.println(boa_id);
 		timelineDAO.deleteBoard(boa_id);
 		timelineDAO.deleteBoardTag(boa_id);
 	}

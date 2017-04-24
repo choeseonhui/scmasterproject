@@ -120,9 +120,7 @@ public class MemberJoinController {
 	@ResponseBody
 	@RequestMapping(value = "searchMe", method = RequestMethod.GET)
 	public Member searchMe(HttpSession session) {
-		System.out.println("asdf");
 		String mem_id = (String) session.getAttribute("mem_id");
-		System.out.println(mem_id);
 		Member result = dao.searchMember(mem_id);
 		return result;
 	}

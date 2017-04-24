@@ -62,7 +62,6 @@ public class SearchController {
 		if (input != null) {
 			list = dao.autocomplete(input);
 		}
-		System.out.println(list);
 		return list;
 	}
 }
