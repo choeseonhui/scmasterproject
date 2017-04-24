@@ -5,9 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.scmaster.cheesemap.dao.BoardDAO;
 import com.scmaster.cheesemap.dao.MyMenuDAO;
+import com.scmaster.cheesemap.dao.SearchDAO;
 import com.scmaster.cheesemap.util.MailTest;
 import com.scmaster.cheesemap.vo.MyMenu;
 
@@ -25,6 +29,12 @@ public class MyMenuController {
 	
 	@Autowired
 	private MyMenuDAO myMenuDao;
+	
+	@Autowired
+	private SearchDAO searchDAO;
+	
+	@Autowired
+	private BoardDAO boardDAO;
 	
 	@ResponseBody
 	@RequestMapping(value = "mymenu", method = RequestMethod.POST)
@@ -69,5 +79,16 @@ public class MyMenuController {
 			String cheese_id = "cocohello010@gmail.net";// cheese team address
 			//보내는 사람, 서버메일주소, subject
 			mailtest.testMailSend(email, cheese_id, subject, message);
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="clickMyPosts", method=RequestMethod.POST)
+	public void clickMyPosts(HttpSession session){
+		String userId = (String) session.getAttribute("mem_id");
+		
+		ArrayList<String> BoardidList = searchDAO.resultUser(userId);
+
+		session.setAttribute("boa_id_list", BoardidList);
 	}
 }

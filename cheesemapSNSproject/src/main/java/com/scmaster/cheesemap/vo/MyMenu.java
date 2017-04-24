@@ -7,18 +7,20 @@ public class MyMenu {
 	private String mem_savefile;
 	private int fol_follower;
 	private int fol_following;
+	private int count_board;
 
 	public MyMenu() {
 	}
 
 	public MyMenu(String mem_id, String mem_nickname, String mem_originalfile, String mem_savefile, int fol_follower,
-			int fol_following) {
+			int fol_following,int count_board) {
 		this.mem_id = mem_id;
 		this.mem_nickname = mem_nickname;
 		this.mem_originalfile = mem_originalfile;
 		this.mem_savefile = mem_savefile;
 		this.fol_follower = fol_follower;
 		this.fol_following = fol_following;
+		this.count_board = count_board;
 	}
 	
 	public String getMem_id() {
@@ -69,11 +71,25 @@ public class MyMenu {
 		this.fol_following = fol_following;
 	}
 
+	
+	
+	public int getCount_board() {
+		return count_board;
+	}
+
+	public void setCount_board(int count_board) {
+		this.count_board = count_board;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "MyMenu [mem_id=" + mem_id + ", mem_nickname=" + mem_nickname + ", mem_originalfile=" + mem_originalfile
 				+ ", mem_savefile=" + mem_savefile + ", fol_follower=" + fol_follower + ", fol_following="
-				+ fol_following + "]";
+				+ fol_following + ", count_board=" + count_board + "]";
 	}
+
+	
+	
 
 }

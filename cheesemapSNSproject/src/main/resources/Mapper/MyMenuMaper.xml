@@ -25,6 +25,12 @@
 				where
 					fol_following = #{mem_id}
 			) fol_follower
+			,( select count(boa_id) count_board
+			    from 
+			      cs_board
+			      where
+			       mem_id = #{mem_id}
+			      ) count_board
 		from
 			cs_member m
 		where

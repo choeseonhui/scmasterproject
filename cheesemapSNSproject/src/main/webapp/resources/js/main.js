@@ -25,6 +25,7 @@ $(function() {
 						var follow = '';
 						follow += "<p onclick='clickFollower();' id='clickFollower'>follower : " + data.fol_follower + "</p>";
 						follow += "<p onclick='clickFollowing();' id='clickFollowing'>following : " + data.fol_following + "</p>";
+						follow += "<p onclick='clickMyPosts();' id='clickPosts'>My Posts  : " + data.count_board + "</p>";
 						myMenu.innerHTML = follow;
 					},
 					error : function(e) {
@@ -241,3 +242,52 @@ function createDefaultMymenu() {
 	myMenuDefault += '<input type="hidden" id="mem_id" value="${mem_id }">';
 	myMenu.innerHTML = myMenuDefault;
 }*/
+
+
+function clickMyPosts(){
+	
+	$('.menu-slider').animate({
+		"margin-left" : '-=500'
+	});
+	$('.map-control').animate({
+		"margin-left" : '-=250'
+	});
+	$("#flag_my_menu").val('true');
+	
+	
+	$.ajax({
+		type : "POST",
+		url : "clickMyPosts",
+		success : function(data) {
+			
+			boardList();
+			
+			if ($("#flag_contact").val() == 'true') {  		
+	    		if ($("#flag_timeline").val() == 'true') {   		
+	    				
+	    			 $("#flag_timeline").val('false');
+	    				
+	    				$('#pollSlider-button').animate({
+	    					"margin-right" : '+=500'
+	    				});
+	    				$('.pollSlider').animate({
+	    					"margin-right" : '+=500'
+	    				});
+	    				
+	    				$('.searchClass').animate({					
+	    					"margin-right" : '+=500'
+	    				});
+	    			}
+	    		};
+			
+			
+			
+			
+		},
+		error : function(e) {
+			console.log(e);
+		}
+	});
+	
+};
+
