@@ -206,6 +206,8 @@ font-family: 'Jeju Gothic', serif; }
     <script src="./resources/js/freelancer.min.js"></script>
     
     <!-- MakeBook JavaScript -->
+    <script	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+	<script src="./resources/js/html2canvas.js"></script>
     <script src="./resources/js/makebook.js"></script>
     
     <!-- jquery JavaScript -->

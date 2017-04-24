@@ -1,6 +1,34 @@
 var select_img;
 var bookTitle;
 
+function makepdf() {
+	var doc = new jsPDF();
+	doc.addHTML(document.getElementById('page0'), 0, 0, function() {
+		doc.addPage();
+	});
+	doc.addHTML(document.getElementById('page0_5'), 0, 0, function() {
+		doc.addPage();
+	}); 
+	doc.addHTML(document.getElementById('page1'), 0, 0, function() {
+		doc.addPage();
+	}); 
+	doc.addHTML(document.getElementById('page2'), 0, 0, function() {
+		doc.addPage();
+	}); 
+	doc.addHTML(document.getElementById('page3'), 0, 0, function() {
+		doc.addPage();
+	}); 
+	doc.addHTML(document.getElementById('page3_5'), 0, 0, function() {
+		doc.addPage();
+	}); 
+	doc.addHTML(document.getElementById('page4'), 0, 0, function() {
+		doc.addPage();
+	}); 
+	doc.addHTML(document.getElementById('page_last'), 0, 0, function() {
+		doc.save('3333.pdf');
+	});
+}
+
 function moveSlider(index){
 		//슬라이더 이동
 		var willMoveLeft=-(index*1570);
@@ -347,7 +375,8 @@ function previewer() {
 			$.each(tList, function(index, timeLine) {
 				like_div += timeLine.boardLike.length;
 				comment_div += timeLine.boardComment.length;
-				page4+="<div class='page page4' id='page4_"+index+"'>"
+				page4+="<div class='page' id='page4_"+index+"'>"
+					+"<img class='background_img' src='./resources/img/page6.png'>"
 					+"<div class='post_date'>"+timeLine.board.boa_create_date+"</div>" 
 					+"<img class='post_img' src="+timeLine.board.boa_photo_savefile+">"
 					+"<div class='post_content'>"+timeLine.board.boa_content+"</div>"
@@ -371,7 +400,7 @@ function previewer() {
 			$("#like_div").html(like_div);
 			$("#comment_div").html(comment_div);
 			$("#memories_div").html(memories_div);
-			page4+="<div class='page' id='page_last'></div>"; 
+			page4+="<div class='page' id='page_last'> <img class='background_img' id='lastpage' src='./resources/img/testPage_last.png'> </div>"; 
 			$("#page4").html(page4);
 		},
 		error : function(e) {

@@ -6,9 +6,11 @@
 	font-family: 'Fjalla One', sans-serif;
 }
 
-#page0 {
-	background-image: url(../img/testPage0.png);
-	background-size: contain;
+.background_img {
+	position: relative;
+	z-index: -55;
+	width: 21cm;
+	height: 29.7cm;
 }
 
 #page0_5{
@@ -17,75 +19,62 @@
 }
 
 #page1 {
-	background-image: url(../img/testPage1.png);
-	background-size: contain;
 	color: white;
 }
 
-#page2{
-	background-image: url(../img/testPage2.png);
-	background-size: contain;
-}
-
 #page3{
-	background-image: url(../img/testPage3.png);
-	background-size: contain;
 	color: #5a5955;
 }
 
-#page3_5{
-	background-image: url(../img/testPage3_5.png);
-	background-size: contain;
-}
-
-.page4{
-	background-image: url(../img/page6.png);
-	background-size: contain;
-}
-
-#page_last{
-	background-image: url(../img/testPage_last.png);
-	background-size: contain;
-}
-
 #member_nick{
+	z-index: 55;
 	font-size: 50px;
 	padding-top: 4.5cm;
 }
 
 #collabo{
+	z-index: 55;
 	font-size: 50px;
 	padding-top: 5cm;
 }
 #cover_title{
-	padding-top: 4cm;
+	z-index: 55;
 	text-align: center;
+	position: relative;
+	bottom: 26cm;
 	font-size: 45px;
 	font-weight: bold;
 }
 
 #cover_date{
-	padding-top: 0.5cm;
+	z-index: 55;
 	text-align: center;
+	position: relative;
+	bottom: 26cm;
 	font-size: 30px;
 	font-weight: bold;
 }
 
 #total_div{
-	padding-top: 5.5cm;
+	z-index: 55;
+	position: relative;
+	top: -24.2cm;
 	text-align: center;
 	font-size: 45px;
 	font-weight: bold;
 }
 
 #total_detail_div{
+	z-index: 55;
+	position: relative;
 	padding-top: 2cm;
 }
 
 #like_div{
+	z-index: 55;
 	width: 5cm;
 	position: relative;
-	top: 2.3cm;
+	top: -22cm;
 	left: 3.8cm;
 	font-size: 30px;
 	text-align: center;
@@ -93,151 +82,182 @@
 }
 
 #comment_div{
+	z-index: 55;
+	height: 4cm;
 	width: 5cm;
 	position: relative;
-	top:2.3cm;
-	right: 3.7cm;
+	top:-17.6cm;
+	right: 7.5cm;
 	font-size: 30px;
 	text-align: center;
 	float: right;
 }
 
 #memories_div{
+	z-index: 55;
 	width: 6cm;
 	position: relative;
-	top: 7.1cm;
-	left: 7.7cm;
+	top: -16.5cm;
+	left: 6cm;
 	text-align: center;
 	font-size: 90px;
 }
 
 .top3_img {
+	z-index: 55;
 	width: 2.3cm;
 	height: 2.3cm;
 }
 
 #cover_img{
+	z-index: 55;
+	position: relative;
+	left: 0cm;
+	top: -29.7cm;
 	width: 21cm;
 	height: 18.3cm;
 }
 
 .top3_image{
+	z-index: 55;
 	position: relative;
-	top: 13.7cm;
+	top: -10.8cm;
 }
 
 #top1 {
+	z-index: 55;
 	position: relative;
 	left: 3.8cm;
 	float: left;
 }
 
 #top2 {
+	z-index: 55;
 	position: relative;
 	left: 7.1cm;
 	float: left;
 }
 
 #top3{
+	z-index: 55;
 	position: relative;
 	left: 10.3cm;
 }
 
 .nickname{
+	z-index: 55;
+	color: black;
 	width: 5cm;
 	text-align: center;
 	position: relative;
-	top: 14.5cm;
+	top: -9.3cm;
 	font-size: 25px;
 }
 
 #top1_nick{
+	z-index: 55;
 	position: relative;
 	left: 2.4cm;
 	float: left;
 }
 
 #top2_nick{
+	z-index: 55;
 	position: relative;
 	left: 3.1cm;
 	float: left;
 }
 
 #top3_nick{
+	z-index: 55;
 	position: relative;
 	right: 2.3cm;
 	float: right;
 }
 
 #logo{
-	margin-top: 4.5cm;
+	z-index: 55;
+	position: relative;
+	top: 3.5cm;
 	width: 300px;
 	height: 300px;
 }
 
-#post_top2_div{
+#backimg2{
+	z-index: 55;
 	position: relative;
-	top: 5.4cm;
-	left: 1.7cm;
-	color: white;
+	left: -10cm;
+	top: -5.7cm;
 }
 
 #post_top2_like{
+	z-index: 55;
 	position: relative;
 	text-align: center;
 	font-size: 45px;
 	width: 3cm;
-	left: 13.4cm;
-	top: -9cm;
+	left: 15.15cm;
+	top: -38.9cm;
 	
 }
 
 #post_top2_comment{
+	z-index: 55;
 	position: relative;
 	text-align: center;
 	font-size: 45px;
 	width: 3cm;
-	left: 13.4cm;
-	top: -6cm;
+	left: 15.15cm;
+	top: -36.1cm;
 }
 
 #post_top2_img{
+	z-index: 55;
+	position: relative;
+	top: -30cm;
+	left: 1.7cm;
 	width: 450px;
 	height: 375px;
 }
 
-#post_top3_div{
-	position: relative;
-	top: 4.8cm;
-	left: 1.7cm;
-	color: #ff8d3c;
-}
-
 #post_top3_like{
+	z-index: 55;
 	position: relative;
 	text-align: center;
 	font-size: 45px;
 	width: 3cm;
-	left: 13.4cm;
-	top: -9cm;
+	left: 15.15cm;
+	top: -39.8cm;
 	
 }
 
 #post_top3_comment{
+	z-index: 55;
 	position: relative;
 	text-align: center;
 	font-size: 45px;
 	width: 3cm;
-	left: 13.4cm;
-	top: -6cm;
+	left: 15.15cm;
+	top: -36.9cm;
 }
 
 #post_top3_img{
+	z-index: 55;
+	position: relative;
+	top: -30.9cm;
+	left: 1.7cm;
 	width: 450px;
 	height: 375px;
 }
 
+#post_top1_div{
+	z-index: 55;
+	position: relative;
+	top: -29.8cm;
+}
+
 #post_top1_date{
+	z-index: 55;
 	position: relative;
 	top: 8.65cm;
 	text-align: center;
@@ -246,6 +266,7 @@
 }
 
 #post_top1_img{
+	z-index: 55;
 	position: relative;
 	top: 9.5cm;
 	left: 1.38cm;
@@ -254,6 +275,7 @@
 }
 
 #post_top1_content{
+	z-index: 55;
 	position: relative;
 	top: 10cm;
 	left: 1.38cm;
@@ -262,88 +284,123 @@
 }
 
 #post_top1_like{
+	z-index: 55;
 	font-size: 35px;
 	color: #ff8d3c;
 	position: relative;
 	float: left;
 	width: 2cm;
 	text-align: center;
-	top:13.9cm;
+	top:13.2cm;
 	left: 3.5cm;
 }
 
 #post_top1_comment{
+	z-index: 55;
 	color: #ff8d3c;
 	font-size: 35px;
 	position: relative;
 	text-align: center;
 	width: 3cm;
-	top:13.9cm;
+	top:13.2cm;
 	left: 7.5cm;
 }
 
 .post_date{
+	z-index: 55;
 	position: relative;
 	color: #f2c200;
 	font-size: 30px;
 	left: 1.5cm;
-	top: 2cm;
+	top: -27.7cm;
 }
 
 .post_img{
+	z-index: 55;
 	position: relative;
-	top: 4.55cm;
+	top: -25.3cm;
 	left: 3cm;
 	width: 566px;
 	height: 406px;
 }
 
 .post_content{
+	z-index: 55;
 	position: relative;
 	color: #5a5955;
-	top: 5.3cm;
+	top: -25cm;
 	left: 3cm;
 	font-weight: bold;
 }
 
 .post_hashtag{
+	z-index: 55;
 	position: relative;
-	top: 7.8cm;
+	top: -22.6cm;
 	left: 3cm;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .post_like{
+	z-index: 55;
 	position: relative;
 	text-align: center;
 	float: left;
 	font-size: 30px;
 	color: #5a5955;
-	top: 8.18cm;
+	top: -22.45cm;
 	left: 4cm;
 }
 
 .post_comment{
+	z-index: 55;
 	position: relative;
 	text-align: center;
 	color: #5a5955;
 	width: 3cm;
-	top: 8.18cm;
+	top: -22.45cm;
 	left: 8.2cm;
 	font-size: 30px;
 }
 
 .post_comment_div{
+	z-index: 55;
 	position: relative;
-	top: 8.5cm;
+	top: -67.2cm;
 	left: 1.5cm;
 }
 
 .post_comment_nick{
+	z-index: 55;
 	float: left;
 }
 
 .post_comment_content{
+	z-index: 55;
 	padding-left: 2.4cm;
+}
+
+#back_img3_5{
+	z-index: 55;
+	position: relative;
+	top: -15.4cm;
+}
+
+#post_div{
+	z-index: 55;
+	position: relative;
+	top: -29.8cm;
+}
+
+#lastpage{
+	z-index: 55;
+	position: relative;
+	top:29.7cm;
+}
+
+.post_background_img{
+	position: relative;
+	width: 21cm;
+	height: 29.7cm;
 }
