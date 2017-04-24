@@ -26,19 +26,15 @@ function boardList() {
 						else {
 							html +=	"<td rowspan='3'><img id='selectImg'  src='./resources/img/logo.png' width='120' height='120' datano='" +
 							+ item2.boa_id		
-							+ "'>" +
-							"</img></td>";
+							+ "'></img></td>";
 						}
 						html += "<td>" + item2.mem_id + "</td>";
 						html += "<td>좋아요" + item.boardLike.length + " 코멘트" + item.boardComment.length + "</td></tr>";
 						html += "<tr><td align='left' colspan='2'>"
 						if(item.boardTag.length > 0) {
-							
 							$.each(item.boardTag, function(index3, item3) {
 								html += "#<a id='upup'>"+item3.tag_name+"</a>";								
 							});
-												
-						
 						}
 						html += "</td></tr>"
 						html += "<tr><td align='right' colspan='2'><i class='glyphicon glyphicon-time'>" + item2.boa_create_date + "</i></td>";
@@ -46,25 +42,17 @@ function boardList() {
 					html += "</tr></table></div></div>";
 				});
 			});
-			
-			
-			
 			$("#timeline_div").html(html);
 			$(document).on("click","#selectImg",function(){
-				
 				var boa_id=$(this).attr("datano");
-			
 				clickBoard(boa_id);
 			});
-			
-			
 		},
 		error : function(e) {
 			console.log(e);
 		}
 	});
 }
-
 
 // 로그인한 id
 var loginid=document.getElementById("mem_id").value;
@@ -157,7 +145,7 @@ function searchMember(mem_id){
 			mem_id : mem_id
 		},
 		success : function(member){
-			if(member.mem_savefile!=null){
+			if(member.mem_savefile != null) {
 				$("#profilePhotoBoa").html('<img id="memberPhoto" src="download?mem_id='+ member.mem_id +'">');
 			}else{
 				$("#profilePhotoBoa").html('<img id="memberPhoto" src="./resources/img/logo.png">');
@@ -284,156 +272,54 @@ $(function() {
 
 });
 
-
-
 function searchStart(searchWord){
-
-	 var divhtml = "";
- 	
- 	divhtml +="<div id='fixed-menu-bar'><ul class='nav nav-tabs'>";
- 	divhtml +="<li role='presentation' class='active' id='comp-first'><a id='tagcomp'>#tag</a></li>";
- 	divhtml +="<li role='presentation' id='comp-second' class='none' ><a id='usercomp'>User </a></li>";
- 	divhtml +="<li role='presentation' id='comp-third' class='none' ><a id='mymapcomp'>My Map</a></li>";
- 	divhtml +="</ul></div><br><br><br><div id='userList'></div><div id='tagList'></div><div id='mymapList'></div>";
- 	
+	var divhtml = "";
+ 	divhtml += "<div id='fixed-menu-bar'><ul class='nav nav-tabs'>";
+ 	divhtml += "<li role='presentation' class='active' id='comp-first'><a id='tagcomp'>#tag</a></li>";
+ 	divhtml += "<li role='presentation' id='comp-second' class='none' ><a id='usercomp'>User</a></li>";
+ 	divhtml += "<li role='presentation' id='comp-third' class='none' ><a id='mymapcomp'>My Map</a></li>";
+ 	divhtml += "</ul></div><br><br><br><div id='userList'></div><div id='tagList'></div><div id='mymapList'></div>";
  	$(".pollSlider").html(divhtml);
- 	
+
  	var search = searchWord;
- 	alert(search);
-	
 	$.ajax({
-		type : "GET",			//type of request Method
-		url : "search",      //value pf requestMethod
+		type : "GET",	//type of request Method
+		url : "search",	//value pf requestMethod
 		data :{
 			word : search
 		},
 		 dataType : 'json',
 		 	success : function(object){				
-	
 				var taglist = {};
 				var userlist = {};
 				var mymaplist = {};
-		 		
-			for(key in object) {
-				console.log(key);
-			if(key == "tagList"){
-				taglist = object[key];
-			}
-			if(key =="memberList"){					
-				userlist = object[key];
-			}
-			if(key =="mymapList"){
-				mymaplist= object[key];
-			}
-			
-			}
-			console.log(taglist);
-			console.log(userlist);
-			console.log(mymaplist);
-	
-			
-			var taghtml ='';
-			
-			if(taglist.length != 0 ){
-		
-				 $.each(taglist, function() {
-					 $.map($(this), function(val,index){
-						 console.log(val.TAG_NAME);
-						 
-				
-					 taghtml += '<br><h2><a id="fir-tag-search'+index+'" class="'+val.TAG_NAME+'"> # '+val.TAG_NAME+'</a><h2><br>';
-					 taghtml += '<h5>'+val.COUNT+'개의 게시글이 존재합니다.</h5><hr>';   	   
-				 
-				 $(document).on("click","#fir-tag-search"+index+"",function(){					
-					var searchTag = $("#fir-tag-search"+index+"").attr("class");
-				console.log(searchTag);
-
-					$.ajax({							
-						type:"GET",
-						url : "seachResult",
-						data: {
-						tagName : searchTag								
-						},
-						success: function(data){
-							boardList();
-						},
-						error : function(e){
-							console.log(e);
-						}
-						
-					});
-							
-					
-				 });
-				 
-                });	
-				 });
-			 
-			}else{
-				
-			   console.log("ssss");
-				 taghtml += '<h5>해당 검색 태그가 존재 하지 않습니다.</h5>';
-				
-			};
-			
-			
-			 $("#tagList").show();
-			 $("#tagList").html(taghtml);
-			 
-			 
-			 
-			var userhtml ='';	
-			
-		if(userlist.length != 0 ){
-			 $.each(userlist, function(index, value ) {
-				userhtml += '<br><h1><a id="sec-user-search'+index+'" class="'+value.mem_id+'">'+value.mem_id+'<br></a></h1><h5>유저 닉네임 : '+value.mem_nickname+'</h5><hr>';					 
-				$(document).on("click","#sec-user-search"+index+"",function(){
-					var searchUser = $("#sec-user-search"+index+"").attr("class");					
-					$("#resultUserlist").val(searchUser);	
-					
-                         $.ajax({
-						
-						type:"GET",
-						url : "seachResult",
-						data: {
-						userId : searchUser								
-						},
-						success: function(data){
-							boardList();
-						},
-						error : function(e){
-							console.log(e);
-						}
-						
-					});
-					
-				 });
-			 });
-		} else{
-			userhtml += '<h5>해당 하는 유저가  존재 하지 않습니다.</h5>';
-				
-			};
-			 $("#userList").hide();
-			$("#userList").html(userhtml);
-			 
-			
-			
-			
-			
-			 var mymaphtml = '';
-			
-			 if(mymaplist.length != 0){
-			 $.each(mymaplist, function(index, value) {				
-				 mymaphtml += '<br><h2><a id="thir-mymap-search'+index+'" class="'+value.tag_name+'">#'+value.tag_name+'</a></h2><br>';
-				 $(document).on("click","#thir-mymap-search"+index+"",function(){
-						 var  searchMymap= $("#thir-mymap-search"+index+"").attr("class");
-						 console.log(searchMymap);
-						 
-							 $.ajax({										
+		 		for(key in object) {
+		 			console.log(key);
+		 			if (key == "tagList") {
+		 				taglist = object[key];
+		 			}
+		 			if (key =="memberList") {					
+		 				userlist = object[key];
+		 			}
+		 			if (key =="mymapList") {
+		 				mymaplist= object[key];
+		 			}
+		 		}
+		 		var taghtml = '';
+				if(taglist.length != 0 ){
+					$.each(taglist, function() {
+						$.map($(this), function(val,index){
+							console.log(val.TAG_NAME);
+						 	taghtml += '<br><h2><a id="fir-tag-search'+index+'" class="'+val.TAG_NAME+'"> # '+val.TAG_NAME+'</a><h2><br>';
+						 	taghtml += '<h5>'+val.COUNT+'개의 게시글이 존재합니다.</h5><hr>';   	   
+						 	$(document).on("click", "#fir-tag-search"+index+"", function() {					
+						 		var searchTag = $("#fir-tag-search"+index+"").attr("class");
+						 		console.log(searchTag);
+						 		$.ajax({							
 									type:"GET",
 									url : "seachResult",
 									data: {
-									mymapTag : searchMymap								
+									tagName : searchTag								
 									},
 									success: function(data){
 										boardList();
@@ -441,30 +327,74 @@ function searchStart(searchWord){
 									error : function(e){
 										console.log(e);
 									}
-									
-								});
-							
-						 });
-					 
-	             
-				 
+						 		});
+						 	});
+						});	
+					});
+				}else{
+					console.log("ssss");
+				};
+				$("#tagList").show();
+				$("#tagList").html(taghtml);
+				var userhtml ='';	
+				if(userlist.length != 0 ){
+					$.each(userlist, function(index, value ) {
+						userhtml += '<br><h1><a id="sec-user-search'+index+'" class="'+value.mem_id+'">'+value.mem_id+'<br></a></h1><h5>유저 닉네임 : '+value.mem_nickname+'</h5><hr>';					 
+						$(document).on("click","#sec-user-search"+index+"",function(){
+							var searchUser = $("#sec-user-search"+index+"").attr("class");					
+							$("#resultUserlist").val(searchUser);
+							$.ajax({
+								type:"GET",
+								url : "seachResult",
+								data: {
+									userId : searchUser								
+								},
+								success: function(data){
+									boardList();
+								},
+								error : function(e){
+									console.log(e);
+								}
+							});
+						});
+					});
+				} else {
+					userhtml += '<h5>해당 하는 유저가  존재 하지 않습니다.</h5>';
+				};
+				$("#userList").hide();
+				$("#userList").html(userhtml);
+				var mymaphtml = '';
+				if(mymaplist.length != 0){
+					$.each(mymaplist, function(index, value) {				
+						mymaphtml += '<br><h2><a id="thir-mymap-search'+index+'" class="'+value.tag_name+'">#'+value.tag_name+'</a></h2><br>';
+						$(document).on("click","#thir-mymap-search"+index+"",function(){
+							var searchMymap= $("#thir-mymap-search"+index+"").attr("class");
+							console.log(searchMymap);
+							$.ajax({										
+								type:"GET",
+								url : "seachResult",
+								data: {
+								mymapTag : searchMymap								
+							},
+							success: function(data){
+								boardList();
+							},
+							error : function(e){
+								console.log(e);
+							}
+						});
+					});
                 });
 			 }else{
-				 
-				 mymaphtml+= '<h5> 해당 하는 태그가 존재하지 않습니다.</h5>';
+				 mymaphtml += '<h5> 해당 하는 태그가 존재하지 않습니다.</h5>';
 			 }
 			 $("#mymapList").hide();
 			 $("#mymapList").html(mymaphtml);
-			
-			
 		},
 		error : function(e){
 			//ajax 통신 실패시	
 			console.log("전체적인 그냥 실패");
 			console.log(e);
 		}
-		
 	});
-	
 }
-

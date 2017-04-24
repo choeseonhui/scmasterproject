@@ -85,10 +85,30 @@ function clickFollower() {
 		url : "clickFollower",
 		success : function(data) {
 			console.log(data);
+			var divhtml = "";
+			divhtml += "<div id='fixed-menu-bar'><ul class='nav nav-tabs'>";
+			divhtml += "<li role='presentation' id='comp-first'><a id='tagcomp'>#tag</a></li>";
+			divhtml += "<li role='presentation' class='active' id='comp-second' class='none' ><a id='usercomp'>User</a></li>";
+			divhtml += "</ul></div><br><br><br><div id='userList'></div><div id='tagList'></div>";
+			$(".pollSlider").html(divhtml);
+			if ($("#flag_contact").val() == 'true') {
+				if ($("#flag_timeline").val() == 'true') {
+					$("#flag_timeline").val('false');
+					$('#pollSlider-button').animate({
+						"margin-right" : '+=500'
+					});
+					$('.pollSlider').animate({
+						"margin-right" : '+=500'
+					});
+					$('.searchClass').animate({
+						"margin-right" : '+=500'
+					});
+				} else {
+				}
+			}
 			var myMenu = document.getElementById("myMenuAll");
 			var follow = ""; 
 			$.each(data, function(index, item) {
-				console.log(item);
 				follow = "<div class='user' datano='" + item.mem_id
 					+ "'><div class='start'><table class='j-table w3-hoverable'><tr><td rowspan='2'>";
 				follow += "<img class='w3-circle' src=download?mem_id="+ item.mem_id +" width='60' height='60'></img></td>"
@@ -96,7 +116,8 @@ function clickFollower() {
 				follow += '<td rowspan="2"><a>+</a></tr>';
 				follow += '<tr><td>'+item.mem_id+'</td></tr></div>';
 			});
-			myMenu.innerHTML = follow;
+			$("#userList").show();
+			$("#userList").html(follow);
 		},
 		error : function(e) {
 			console.log(e);
@@ -112,7 +133,6 @@ function clickFollowing() {
 			var myMenu = document.getElementById("myMenuAll");
 			var follow = ""; 
 			$.each(data, function(index, item) {
-				console.log(item);
 				follow = "<div class='user' datano='" + item.mem_id
 					+ "'><div class='start'><table class='j-table w3-hoverable'><tr><td rowspan='2'>";
 				follow += "<img class='w3-circle' src=download?mem_id="+ item.mem_id +" width='60' height='60'></img></td>"
@@ -120,7 +140,8 @@ function clickFollowing() {
 				follow += '<td rowspan="2"><a>+</a></tr>';
 				follow += '<tr><td>'+item.mem_id+'</td></tr></div>';
 			});
-			myMenu.innerHTML = follow;
+			$("#userList").show();
+			$("#userList").html(follow);
 		},
 		error : function(e) {
 			console.log(e);
@@ -129,7 +150,6 @@ function clickFollowing() {
 }
 
 function sliderInit() {
-	createDefaultMymenu();
 	if ($("#flag_timeline").val() == 'true') {
 	} else {
 		$("#flag_timeline").val("true");
@@ -156,12 +176,41 @@ function sliderInit() {
 	};
 };
 
+function followOrSlideClick() {
+	if ($("#flag_contact").val() == 'true') {
+		if ($("#flag_timeline").val() == 'true') {
+			$("#flag_timeline").val('false');
+			$('#pollSlider-button').animate({
+				"margin-right" : '+=500'
+			});
+			$('.pollSlider').animate({
+				"margin-right" : '+=500'
+			});
+			$('.searchClass').animate({
+				"margin-right" : '+=500'
+			});
+		} else {
+			$("#flag_timeline").val('true');
+			$('#pollSlider-button').animate({
+				"margin-right" : '-=500'
+			});
+			$('.pollSlider').animate({
+				"margin-right" : '-=500'
+			});
+			$('.searchClass').animate({
+				"margin-right" : '-=500'
+			});
+		}
+	}
+}
+
+/*
 function createDefaultMymenu() {
 	var myMenu = document.getElementById("menu-slider");
 	var myMenuDefault = '<jsp:include page="myMenu.jsp" flush="true"></jsp:include>';
 	myMenu.innerHTML = myMenuDefault;
 	
-/*	myMenuDefault += '<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>';
+	myMenuDefault += '<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>';
 	myMenuDefault += '<h2>My menu</h2>';
 	myMenuDefault += '<hr>';
 	myMenuDefault += '<div id="myMenuAll" class="row">';
@@ -189,6 +238,6 @@ function createDefaultMymenu() {
 	myMenuDefault += '<img src="./resources/img/cart.png"/>';
 	myMenuDefault += '</div>';
 	myMenuDefault += '</div>';
-	myMenuDefault += '<input type="hidden" id="mem_id" value="${mem_id }">';*/
+	myMenuDefault += '<input type="hidden" id="mem_id" value="${mem_id }">';
 	myMenu.innerHTML = myMenuDefault;
-}
+}*/
