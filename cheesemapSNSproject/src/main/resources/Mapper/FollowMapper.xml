@@ -14,9 +14,9 @@
 		from
 			CS_MEMBER, CS_FOLLOW
 		WHERE
-			CS_MEMBER.mem_id = CS_FOLLOW.fol_following
+			CS_MEMBER.mem_id = CS_FOLLOW.fol_follower
 		and
-			CS_FOLLOW.fol_follower = #{mem_id}
+			CS_FOLLOW.fol_following = #{mem_id}
 	</select>
 	
 	<select id="clickFollowing" resultType="Member" parameterType="String">

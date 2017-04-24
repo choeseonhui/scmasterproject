@@ -31,7 +31,7 @@ public class FollowContoller {
 	@RequestMapping(value = "clickFollowing", method = RequestMethod.POST)
 	public ArrayList<Member> clickFollowing(HttpSession session) {
 		String mem_id = (String) session.getAttribute("mem_id");
-		ArrayList<Member> result = dao.clickFollower(mem_id);
+		ArrayList<Member> result = dao.clickFollowing(mem_id);
 		return result;
 	}
 }

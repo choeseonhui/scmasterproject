@@ -22,7 +22,7 @@ public class FollowDAO implements FollowMapper {
 
 	@Override
 	public ArrayList<Member> clickFollowing(String mem_id) {
-		FollowMapper mapper = session.getMapper(FollowDAO.class);
+		FollowMapper mapper = session.getMapper(FollowMapper.class);
 		return mapper.clickFollowing(mem_id);
 	}
 }
