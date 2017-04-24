@@ -167,7 +167,7 @@ overflow : hidden;
 		<div class="write-slider"></div>
 
         <!-- My Menu -->
-		<div class="menu-slider">
+		<div id="menu-slider" class="menu-slider">
 			<jsp:include page="myMenu.jsp" flush="true"></jsp:include>
 		</div>
 
@@ -179,7 +179,6 @@ overflow : hidden;
 				<span class="close">&times;</span>
 				<jsp:include page="modifyMem.jsp" flush="true"></jsp:include>
 			</div>
-		</div>
 		</div>
 		<!-- 게시판 팝업 -->
 		<!-- The Modal -->

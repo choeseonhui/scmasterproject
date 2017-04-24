@@ -10,3 +10,7 @@
 	overflow-y: hidden;
 	opacity :0.8;
 }
+
+.user {
+	border-bottom: dashed 1px #4997cd;
+	margin: 20px;

@@ -13,6 +13,7 @@ $(function() {
 		var mem_id = $("#mem_id").val();
 		if ($("#flag_contact").val() == 'true') {
 			if ($("#flag_my_menu").val() == 'true') {
+				createDefaultMymenu();
 				$.ajax({
 					type : "POST",
 					url : "mymenu",
@@ -79,15 +80,22 @@ $(function() {
 });
 
 function clickFollower() {
+	var mem_id = $("#mem_id").val();
 	console.log('asdf');
 	$.ajax({
 		type : "POST",
 		url : "clickFollower",
 		success : function(data) {
 			var myMenu = document.getElementById("myMenuAll");
-			var follow = '';
+			var follow = ""; 
 			$.each(data, function(index, item) {
-				
+				console.log(item);
+				follow = "<div class='user' datano='" + item.mem_id
+					+ "'><div class='start'><table class='j-table w3-hoverable'><tr><td rowspan='2'>";
+				follow += "<img class='w3-circle' src=download?mem_id="+ item.mem_id +" width='60' height='60'></img></td>"
+				follow += '<td>'+item.mem_nickname+'</td>';
+				follow += '<td>'+item.mem_id+'</td>';
+				follow += "</tr></div>"
 			});
 			myMenu.innerHTML = follow;
 		},
@@ -104,9 +112,15 @@ function clickFollowing() {
 		url : "clickFollowing",
 		success : function(data) {
 			var myMenu = document.getElementById("myMenuAll");
-			var follow = '';
+			var follow = ""; 
 			$.each(data, function(index, item) {
-				
+				console.log(item);
+				follow = "<div class='user' datano='" + item.mem_id
+					+ "'><div class='start'><table class='j-table w3-hoverable'><tr><td rowspan='2'>";
+				follow += "<img class='w3-circle' src=download?mem_id="+ item.mem_id +" width='60' height='60'></img></td>"
+				follow += '<td>'+item.mem_nickname+'</td>';
+				follow += '<td>'+item.mem_id+'</td>';
+				follow += "</tr></div>"
 			});
 			myMenu.innerHTML = follow;
 		},
@@ -142,3 +156,37 @@ function sliderInit() {
 		});
 	};
 };
+
+function createDefaultMymenu() {
+	var myMenu = document.getElementById("menu-slider");
+	var myMenuDefault = ''; 
+	myMenuDefault += '<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>';
+	myMenuDefault += '<h2>My menu</h2>';
+	myMenuDefault += '<hr>';
+	myMenuDefault += '<div id="myMenuAll" class="row">';
+	myMenuDefault += '<div id="profilePhoto" class="row">';
+	myMenuDefault += '<c:choose>';
+	myMenuDefault += '<c:when test="${mem_savefile == null }">';
+	myMenuDefault += '<img class="img-responsive" src="./resources/img/logo.png" alt="">';
+	myMenuDefault += '</c:when>';
+	myMenuDefault += '<c:otherwise>';
+	myMenuDefault += '<img class="img-responsive" src="download?mem_id=${mem_id }" height="150" width="170" alt="profile">';
+	myMenuDefault += '</c:otherwise>';
+	myMenuDefault += '</c:choose>';
+	myMenuDefault += '</div>';
+	myMenuDefault += '<div id="myMenu1" class="row">';
+	myMenuDefault += '<p><b>${mem_nickname }</b></p>';
+	myMenuDefault += '<p><a id="myBtn">update</a></p>';
+	myMenuDefault += '</div>';
+	myMenuDefault += '<br>';
+	myMenuDefault += '<div id="myMenu2" class="row">';
+	myMenuDefault += '</div>';
+	myMenuDefault += '<div id="write-button" data-flag="false">';
+	myMenuDefault += '<img src="./resources/img/pencil.png"/>';
+	myMenuDefault += '</div>';
+	myMenuDefault += '<div id="makebook-button" data-flag="false">';
+	myMenuDefault += '<img src="./resources/img/cart.png"/>';
+	myMenuDefault += '</div>';
+	myMenuDefault += '</div>';
+	myMenuDefault += '<input type="hidden" id="mem_id" value="${mem_id }">';
+}

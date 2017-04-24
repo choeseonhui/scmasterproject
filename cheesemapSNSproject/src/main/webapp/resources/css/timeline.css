@@ -6,11 +6,9 @@
 }
 
 .board{
-border-bottom: dashed 1px #4997cd;
-
+	border-bottom: dashed 1px #4997cd;
 	margin: 20px;
 }
-
 
 .glyphicon-time{
 	align-items: center;
