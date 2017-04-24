@@ -116,6 +116,8 @@ $(function(){
 				console.log(mymaplist);
 		
 				
+				
+				
 				var taghtml ='';
 				
 				if(taglist.length != 0 ){
