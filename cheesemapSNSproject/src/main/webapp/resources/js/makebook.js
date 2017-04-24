@@ -345,9 +345,8 @@ function previewer() {
 		data : {"select_img" : select_img},
 		success : function(bList) {
 			$.each(bList, function(index, item) {
-				console.log(item);				
 				$("#post_top" + (index + 1)+"_like").html(item.boardLike.length);
-				$("#post_top" + (index + 1)+"_comment").html(item.boardComment.length);
+				$("#post_top" + (index + 1)+"_comment").html(item.boardCommentNick.length);
 				$("#post_top" + (index + 1)+"_img").attr("src", item.board.boa_photo_savefile);
 				if(index==0){
 					$("#post_top" + (index + 1)+"_date").html(item.board.boa_create_date);
@@ -374,24 +373,25 @@ function previewer() {
 			var page4="";
 			$.each(tList, function(index, timeLine) {
 				like_div += timeLine.boardLike.length;
-				comment_div += timeLine.boardComment.length;
-				page4+="<div class='page' id='page4_"+index+"'>"
+				comment_div += timeLine.boardCommentNick.length;
+				page4+="<div class='page ver' id='page4_"+index+"'>"
 					+"<img class='background_img' src='./resources/img/page6.png'>"
 					+"<div class='post_date'>"+timeLine.board.boa_create_date+"</div>" 
 					+"<img class='post_img' src="+timeLine.board.boa_photo_savefile+">"
 					+"<div class='post_content'>"+timeLine.board.boa_content+"</div>"
 					+"<div class='post_hashtag'>";
 				$.each(timeLine.boardTag, function(index2, tag){
-					page4+=" "+tag.tag_name+" ";
+					page4+="#"+tag.tag_name+"  ";
 				});
 				page4+="</div>"+"<div class='post_like'>"
 					+timeLine.boardLike.length+"</div>"
-					+"<div class='post_comment'>"+timeLine.boardComment.length+"</div>"
+					+"<div class='post_comment'>"+timeLine.boardCommentNick.length+"</div>"
 					+"<div class='post_comment_div'>";
-				$.each(timeLine.boardComment, function(index2, comment){
-					console.log(timeLine.boardComment);
-					page4+="<div class='post_comment_nick'>"+comment.mem_id+"</div>"
-							+"<div class='post_comment_content'>"+comment.com_content+"</div>";
+				$.each(timeLine.boardCommentNick, function(index2, comment){
+					if(index2<=9){
+						page4+="<div class='post_comment_nick'>"+comment.MEM_NICKNAME+"</div>"
+						+"<div class='post_comment_content'>"+comment.COM_CONTENT+"</div>";
+					}
 				});
 				page4+="</div></div>";
 			});

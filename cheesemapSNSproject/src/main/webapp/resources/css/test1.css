@@ -6,6 +6,9 @@
 	font-family: 'Fjalla One', sans-serif;
 }
 
+.page .ver{
+	float : left;
+}
 .background_img {
 	position: relative;
 	z-index: -55;
@@ -83,22 +86,18 @@
 
 #comment_div{
 	z-index: 55;
-	height: 4cm;
-	width: 5cm;
 	position: relative;
-	top:-17.6cm;
-	right: 7.5cm;
-	font-size: 30px;
-	text-align: center;
-	float: right;
+    top: -22cm;
+    right: 5.5cm;
+    font-size: 30px;
+    text-align: center;
+    float: right;
 }
 
 #memories_div{
 	z-index: 55;
-	width: 6cm;
 	position: relative;
 	top: -16.5cm;
-	left: 6cm;
 	text-align: center;
 	font-size: 90px;
 }
@@ -121,7 +120,7 @@
 .top3_image{
 	z-index: 55;
 	position: relative;
-	top: -10.8cm;
+	top: -10cm;
 }
 
 #top1 {
@@ -187,7 +186,7 @@
 	z-index: 55;
 	position: relative;
 	left: -10cm;
-	top: -5.7cm;
+	top: -2.8cm;
 }
 
 #post_top2_like{
@@ -197,7 +196,7 @@
 	font-size: 45px;
 	width: 3cm;
 	left: 15.15cm;
-	top: -38.9cm;
+	top: -35.9cm;
 	
 }
 
@@ -208,13 +207,13 @@
 	font-size: 45px;
 	width: 3cm;
 	left: 15.15cm;
-	top: -36.1cm;
+	top: -33.1cm;
 }
 
 #post_top2_img{
 	z-index: 55;
 	position: relative;
-	top: -30cm;
+	top: -27cm;
 	left: 1.7cm;
 	width: 450px;
 	height: 375px;
@@ -227,7 +226,7 @@
 	font-size: 45px;
 	width: 3cm;
 	left: 15.15cm;
-	top: -39.8cm;
+	top: -36.8cm;
 	
 }
 
@@ -238,13 +237,13 @@
 	font-size: 45px;
 	width: 3cm;
 	left: 15.15cm;
-	top: -36.9cm;
+	top: -33.9cm;
 }
 
 #post_top3_img{
 	z-index: 55;
 	position: relative;
-	top: -30.9cm;
+	top: -27.9cm;
 	left: 1.7cm;
 	width: 450px;
 	height: 375px;
@@ -291,7 +290,7 @@
 	float: left;
 	width: 2cm;
 	text-align: center;
-	top:13.2cm;
+	top:13.5cm;
 	left: 3.5cm;
 }
 
@@ -302,7 +301,7 @@
 	position: relative;
 	text-align: center;
 	width: 3cm;
-	top:13.2cm;
+	top:13.5cm;
 	left: 7.5cm;
 }
 
@@ -336,7 +335,7 @@
 .post_hashtag{
 	z-index: 55;
 	position: relative;
-	top: -22.6cm;
+	top: -23.6cm;
 	left: 3cm;
 	font-weight: bold;
 	font-size: 16px;
@@ -349,7 +348,7 @@
 	float: left;
 	font-size: 30px;
 	color: #5a5955;
-	top: -22.45cm;
+	top: -23.3cm;
 	left: 4cm;
 }
 
@@ -359,7 +358,7 @@
 	text-align: center;
 	color: #5a5955;
 	width: 3cm;
-	top: -22.45cm;
+	top: -23.3cm;
 	left: 8.2cm;
 	font-size: 30px;
 }
@@ -367,7 +366,7 @@
 .post_comment_div{
 	z-index: 55;
 	position: relative;
-	top: -67.2cm;
+	top: -23cm;
 	left: 1.5cm;
 }
 
@@ -384,7 +383,7 @@
 #back_img3_5{
 	z-index: 55;
 	position: relative;
-	top: -15.4cm;
+	top: -15.1cm;
 }
 
 #post_div{

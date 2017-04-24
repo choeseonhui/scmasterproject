@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.scmaster.cheesemap.dao.BoardDAO;
 import com.scmaster.cheesemap.dao.MakeBookDAO;
 import com.scmaster.cheesemap.dao.TimelineDAO;
 import com.scmaster.cheesemap.vo.BestLike;
@@ -26,6 +27,9 @@ public class MakeBookController {
 
 	@Autowired
 	private TimelineDAO timelineDAO;
+	
+	@Autowired
+	private BoardDAO boardDAO;
 
 	@RequestMapping(value = "makebook", method = RequestMethod.GET)
 	public String bookmake(HttpSession session) {
@@ -65,7 +69,7 @@ public class MakeBookController {
 				Board timelineBoard = timelineDAO.getBoardByDivision(boa_id);
 
 				temp.setBoard(timelineBoard);
-				temp.setBoardComment(timelineDAO.getBoardComment(boa_id));
+				temp.setBoardCommentNick(boardDAO.getBoaCommentNick(boa_id));
 				temp.setBoardTag(timelineDAO.getBoardTag(boa_id));
 				temp.setBoardLike(timelineDAO.getBoardLike(boa_id));
 				result.add(temp);

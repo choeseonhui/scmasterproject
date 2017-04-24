@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.scmaster.cheesemap.dao.BoardDAO;
 import com.scmaster.cheesemap.dao.SearchDAO;
 import com.scmaster.cheesemap.dao.TimelineDAO;
 import com.scmaster.cheesemap.util.convertFromDate;
@@ -28,6 +29,9 @@ public class TimelineController {
 
 	@Autowired
 	private SearchDAO searchDAO;
+	
+	@Autowired
+	private BoardDAO baordDAO;
 
 	@SuppressWarnings("unchecked")
 	@ResponseBody
@@ -55,6 +59,7 @@ public class TimelineController {
 				temp.setBoardComment(timelineDAO.getBoardComment(boa_id));
 				temp.setBoardTag(timelineDAO.getBoardTag(boa_id));
 				temp.setBoardLike(timelineDAO.getBoardLike(boa_id));
+				temp.setBoardCommentNick(baordDAO.getBoaCommentNick(boa_id));
 				result.add(temp);
 			}
 		}
