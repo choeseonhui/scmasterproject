@@ -104,7 +104,8 @@ function initUser() {
 }
 
 function clickUser() {
-	var searchUser = $(".user_id").attr("fol_id");
+	var searchUser = $(".user_id").attr("user_id");
+	alert(searchUser);
 	$.ajax({
 		type:"GET",
 		url : "seachResult",
@@ -138,7 +139,7 @@ function clickFollower() {
 				follow += mem_id; 	
 				follow += "'><table class='j-table'><tr><td rowspan='2'>";
 				follow += "<img user_id="+mem_id;
-				follow += "class='w3-circle user_id' src=download?mem_id="+ item.mem_id +" width='90' height='90' onclick='clickUser();'></img></td>"
+				follow += " class='w3-circle user_id' src=download?mem_id="+ item.mem_id +" width='90' height='90' onclick='clickUser();'></img></td>"
 				follow += '<td>'+item.mem_nickname+'</td>'
 				follow += '<td id="fol_state" rowspan="2">';
 				if(stateNow.length > 0) {
