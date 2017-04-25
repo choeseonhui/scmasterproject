@@ -43,7 +43,7 @@ function boardList() {
 				});
 			});
 			$("#timeline_div").html(html);
-			$(document).on("click","#selectImg",function(){
+			$("#selectImg").on("click", function(){
 				var boa_id=$(this).attr("datano");
 				clickBoard(boa_id);
 			});
