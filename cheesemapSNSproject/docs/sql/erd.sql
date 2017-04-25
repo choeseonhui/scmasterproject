@@ -372,3 +372,43 @@ and
 	CS_FOLLOW.fol_follower = 'jwnamkung@naver.com';
 	
 delete from CS_FOLLOW;
+
+select
+	boa_id
+from
+	CS_BOARD
+where
+	CS_BOARD.boa_id = (select
+				boa_id
+			from
+				cs_board_like
+			where
+				mem_id = 'jwnamkung@naver.com')
+and
+	boa_delete_date is null;
+	
+select
+	boa_id
+from
+	cs_board_like
+where
+	mem_id = 'jwnamkung@naver.com';
+	
+select
+	boa_id
+from
+	CS_BOARD
+where
+	boa_id = (select
+				boa_id
+			from
+				cs_board_like
+			where
+				mem_id = 'jwnamkung@naver.com');
+				
+select
+	boa_id
+from
+	cs_board_like
+where
+	mem_id = 'jwnamkung@naver.com';

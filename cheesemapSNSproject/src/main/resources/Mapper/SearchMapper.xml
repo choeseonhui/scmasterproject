@@ -110,12 +110,15 @@
 		select
 			boa_id
 		from
-				
-		(select
-			boa_id
-		from
-			cs_board_like
+			CS_BOARD
 		where
-			mem_id = #{mem_id})
+			boa_id IN (select
+							boa_id
+						from
+							cs_board_like
+						where
+							mem_id = #{mem_id})
+		and
+			boa_delete_date is null
 	</select>
 </mapper>
