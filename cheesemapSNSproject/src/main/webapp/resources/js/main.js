@@ -105,7 +105,6 @@ function initUser() {
 
 function clickUser() {
 	var searchUser = $(".user_id").attr("user_id");
-	alert(searchUser);
 	$.ajax({
 		type:"GET",
 		url : "seachResult",
