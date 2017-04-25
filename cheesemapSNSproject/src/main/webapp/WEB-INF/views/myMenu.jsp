@@ -25,11 +25,11 @@
 	
 	<!-- write btn -->
 	<div id="write-button" data-flag="false">
-		<img src="./resources/img/pencil.png"/>
+		<img src="./resources/img/crayons.png" width="60px"/>
 	</div>
 	
 	<div id="makebook-button" data-flag="false">
-		<img src="./resources/img/cart.png"/>
+		<img src="./resources/img/reading.png" width="75px"/>
 	</div>
 </div>
 <input type="hidden" id="mem_id" value="${mem_id }">
