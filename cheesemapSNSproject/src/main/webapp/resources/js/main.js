@@ -25,6 +25,7 @@ $(function() {
 						follow += "<p onclick='clickFollower();' id='clickFollower'>follower : " + data.fol_follower + "</p>";
 						follow += "<p onclick='clickFollowing();' id='clickFollowing'>following : " + data.fol_following + "</p>";
 						follow += "<p onclick='clickMyPosts();' id='clickPosts'>My Posts  : " + data.count_board + "</p>";
+						follow += "<p onclick='clickCart();' id='clickCart'>Cart</p>";
 						myMenu.innerHTML = follow;
 					},
 					error : function(e) {
@@ -317,7 +318,7 @@ function clickMyPosts(){
 	
 };
 
-function clickMyPosts(){
+function clickCart(){
 	$('.menu-slider').animate({
 		"margin-left" : '-=500'
 	});
@@ -328,23 +329,23 @@ function clickMyPosts(){
 	
 	$.ajax({
 		type : "POST",
-		url : "clickMyPosts",
+		url : "clickCart",
 		success : function(data) {
 			boardList();
 			if ($("#flag_contact").val() == 'true') {  		
-	    		if ($("#flag_timeline").val() == 'true') {   		
-	    			 $("#flag_timeline").val('false');
-	    				$('#pollSlider-button').animate({
-	    					"margin-right" : '+=500'
-	    				});
-	    				$('.pollSlider').animate({
-	    					"margin-right" : '+=500'
-	    				});
-	    				$('.searchClass').animate({					
-	    					"margin-right" : '+=500'
-	    				});
-	    			}
-	    		};
+				if ($("#flag_timeline").val() == 'true') {   		
+					$("#flag_timeline").val('false');
+	    			$('#pollSlider-button').animate({
+	    				"margin-right" : '+=500'
+	    			});
+	    			$('.pollSlider').animate({
+	    				"margin-right" : '+=500'
+	    			});
+	    			$('.searchClass').animate({					
+	    				"margin-right" : '+=500'
+	    			});
+	    		}
+	    	};
 		},
 		error : function(e) {
 			console.log(e);

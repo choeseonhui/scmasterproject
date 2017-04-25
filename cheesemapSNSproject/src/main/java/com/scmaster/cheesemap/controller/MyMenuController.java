@@ -81,14 +81,19 @@ public class MyMenuController {
 			mailtest.testMailSend(email, cheese_id, subject, message);
 	}
 	
-	
 	@ResponseBody
 	@RequestMapping(value="clickMyPosts", method=RequestMethod.POST)
 	public void clickMyPosts(HttpSession session){
 		String userId = (String) session.getAttribute("mem_id");
-		
 		ArrayList<String> BoardidList = searchDAO.resultUser(userId);
-
+		session.setAttribute("boa_id_list", BoardidList);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="clickCart", method=RequestMethod.POST)
+	public void clickCart(HttpSession session){
+		String mem_id = (String) session.getAttribute("mem_id");
+		ArrayList<String> BoardidList = searchDAO.resultCart(mem_id);
 		session.setAttribute("boa_id_list", BoardidList);
 	}
 }
