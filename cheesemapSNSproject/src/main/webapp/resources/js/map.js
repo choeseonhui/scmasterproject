@@ -1,7 +1,7 @@
 var markers = [];
-
+var map;
+var markerClusterer = null;
 function initMap() {
-	var markerClusterer = null;
 	
 	$('#pac-input').css('visibility','hidden');
 	
@@ -11,7 +11,7 @@ function initMap() {
         zoom: 15,
         center: myLatlng
     };
-    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+    map= new google.maps.Map(document.getElementById("map"), myOptions);
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
 
@@ -87,55 +87,8 @@ function initMap() {
         map.fitBounds(bounds);
     });
     
-    function clusterRefresh(){
-    	if (markerClusterer) {
-    		markerClusterer.clearMarkers();
-		}
-    	markerClusterer = new MarkerClusterer(map, markers, {
-            imagePath: './resources/img/m'
-        });
-    }
     
-  // 게시글 정보 불러오기
-    function refresh(map){
-    	// sliderInit();
-        markers.forEach(function (marker) {
-            marker.setMap(null);
-        });
-        markers = [];
-        // 현재의 범위를 가져옴
-        var latNE = map.getBounds().getNorthEast().lat();
-        var lngNE = map.getBounds().getNorthEast().lng();
-        var latSW = map.getBounds().getSouthWest().lat();
-        var lngSW = map.getBounds().getSouthWest().lng();
-        defaultList(latNE, lngNE, latSW, lngSW);
-        boardList();
-    }
     
- // 나와 내가 팔로잉 하고 있는 사람들의 게시물 정보를 가져와 마커 생성
-    function defaultList(latNE, lngNE, latSW, lngSW) {
-        $.ajax({
-            type: "post",
-            url: "defaultList",
-            data: {
-                latNE: latNE,
-                lngNE: lngNE,
-                latSW: latSW,
-                lngSW: lngSW
-            },
-            success: function (mylist) {
-                $.each(mylist, function (index, item) {
-                    var boa_id = item.boa_id;
-                    var latlng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
-                    addMarker(latlng, boa_id, map);
-                    clusterRefresh();
-                });
-            },
-            error: function (e) {
-                console.log(e);
-            }
-        });
-    }
 
     // 지도 스타일
     var styleControl = document.getElementById('style-selector-control');
@@ -147,6 +100,71 @@ function initMap() {
     styleSelector.addEventListener('change', function () {
         map.setOptions({styles: styles[styleSelector.value]});
     });
+}
+
+// 게시글 정보 불러오기
+function refresh(map){
+	// sliderInit();
+	markers.forEach(function (marker) {
+		marker.setMap(null);
+	});
+	markers = [];
+	// 현재의 범위를 가져옴
+	var latNE = map.getBounds().getNorthEast().lat();
+	var lngNE = map.getBounds().getNorthEast().lng();
+	var latSW = map.getBounds().getSouthWest().lat();
+	var lngSW = map.getBounds().getSouthWest().lng();
+	boardList();
+	defaultList(latNE, lngNE, latSW, lngSW);
+}
+
+// 나와 내가 팔로잉 하고 있는 사람들의 게시물 정보를 가져와 마커 생성
+function defaultList(latNE, lngNE, latSW, lngSW) {
+	$.ajax({
+		type: "post",
+		url: "defaultList",
+		data: {
+			latNE: latNE,
+			lngNE: lngNE,
+			latSW: latSW,
+			lngSW: lngSW
+		},
+		success: function (mylist) {
+			$.each(mylist, function (index, item) {
+				var boa_id = item.boa_id;
+				var latlng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
+				addMarker(latlng, boa_id, map);
+				clusterRefresh();
+			});
+		},
+		error: function (e) {
+			console.log(e);
+		}
+	});
+}
+
+//클러스터 기능 붙여주기
+function clusterRefresh(){
+	if (markerClusterer) {
+		markerClusterer.clearMarkers();
+	}
+	markerClusterer = new MarkerClusterer(map, markers, {
+		imagePath: './resources/img/m'
+	});
+}
+
+function setBoardMarker(boardMarker){
+// 이전에 존재하던 마커 전부 삭제
+    markers.forEach(function (marker) {
+        marker.setMap(null);
+    });
+    markers = [];
+	$.each(boardMarker, function(index, item) {
+		var boa_id = item.boa_id;
+		var latlng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
+		addMarker(latlng, boa_id, map);
+		clusterRefresh();
+	});
 }
 
 // 마커 생성

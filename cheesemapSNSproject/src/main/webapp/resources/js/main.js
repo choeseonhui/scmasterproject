@@ -64,6 +64,9 @@ $(function() {
 				$('.searchClass').animate({
 					"margin-right" : '+=500'
 				});
+				$("#searchWord").animate({					
+					"margin-right" : '+=500'
+				});
 			} else {
 				$("#flag_timeline").val('true');
 				$('#pollSlider-button').animate({
@@ -73,6 +76,9 @@ $(function() {
 					"margin-right" : '-=500'
 				});
 				$('.searchClass').animate({
+					"margin-right" : '-=500'
+				});
+				$("#searchWord").animate({					
 					"margin-right" : '-=500'
 				});
 			}
@@ -308,8 +314,15 @@ function clickMyPosts(){
 	    				$('.searchClass').animate({					
 	    					"margin-right" : '+=500'
 	    				});
+	    				$("#searchWord").animate({					
+	    					"margin-right" : '+=500'
+	    				});
 	    			}
 	    		};
+	    		$("#searchWord").html("X MyPost");
+				$("#searchWord").attr("timeLineFlag", true);
+				$("#tags").attr("style", "display : none");
+				$("#searchButton").attr("style", "display : none");
 		},
 		error : function(e) {
 			console.log(e);
@@ -344,8 +357,15 @@ function clickCart(){
 	    			$('.searchClass').animate({					
 	    				"margin-right" : '+=500'
 	    			});
+	    			$("#searchWord").animate({					
+    					"margin-right" : '+=500'
+    				});
 	    		}
 	    	};
+	    	$("#searchWord").html("X LikeCart");
+			$("#searchWord").attr("timeLineFlag", true);
+			$("#tags").attr("style", "display : none");
+			$("#searchButton").attr("style", "display : none");
 		},
 		error : function(e) {
 			console.log(e);

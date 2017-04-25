@@ -143,12 +143,10 @@ overflow : hidden;
 		<!-- search -->
 		<div class="row">
 			<div class="searchClass">
+					<a id="searchWord" timeLineFlag="false" href="#"></a>
 				<div class="input-group">
 					<input type="text" class="search_input_form" placeholder="search" id="tags">
-					
-					<span class="input-group-btn">
-						<button class="btn btn-default" id="searchButton" type="button">
-							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					<div class="dropdownMenu" style=" width :180px; position: absolute; float: left; margin-top: -50px; width:auto;  max-height: 200px;overflow-y: auto;  overflow-x: hidden; border-radius:3px; box-shadow :0 0 5px rgba(0,0,0,.0975);background:#fff; top:100px;">     
 						</button>
 					</span>
 					

@@ -1,4 +1,5 @@
 function boardList() {
+setTimeout(function(){
 	$.ajax({
 		type : "get",
 		url : "timeline",
@@ -6,7 +7,9 @@ function boardList() {
 		success : function(data) {
 			var mem_id = $("#mem_id").val();
 			var html = "";
+			var boardMarker=[];
 			$.each(data, function(index, item) {
+				boardMarker.push(item.board);
 				$.each(item, function(index2, item2) {
 					if(item2.boa_create_date != undefined) {
 						html += "<div class='board' datano='" +
@@ -45,12 +48,28 @@ function boardList() {
 				var boa_id = $(this).attr("datano");
 				clickBoard(boa_id);
 			});
+			
+			//검색어로 마크띄우기 호출
+			var timeLineFlag=$("#searchWord").attr("timeLineFlag");
+			if(timeLineFlag=='true'){
+				setBoardMarker(boardMarker);
+			}
 		},
 		error : function(e) {
 			console.log(e);
 		}
 	});
+	}, 50);
 }
+
+//검색어 태그 지우고 초기화
+$("#searchWord").click(function(){
+	$(this).attr("timeLineFlag", false);
+	$("#searchWord").html("");
+	$("#tags").attr("style", "visibility: visible");
+	$("#searchButton").attr("style", "visibility: visible");
+	refresh(map);
+});
 
 // 로그인한 id
 var loginid=document.getElementById("mem_id").value;
