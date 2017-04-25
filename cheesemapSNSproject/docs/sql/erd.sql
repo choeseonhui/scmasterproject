@@ -370,3 +370,5 @@ WHERE
 	CS_MEMBER.mem_id = CS_FOLLOW.fol_following
 and
 	CS_FOLLOW.fol_follower = 'jwnamkung@naver.com';
+	
+delete from CS_FOLLOW;

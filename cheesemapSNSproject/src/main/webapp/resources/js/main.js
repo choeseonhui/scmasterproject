@@ -214,8 +214,11 @@ function sliderInit() {
 
 function followAdd() {
 	var mem_id = $("#folStateImg").attr("fol_id");
-	console.log(mem_id);
-	$("#fol_state").html('<img src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25">');
+	var folDiv = '';
+	folDiv += '<img src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
+	folDiv += mem_id;
+	folDiv += '">';
+	$("#fol_state").html(folDiv);
 	$.ajax({
 		type : "get",
 		url : "followAdd",
@@ -223,7 +226,6 @@ function followAdd() {
 			board_id : mem_id
 		},
 		success : function(data){
-
 		},
 		error : function(e) {
 			console.log(e);
@@ -233,8 +235,11 @@ function followAdd() {
 
 function followRemove() {
 	var mem_id = $("#folStateImg").attr("fol_id");
-	console.log(mem_id);
-	$("#fol_state").html('<img src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25">');
+	var folDiv = '';
+	folDiv += '<img src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25" fol_id="';
+	folDiv += mem_id;
+	folDiv += '">';
+	$("#fol_state").html(folDiv);
 	$.ajax({
 		type : "get",
 		url : "followRemove",
@@ -242,7 +247,6 @@ function followRemove() {
 			board_id : mem_id
 		},
 		success : function(data){
-
 		},
 		error : function(e) {
 			console.log(e);
