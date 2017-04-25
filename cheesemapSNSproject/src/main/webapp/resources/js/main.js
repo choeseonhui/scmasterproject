@@ -117,7 +117,9 @@ function clickFollower() {
 				mem_id = item.mem_id;
 				stateNow = null;
 				followCheckTd(mem_id);
-				follow += "<div class='user'><table class='j-table'><tr><td rowspan='2'>";
+				follow += "<div id='user' class='user' fol_id='";
+				follow += mem_id; 	
+				follow += "'><table class='j-table'><tr><td rowspan='2'>";
 				follow += "<img class='w3-circle' src=download?mem_id="+ item.mem_id +" width='90' height='90'></img></td>"
 				follow += '<td>'+item.mem_nickname+'</td>'
 				follow += '<td id="fol_state" rowspan="2">';
@@ -213,7 +215,7 @@ function sliderInit() {
 };
 
 function followAdd() {
-	var mem_id = $("#folStateImg").attr("fol_id");
+	var mem_id = $("#user").attr("fol_id");
 	var folDiv = '';
 	folDiv += '<img src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
 	folDiv += mem_id;
@@ -224,17 +226,12 @@ function followAdd() {
 		url : "followAdd",
 		data : {
 			board_id : mem_id
-		},
-		success : function(data){
-		},
-		error : function(e) {
-			console.log(e);
 		}
 	});
 }
 
 function followRemove() {
-	var mem_id = $("#folStateImg").attr("fol_id");
+	var mem_id = $("#user").attr("fol_id");
 	var folDiv = '';
 	folDiv += '<img src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25" fol_id="';
 	folDiv += mem_id;
@@ -245,11 +242,6 @@ function followRemove() {
 		url : "followRemove",
 		data : {
 			board_id : mem_id
-		},
-		success : function(data){
-		},
-		error : function(e) {
-			console.log(e);
 		}
 	});
 }
