@@ -103,6 +103,23 @@ function initUser() {
 	}
 }
 
+function clickUser() {
+	var searchUser = $(".user_id").attr("fol_id");
+	$.ajax({
+		type:"GET",
+		url : "seachResult",
+		data: {
+			userId : searchUser								
+		},
+		success: function(data) {
+			boardList();
+		},
+		error : function(e) {
+			console.log(e);
+		}
+	});
+}
+
 var stateNow;
 function clickFollower() {
 	$.ajax({
@@ -120,7 +137,8 @@ function clickFollower() {
 				follow += "<div id='user' class='user' fol_id='";
 				follow += mem_id; 	
 				follow += "'><table class='j-table'><tr><td rowspan='2'>";
-				follow += "<img class='w3-circle' src=download?mem_id="+ item.mem_id +" width='90' height='90'></img></td>"
+				follow += "<img user_id="+mem_id;
+				follow += "class='w3-circle user_id' src=download?mem_id="+ item.mem_id +" width='90' height='90' onclick='clickUser();'></img></td>"
 				follow += '<td>'+item.mem_nickname+'</td>'
 				follow += '<td id="fol_state" rowspan="2">';
 				if(stateNow.length > 0) {
@@ -169,15 +187,30 @@ function clickFollowing() {
 		success : function(data) {
 			initUser();
 			var myMenu = document.getElementById("myMenuAll");
-			var follow = "";
-			follow += "<div class='user'>";
+			var follow = ""; 
+			var mem_id = null;
 			$.each(data, function(index, item) {
-				follow += "<table class='j-table'><tr><td rowspan='2'>";
-				follow += "<img class='w3-circle' src=download?mem_id="+ item.mem_id +" width='60' height='60'></img></td>"
+				mem_id = item.mem_id;
+				stateNow = null;
+				followCheckTd(mem_id);
+				follow += "<div id='user' class='user' fol_id='";
+				follow += mem_id; 	
+				follow += "'><table class='j-table'><tr><td rowspan='2'>";
+				follow += "<img class='w3-circle' src=download?mem_id="+ item.mem_id +" width='90' height='90'></img></td>"
 				follow += '<td>'+item.mem_nickname+'</td>'
-				follow += '<tr><td>'+item.mem_id+'</td></tr></table>';
+				follow += '<td id="fol_state" rowspan="2">';
+				if(stateNow.length > 0) {
+					follow += '<img id="folStateImg" src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
+					follow += mem_id;
+					follow += '">';
+				} else {
+					follow += '<img id="folStateImg" src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25" fol_id="';
+					follow += mem_id;
+					follow += '">';
+				}
+				follow += '</tr>';
+				follow += '<tr><td>'+item.mem_id+'</td></tr></table></div>';
 			});
-			follow += "</div>";
 			$("#userList").show();
 			$("#userList").html(follow);
 		},
@@ -293,26 +326,20 @@ function clickMyPosts(){
 	});
 	$("#flag_my_menu").val('true');
 	
-	
 	$.ajax({
 		type : "POST",
 		url : "clickMyPosts",
 		success : function(data) {
-			
 			boardList();
-			
 			if ($("#flag_contact").val() == 'true') {  		
 	    		if ($("#flag_timeline").val() == 'true') {   		
-	    				
 	    			 $("#flag_timeline").val('false');
-	    				
 	    				$('#pollSlider-button').animate({
 	    					"margin-right" : '+=500'
 	    				});
 	    				$('.pollSlider').animate({
 	    					"margin-right" : '+=500'
 	    				});
-	    				
 	    				$('.searchClass').animate({					
 	    					"margin-right" : '+=500'
 	    				});
