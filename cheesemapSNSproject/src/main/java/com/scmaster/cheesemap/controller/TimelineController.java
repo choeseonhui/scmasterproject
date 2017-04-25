@@ -99,6 +99,17 @@ public class TimelineController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value = "followCheck2", method = RequestMethod.GET)
+	public String followCheck2(String board_id, HttpSession session) {
+		String login_id = (String) session.getAttribute("mem_id");
+		Follow follow = new Follow(login_id, board_id);
+		System.out.println("22: "+follow);
+		String state = timelineDAO.followCheck(follow);
+		System.out.println(state);
+		return state;
+	}
+	
+	@ResponseBody
 	@RequestMapping(value = "followAdd", method = RequestMethod.GET)
 	public void followAdd(String board_id, HttpSession session) {
 		String login_id = (String) session.getAttribute("mem_id");
