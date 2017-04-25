@@ -13,18 +13,16 @@ function boardList() {
 							+ item2.boa_id		
 							+ "'><div class='start'><table class='j-table'><tr>";
 						if(item2.boa_photo_savefile != undefined) {
-							html +=	"<td rowspan='3'><img class='w3-circle' id='selectImg' src='"+ item2.boa_photo_savefile +"' width='120' height='120' datano='" +
+							html +=	"<td rowspan='3'><img class='w3-circle selectImg' id='selectImg' src='"+ item2.boa_photo_savefile +"' width='120' height='120' datano='" +
 							+ item2.boa_id		
-							+ "'>" +
-									"</img></td>";
+							+ "'></img></td>";
 						} else if(item2.boa_video_savefile != undefined) {
-							html +=	"<td rowspan='3'><video src='"+ item2.boa_video_savefile +"' width='120' height='120'  id='selectImg' datano='" +
+							html +=	"<td rowspan='3'><video class='selectImg' src='"+ item2.boa_video_savefile +"' width='120' height='120'  id='selectImg' datano='" +
 							+ item2.boa_id		
-							+ "' >" +
-							"</video></td>";
+							+ "' ></video></td>";
 						}
 						else {
-							html +=	"<td rowspan='3'><img id='selectImg'  src='./resources/img/logo.png' width='120' height='120' datano='" +
+							html +=	"<td rowspan='3'><img id='selectImg' class='selectImg' src='./resources/img/logo.png' width='120' height='120' datano='" +
 							+ item2.boa_id		
 							+ "'></img></td>";
 						}
@@ -43,8 +41,8 @@ function boardList() {
 				});
 			});
 			$("#timeline_div").html(html);
-			$("#selectImg").on("click", function(){
-				var boa_id=$(this).attr("datano");
+			$(".selectImg").on("click", function(){
+				var boa_id = $(this).attr("datano");
 				clickBoard(boa_id);
 			});
 		},
