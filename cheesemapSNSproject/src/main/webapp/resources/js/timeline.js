@@ -56,7 +56,6 @@ function boardList() {
 
 // 로그인한 id
 var loginid=document.getElementById("mem_id").value;
-console.log(loginid);
 //좋아요 플래그
 var flag=0;
 var board_id;

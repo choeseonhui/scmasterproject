@@ -122,11 +122,11 @@ function clickFollower() {
 				follow += '<td>'+item.mem_nickname+'</td>'
 				follow += '<td id="fol_state" rowspan="2">';
 				if(stateNow.length > 0) {
-					follow += '<img src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
+					follow += '<img id="folStateImg" src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
 					follow += mem_id;
 					follow += '">';
 				} else {
-					follow += '<img src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25" fol_id="';
+					follow += '<img id="folStateImg" src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25" fol_id="';
 					follow += mem_id;
 					follow += '">';
 				}
@@ -213,7 +213,7 @@ function sliderInit() {
 };
 
 function followAdd() {
-	var mem_id = $(this).attr("fol_id");
+	var mem_id = $("#folStateImg").attr("fol_id");
 	console.log(mem_id);
 	$("#fol_state").html('<img src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25">');
 	$.ajax({
@@ -223,7 +223,7 @@ function followAdd() {
 			board_id : mem_id
 		},
 		success : function(data){
-			followState(board_id);
+
 		},
 		error : function(e) {
 			console.log(e);
@@ -232,7 +232,7 @@ function followAdd() {
 }
 
 function followRemove() {
-	var mem_id = $(this).attr("fol_id");
+	var mem_id = $("#folStateImg").attr("fol_id");
 	console.log(mem_id);
 	$("#fol_state").html('<img src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25">');
 	$.ajax({
@@ -242,7 +242,7 @@ function followRemove() {
 			board_id : mem_id
 		},
 		success : function(data){
-			followState(board_id);
+
 		},
 		error : function(e) {
 			console.log(e);
