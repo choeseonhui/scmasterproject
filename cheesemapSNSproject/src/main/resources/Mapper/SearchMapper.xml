@@ -110,8 +110,12 @@
 		select
 			boa_id
 		from
+				
+		(select
+			boa_id
+		from
 			cs_board_like
 		where
-			mem_id = #{mem_id}
+			mem_id = #{mem_id})
 	</select>
 </mapper>
