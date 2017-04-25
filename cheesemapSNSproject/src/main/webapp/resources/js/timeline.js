@@ -59,6 +59,8 @@ var loginid=document.getElementById("mem_id").value;
 console.log(loginid);
 //좋아요 플래그
 var flag=0;
+var board_id;
+var real_board_id;
 
 function clickBoard(boa_id){
 	//Get the modal
@@ -93,7 +95,9 @@ function clickBoard(boa_id){
 		},
 		success : function(board){
 			//게시글 내용
-			console.log(board);
+			board_id = board.mem_id;
+			real_board_id = board.boa_id;
+			followState(); // 팔로우상태
 			$("#asideBoard").html(board.boa_content);
 			//게시글 작성자 정보
 			searchMember(board.mem_id);
@@ -158,6 +162,84 @@ function searchMember(mem_id){
 	});	
 }
 
+function followState() {
+	$.ajax({
+		type : "get",
+		url : "followCheck",
+		data : {
+			board_id : board_id
+		},
+		success : function(state){
+			if(state == 'ing') {
+				$("#followState").html('<a id="fol_cancel">-</a>');
+			} else if(state == 'yet') {
+				$("#followState").html('<a id="fol_add">+</a>');
+			} else if(state == 'i') {
+				$("#followState").html('<a id="delete_board">X</a>');
+			}
+			function_fol();
+		},
+		error : function(e) {
+			console.log(e);
+		}
+	});	
+}
+
+function function_fol() {
+	$("#fol_cancel").on("click", function() {
+		$("#followState").html('<a id="fol_add">+</a>');
+		$.ajax({
+			type : "get",
+			url : "followRemove",
+			data : {
+				board_id : board_id
+			},
+			success : function(data){
+				followState(board_id);
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	});
+	
+	$("#fol_add").on("click", function() {
+		$("#followState").html('<a id="fol_cancel">-</a>');
+		$.ajax({
+			type : "get",
+			url : "followAdd",
+			data : {
+				board_id : board_id
+			},
+			success : function(data){
+				followState(board_id);
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	});
+
+	$("#delete_board").on("click", function() {
+		$.ajax({
+			type : "get",
+			url : "deleteBoard",
+			data : {
+				boa_id : real_board_id
+			},
+			success : function(data){
+				var modalBoard = document.getElementById('myModalBoard');
+				$("#replyBoard").html("");
+				$("#likeHeart").html("");
+				modalBoard.style.display = "none";
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	});
+}
+
 function likeRead(boa_id){
 	console.log(boa_id);
 	$.ajax({
@@ -201,18 +283,18 @@ function replyRead(boa_id){
 				$.each(data, function(index, reply){
 					replyBoard+="<li><span class='replyNick'>"+reply.MEM_NICKNAME+"</span>"
 					+"<span>"+reply.COM_CONTENT;
-						if(reply.MEM_ID==loginid){
-							replyBoard+="<a href='javascript:delReply("+
-							reply.COM_ID+","+reply.BOA_ID+")'>&times;</a></span></li>";
-						}else{
-							replyBoard+="</span>";
-						}
-					});
-				return replyBoard+"</ul>";	
+					if(reply.MEM_ID==loginid){
+						replyBoard+="<a href='javascript:delReply("+
+						reply.COM_ID+","+reply.BOA_ID+")'>&times;</a></span></li>";
+					}else{
+						replyBoard+="</span>";
+					}
 				});
-			}
-		});
-	}
+				return replyBoard+"</ul>";	
+			});
+		}
+	});
+}
 
 //좋아요 클릭 이벤트 처리
 function clickHeart(boa_id){
