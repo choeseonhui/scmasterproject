@@ -378,7 +378,7 @@ select
 from
 	CS_BOARD
 where
-	CS_BOARD.boa_id = (select
+	boa_id IN (select
 				boa_id
 			from
 				cs_board_like
