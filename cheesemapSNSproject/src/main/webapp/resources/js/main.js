@@ -203,7 +203,7 @@ function clickFollowing() {
 				follow += "<div id='user' class='user' fol_id='";
 				follow += mem_id; 	
 				follow += "'><table class='j-table'><tr><td rowspan='2'>";
-				follow += "<img class='w3-circle' src=download?mem_id="+ item.mem_id +" onclick='clickUser(); width='90' height='90'></img></td>"
+				follow += "<img class='w3-circle' src=download?mem_id="+ item.mem_id +" onclick='clickUser();' width='90' height='90'></img></td>"
 				follow += '<td>'+item.mem_nickname+'</td>'
 				follow += '<td id="fol_state" rowspan="2">';
 				if(stateNow.length > 0) {
