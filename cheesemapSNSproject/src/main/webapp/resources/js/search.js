@@ -50,6 +50,10 @@ $(function() {
 	            $(".onetag").on("click",function(){
 	               var onetagname = $(this).attr("datano");
 	               startup(onetagname);
+	               openSilder();
+	               $(".dropdownMenu").css("display","none");
+	               
+	               
 	               console.log(onetagname);
 	               $('#tags').val("");
 	                  
@@ -65,6 +69,8 @@ $(function() {
 	          if(e.keyCode === 13) {
 	             var searchWord  = $('#tags').val();
 	             startup(searchWord);
+	             openSilder();
+	             $(".dropdownMenu").css("display","none");
 	             $('#tags').val("");
 	             
 	       
@@ -107,66 +113,57 @@ $(function() {
 
 
 
-
+function openSilder(){
+	
+    if ($("#flag_contact").val() == 'true') {        
+          if ($("#flag_timeline").val() == 'true') {         
+                
+              $("#flag_timeline").val('false');
+                
+                $('#pollSlider-button').animate({
+                   "margin-right" : '+=500'
+                });
+                $('.pollSlider').animate({
+                   "margin-right" : '+=500'
+                });
+                
+                $('.searchClass').animate({               
+                   "margin-right" : '+=500'
+                });
+                $("#searchWord").animate({					
+					"margin-right" : '+=500'
+				});
+             }
+          };
+    
+};
 
 
 function startup(searchWord){
-    $(".dropdownMenu").css("display","none");
-       $(".dropdownpopup").css("display","none");
-        
+    var divhtml = "";
+    
        
+       divhtml +="<div id='fixed-menu-bar'><ul class='nav nav-tabs'>";
+       divhtml +="<li role='presentation' class='active' id='comp-first'><a id='tagcomp'>#tag</a></li>";
+       divhtml +="<li role='presentation' id='comp-second' class='none' ><a id='usercomp'>User </a></li>";
+       divhtml +="<li role='presentation' id='comp-third' class='none' ><a id='mymapcomp'>My Map</a></li>";
+       divhtml +="</ul></div><br><br><br><div id='userList'></div><div id='tagList'></div><div id='mymapList'></div>";
+       
+       $(".pollSlider").html(divhtml);
+       
+    
+    
+    
+   $("#tagList").html('');
+   $("#userList").html('');
+   $("#mymapList").html('');
    
-       
-       if ($("#flag_contact").val() == 'true') {        
-             if ($("#flag_timeline").val() == 'true') {         
-                   
-                 $("#flag_timeline").val('false');
-                   
-                   $('#pollSlider-button').animate({
-                      "margin-right" : '+=500'
-                   });
-                   $('.pollSlider').animate({
-                      "margin-right" : '+=500'
-                   });
-                   
-                   $('.searchClass').animate({               
-                      "margin-right" : '+=500'
-                   });
-                   $("#searchWord").animate({					
-   					"margin-right" : '+=500'
-   				});
-                }
-             };
-       
-       
-       var divhtml = "";
-       
-          
-          divhtml +="<div id='fixed-menu-bar'><ul class='nav nav-tabs'>";
-          divhtml +="<li role='presentation' class='active' id='comp-first'><a id='tagcomp'>#tag</a></li>";
-          divhtml +="<li role='presentation' id='comp-second' class='none' ><a id='usercomp'>User </a></li>";
-          divhtml +="<li role='presentation' id='comp-third' class='none' ><a id='mymapcomp'>My Map</a></li>";
-          divhtml +="</ul></div><br><br><br><div id='userList'></div><div id='tagList'></div><div id='mymapList'></div>";
-          
-          $(".pollSlider").html(divhtml);
-          
-       
-       
-       
-      $("#tagList").html('');
-      $("#userList").html('');
-      $("#mymapList").html('');
-      
-      $("#comp-first").attr("class","active");
-      $("#comp-second").attr("class","none");
-      $("#comp-third").attr("class","none");
-      
-      
-      
-      
-      
-   
-      
+   $("#comp-first").attr("class","active");
+   $("#comp-second").attr("class","none");
+   $("#comp-third").attr("class","none");
+	
+	
+
       $.ajax({
          type : "GET",         //type of request Method
          url : "search",      //value pf requestMethod
@@ -195,12 +192,7 @@ function startup(searchWord){
             }
             
             }
-            console.log(taglist);
-            console.log(userlist);
-            console.log(mymaplist);
-      
-            
-            
+           
             
             var taghtml ='';
             
@@ -237,10 +229,6 @@ function startup(searchWord){
                      
                   });
                         
-                  
-                  
-                  
-                  
                 });
                 
                    });   
