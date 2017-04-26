@@ -105,6 +105,7 @@ function initMap() {
 // 게시글 정보 불러오기
 function refresh(map){
 	// sliderInit();
+	if($("#searchWord").attr("timeLineFlag")=='false'){
 	markers.forEach(function (marker) {
 		marker.setMap(null);
 	});
@@ -116,6 +117,7 @@ function refresh(map){
 	var lngSW = map.getBounds().getSouthWest().lng();
 	boardList();
 	defaultList(latNE, lngNE, latSW, lngSW);
+	}
 }
 
 // 나와 내가 팔로잉 하고 있는 사람들의 게시물 정보를 가져와 마커 생성

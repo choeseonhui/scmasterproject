@@ -123,6 +123,10 @@ function clickUser() {
 		},
 		success: function(data) {
 			boardList();
+			$("#searchWord").html("X "+searchUser);
+			$("#searchWord").attr("timeLineFlag", true);
+			$("#tags").attr("style", "display : none");
+			$("#searchButton").attr("style", "display : none");
 		},
 		error : function(e) {
 			console.log(e);
