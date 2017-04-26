@@ -301,28 +301,25 @@ function clickMyPosts(){
 			boardList();
 			if ($("#flag_contact").val() == 'true') {  		
 	    		if ($("#flag_timeline").val() == 'true') {   		
-	    				
-	    			 $("#flag_timeline").val('false');
-	    				
-	    				$('#pollSlider-button').animate({
-	    					"margin-right" : '+=500'
-	    				});
-	    				$('.pollSlider').animate({
-	    					"margin-right" : '+=500'
-	    				});
-	    				
-	    				$('.searchClass').animate({					
-	    					"margin-right" : '+=500'
-	    				});
-	    				$("#searchWord").animate({					
-	    					"margin-right" : '+=500'
-	    				});
-	    			}
-	    		};
-	    		$("#searchWord").html("X MyPost");
-				$("#searchWord").attr("timeLineFlag", true);
-				$("#tags").attr("style", "display : none");
-				$("#searchButton").attr("style", "display : none");
+	    			$("#flag_timeline").val('false');
+    				$('#pollSlider-button').animate({
+    					"margin-right" : '+=500'
+    				});
+    				$('.pollSlider').animate({
+    					"margin-right" : '+=500'
+    				});
+    				$('.searchClass').animate({					
+    					"margin-right" : '+=500'
+    				});
+    				$("#searchWord").animate({					
+    					"margin-right" : '+=500'
+    				});
+    			}
+    		};
+    		$("#searchWord").html("X MyPost");
+			$("#searchWord").attr("timeLineFlag", true);
+			$("#tags").attr("style", "display : none");
+			$("#searchButton").attr("style", "display : none");
 		},
 		error : function(e) {
 			console.log(e);

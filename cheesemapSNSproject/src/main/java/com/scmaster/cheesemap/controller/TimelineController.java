@@ -46,21 +46,22 @@ public class TimelineController {
 				Timeline temp = new Timeline();
 
 				Board timelineBoard = timelineDAO.getTimeline(boa_id);
-
-				String orignDate = timelineBoard.getBoa_create_date();
-				SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-				Date dateFrom = transFormat.parse(orignDate);
-
-				convertFromDate convert = new convertFromDate();
-				String updateDate = convert.calculateTime(dateFrom);
-				timelineBoard.setBoa_create_date(updateDate);
-				temp.setBoard(timelineBoard);
-				temp.setBoardComment(timelineDAO.getBoardComment(boa_id));
-				temp.setBoardTag(timelineDAO.getBoardTag(boa_id));
-				temp.setBoardLike(timelineDAO.getBoardLike(boa_id));
-				temp.setBoardCommentNick(baordDAO.getBoaCommentNick(boa_id));
-				result.add(temp);
+				if(timelineBoard != null) {
+					String orignDate = timelineBoard.getBoa_create_date();
+					SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
+					Date dateFrom = transFormat.parse(orignDate);
+	
+					convertFromDate convert = new convertFromDate();
+					String updateDate = convert.calculateTime(dateFrom);
+					timelineBoard.setBoa_create_date(updateDate);
+					temp.setBoard(timelineBoard);
+					temp.setBoardComment(timelineDAO.getBoardComment(boa_id));
+					temp.setBoardTag(timelineDAO.getBoardTag(boa_id));
+					temp.setBoardLike(timelineDAO.getBoardLike(boa_id));
+					temp.setBoardCommentNick(baordDAO.getBoaCommentNick(boa_id));
+					result.add(temp);
+				}
 			}
 		}
 		return result;
