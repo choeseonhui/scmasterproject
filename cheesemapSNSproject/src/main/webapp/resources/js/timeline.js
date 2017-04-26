@@ -81,7 +81,6 @@ $("#searchWord").click(function(){
 	$(this).attr("timeLineFlag", false);
 	$("#searchWord").html("");
 	$("#tags").attr("style", "visibility: visible");
-	$("#searchButton").attr("style", "visibility: visible");
 	refresh(map);
 });
 

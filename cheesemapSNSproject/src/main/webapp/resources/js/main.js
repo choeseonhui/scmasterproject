@@ -105,7 +105,7 @@ function initUser() {
 			$('.searchClass').animate({
 				"margin-right" : '+=500'
 			});
-			$('.searchWord').animate({
+			$('#searchWord').animate({
 				"margin-right" : '+=500'
 			});
 		} else {
@@ -123,10 +123,11 @@ function clickUser() {
 		},
 		success: function(data) {
 			boardList();
+			
 			$("#searchWord").html("X "+searchUser);
 			$("#searchWord").attr("timeLineFlag", true);
 			$("#tags").attr("style", "display : none");
-			$("#searchButton").attr("style", "display : none");
+
 		},
 		error : function(e) {
 			console.log(e);
@@ -247,8 +248,8 @@ function sliderInit() {
 		$('.searchClass').animate({
 			"margin-right" : '-=500'
 		});
-		$('.searchWord').animate({
-			"margin-right" : '-=500'
+		$('#searchWord').animate({
+			"margin-right" : '-=1000'
 		});
 	};
 
@@ -329,7 +330,6 @@ function clickMyPosts(){
     		$("#searchWord").html("X MyPost");
 			$("#searchWord").attr("timeLineFlag", true);
 			$("#tags").attr("style", "display : none");
-			$("#searchButton").attr("style", "display : none");
 		},
 		error : function(e) {
 			console.log(e);
@@ -372,7 +372,6 @@ function clickCart(){
 	    	$("#searchWord").html("X LikeCart");
 			$("#searchWord").attr("timeLineFlag", true);
 			$("#tags").attr("style", "display : none");
-			$("#searchButton").attr("style", "display : none");
 		},
 		error : function(e) {
 			console.log(e);

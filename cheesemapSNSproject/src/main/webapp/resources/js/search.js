@@ -3,7 +3,6 @@ $(function() {
 	 $('#tags').keyup(function(){
 	       
 	       var searchText = $('#tags').val();
-	       console.log(searchText);
 	       
 	      if(searchText != ""){ 
 	         
@@ -221,7 +220,6 @@ function startup(searchWord){
                         $("#searchWord").html("X "+searchTag);
 						$("#searchWord").attr("timeLineFlag", true);
 						$("#tags").attr("style", "display : none");
-						$("#searchButton").attr("style", "display : none");
                      },
                      error : function(e){
                         console.log(e);
@@ -268,7 +266,6 @@ function startup(searchWord){
                         $("#searchWord").html("X "+searchUser);
 						$("#searchWord").attr("timeLineFlag", true);
 						$("#tags").attr("style", "display : none");
-						$("#searchButton").attr("style", "display : none");
                         
                      },
                      error : function(e){
