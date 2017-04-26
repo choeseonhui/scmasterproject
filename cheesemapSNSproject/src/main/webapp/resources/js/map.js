@@ -1,6 +1,7 @@
 var markers = [];
 var map;
 var markerClusterer = null;
+
 function initMap() {
 	
 	$('#pac-input').css('visibility','hidden');
@@ -156,7 +157,6 @@ function defaultList(latNE, lngNE, latSW, lngSW) {
 //클러스터 기능 붙여주기
 function clusterRefresh(){
 	if (markerClusterer!=null) {
-		console.log("쿄쿄쿄");
 		markerClusterer.clearMarkers();
 	}
 	markerClusterer = new MarkerClusterer(map, markers, {
@@ -164,18 +164,32 @@ function clusterRefresh(){
 	});
 }
 
+//타임라인의 정보 마커찍어주기
 function setBoardMarker(boardMarker){
 // 이전에 존재하던 마커 전부 삭제
     markers.forEach(function (marker) {
         marker.setMap(null);
     });
     markers = [];
-	$.each(boardMarker, function(index, item) {
+    
+    var latlngbounds = new google.maps.LatLngBounds();
+	
+    $.each(boardMarker, function(index, item) {
 		var boa_id = item.boa_id;
 		var latlng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
+		latlngbounds.extend(latlng);
 		addMarker(latlng, boa_id, map);
 		clusterRefresh();
 	});
+    if(boardMarker.length==1){
+    	zoomChangeBoundsListener = 
+    		google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) {
+    			  if (this.getZoom() > 15) {
+    			    this.setZoom(15);
+    			  }
+    		});
+    }
+    map.fitBounds(latlngbounds);
 }
 
 // 마커 생성
