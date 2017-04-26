@@ -105,6 +105,9 @@ function initUser() {
 			$('.searchClass').animate({
 				"margin-right" : '+=500'
 			});
+			$('.searchWord').animate({
+				"margin-right" : '+=500'
+			});
 		} else {
 		}
 	}
@@ -238,6 +241,9 @@ function sliderInit() {
 			"margin-right" : '-=500'
 		});
 		$('.searchClass').animate({
+			"margin-right" : '-=500'
+		});
+		$('.searchWord').animate({
 			"margin-right" : '-=500'
 		});
 	};
