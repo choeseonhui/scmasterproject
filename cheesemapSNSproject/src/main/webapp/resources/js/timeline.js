@@ -1,64 +1,78 @@
 function boardList() {
-setTimeout(function(){
-	$.ajax({
-		type : "get",
-		url : "timeline",
-		dataType : "json",
-		success : function(data) {
-			var mem_id = $("#mem_id").val();
-			var html = "";
-			var boardMarker=[];
-			$.each(data, function(index, item) {
-				boardMarker.push(item.board);
-				$.each(item, function(index2, item2) {
-					if(item2.boa_create_date != undefined) {
-						html += "<div class='board' datano='" +
-							+ item2.boa_id		
-							+ "'><div class='start'><table class='j-table'><tr>";
-						if(item2.boa_photo_savefile != undefined) {
-							html +=	"<td rowspan='3'><img class='w3-circle selectImg' id='selectImg' src='"+ item2.boa_photo_savefile +"' width='120' height='120' datano='" +
-							+ item2.boa_id		
-							+ "'></img></td>";
-						} else if(item2.boa_video_savefile != undefined) {
-							html +=	"<td rowspan='3'><video class='selectImg' src='"+ item2.boa_video_savefile +"' width='120' height='120'  id='selectImg' datano='" +
-							+ item2.boa_id		
-							+ "' ></video></td>";
+	setTimeout(function(){
+		$.ajax({
+			type : "get",
+			url : "timeline",
+			dataType : "json",
+			success : function(data) {
+				var mem_id = $("#mem_id").val();
+				var html = "";
+				var boardMarker = [];
+				$.each(data, function(index, item) {
+					boardMarker.push(item.board);
+					$.each(item, function(index2, item2) {
+						if(item2.boa_create_date != undefined) {
+							html += "<div class='board' datano='" +
+								+ item2.boa_id
+								+ "'><div class='start'><table class='j-table'><tr>";
+							if(item2.boa_photo_savefile != undefined) {
+								html +=	"<td rowspan='3'><img class='w3-circle selectImg' id='selectImg' src='"+ item2.boa_photo_savefile +"' width='120' height='120' datano='" +
+								+ item2.boa_id
+								+ "'></img></td>";
+							} else if(item2.boa_video_savefile != undefined) {
+								html +=	"<td rowspan='3'><video class='selectImg' src='"+ item2.boa_video_savefile +"' width='120' height='120'  id='selectImg' datano='" +
+								+ item2.boa_id
+								+ "' ></video></td>";
+							}
+							else {
+								html +=	"<td rowspan='3'><img id='selectImg' class='selectImg' src='./resources/img/logo.png' width='120' height='120' datano='" +
+								+ item2.boa_id
+								+ "'></img></td>";
+							}
+							$.ajax({
+								type : "get",
+								url : "searchMember",
+								data : {
+									mem_id : item2.mem_id
+								},
+								cache : false,	// 한번에 여러번 실행 시켜주기 위한 key 
+								async : false,	// 한번에 여러번 실행 시켜주기 위한 key
+								success : function(member){
+									html += "<td>" + member.mem_nickname + "</td>";
+								},
+								error : function(e) {
+								console.log(e);
+								}
+							});	
+							html += "<td>좋아요" + item.boardLike.length + " 코멘트" + item.boardComment.length + "</td></tr>";
+							html += "<tr><td align='left' colspan='2'>";
+							if(item.boardTag.length > 0) {
+								$.each(item.boardTag, function(index3, item3) {
+									html += "#<a id='upup'>"+item3.tag_name+"</a>";						
+								});
+							}
+							html += "</td></tr>";
+							html += "<tr><td align='right' colspan='2'><i class='glyphicon glyphicon-time'>" + item2.boa_create_date + "</i></td>";
 						}
-						else {
-							html +=	"<td rowspan='3'><img id='selectImg' class='selectImg' src='./resources/img/logo.png' width='120' height='120' datano='" +
-							+ item2.boa_id		
-							+ "'></img></td>";
-						}
-						html += "<td>" + item2.mem_id + "</td>";
-						html += "<td>좋아요" + item.boardLike.length + " 코멘트" + item.boardComment.length + "</td></tr>";
-						html += "<tr><td align='left' colspan='2'>"
-						if(item.boardTag.length > 0) {
-							$.each(item.boardTag, function(index3, item3) {
-								html += "#<a id='upup'>"+item3.tag_name+"</a>";								
-							});
-						}
-						html += "</td></tr>"
-						html += "<tr><td align='right' colspan='2'><i class='glyphicon glyphicon-time'>" + item2.boa_create_date + "</i></td>";
-					}
-					html += "</tr></table></div></div>";
+						html += "</tr></table></div></div>";
+					});
 				});
-			});
-			$("#timeline_div").html(html);
-			$(".selectImg").on("click", function(){
-				var boa_id = $(this).attr("datano");
-				clickBoard(boa_id);
-			});
+				$("#timeline_div").html(html);
+				$(".selectImg").on("click", function() {
+					var boa_id = $(this).attr("datano");
+					clickBoard(boa_id);
+				});
 			
-			//검색어로 마크띄우기 호출
-			var timeLineFlag=$("#searchWord").attr("timeLineFlag");
-			if(timeLineFlag=='true'){
-				setBoardMarker(boardMarker);
+				//검색어로 마크띄우기 호출
+				var timeLineFlag=$("#searchWord").attr("timeLineFlag");
+				if(timeLineFlag=='true'){
+					setBoardMarker(boardMarker);
+				}
+			},
+			error : function(e) {
+				console.log(e);
 			}
-		},
-		error : function(e) {
-			console.log(e);
-		}
-	});
+		});
 	}, 50);
 }
 
