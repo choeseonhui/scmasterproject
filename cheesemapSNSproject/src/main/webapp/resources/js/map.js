@@ -39,16 +39,24 @@ function initMap() {
     $('#write-button').on('click', function () {
         if ($('#write-button').attr('data-flag') == 'false') {
             $('#write-button').attr('data-flag', 'true');
+            markers.forEach(function (marker) {
+                marker.setMap(null);
+            });
+            markers = [];
+            clusterRefresh();
             map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
         } else {
             $('#write-button').attr('data-flag', 'false');
             map.controls[google.maps.ControlPosition.TOP_CENTER].pop(input);
-            $('.write-slider').css('margin-right', '-600px');
+            $('.write-slider').animate({
+				"margin-left" : '-=600'
+			});
             markers.forEach(function (marker) {
                 marker.setMap(null);
             });
             markers = [];
         }
+        refresh(map);
     });
 
     // 보고있는 지도의 범위(?)가 변경되었을 경우 검색창 객체에 변경된 값 세팅
@@ -105,7 +113,7 @@ function initMap() {
 // 게시글 정보 불러오기
 function refresh(map){
 	// sliderInit();
-	if($("#searchWord").attr("timeLineFlag")=='false'){
+	if($("#searchWord").attr("timeLineFlag")=='false'&&$('#write-button').attr('data-flag')=='false'){
 	markers.forEach(function (marker) {
 		marker.setMap(null);
 	});
@@ -147,7 +155,8 @@ function defaultList(latNE, lngNE, latSW, lngSW) {
 
 //클러스터 기능 붙여주기
 function clusterRefresh(){
-	if (markerClusterer) {
+	if (markerClusterer!=null) {
+		console.log("쿄쿄쿄");
 		markerClusterer.clearMarkers();
 	}
 	markerClusterer = new MarkerClusterer(map, markers, {
