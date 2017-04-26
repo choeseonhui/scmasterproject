@@ -123,11 +123,9 @@ function clickUser() {
 		},
 		success: function(data) {
 			boardList();
-			
 			$("#searchWord").html("X "+searchUser);
 			$("#searchWord").attr("timeLineFlag", true);
 			$("#tags").attr("style", "display : none");
-
 		},
 		error : function(e) {
 			console.log(e);
@@ -211,7 +209,8 @@ function clickFollowing() {
 				follow += "<div id='user' class='user' fol_id='";
 				follow += mem_id; 	
 				follow += "'><table class='j-table'><tr><td rowspan='2'>";
-				follow += "<img class='w3-circle' src=download?mem_id="+ item.mem_id +" onclick='clickUser();' width='90' height='90'></img></td>"
+				follow += "<img user_id="+mem_id;
+				follow += " class='w3-circle user_id' src=download?mem_id="+ item.mem_id +" width='90' height='90' onclick='clickUser();'></img></td>"
 				follow += '<td>'+item.mem_nickname+'</td>'
 				follow += '<td id="fol_state" rowspan="2">';
 				if(stateNow.length > 0) {
