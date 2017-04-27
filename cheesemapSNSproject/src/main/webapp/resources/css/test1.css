@@ -34,12 +34,13 @@ body{
 }
 
 #page0{
-	color: black; !important
+	color: black;
 }
 
 #page0_5{
 	text-align: center;
 	background-color: burlywood;
+	color: black;
 }
 
 #page1 {
@@ -220,6 +221,7 @@ body{
 	width: 3cm;
 	left: 15.15cm;
 	top: -35.9cm;
+	color: white;
 	
 }
 
@@ -231,6 +233,7 @@ body{
 	width: 3cm;
 	left: 15.15cm;
 	top: -33.1cm;
+	color: white;
 }
 
 #post_top2_img{
@@ -250,7 +253,7 @@ body{
 	width: 3cm;
 	left: 15.15cm;
 	top: -36.8cm;
-	
+	color: #ff8d3c;
 }
 
 #post_top3_comment{
@@ -261,6 +264,7 @@ body{
 	width: 3cm;
 	left: 15.15cm;
 	top: -33.9cm;
+	color: #ff8d3c;
 }
 
 #post_top3_img{
@@ -313,7 +317,7 @@ body{
 	float: left;
 	width: 2cm;
 	text-align: center;
-	top:12.9cm;
+	top:13.8cm;
 	left: 3.5cm;
 }
 
@@ -324,7 +328,7 @@ body{
 	position: relative;
 	text-align: center;
 	width: 3cm;
-	top:12.9cm;
+	top:13.8cm;
 	left: 7.5cm;
 }
 
@@ -350,7 +354,7 @@ body{
 	z-index: 55;
 	position: relative;
 	color: #5a5955;
-	top: -25cm;
+	top: -24.8cm;
 	left: 3cm;
 	font-weight: bold;
 }
@@ -358,10 +362,12 @@ body{
 .post_hashtag{
 	z-index: 55;
 	position: relative;
-	top: -22.8cm;
+	top: -22cm;
 	left: 3cm;
 	font-weight: bold;
 	font-size: 16px;
+	color:black;
+	
 }
 
 .post_like{
@@ -371,7 +377,7 @@ body{
 	float: left;
 	font-size: 30px;
 	color: #5a5955;
-	top: -22.5cm;
+	top: -21.7cm;
 	left: 4cm;
 }
 
@@ -381,7 +387,7 @@ body{
 	text-align: center;
 	color: #5a5955;
 	width: 3cm;
-	top: -22.5cm;
+	top: -21.7cm;
 	left: 8.2cm;
 	font-size: 30px;
 }
@@ -389,9 +395,10 @@ body{
 .post_comment_div{
 	z-index: 55;
 	position: relative;
-	top: -22.2cm;
+	top: -21.3cm;
 	left: 1.5cm;
 	float: left;
+	color: black;
 }
 
 .post_comment_nick{
