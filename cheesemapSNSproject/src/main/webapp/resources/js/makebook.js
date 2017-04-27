@@ -1,33 +1,103 @@
 var select_img;
 var bookTitle;
 
-function makepdf() {
+/*function makepdf() {
+	var page_count = sessionStorage.getItem("page_count");
 	var doc = new jsPDF();
-	doc.addHTML(document.getElementById('page0'), 0, 0, function() {
-		doc.addPage();
-	});
-	doc.addHTML(document.getElementById('page0_5'), 0, 0, function() {
-		doc.addPage();
-	}); 
-	doc.addHTML(document.getElementById('page1'), 0, 0, function() {
-		doc.addPage();
-	}); 
-	doc.addHTML(document.getElementById('page2'), 0, 0, function() {
-		doc.addPage();
-	}); 
-	doc.addHTML(document.getElementById('page3'), 0, 0, function() {
-		doc.addPage();
-	}); 
-	doc.addHTML(document.getElementById('page3_5'), 0, 0, function() {
-		doc.addPage();
-	}); 
-	doc.addHTML(document.getElementById('page4'), 0, 0, function() {
-		doc.addPage();
-	}); 
-	doc.addHTML(document.getElementById('page_last'), 0, 0, function() {
-		doc.save('3333.pdf');
-	});
+	setTimeout(function(){
+		doc.addHTML(document.getElementById('page0'), 0, 0, function() {
+			console.log('0');
+			doc.addPage();
+		});
+	}, 500);
+	
+	setTimeout(function(){
+		doc.addHTML(document.getElementById('page0_5'), 0, 0, function() {
+			console.log('0.5');
+			doc.addPage();
+		});
+	}, 1000);
+	
+	setTimeout(function(){
+		doc.addHTML(document.getElementById('page1'), 0, 0, function() {
+			console.log('1');
+			doc.addPage();
+		});
+	}, 1500);
+	
+	setTimeout(function(){
+		doc.addHTML(document.getElementById('page2'), 0, 0, function() {
+			console.log('2');
+			doc.addPage();
+		});
+	}, 2000);
+	
+	setTimeout(function(){
+		doc.addHTML(document.getElementById('page3'), 0, 0, function() {
+			console.log('3');
+			doc.addPage();
+		});
+	}, 2500);
+	
+	function content_page_make(i, time){
+			setTimeout(function(){
+				doc.addHTML(document.getElementById('page4_' + i), 0, 0, function() {
+					console.log('page4_' + i);
+					doc.addPage();
+				});
+			}, time);
+	}
+	
+	var time = 2500;	
+	
+	for (var i = 0; i < page_count; i++) {
+		time += 500;
+		content_page_make(i, time);
+	}
+	
+	setTimeout(function(){
+		doc.addHTML(document.getElementById('page_last'), 0, 0, function() {
+			console.log('page_last');
+			var pdf = doc.output('datauristring');
+			var pdf2 = pdf.split(',');
+			var userid = sessionStorage.getItem("mem_id")
+			console.log('ajax start');
+			$.ajax({
+				type: 'POST',
+				url: 'pdf',
+				data: {
+					pdf: pdf2[1],
+					userid: userid
+				},
+				success:function(data){
+					var book = "";
+					for (var i = 1; i <= data; i++) {
+						book += "<div><img src='userUpload/" + userid + "_" + i + ".png' width='600'></div>";
+					}
+					$('#mybook').html(book);
+					$('#mybook').wowBook({
+						height: 500,
+						width: 600,
+						flipSound: false
+					});
+				},
+				error:function(e){
+					console.log(e);
+				}
+			});
+			doc.save('MyBOOOOOOOK.pdf');
+		});
+	}, (time + 500));
+	
+	setTimeout(function(){
+		doc.addHTML(document.getElementById('page4_0'), 0, 0, function() {
+			console.log('4_0');
+			doc.save('5.pdf');
+		});
+	}, 35000);
+	
 }
+*/
 
 function moveSlider(index){
 		//슬라이더 이동
@@ -78,6 +148,9 @@ $(document).ready(function(){
 		bookTitle = $("#bookTitle").val();
 		fromDate = $("#dp2").val();
 		toDate = $("#dp3").val();
+		sessionStorage.setItem("fromDate", fromDate);
+		sessionStorage.setItem("toDate", toDate);
+		sessionStorage.setItem("bookTitle", bookTitle);
 		
 		$.ajax({
 			
@@ -91,6 +164,7 @@ $(document).ready(function(){
 			dataType:"json",
 			success : function(data){				
 			    	getMyBoard(data);
+			    	sessionStorage.setItem("myBoardList", data);
 					moveSlider(1);
 			},
 			error : function(e){
@@ -115,6 +189,7 @@ $(document).ready(function(){
 					$("#imgDiv").html('<img id="userPhoto" src="' + data + '">');
 					
 					$("#mainPhoto").val(data);
+					sessionStorage.setItem("mainPhoto", data);
 				},
 				error : function(e) {
 					console.log(e);
@@ -124,12 +199,13 @@ $(document).ready(function(){
 	
 	
 	 $(document).on("click","#book_ok_btn2",function(){
-		previewer();
+		/*previewer();*/
 		moveSlider(2);
 		console.log("선택한 이미지 boa_id :"+select_img);
 		console.log("표지 이미지 :" + $("#mainPhoto").val());
 		console.log("유저의 책 이름 : "+ bookTitle);
-		
+		sessionStorage.setItem("select_img", select_img);
+		window.open("preview", "책 만들기", "width=500, height=500, toolbar=no, scrollbars=no, resizable=no");
 	});
 
 });
@@ -275,15 +351,20 @@ function getMyBoard(myBoardList) {
 
 //2단계
 function previewer() {
-	var mem_id = $("#mem_id").val();
+	/*var mem_id = $("#mem_id").val();*/
+	var mem_id = sessionStorage.getItem("mem_id");
 	var mem_nick = "";
 	var like_div = 0;
 	var comment_div = 0;
 	var total_div = 0;
 	var memories_div = 0;
-	var cover_img=$("#mainPhoto").val();
-	var startDate=$("#dp2").val();
-	var endDate=$("#dp3").val();
+	/*var cover_img=$("#mainPhoto").val();*/
+	var cover_img = sessionStorage.getItem("mainPhoto");
+	var startDate= sessionStorage.getItem("fromDate");
+	var endDate=sessionStorage.getItem("toDate");
+	var select_img = sessionStorage.getItem("select_img").split(',');
+	var bookTitle = sessionStorage.getItem("bookTitle");
+	console.log(select_img);
 	
 	/*0페이지*/
 	$("#cover_img").attr("src", cover_img);
@@ -309,6 +390,7 @@ function previewer() {
 	 
 	 /*1페이지*/
 	// 가장 좋아요 많이 한 친구
+	$.ajaxSettings.traditional = true;
 	$.ajax({
 		type : "post",
 		url : "bestOfLike",
@@ -371,6 +453,7 @@ function previewer() {
 		success : function(tList) {
 			memories_div += tList.length;
 			var page4="";
+			var page_count = 0;
 			$.each(tList, function(index, timeLine) {
 				like_div += timeLine.boardLike.length;
 				comment_div += timeLine.boardCommentNick.length;
@@ -394,14 +477,17 @@ function previewer() {
 					}
 				});
 				page4+="</div></div>";
+				page_count++;
 			});
 			total_div = like_div + comment_div;
 			$("#total_div").html(total_div);
 			$("#like_div").html(like_div);
 			$("#comment_div").html(comment_div);
 			$("#memories_div").html(memories_div);
-			page4+="<div class='page' id='page_last'> <img class='background_img' id='lastpage' src='./resources/img/testPage_last.png'> </div>"; 
+			page4+="<div class='page ver' id='page_last'> <img class='background_img' id='lastpage' src='./resources/img/testPage_last.png'> </div>"; 
 			$("#page4").html(page4);
+			console.log("페이지 카운트" + page_count);
+			sessionStorage.setItem("page_count", page_count);
 		},
 		error : function(e) {
 			console.log(e);

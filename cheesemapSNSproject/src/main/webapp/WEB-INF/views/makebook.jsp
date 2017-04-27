@@ -29,6 +29,7 @@
     <link href="./resources/css/freelancer.css" rel="stylesheet">
 
 	<!-- makebook CSS -->
+	<link href="./resources/css/wow_book.css" rel="stylesheet">
 	<link href="./resources/css/makebook.css" rel="stylesheet">
 	
 	<!-- jquery-ui CSS -->
@@ -112,7 +113,7 @@ font-family: 'Jeju Gothic', serif; }
 			<div id="title_date" class="slider_form"></div>
        		<div id="myBoardList" class="container slider_form"></div>
 			<div id="preview" class="slider_form">
-				<jsp:include page="preview1.jsp" flush="true"></jsp:include>
+				<div id="preview_pdf"></div>
 			</div>
 			<div id="finishBk" class="slider_form"></div>
 		</div>
@@ -180,6 +181,12 @@ font-family: 'Jeju Gothic', serif; }
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
+    
+    <input type="hidden" id="myBoard" value='${myBoard }'>
+	<input type="hidden" id="mainPhoto">
+	
+
+	<input type="hidden" id="mem_id" value="${mem_id}">
 
     <!-- jQuery -->
     <script src="./resources/vendor/jquery/jquery.min.js"></script>
@@ -207,18 +214,21 @@ font-family: 'Jeju Gothic', serif; }
     
     <!-- MakeBook JavaScript -->
     <script	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
-	<script src="./resources/js/html2canvas.js"></script>
+    <script src="./resources/js/wow_book.min.js"></script>
     <script src="./resources/js/makebook.js"></script>
     
     <!-- jquery JavaScript -->
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
-	<input type="hidden" id="myBoard" value='${myBoard }'>
-	<input type="hidden" id="mainPhoto">
-	
-
-	<input type="hidden" id="mem_id" value="${mem_id}">
+    
+    <script>
+    $(document).ready(function(){
+    	var mem_id = '${ mem_id}';
+    	var myBoard = '${ myBoard}';
+    	sessionStorage.setItem("mem_id", mem_id);
+        sessionStorage.setItem("myBoard", myBoard);
+    });
+    </script>
 	
 	
 </body>

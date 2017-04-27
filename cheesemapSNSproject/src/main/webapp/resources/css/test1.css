@@ -1,5 +1,22 @@
 @charset "utf-8";
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One); /* font */
+
+#loading{
+	text-align: center;
+	padding-bottom: 300px;
+}
+
+#osirase{
+	padding-top: 245px;
+	padding-bottom: 30px;
+	font-size: 55px;
+	text-align: center;
+}
+
+body{
+	overflow: hidden;
+}
+
 .page {
 	width: 21cm;
 	height: 29.7cm;
@@ -14,6 +31,10 @@
 	z-index: -55;
 	width: 21cm;
 	height: 29.7cm;
+}
+
+#page0{
+	color: black; !important
 }
 
 #page0_5{
@@ -88,7 +109,7 @@
 	z-index: 55;
 	position: relative;
     top: -22cm;
-    right: 5.5cm;
+    right: 5.8cm;
     font-size: 30px;
     text-align: center;
     float: right;
@@ -96,8 +117,10 @@
 
 #memories_div{
 	z-index: 55;
+	width: 9cm;
 	position: relative;
-	top: -16.5cm;
+	top: -16.2cm;
+	left: 4.3cm;
 	text-align: center;
 	font-size: 90px;
 }
@@ -120,7 +143,7 @@
 .top3_image{
 	z-index: 55;
 	position: relative;
-	top: -10cm;
+	top: -9.6cm;
 }
 
 #top1 {
@@ -149,7 +172,7 @@
 	width: 5cm;
 	text-align: center;
 	position: relative;
-	top: -9.3cm;
+	top: -8.8cm;
 	font-size: 25px;
 }
 
@@ -258,7 +281,7 @@
 #post_top1_date{
 	z-index: 55;
 	position: relative;
-	top: 8.65cm;
+	top: 8.6cm;
 	text-align: center;
 	color: white;
 	font-size: 35px;
@@ -290,7 +313,7 @@
 	float: left;
 	width: 2cm;
 	text-align: center;
-	top:13.5cm;
+	top:12.9cm;
 	left: 3.5cm;
 }
 
@@ -301,7 +324,7 @@
 	position: relative;
 	text-align: center;
 	width: 3cm;
-	top:13.5cm;
+	top:12.9cm;
 	left: 7.5cm;
 }
 
@@ -335,7 +358,7 @@
 .post_hashtag{
 	z-index: 55;
 	position: relative;
-	top: -23.6cm;
+	top: -22.8cm;
 	left: 3cm;
 	font-weight: bold;
 	font-size: 16px;
@@ -348,7 +371,7 @@
 	float: left;
 	font-size: 30px;
 	color: #5a5955;
-	top: -23.3cm;
+	top: -22.5cm;
 	left: 4cm;
 }
 
@@ -358,7 +381,7 @@
 	text-align: center;
 	color: #5a5955;
 	width: 3cm;
-	top: -23.3cm;
+	top: -22.5cm;
 	left: 8.2cm;
 	font-size: 30px;
 }
@@ -366,8 +389,9 @@
 .post_comment_div{
 	z-index: 55;
 	position: relative;
-	top: -23cm;
+	top: -22.2cm;
 	left: 1.5cm;
+	float: left;
 }
 
 .post_comment_nick{
@@ -395,7 +419,6 @@
 #lastpage{
 	z-index: 55;
 	position: relative;
-	top:29.7cm;
 }
 
 .post_background_img{
