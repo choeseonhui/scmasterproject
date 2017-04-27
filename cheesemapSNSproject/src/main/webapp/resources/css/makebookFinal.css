@@ -1,5 +1,10 @@
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
+#mybook{
+	position: relative;
+	left: 315px;
+}
+
 html {
 	overflow-x: hidden;
 	overflow-y: auto;

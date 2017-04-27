@@ -10,6 +10,9 @@
     <meta name="author" content="">
 
     <title>MakeBook - Cheese Map</title>
+    
+    <!-- pdf -->
+	<link href="./resources/css/wow_book.css" rel="stylesheet">
 
     <!-- 부트스트랩 통합 CSS -->
     <link href="./resources/css/makebookFinal.css" rel="stylesheet">
@@ -66,16 +69,8 @@
 				<p style="color: #E3E3E3">가장 아름다운 책을 당신에게 선물하세요!</p>
 			</div>
 		</div>
-		<div class="animation_canvas">
-			<div class="slider_panel">
-				<div id="title_date" class="slider_form"></div>
-				<div id="myBoardList" class="container slider_form"></div>
-				<div id="preview" class="slider_form">
-					<div id="preview_pdf"></div>
-				</div>
-				<div id="finishBk" class="slider_form"></div>
-			</div>
-		</div>
+		<div id="mybook"></div>
+		<button class="btn" id="pdf_download" type="submit">PDF로 보관하기</button>
 	</section>
 
 	<!-- Footer -->
@@ -163,5 +158,41 @@
 
 	<!-- Theme JavaScript -->
 	<script src="./resources/js/freelancer.min.js"></script>
+	
+	<!-- pdf JavaScript -->
+	<script src="./resources/js/wow_book.min.js"></script>
+	
+	<script>
+	var userid = sessionStorage.getItem('mem_id');
+	
+	$(document).ready(function(){
+		var count = ${ count};
+		 var userid = sessionStorage.getItem("mem_id");
+		 var book = "";
+			for (var i = 1; i <= count; i++) {
+				book += "<div><img src='userUpload/" + userid + "_" + i + ".png' width='637' height='900'></div>";
+			}
+			$('#mybook').html(book);
+			$('#mybook').wowBook({
+				height: 900,
+				width: 1273,
+				flipSound: false,
+				slideShow: false
+			});
+			
+			$('#pdf_download').click(function(){
+				book_download();
+			});
+			
+	});
+	
+	function book_download(){
+		var url = 'userUpload/';
+		var filename = userid + ".pdf";
+		var final_url = url + filename;
+		location.href=final_url;
+	}
+ 
+</script>
 </body>
 </html>

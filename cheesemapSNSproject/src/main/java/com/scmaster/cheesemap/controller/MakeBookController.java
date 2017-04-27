@@ -110,7 +110,7 @@ public class MakeBookController {
 	@RequestMapping(value = "preview2", method = RequestMethod.GET)
 	public String preview2(String count, Model model) {
 		model.addAttribute("count", count);
-		return "preview2";
+		return "makebookFinal";
 	}
 
 	@RequestMapping(value = "makebook", method = RequestMethod.GET)
