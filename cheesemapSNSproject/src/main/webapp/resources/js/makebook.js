@@ -1,104 +1,6 @@
 var select_img;
 var bookTitle;
 
-/*function makepdf() {
-	var page_count = sessionStorage.getItem("page_count");
-	var doc = new jsPDF();
-	setTimeout(function(){
-		doc.addHTML(document.getElementById('page0'), 0, 0, function() {
-			console.log('0');
-			doc.addPage();
-		});
-	}, 500);
-	
-	setTimeout(function(){
-		doc.addHTML(document.getElementById('page0_5'), 0, 0, function() {
-			console.log('0.5');
-			doc.addPage();
-		});
-	}, 1000);
-	
-	setTimeout(function(){
-		doc.addHTML(document.getElementById('page1'), 0, 0, function() {
-			console.log('1');
-			doc.addPage();
-		});
-	}, 1500);
-	
-	setTimeout(function(){
-		doc.addHTML(document.getElementById('page2'), 0, 0, function() {
-			console.log('2');
-			doc.addPage();
-		});
-	}, 2000);
-	
-	setTimeout(function(){
-		doc.addHTML(document.getElementById('page3'), 0, 0, function() {
-			console.log('3');
-			doc.addPage();
-		});
-	}, 2500);
-	
-	function content_page_make(i, time){
-			setTimeout(function(){
-				doc.addHTML(document.getElementById('page4_' + i), 0, 0, function() {
-					console.log('page4_' + i);
-					doc.addPage();
-				});
-			}, time);
-	}
-	
-	var time = 2500;	
-	
-	for (var i = 0; i < page_count; i++) {
-		time += 500;
-		content_page_make(i, time);
-	}
-	
-	setTimeout(function(){
-		doc.addHTML(document.getElementById('page_last'), 0, 0, function() {
-			console.log('page_last');
-			var pdf = doc.output('datauristring');
-			var pdf2 = pdf.split(',');
-			var userid = sessionStorage.getItem("mem_id")
-			console.log('ajax start');
-			$.ajax({
-				type: 'POST',
-				url: 'pdf',
-				data: {
-					pdf: pdf2[1],
-					userid: userid
-				},
-				success:function(data){
-					var book = "";
-					for (var i = 1; i <= data; i++) {
-						book += "<div><img src='userUpload/" + userid + "_" + i + ".png' width='600'></div>";
-					}
-					$('#mybook').html(book);
-					$('#mybook').wowBook({
-						height: 500,
-						width: 600,
-						flipSound: false
-					});
-				},
-				error:function(e){
-					console.log(e);
-				}
-			});
-			doc.save('MyBOOOOOOOK.pdf');
-		});
-	}, (time + 500));
-	
-	setTimeout(function(){
-		doc.addHTML(document.getElementById('page4_0'), 0, 0, function() {
-			console.log('4_0');
-			doc.save('5.pdf');
-		});
-	}, 35000);
-	
-}
-*/
-
 function moveSlider(index){
 		//슬라이더 이동
 		var willMoveLeft=-(index*1570);
@@ -112,9 +14,6 @@ function moveSlider(index){
 		        	$("html, body").animate({ scrollTop: 0 });
 		        }
 		      });     
-
-
-
 		
 		/*//컨트롤 버튼의 active 클래를 부여/제거
 		$('.control_button[data-index]='+index+']').addClass('active');

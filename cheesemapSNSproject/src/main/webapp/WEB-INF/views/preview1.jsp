@@ -25,28 +25,28 @@ function makepdf2() {
 			console.log('0.5');
 			doc.addPage();
 		});
-	}, 1000);
+	}, 1500);
 	
 	setTimeout(function(){
 		doc.addHTML(document.getElementById('page1'), 0, 0, function() {
 			console.log('1');
 			doc.addPage();
 		});
-	}, 1500);
+	}, 2500);
 	
 	setTimeout(function(){
 		doc.addHTML(document.getElementById('page2'), 0, 0, function() {
 			console.log('2');
 			doc.addPage();
 		});
-	}, 2000);
+	}, 3500);
 	
 	setTimeout(function(){
 		doc.addHTML(document.getElementById('page3'), 0, 0, function() {
 			console.log('3');
 			doc.addPage();
 		});
-	}, 2500);
+	}, 4500);
 	
 	function content_page_make(i, time){
 			setTimeout(function(){
@@ -57,10 +57,10 @@ function makepdf2() {
 			}, time);
 	}
 	
-	var time = 2500;	
+	var time = 4500;	
 	
 	for (var i = 0; i < page_count; i++) {
-		time += 500;
+		time += 1000;
 		content_page_make(i, time);
 	}
 	
@@ -99,7 +99,7 @@ function makepdf2() {
 			});
 			/*doc.save('MyBOOOOOOOK.pdf');*/
 		});
-	}, (time + 500));
+	}, (time + 1000));
 	
 	/*setTimeout(function(){
 		doc.addHTML(document.getElementById('page4_0'), 0, 0, function() {
@@ -177,7 +177,9 @@ function makepdf2() {
     	console.log(sessionStorage.getItem("mem_id"));
     	console.log(sessionStorage.getItem("myBoard"));
     	previewer();
+    	setTimeout(function(){
     	makepdf2();
+    	}, 3000);
     });
     
     

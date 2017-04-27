@@ -22,7 +22,7 @@
 				height: 900,
 				width: 1273,
 				flipSound: false,
-				slideShow: true
+				slideShow: false
 			});
 	});
  
