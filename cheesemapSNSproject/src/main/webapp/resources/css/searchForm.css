@@ -8,6 +8,17 @@
 	
 } */
 
+#searchWord{
+	position: fixed !important;
+    width: 300px;
+    height: 30px;
+    right: 150px;
+    top: 18%;
+	font-size: 19px;
+    color: rgb(248, 3, 125);
+    font-weight : bold;
+}
+
 .searchClass{
 	
    position: fixed !important; 
@@ -35,5 +46,21 @@
 	background-color: white;
 
 }
+.dropdownMenu{
+   display:block;
+   width: auto;
+   background-color: #fff;
+   
+   
+}
 
+.input-group{
+   display: block !important;
+   padding: 8px 14px;
+}
+
+.onetag.hover{
+   background: #BCE0DA;
+    cursor: pointer;
+}
 

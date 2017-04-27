@@ -59,6 +59,14 @@ public class SearchDAO implements SearchMapper {
 		ArrayList<String> result = mapper.resultUser(userId);
 		return result;
 	}
+	
+	@Override
+	public ArrayList<String> resultCart(String mem_id) {
+		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);
+		ArrayList<String> result = mapper.resultCart(mem_id);
+		System.out.println(result);
+		return result;
+	}
 
 	@Override
 	public ArrayList<String> resultMymap(String mymapTag) {

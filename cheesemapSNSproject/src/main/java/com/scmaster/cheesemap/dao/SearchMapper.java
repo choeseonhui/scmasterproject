@@ -18,7 +18,7 @@ public interface SearchMapper {
 	public ArrayList<String> resultTag(String tagName);
 	public ArrayList<String> resultUser(String userId);
 	public ArrayList<String> resultMymap(String mymapTag);
-	
+	public ArrayList<String> resultCart(String mem_id);
 	
 	public ArrayList<String> autocomplete(String input);
 		

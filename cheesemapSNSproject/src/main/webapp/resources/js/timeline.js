@@ -1,62 +1,91 @@
 function boardList() {
-	$.ajax({
-		type : "get",
-		url : "timeline",
-		dataType : "json",
-		success : function(data) {
-			var mem_id = $("#mem_id").val();
-			var html = "";
-			$.each(data, function(index, item) {
-				$.each(item, function(index2, item2) {
-					if(item2.boa_create_date != undefined) {
-						html += "<div class='board' datano='" +
-							+ item2.boa_id		
-							+ "'><div class='start'><table class='j-table'><tr>";
-						if(item2.boa_photo_savefile != undefined) {
-							html +=	"<td rowspan='3'><img class='w3-circle' id='selectImg' src='"+ item2.boa_photo_savefile +"' width='120' height='120' datano='" +
-							+ item2.boa_id		
-							+ "'>" +
-									"</img></td>";
-						} else if(item2.boa_video_savefile != undefined) {
-							html +=	"<td rowspan='3'><video src='"+ item2.boa_video_savefile +"' width='120' height='120'  id='selectImg' datano='" +
-							+ item2.boa_id		
-							+ "' >" +
-							"</video></td>";
+	setTimeout(function(){
+		$.ajax({
+			type : "get",
+			url : "timeline",
+			dataType : "json",
+			success : function(data) {
+				var mem_id = $("#mem_id").val();
+				var html = "";
+				var boardMarker = [];
+				$.each(data, function(index, item) {
+					boardMarker.push(item.board);
+					$.each(item, function(index2, item2) {
+						if(item2.boa_create_date != undefined) {
+							html += "<div class='board' datano='" +
+								+ item2.boa_id
+								+ "'><div class='start'><table class='j-table'><tr>";
+							if(item2.boa_photo_savefile != undefined) {
+								html +=	"<td rowspan='3'><img class='w3-circle selectImg' id='selectImg' src='"+ item2.boa_photo_savefile +"' width='120' height='120' datano='" +
+								+ item2.boa_id
+								+ "'></img></td>";
+							} else if(item2.boa_video_savefile != undefined) {
+								html +=	"<td rowspan='3'><video class='selectImg' src='"+ item2.boa_video_savefile +"' width='120' height='120'  id='selectImg' datano='" +
+								+ item2.boa_id
+								+ "' ></video></td>";
+							}
+							else {
+								html +=	"<td rowspan='3'><img id='selectImg' class='selectImg' src='./resources/img/logo.png' width='120' height='120' datano='" +
+								+ item2.boa_id
+								+ "'></img></td>";
+							}
+							$.ajax({
+								type : "get",
+								url : "searchMember",
+								data : {
+									mem_id : item2.mem_id
+								},
+								cache : false,	// 한번에 여러번 실행 시켜주기 위한 key 
+								async : false,	// 한번에 여러번 실행 시켜주기 위한 key
+								success : function(member){
+									html += "<td>" + member.mem_nickname + "</td>";
+								},
+								error : function(e) {
+								console.log(e);
+								}
+							});	
+							html += "<td>좋아요" + item.boardLike.length + " 코멘트" + item.boardComment.length + "</td></tr>";
+							html += "<tr><td align='left' colspan='2'>";
+							if(item.boardTag.length > 0) {
+								$.each(item.boardTag, function(index3, item3) {
+									html += "#<a id='upup'>"+item3.tag_name+"</a>";						
+								});
+							}
+							html += "</td></tr>";
+							html += "<tr><td align='right' colspan='2'><i class='glyphicon glyphicon-time'>" + item2.boa_create_date + "</i></td>";
 						}
-						else {
-							html +=	"<td rowspan='3'><img id='selectImg'  src='./resources/img/logo.png' width='120' height='120' datano='" +
-							+ item2.boa_id		
-							+ "'></img></td>";
-						}
-						html += "<td>" + item2.mem_id + "</td>";
-						html += "<td>좋아요" + item.boardLike.length + " 코멘트" + item.boardComment.length + "</td></tr>";
-						html += "<tr><td align='left' colspan='2'>"
-						if(item.boardTag.length > 0) {
-							$.each(item.boardTag, function(index3, item3) {
-								html += "#<a id='upup'>"+item3.tag_name+"</a>";								
-							});
-						}
-						html += "</td></tr>"
-						html += "<tr><td align='right' colspan='2'><i class='glyphicon glyphicon-time'>" + item2.boa_create_date + "</i></td>";
-					}
-					html += "</tr></table></div></div>";
+						html += "</tr></table></div></div>";
+					});
 				});
-			});
-			$("#timeline_div").html(html);
-			$(document).on("click","#selectImg",function(){
-				var boa_id=$(this).attr("datano");
-				clickBoard(boa_id);
-			});
-		},
-		error : function(e) {
-			console.log(e);
-		}
-	});
+				$("#timeline_div").html(html);
+				$(".selectImg").on("click", function() {
+					var boa_id = $(this).attr("datano");
+					clickBoard(boa_id);
+				});
+			
+				//검색어로 마크띄우기 호출
+				var timeLineFlag=$("#searchWord").attr("timeLineFlag");
+				if(timeLineFlag=='true'){
+					setBoardMarker(boardMarker);
+				}
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	}, 50);
 }
+
+//검색어 태그 지우고 초기화
+$("#searchWord").click(function(){
+	$(this).attr("timeLineFlag", false);
+	$("#searchWord").html("");
+	$("#tags").attr("style", "visibility: visible");
+	refresh(map);
+});
 
 // 로그인한 id
 var loginid=document.getElementById("mem_id").value;
-console.log(loginid);
 //좋아요 플래그
 var flag=0;
 var board_id;
@@ -349,134 +378,7 @@ $(function() {
 	
 	$(document).on("click","#upup", function(){
 		var searchDic = $(this).text();
-		searchStart(searchDic);
+		startup(searchDic);
 	});
 
 });
-
-function searchStart(searchWord){
-	var divhtml = "";
- 	divhtml += "<div id='fixed-menu-bar'><ul class='nav nav-tabs'>";
- 	divhtml += "<li role='presentation' class='active' id='comp-first'><a id='tagcomp'>#tag</a></li>";
- 	divhtml += "<li role='presentation' id='comp-second' class='none' ><a id='usercomp'>User</a></li>";
- 	divhtml += "<li role='presentation' id='comp-third' class='none' ><a id='mymapcomp'>My Map</a></li>";
- 	divhtml += "</ul></div><br><br><br><div id='userList'></div><div id='tagList'></div><div id='mymapList'></div>";
- 	$(".pollSlider").html(divhtml);
-
- 	var search = searchWord;
-	$.ajax({
-		type : "GET",	//type of request Method
-		url : "search",	//value pf requestMethod
-		data :{
-			word : search
-		},
-		 dataType : 'json',
-		 	success : function(object){				
-				var taglist = {};
-				var userlist = {};
-				var mymaplist = {};
-		 		for(key in object) {
-		 			console.log(key);
-		 			if (key == "tagList") {
-		 				taglist = object[key];
-		 			}
-		 			if (key =="memberList") {					
-		 				userlist = object[key];
-		 			}
-		 			if (key =="mymapList") {
-		 				mymaplist= object[key];
-		 			}
-		 		}
-		 		var taghtml = '';
-				if(taglist.length != 0 ){
-					$.each(taglist, function() {
-						$.map($(this), function(val,index){
-							console.log(val.TAG_NAME);
-						 	taghtml += '<br><h2><a id="fir-tag-search'+index+'" class="'+val.TAG_NAME+'"> # '+val.TAG_NAME+'</a><h2><br>';
-						 	taghtml += '<h5>'+val.COUNT+'개의 게시글이 존재합니다.</h5><hr>';   	   
-						 	$(document).on("click", "#fir-tag-search"+index+"", function() {					
-						 		var searchTag = $("#fir-tag-search"+index+"").attr("class");
-						 		console.log(searchTag);
-						 		$.ajax({							
-									type:"GET",
-									url : "seachResult",
-									data: {
-									tagName : searchTag								
-									},
-									success: function(data){
-										boardList();
-									},
-									error : function(e){
-										console.log(e);
-									}
-						 		});
-						 	});
-						});	
-					});
-				}else{
-					console.log("ssss");
-				};
-				$("#tagList").show();
-				$("#tagList").html(taghtml);
-				var userhtml ='';	
-				if(userlist.length != 0 ){
-					$.each(userlist, function(index, value ) {
-						userhtml += '<br><h1><a id="sec-user-search'+index+'" class="'+value.mem_id+'">'+value.mem_id+'<br></a></h1><h5>유저 닉네임 : '+value.mem_nickname+'</h5><hr>';					 
-						$(document).on("click","#sec-user-search"+index+"",function(){
-							var searchUser = $("#sec-user-search"+index+"").attr("class");					
-							$("#resultUserlist").val(searchUser);
-							$.ajax({
-								type:"GET",
-								url : "seachResult",
-								data: {
-									userId : searchUser								
-								},
-								success: function(data){
-									boardList();
-								},
-								error : function(e){
-									console.log(e);
-								}
-							});
-						});
-					});
-				} else {
-					userhtml += '<h5>해당 하는 유저가  존재 하지 않습니다.</h5>';
-				};
-				$("#userList").hide();
-				$("#userList").html(userhtml);
-				var mymaphtml = '';
-				if(mymaplist.length != 0){
-					$.each(mymaplist, function(index, value) {				
-						mymaphtml += '<br><h2><a id="thir-mymap-search'+index+'" class="'+value.tag_name+'">#'+value.tag_name+'</a></h2><br>';
-						$(document).on("click","#thir-mymap-search"+index+"",function(){
-							var searchMymap= $("#thir-mymap-search"+index+"").attr("class");
-							console.log(searchMymap);
-							$.ajax({										
-								type:"GET",
-								url : "seachResult",
-								data: {
-								mymapTag : searchMymap								
-							},
-							success: function(data){
-								boardList();
-							},
-							error : function(e){
-								console.log(e);
-							}
-						});
-					});
-                });
-			 }else{
-				 mymaphtml += '<h5> 해당 하는 태그가 존재하지 않습니다.</h5>';
-			 }
-			 $("#mymapList").hide();
-			 $("#mymapList").html(mymaphtml);
-		},
-		error : function(e){
-			//ajax 통신 실패시	
-			console.log("전체적인 그냥 실패");
-			console.log(e);
-		}
-	});
-}

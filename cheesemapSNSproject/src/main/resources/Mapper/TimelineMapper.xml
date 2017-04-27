@@ -22,6 +22,8 @@
 			CS_BOARD
 		where
 			boa_id = #{boa_id}
+		and
+			boa_delete_date is null
 	</select>
 	
 	<select id="getBoardComment" resultType="BoardComment" parameterType="String">
