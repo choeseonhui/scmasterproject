@@ -31,6 +31,10 @@
 	<div id="makebook-button" data-flag="false">
 		<img src="./resources/img/reading.png" width="75px"/>
 	</div>
+	
+	<div id="myBasket-button" data-flag="false">
+        <img src="./resources/img/easter-bunny.png" width="75px"/>
+    </div>
 </div>
 <input type="hidden" id="mem_id" value="${mem_id }">
 

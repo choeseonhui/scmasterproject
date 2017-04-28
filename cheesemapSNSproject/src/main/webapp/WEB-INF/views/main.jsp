@@ -35,6 +35,9 @@
 <!-- map -->
 <link href="./resources/css/table.css" rel="stylesheet">
 
+<!-- myBasket -->
+<link href="./resources/css/myBasket.css" rel="stylesheet">
+
 <!-- searchForm.css -->
 <link href="./resources/css/searchForm.css" rel="stylesheet">
 
@@ -156,7 +159,16 @@ overflow : hidden;
 			</div>
 			<!-- /.col-lg-6 -->
 		</div>
-
+		
+		<!-- 바구니바구니비구니 -->
+            <div id="myBasket_div">
+                <div id="myBasket-exit-div">
+                    <img id="myBasket-exit-button" src="./resources/img/delete-button.png">
+                </div>
+                <div id="myBasket-content-div">
+                    지금 아무것도 없어요!
+                </div>
+            </div>
 
 		<!-- timeline -->
 		<div id="timeline_div" class="pollSlider"></div>
@@ -351,6 +363,9 @@ overflow : hidden;
 	
 	<!-- makebook JavaScript -->
 	<script src="./resources/js/makebook.js"></script>
+	
+	<!-- myBasket JavaScript -->
+	<script src="./resources/js/myBasket.js"></script>
 	
 	<!--  auto compelete -->
 	<script src="./resources/vendor/jquery/jquery.autocomplete.js"></script>

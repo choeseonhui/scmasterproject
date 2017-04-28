@@ -62,6 +62,31 @@ function boardList() {
 					var boa_id = $(this).attr("datano");
 					clickBoard(boa_id);
 				});
+				$(".selectImg").on('dragstart',function(){
+                    console.log('드래그 시작');
+                    $('#myBasket_div').attr('data-mouse-in',true);
+                    console.log( $('#myBasket_div').attr('data-mouse-in'));
+                });
+                $(".selectImg").on('dragend',function(){
+                    console.log('드래그 끝');
+                    if ($('#myBasket_div').attr('data-mouse-in') === 'true') {
+                        console.log('바구니에 넣는 액션 성공');
+                        var into_basket = $(this).attr('datano');
+                        var dupCount = 0;
+                        for (var i = 0; i < selectedMarker.length; i++) {
+                            if (selectedMarker[i] === into_basket) {
+                                dupCount++;
+                            }
+                        }
+                        if (dupCount == 0) {
+                            selectedMarker.push(into_basket);
+                        }
+                        $('#myBasket_div').attr('data-mouse-in',false);
+                        var newContent = '';
+                        newContent += '장바구니에 ' + selectedMarker.length + '개가 담겨 있어요!';
+                        $('#myBasket-content-div').html(newContent);
+                    }
+                });
 			
 				//검색어로 마크띄우기 호출
 				var timeLineFlag=$("#searchWord").attr("timeLineFlag");
@@ -90,6 +115,7 @@ var loginid=document.getElementById("mem_id").value;
 var flag=0;
 var board_id;
 var real_board_id;
+var selectedMarker = [];
 
 function clickBoard(boa_id){
 	//Get the modal
