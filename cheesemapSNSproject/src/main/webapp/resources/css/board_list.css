@@ -30,13 +30,13 @@
 	top: 80%;
 }
 */
-.write-slider {
+#write-slider {
+	display : none;
 	position: fixed;
 	height: 100%;
 	background: white;
 	width: 600px;
-	right: 0px;
-	margin-right: -600px;
+	right: 0px;	
 	top: 100px;
 	overflow: auto;
 }

@@ -250,27 +250,29 @@ function addMarker(latlng, title, map) {
         });
         infowindow.open(map, marker);
 
-        if (called === 0 && $('#write-button').attr('data-flag') === 'true') {
+        if ($("#called").val() == 'true' && $('#write-button').attr('data-flag') === 'true') {
             $.ajax({
                 url: 'boardWrite',
                 type: 'GET',
                 data: latlng2,
                 success: function (data) {
-                    $('.write-slider').animate({
-                        "margin-right": '+=600'
-                    });
-                    $('.write-slider').html(data);
-                    hide_flag = 1;
-                    called = 1;
+
+            	    $('#write-slider').addClass("animated slideInRight");
+            	  $('#write-slider').css("display","block");                	
+                $('#write-slider').html(data);
+                $("#hide_flag").val('false');
+                $("#called").val('false'); 
                 }
             });
         }
 
-        if (hide_flag === 1 && called === 1) {
+        if ($("#hide_flag").val()== 'false' && $("#called").val() == 'false') {
             console.log('글읽기 사라져라');
-            $('.write-slider').css('margin-right', '-600px');
-            hide_flag = 0;
-            called = 0;
+           /* $('#write-slider').attr("class","animated fadeOutRight");       */	 
+        	 if( $("#called").val() == 'false'){
+            $("#hide_flag").val('true');
+            $("#called").val('true'); 
+       	 };
         }
 
     });

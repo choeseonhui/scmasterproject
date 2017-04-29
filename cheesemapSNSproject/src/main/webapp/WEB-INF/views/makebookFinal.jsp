@@ -194,5 +194,15 @@
 	}
  
 </script>
+<script type="text/javascript">
+
+$(function(){
+	$("#makeBookCancel").on("click", function() {
+		location.href="main";
+	});
+});
+
+
+</script>
 </body>
 </html>

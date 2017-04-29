@@ -12,6 +12,9 @@
 <meta name="author" content="">
 
 <title>Main - CheeseMap</title>
+<!-- animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	
 
 <!-- W3 CSS -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -116,6 +119,8 @@ overflow : hidden;
 <input type="hidden" id="flag_timeline" value="true">
 <input type="hidden" id="flag_contact" value="true">
 	
+<input type="hidden" id="hide_flag" value="true">
+<input type="hidden" id="called" value="true">
 
 	<!-- Header -->
 	<header>
@@ -174,7 +179,7 @@ overflow : hidden;
 		<div id="timeline_div" class="pollSlider"></div>
 		
 		<!-- write form -->
-		<div class="write-slider"></div>
+		<div id="write-slider"></div>
 
         <!-- My Menu -->
 		<div id="menu-slider" class="menu-slider">

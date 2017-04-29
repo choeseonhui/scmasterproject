@@ -1,3 +1,6 @@
+  <!-- animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	
     <style>
         #hashtag {
             width: 600px;
@@ -63,9 +66,14 @@
         var boa_video_savefile = '';
         
         function cancel() {
-            $('.write-slider').animate({
-                "margin-right": '-=600'
-            });
+        	 $('#write-slider').attr("class","animated fadeOutRight").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
+                 $('#write-slider').css("display","none");
+                 });
+        	 
+        	 if( $("#called").val() == 'false'){
+             $("#hide_flag").val('true');
+             $("#called").val('true'); 
+        	 };
         }
 
         function saveContent() {
@@ -92,11 +100,16 @@
                 success: function (data) {
                     console.log(data);
                     if (data >= 1) {
-                        console.log('저장성공~!');
-                        $('.write-slider').animate({
-                            "margin-right": '-=600'
-                        });
-                    }
+                    	
+                        $('#write-slider').attr("class","animated fadeOutRight").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
+                        $('#write-slider').css("display","none");
+                        }); 
+                        
+                  if( $("#called").val() == 'false'){
+                        $("#hide_flag").val('true');
+                        $("#called").val('true');  };
+                        
+                    };
                 },
                 error: function (e) {
                     console.log(e);
