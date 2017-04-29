@@ -112,14 +112,14 @@
 	</header>
 
 	<!-- login Grid Section -->
-	<section id="login" style="padding-top: 200px;">
+	<section id="login" style="padding-top: 200px; margin-top: 100px; margin-bottom: 300px;">
 		<div class="container">
 			<jsp:include page="login.jsp" flush="true"></jsp:include>
 		</div>
 	</section>
 
 	<!-- About Section -->
-	<section class="success" id="about">
+	<section class="success" id="about" style="padding-top: 350px; padding-bottom: 350px;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
