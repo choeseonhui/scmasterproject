@@ -1,0 +1,99 @@
+@CHARSET "UTF-8";
+
+.modalBasket {
+	width: 1150px;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+}
+
+#makeMyMapBtn {
+	top: 100px;
+	position: fixed !important;
+    left: 400px;
+    top: 86%;
+    z-index: 100000;
+        padding: 5px 7px !important;
+    font-size: 16px !important;
+}
+
+.mymymy {
+	padding-top: 30px !important;
+	padding-bottom: 30px !important;
+}
+
+.mapmap {
+	font-size: 22px;
+	color: #e2bfb3;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.makeStep {
+	font-size: 33px;
+	color: #dd9e89;
+}
+
+#hashtagMap {
+	width: 1100px;
+	height: 25px;
+	!
+	important;
+}
+
+#contentMap {
+	width: 1100px;
+	height: 90px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	word-wrap: break-word;
+	margin-bottom: 30px;
+}
+
+#select-route {
+	margin: auto;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 400px;
+}
+
+.jqueryHashtags .highlighter {
+	white-space: pre-wrap;
+	color: transparent;
+	overflow: hidden;
+	position: absolute;
+	padding-left: 7px;
+	padding-top: 5px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.jqueryHashtags .theSelector {
+	background-color: transparent;
+	position: relative;
+	direction: ltr;
+	font-size: 14px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	resize: none !important;
+	-webkit-transition: height 0.2s;
+	border: 1px solid #cccccc;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	padding: 4px 6px;
+	vertical-align: middle;
+	min-height: 10px !important;
+	line-height: 20px;
+}
+
+.jqueryHashtags .hashtag {
+	background: -webkit-linear-gradient(#fff9ec, #ffee7e);
+	border-radius: 2px;
+	box-shadow: 0 0 0 1px #ffee7e;
+	font-size: 14px;
+	white-space: pre-wrap;
+	word-break: break-word;
+	line-height: 20px;
+}

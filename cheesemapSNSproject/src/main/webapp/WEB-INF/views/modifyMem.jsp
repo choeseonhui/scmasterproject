@@ -1,6 +1,6 @@
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h2>Join Us</h2>
+				<h2>Update user info</h2>
 				<hr class="star-primary">
 			</div>
 		</div>

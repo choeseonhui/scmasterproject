@@ -1,11 +1,13 @@
 package com.scmaster.cheesemap.vo;
 
-public class MymapTag {
+import java.util.ArrayList;
+import java.util.Arrays;
 
-	private String tag_name;
+public class MymapTag {
+	private ArrayList<String> tag_name;
 	private String map_id;
 
-	public MymapTag(String tag_name, String map_id) {
+	public MymapTag(ArrayList<String> tag_name, String map_id) {
 		super();
 		this.tag_name = tag_name;
 		this.map_id = map_id;
@@ -15,11 +17,11 @@ public class MymapTag {
 		super();
 	}
 
-	public String getTag_name() {
+	public ArrayList<String> getTag_name() {
 		return tag_name;
 	}
 
-	public void setTag_name(String tag_name) {
+	public void setTag_name(ArrayList<String> tag_name) {
 		this.tag_name = tag_name;
 	}
 

@@ -1,3 +1,5 @@
+var selectedMarker=[];
+
 function boardList() {
 	setTimeout(function(){
 		$.ajax({
@@ -85,6 +87,11 @@ function boardList() {
                         var newContent = '';
                         newContent += '장바구니에 ' + selectedMarker.length + '개가 담겨 있어요!';
                         $('#myBasket-content-div').html(newContent);
+                        if(selectedMarker.length>0){
+                        	$("#makeMyMapBtn").attr("style", "visibility: visible");
+                        }else{
+                        	$("#makeMyMapBtn").attr("style", "display: none");
+                        }
                     }
                 });
 			
@@ -128,7 +135,6 @@ function clickBoard(boa_id){
 		$("#likeHeart").html("");
 		modalBoard.style.display = "none";
 	}
-	//$(document).ready(function() {
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
 		if (event.target == modalBoard) {
@@ -137,7 +143,6 @@ function clickBoard(boa_id){
 			modalBoard.style.display = "none";
 		}
 	}
-	//});	
 	modalBoard.style.display = "block";
 	//좋아요 플래그 초기화
 	flag=0;

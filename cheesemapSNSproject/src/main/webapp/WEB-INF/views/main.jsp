@@ -19,9 +19,15 @@
 <!-- W3 CSS -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<!-- jquery-ui CSS -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 <!-- Bootstrap Core CSS -->
 <link href="./resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
+
+<!-- Bootstrap Core CSS -->
+<link href="./resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 <!-- Theme CSS -->
 <link href="./resources/css/freelancer.css" rel="stylesheet">
@@ -59,11 +65,18 @@
 	rel="stylesheet" type="text/css">
 
 <!-- modifyMem -->
-	<link href="./resources/css/modifyMem.css" rel="stylesheet">
-	<link href="./resources/css/joinForm.css" rel="stylesheet">
+<link href="./resources/css/modifyMem.css" rel="stylesheet">
+<link href="./resources/css/joinForm.css" rel="stylesheet">
 
 <!-- boardRead -->
-	<link href="./resources/css/boardRead.css" rel="stylesheet">
+<link href="./resources/css/boardRead.css" rel="stylesheet">
+
+<!-- makeMap -->
+<link href="./resources/css/makeMap.css" rel="stylesheet">
+
+<!-- makeBook -->
+<link href="./resources/css/makebook.css" rel="stylesheet">
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -195,6 +208,7 @@ overflow : hidden;
 				<jsp:include page="modifyMem.jsp" flush="true"></jsp:include>
 			</div>
 		</div>
+		
 		<!-- 게시판 팝업 -->
 		<!-- The Modal -->
 		<div id="myModalBoard" class="modal">
@@ -204,6 +218,17 @@ overflow : hidden;
 				<jsp:include page="boardRead.jsp" flush="true"></jsp:include>
 			</div>
 		</div>
+		
+		<!-- 장바구니 팝업 -->
+		<!-- The Modal -->
+		<div id="myModalBasket" class="modal">
+		<!-- Modal content -->
+			<div class="modal-content modalBasket">
+				<span class="close">&times;</span>
+				<jsp:include page="makeMap.jsp" flush="true"></jsp:include>
+			</div>
+		</div>
+		<input type="button" id="makeMyMapBtn" onclick="makeMyMap" class="btn btn-success btn-lg" style="display : none" value="makeMyMap:D">
 		
 		<!--  main div -->
 		<div class="container" id="maincontent" tabindex="-1">
@@ -341,6 +366,7 @@ overflow : hidden;
 
 	<!-- main.js -->
 	<script src="./resources/js/main.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
 	<!-- map JavaScript -->
 	<script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApHkc_70xfMcN5SF0_8T6uNpspm-GXyDo&callback=initMap&libraries=places" async defer></script>
@@ -372,9 +398,14 @@ overflow : hidden;
 	<!-- myBasket JavaScript -->
 	<script src="./resources/js/myBasket.js"></script>
 	
+	<!-- makeMap JavaScript -->
+	<script src="./resources/js/makeMap.js"></script>
+	
 	<!--  auto compelete -->
 	<script src="./resources/vendor/jquery/jquery.autocomplete.js"></script>
 	<script src="./resources/vendor/jquery/jquery.autocomplete.min.js"></script>
-
+	<!-- hashtag -->
+	<script src="./resources/js/autosize.min.js"></script>
+	<script src="./resources/js/jquery.hashtags.js"></script>
 </body>
 </html>

@@ -1,6 +1,9 @@
 var markers = [];
 var map;
 var markerClusterer = null;
+var service;
+var geocoder;
+var infowindow;
 
 function initMap() {
 	
@@ -142,9 +145,9 @@ function defaultList(latNE, lngNE, latSW, lngSW) {
 		},
 		success: function (mylist) {
 			$.each(mylist, function (index, item) {
-				var boa_id = item.boa_id;
+				/*var boa_id = item.boa_id;*/
 				var latlng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
-				addMarker(latlng, boa_id, map);
+				addMarker(latlng, 'self', map);
 				clusterRefresh();
 			});
 		},
@@ -178,7 +181,7 @@ function setBoardMarker(boardMarker){
 		var boa_id = item.boa_id;
 		var latlng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
 		latlngbounds.extend(latlng);
-		addMarker(latlng, boa_id, map);
+		addMarker(latlng, 'self', map);
 		clusterRefresh();
 	});
     if(boardMarker.length==1){
@@ -197,9 +200,9 @@ function addMarker(latlng, title, map) {
     var hide_flag = 0;
     var original_latlng = latlng;
     var called = 0;
-    var service = new google.maps.places.PlacesService(map);
-    var geocoder = new google.maps.Geocoder;
-    var infowindow = new google.maps.InfoWindow();
+    service = new google.maps.places.PlacesService(map);
+    geocoder = new google.maps.Geocoder;
+    infowindow = new google.maps.InfoWindow();
     var marker = new google.maps.Marker({
         position: latlng,
         map: map,
@@ -222,32 +225,11 @@ function addMarker(latlng, title, map) {
 	});
 
     marker.addListener('click', function (event) {
-        console.log('클릭됨');
         var latitude = event.latLng.lat();
         var longitude = event.latLng.lng();
         var latlng2 = {lat: latitude, lng: longitude};
 
-        geocoder.geocode({'location': latlng}, function (results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-                $('#placeID').val(results[1].place_id);
-                service.getDetails({
-                    placeId: results[1].place_id
-                }, function (place, status) {
-                    if (status === google.maps.places.PlacesServiceStatus.OK) {
-                        if (title === 'self') {
-                            infowindow.setContent(place.formatted_address);
-                            title = place.formatted_address;
-                        } else {
-                            infowindow.setContent(title);
-                        }
-                    } else {
-                        console.log('장소이름가져오기실패');
-                    }
-                })
-            } else {
-                window.alert('Geocoder failed due to: ' + status);
-            }
-        });
+        readAddress(latlng, title);
         infowindow.open(map, marker);
 
         if ($("#called").val() == 'true' && $('#write-button').attr('data-flag') === 'true') {
@@ -277,6 +259,29 @@ function addMarker(latlng, title, map) {
 
     });
     markers.push(marker);
+}
+
+//마커 주소 불러오기
+function readAddress(latlng, title){
+geocoder.geocode({'location': latlng}, function (results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+        $('#placeID').val(results[1].place_id);
+        service.getDetails({
+            placeId: results[1].place_id
+        }, function (place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                if (title === 'self') {
+                    infowindow.setContent(place.formatted_address);
+                    title = place.formatted_address;
+                } else if(title === 'mymap'){
+                	selectedAddress.push(place.formatted_address);
+                }
+            } else {
+                console.log('장소이름가져오기실패');
+            }
+        })
+    }
+});
 }
 
 // 지도 스타일 관련
