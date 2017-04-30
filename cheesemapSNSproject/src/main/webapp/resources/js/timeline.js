@@ -116,7 +116,6 @@ function mapList(){
 			url : "timelineMap",
 			dataType : "json",
 			success : function(mymapList) {
-				console.log(mymapList);
 				var html = "";
 				$.each(mymapList, function(index, item) {
 					html += "<div class='board' datano='" + item.map_id + "'><div class='start'><table class='j-table'><tr>";
@@ -135,12 +134,34 @@ function mapList(){
 					html += "</tr></table></div></div>";
 				});
 				$("#timeline_div").html(html);
+				$(".selectImg").on("click", function() {
+					var map_id = $(this).attr("datano");
+					clickMyMap(map_id);
+				});
 			},
 			error : function(e){
 				console.log(e);
 			}
 		});
 	}, 50);
+	
+}
+
+function clickMyMap(map_id){
+	$.ajax({
+		type : "get",
+		url : "getBoardListByMapID",
+		data : {
+			map_id : map_id
+		},
+		success : function(data){
+			console.log(data);
+			boardList();
+		},
+		error : function(e){
+			console.log(e);
+		}
+	});
 }
 
 

@@ -164,4 +164,16 @@
 		    T1.MAP_CREATE_DATE,
 		    T3.MEM_NICKNAME
 	</select>
+	
+	<select id="getBoardListByMapID" parameterType="String" resultType="MapToBoard">
+		select 
+			mtb.mtb_route,
+		   	b.boa_id,
+		   	mtb.map_id,
+		  	b.boa_latitude,
+		   	b.boa_longitude
+		from CS_BOARD b, CS_MAP_TO_BOARD mtb
+		where b.boa_id=mtb.boa_id
+		and mtb.map_id=#{map_id} 
+	</select>
 </mapper>

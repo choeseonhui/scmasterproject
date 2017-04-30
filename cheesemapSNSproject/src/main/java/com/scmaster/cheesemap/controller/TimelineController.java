@@ -20,8 +20,8 @@ import com.scmaster.cheesemap.dao.TimelineDAO;
 import com.scmaster.cheesemap.util.convertFromDate;
 import com.scmaster.cheesemap.vo.Board;
 import com.scmaster.cheesemap.vo.Follow;
+import com.scmaster.cheesemap.vo.MapToBoard;
 import com.scmaster.cheesemap.vo.MyMap;
-import com.scmaster.cheesemap.vo.MymapTag;
 import com.scmaster.cheesemap.vo.Timeline;
 
 @Controller
@@ -164,4 +164,19 @@ public class TimelineController {
 		}
 		return mymapList;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getBoardListByMapID", method = RequestMethod.GET)
+	public ArrayList<MapToBoard> getBoardListByMapID(String map_id, HttpSession session) {
+			ArrayList<MapToBoard> result = timelineDAO.getBoardListByMapID(map_id);
+			
+			ArrayList<String> boaList=new ArrayList<>();
+			for(MapToBoard item : result){
+				boaList.add(item.getBoa_id());
+			}
+			session.setAttribute("boa_id_list", boaList);
+			
+			return result;
+	}
+	
 }

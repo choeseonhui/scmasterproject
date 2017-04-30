@@ -296,7 +296,6 @@ function startup(searchWord){
             	
                 $(document).on("click","#thir-mymap-search"+index+"",function(){
                       var  searchMymap= $("#thir-mymap-search"+index+"").attr("class");
-                      console.log(searchMymap);
                          $.ajax({                              
                               type:"GET",
                               url : "seachResult",

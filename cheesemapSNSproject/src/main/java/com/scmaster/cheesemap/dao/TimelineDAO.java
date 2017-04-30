@@ -11,6 +11,7 @@ import com.scmaster.cheesemap.vo.BoardComment;
 import com.scmaster.cheesemap.vo.BoardLike;
 import com.scmaster.cheesemap.vo.BoardTag;
 import com.scmaster.cheesemap.vo.Follow;
+import com.scmaster.cheesemap.vo.MapToBoard;
 import com.scmaster.cheesemap.vo.MyMap;
 
 @Repository
@@ -76,5 +77,12 @@ public class TimelineDAO implements TimelineMapper {
 		// TODO Auto-generated method stub
 		TimelineMapper mapper = sqlsession.getMapper(TimelineMapper.class);
 		return mapper.getTimelineMap(map_id_list);
+	}
+
+	@Override
+	public ArrayList<MapToBoard> getBoardListByMapID(String map_id) {
+		// TODO Auto-generated method stub
+		TimelineMapper mapper = sqlsession.getMapper(TimelineMapper.class);
+		return mapper.getBoardListByMapID(map_id);
 	}
 }
