@@ -139,4 +139,29 @@
 	from CS_BOARD
 	where boa_id=#{boa_id}
 	</select>
+	
+	<select id="getTimelineMap" parameterType="java.util.ArrayList" resultType="MyMap">
+		SELECT
+			T1.MAP_ID,
+		    T1.MAP_CONTENT,
+		    T1.MAP_CREATE_DATE,
+		    T3.MEM_NICKNAME,
+		    <![CDATA[LISTAGG(TAG_NAME,'~') WITHIN GROUP(ORDER BY TAG_NAME) AS MAP_TAG]]>  
+		FROM    CS_MYMAP	T1,
+		    CS_MYMAP_TAG   T2,
+		    CS_MEMBER   T3
+		WHERE    T1.MAP_ID = T2.MAP_ID
+		AND    T1.MEM_ID = T3.MEM_ID
+		<if test="array != null">
+			AND T1.MAP_ID IN(
+			<foreach collection="array" item="a" separator=",">
+		    	#{a}
+		    </foreach>
+			)
+	    </if>
+		GROUP BY T1.MAP_ID,
+		    T1.MAP_CONTENT,
+		    T1.MAP_CREATE_DATE,
+		    T3.MEM_NICKNAME
+	</select>
 </mapper>

@@ -33,7 +33,7 @@ public class SearchController {
 		HashMap<String, Object> map = new HashMap<>();
 		ArrayList<Member> memberlist = dao.searchUser(word);
 		ArrayList<HashMap<String, Object>> taglist = dao.searchTag(word);
-		ArrayList<MymapTag> mymaplist = dao.searchmymapTag(word);
+		ArrayList<HashMap<String, Object>> mymaplist = dao.searchmymapTag(word);
 		map.put("memberList", memberlist);
 		map.put("tagList", taglist);
 		map.put("mymapList", mymaplist);

@@ -3,6 +3,7 @@ package com.scmaster.cheesemap.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,8 @@ import com.scmaster.cheesemap.dao.TimelineDAO;
 import com.scmaster.cheesemap.util.convertFromDate;
 import com.scmaster.cheesemap.vo.Board;
 import com.scmaster.cheesemap.vo.Follow;
+import com.scmaster.cheesemap.vo.MyMap;
+import com.scmaster.cheesemap.vo.MymapTag;
 import com.scmaster.cheesemap.vo.Timeline;
 
 @Controller
@@ -77,8 +80,8 @@ public class TimelineController {
 			ArrayList<String> result = searchDAO.resultUser(userId);
 			session.setAttribute("boa_id_list", result);
 		} else if (mymapTag != null) {
-			ArrayList<String> result = searchDAO.resultMymap(mymapTag);
-			session.setAttribute("boa_id_list", result);
+			String[] result = searchDAO.resultMymap(mymapTag);
+			session.setAttribute("map_id_list", result);
 		}
 	}
 
@@ -131,5 +134,34 @@ public class TimelineController {
 	public void deleteBoard(String boa_id) {
 		timelineDAO.deleteBoard(boa_id);
 		timelineDAO.deleteBoardTag(boa_id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@ResponseBody
+	@RequestMapping(value = "timelineMap", method = RequestMethod.GET)
+	public ArrayList<MyMap> timelineMap(HttpSession session) throws ParseException {
+
+		String[] map_id_list;
+		map_id_list = (String[]) session.getAttribute("map_id_list");
+		ArrayList<MyMap> mymapList = new ArrayList<>();
+		if (map_id_list != null) {
+			mymapList = timelineDAO.getTimelineMap(map_id_list);
+			if(mymapList != null) {
+				for(MyMap mymap : mymapList){
+					String orignDate = mymap.getMap_create_date();
+					SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					Date dateFrom = transFormat.parse(orignDate);
+					convertFromDate convert = new convertFromDate();
+					String updateDate = convert.calculateTime(dateFrom);
+					mymap.setMap_create_date(updateDate);
+					
+					String tag=mymap.getMap_tag();
+					String[] tagList = tag.split("~");
+					ArrayList<String> map_tag_list = new ArrayList<String>(Arrays.asList(tagList));
+					mymap.setMap_tag_list(map_tag_list);
+				}
+			}
+		}
+		return mymapList;
 	}
 }

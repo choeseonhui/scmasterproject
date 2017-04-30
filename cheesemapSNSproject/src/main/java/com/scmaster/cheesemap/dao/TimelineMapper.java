@@ -7,6 +7,7 @@ import com.scmaster.cheesemap.vo.BoardComment;
 import com.scmaster.cheesemap.vo.BoardLike;
 import com.scmaster.cheesemap.vo.BoardTag;
 import com.scmaster.cheesemap.vo.Follow;
+import com.scmaster.cheesemap.vo.MyMap;
 
 public interface TimelineMapper {
 	public Board getTimeline(String boa_id);
@@ -18,5 +19,8 @@ public interface TimelineMapper {
 	public void followRemove(Follow follow);
 	public void deleteBoard(String boa_id);
 	public void deleteBoardTag(String boa_id);
-	public Board getBoardByDivision (String boa_id);
+
+	public Board getBoardByDivision(String boa_id);
+
+	public ArrayList<MyMap> getTimelineMap(String[] map_id_list);
 }

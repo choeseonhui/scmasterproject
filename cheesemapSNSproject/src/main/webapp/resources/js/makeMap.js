@@ -125,6 +125,8 @@ $("#makeMyMap").click(function(){
 		success : function(data){
 			if(data>0){
 				modalBasket.style.display = "none";
+				selectedMarker=[];
+				$('#myBasket-content-div').html("지금 아무것도 없어요!");
 			}
 		},
 		error : function(e){

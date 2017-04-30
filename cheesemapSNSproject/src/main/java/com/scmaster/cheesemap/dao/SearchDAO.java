@@ -33,9 +33,9 @@ public class SearchDAO implements SearchMapper {
 	}
 
 	@Override
-	public ArrayList<MymapTag> searchmymapTag(String word) {
+	public ArrayList<HashMap<String, Object>> searchmymapTag(String word) {
 		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);
-		ArrayList<MymapTag> list = mapper.searchmymapTag(word);			
+		ArrayList<HashMap<String, Object>> list = mapper.searchmymapTag(word);			
 		return list;
 	}
 
@@ -69,9 +69,9 @@ public class SearchDAO implements SearchMapper {
 	}
 
 	@Override
-	public ArrayList<String> resultMymap(String mymapTag) {
+	public String[] resultMymap(String mymapTag) {
 		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);
-		ArrayList<String> result = mapper.resultMymap(mymapTag);
+		String[] result = mapper.resultMymap(mymapTag);
 		return result;
 	}
 

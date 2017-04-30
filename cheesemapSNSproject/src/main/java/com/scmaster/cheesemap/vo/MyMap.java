@@ -1,26 +1,28 @@
 package com.scmaster.cheesemap.vo;
 
+import java.util.ArrayList;
+
 public class MyMap {
 	private String map_id;
-	private String map_name;
+	private ArrayList<String> map_tag_list;
 	private String map_content;
 	private String map_create_date;
-	private String map_modify_date;
-	private String mem_id;
-
-	public MyMap(String map_id, String map_name, String map_content, String map_create_date, String map_modify_date,
-			String mem_id) {
-		super();
-		this.map_id = map_id;
-		this.map_name = map_name;
-		this.map_content = map_content;
-		this.map_create_date = map_create_date;
-		this.map_modify_date = map_modify_date;
-		this.mem_id = mem_id;
-	}
+	private String mem_nickname;
+	private String map_tag;
 
 	public MyMap() {
 		super();
+	}
+
+	public MyMap(String map_id, ArrayList<String> map_tag_list, String map_content, String map_create_date,
+			String mem_nickname, String map_tag) {
+		super();
+		this.map_id = map_id;
+		this.map_tag_list = map_tag_list;
+		this.map_content = map_content;
+		this.map_create_date = map_create_date;
+		this.mem_nickname = mem_nickname;
+		this.map_tag = map_tag;
 	}
 
 	public String getMap_id() {
@@ -31,12 +33,12 @@ public class MyMap {
 		this.map_id = map_id;
 	}
 
-	public String getMap_name() {
-		return map_name;
+	public ArrayList<String> getMap_tag_list() {
+		return map_tag_list;
 	}
 
-	public void setMap_name(String map_name) {
-		this.map_name = map_name;
+	public void setMap_tag_list(ArrayList<String> map_tag_list) {
+		this.map_tag_list = map_tag_list;
 	}
 
 	public String getMap_content() {
@@ -55,26 +57,26 @@ public class MyMap {
 		this.map_create_date = map_create_date;
 	}
 
-	public String getMap_modify_date() {
-		return map_modify_date;
+	public String getMem_nickname() {
+		return mem_nickname;
 	}
 
-	public void setMap_modify_date(String map_modify_date) {
-		this.map_modify_date = map_modify_date;
+	public void setMem_nickname(String mem_nickname) {
+		this.mem_nickname = mem_nickname;
 	}
 
-	public String getMem_id() {
-		return mem_id;
+	public String getMap_tag() {
+		return map_tag;
 	}
 
-	public void setMem_id(String mem_id) {
-		this.mem_id = mem_id;
+	public void setMap_tag(String map_tag) {
+		this.map_tag = map_tag;
 	}
 
 	@Override
 	public String toString() {
-		return "MyMap [map_id=" + map_id + ", map_name=" + map_name + ", map_content=" + map_content
-				+ ", map_create_date=" + map_create_date + ", map_modify_date=" + map_modify_date + ", mem_id=" + mem_id
+		return "MyMap [map_id=" + map_id + ", map_tag_list=" + map_tag_list + ", map_content=" + map_content
+				+ ", map_create_date=" + map_create_date + ", mem_nickname=" + mem_nickname + ", map_tag=" + map_tag
 				+ "]";
 	}
 

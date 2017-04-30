@@ -18,6 +18,7 @@
 		<typeAlias type="com.scmaster.cheesemap.vo.Follow" alias="Follow" />
 		<typeAlias type="com.scmaster.cheesemap.vo.MyMyMy" alias="MyMyMy" />
 		<typeAlias type="com.scmaster.cheesemap.vo.MymapTag" alias="MymapTag" />
+		<typeAlias type="com.scmaster.cheesemap.vo.MyMap" alias="MyMap" />
 	</typeAliases>
 
 	<mappers>

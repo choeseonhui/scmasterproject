@@ -46,9 +46,9 @@
 			TAG_NAME,
 			MAP_ID
 			) 
-   		<foreach close=")" collection="tag_name" item="a" index="index" open="(" separator="union">
+   		<foreach close=")" collection="tag_name_list" item="a" index="index" open="(" separator="union">
         select
-        	#{a},
+        	trim(#{a}),
 			#{map_id}
         from dual
     	</foreach>

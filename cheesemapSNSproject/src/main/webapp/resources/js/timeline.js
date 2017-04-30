@@ -108,6 +108,42 @@ function boardList() {
 	}, 50);
 }
 
+
+function mapList(){
+	setTimeout(function(){
+		$.ajax({
+			type : "get",
+			url : "timelineMap",
+			dataType : "json",
+			success : function(mymapList) {
+				console.log(mymapList);
+				var html = "";
+				$.each(mymapList, function(index, item) {
+					html += "<div class='board' datano='" + item.map_id + "'><div class='start'><table class='j-table'><tr>";
+					html +=	"<td rowspan='3'><img class='w3-circle selectImg' id='selectImg' src='./resources/img/planet-earth.png' width='120' height='120' datano='" +
+					+ item.map_id + "'></img></td>";
+					html += "<td>" + item.mem_nickname + "</td>";
+					html += "<td>";
+					if(item.map_tag_list.length > 0) {
+						$.each(item.map_tag_list, function(index2, map_tag) {
+							html += "#<a id='upup'>"+map_tag+"</a>";						
+						});
+					}
+					html += "</td></tr>";
+					html += "<tr><td align='left' colspan='2'>"+item.map_content+"</td></tr>";
+					html += "<tr><td align='right' colspan='2'><i class='glyphicon glyphicon-time'>" + item.map_create_date + "</i></td>";
+					html += "</tr></table></div></div>";
+				});
+				$("#timeline_div").html(html);
+			},
+			error : function(e){
+				console.log(e);
+			}
+		});
+	}, 50);
+}
+
+
 //검색어 태그 지우고 초기화
 $("#searchWord").click(function(){
 	$(this).attr("timeLineFlag", false);

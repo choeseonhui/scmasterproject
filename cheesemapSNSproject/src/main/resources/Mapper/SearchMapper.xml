@@ -36,15 +36,17 @@
 			tag_name
 	</select>
 
-	<select id="searchmymapTag" parameterType="String" resultType="MymapTag">
-		select
-		tag_name
-		map_id
+	<select id="searchmymapTag" parameterType="String" resultType="HashMap">
+			select
+			count(*) as COUNT
+			, tag_name
 		from
-		cs_mymap_tag
+			cs_mymap_tag
 		where
-		tag_name
-		like'%' || #{word}|| '%'
+			tag_name
+			like '%' || #{word}|| '%'
+		group by
+			tag_name
 	</select>
 
 	<select id="defaultList" parameterType="String" resultType="Board">
@@ -91,8 +93,7 @@
 		from
 		cs_mymap_tag
 		where
-		tag_name
-		=#{mymapTag}
+		tag_name=#{mymapTag}
 	</select>
 
 	<select id="autocomplete" parameterType="String" resultType="String">

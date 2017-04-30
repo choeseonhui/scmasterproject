@@ -43,7 +43,7 @@ public class MyMapController {
 		String[] tagList = test.split("#");
 		ArrayList<String> tag_name = new ArrayList<String>(Arrays.asList(tagList));
 		MymapTag myMapTag=new MymapTag();
-		myMapTag.setTag_name(tag_name);
+		myMapTag.setTag_name_list(tag_name);
 		myMapTag.setMap_id(newMapID);
 		
 		if (newMapID != null) {
