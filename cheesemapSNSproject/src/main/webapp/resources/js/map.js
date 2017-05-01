@@ -321,11 +321,13 @@ function addMarker(latlng, title, map) {
                 data: latlng2,
                 success: function (data) {
 
-            	    $('#write-slider').addClass("animated slideInRight");
-            	  $('#write-slider').css("display","block");                	
-                $('#write-slider').html(data);
-                $("#hide_flag").val('false');
-                $("#called").val('false'); 
+
+             	   $('#write-slider').attr("class","animated slideInRight");
+               	  $('#write-slider').attr("style","display:block !important;");       	
+              	
+                  $('#write-slider').html(data);
+                  $("#hide_flag").val('false');
+                  $("#called").val('false'); 
                 }
             });
         }

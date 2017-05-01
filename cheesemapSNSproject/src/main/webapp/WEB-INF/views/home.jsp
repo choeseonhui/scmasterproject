@@ -80,23 +80,23 @@
 		
   <section class="container">
  <div  id ="what">
-<img src="./resources/img/cheesePin.png" class ="pin1 animated"  id="pin1" style=" display:none; position:absolute; ">
+<img src="./resources/img/pin/cheesePin1.png" class ="pin1 animated"  id="pin1" style=" display:none; position:absolute; ">
 
-<img src="./resources/img/cheesePin.png" class="pin2 animated" id="pin2" style=" display:none; position:absolute;">
+<img src="./resources/img/pin/cheesePin2.png" class="pin2 animated" id="pin2" style=" display:none; position:absolute; filter: blur(2px);">
 
-<img src="./resources/img/cheesePin.png" class="pin3 animated" id="pin3" style=" display:none; position:absolute;">
+<img src="./resources/img/pin/cheesePin3.png" class="pin3 animated" id="pin3" style=" display:none; position:absolute;">
 
-<img src="./resources/img/cheesePin.png" class="pin4 animated" id="pin4" style=" display:none; position:absolute;">
+<img src="./resources/img/pin/cheesePin4.png" class="pin4 animated" id="pin4" style=" display:none; position:absolute;">
 
-<img src="./resources/img/cheesePin.png" class="pin5 animated" id="pin5" style="display:none; position:absolute;">
+<img src="./resources/img/pin/cheesePin5.png" class="pin5 animated" id="pin5" style="display:none; position:absolute;">
 
-<img src="./resources/img/cheesePin.png" class="pin6 animated" id="pin6" style="display:none; position:absolute;">
+<img src="./resources/img/pin/cheesePin6.png" class="pin6 animated" id="pin6" style="display:none; position:absolute;">
 
  </div>
  
     <div class="fullBackground"></div>
     
-    <div  id="mainText" class="mainText animated"><h3 style="font-weight: 200;">치즈치즈는<br>빠르고 <br>간결하고<br> 편합니다</h3></div>
+    <div  id="mainText" class="mainText animated"><p style="font-family: font-weight: 200;">치즈치즈는<br><br>빠르고 <br><br>간결하고<br><br>편합니다</p></div>
     <!-- <h2 class="caption">Full Clip</h2> -->
   </section>
 		<!-- 	<div class="row">
