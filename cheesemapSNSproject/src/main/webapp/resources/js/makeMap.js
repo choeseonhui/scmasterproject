@@ -67,7 +67,7 @@ $(document).ready(function() {
 							}else{
 								routeList += "<img src='./resources/img/logo.png' class='alright j-img-responsive img-responsive'>";
 							}
-							routeList += "<span style='font-size: 18px'>"+selectedAddress[index]+"</span>";
+							routeList += "<span style='font-size: 18px; color: chocolate;'>"+selectedAddress[index]+"</span>";
 							routeList += '</a>'
 							routeList += '</div>';
 					});
