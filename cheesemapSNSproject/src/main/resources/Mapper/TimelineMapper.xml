@@ -163,6 +163,7 @@
 		    T1.MAP_CONTENT,
 		    T1.MAP_CREATE_DATE,
 		    T3.MEM_NICKNAME
+		ORDER BY T1.MAP_CREATE_DATE
 	</select>
 	
 	<select id="getBoardListByMapID" parameterType="String" resultType="MapToBoard">

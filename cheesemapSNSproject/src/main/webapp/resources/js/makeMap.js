@@ -10,11 +10,21 @@ $(document).ready(function() {
 	//When the user clicks on <span> (x), close the modal
 	spanMap.onclick = function() {
 		modalBasket.style.display = "none";
+		selectedMarker=[];
+		$("#hashtagMap").val("");
+		$(".highlighter").html("");
+		$("#contentMap").val("");
+		$('#myBasket-content-div').html("지금 아무것도 없어요!")
 	}
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
 		if (event.target == modalBasket) {
 			modalBasket.style.display = "none";
+			selectedMarker=[];
+			$("#hashtagMap").val("");
+			$(".highlighter").html("");
+			$("#contentMap").val("");
+			$('#myBasket-content-div').html("지금 아무것도 없어요!")
 		}
 	}
 	// When the user clicks the button, open the modal
@@ -126,6 +136,9 @@ $("#makeMyMap").click(function(){
 			if(data>0){
 				modalBasket.style.display = "none";
 				selectedMarker=[];
+				$("#hashtagMap").val("");
+				$(".highlighter").html("");
+				$("#contentMap").val("");
 				$('#myBasket-content-div').html("지금 아무것도 없어요!");
 			}
 		},
