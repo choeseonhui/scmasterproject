@@ -70,6 +70,7 @@ $(function() {
 	             startup(searchWord);
 	             openSilder();
 	             $(".dropdownMenu").css("display","none");
+	             
 	             $('#tags').val("");
 	             
 	       
@@ -273,6 +274,7 @@ function startup(searchWord){
                         $("#searchWord").css("background-color","white");
 						$("#searchWord").attr("timeLineFlag", true);
 						$("#tags").attr("style", "display : none");
+						 $(".dropdownMenu").css("display","none");
                         
                      },
                      error : function(e){
