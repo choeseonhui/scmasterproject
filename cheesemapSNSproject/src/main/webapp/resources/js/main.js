@@ -1,12 +1,14 @@
 $(function() {
 	$('#menu-home').click(function() {
-		sliderInit();
 		$("#flag_contact").val("true");
+		sliderInit();
+			$('#searchWord').css("visibility","visible");
 	});
 
 	$('#menu-contact').click(function() {
-		sliderInit();
 		$("#flag_contact").val("false");
+		sliderInit();
+			$('#searchWord').css("visibility", "hidden");
 	});
 
 	$('#menu-my-menu').click(function() {
@@ -249,10 +251,9 @@ function sliderInit() {
 			"margin-right" : '-=500'
 		});
 		$('#searchWord').animate({
-			"margin-right" : '-=1000'
+			"margin-right" : '-=500'
 		});
 	};
-
 	if ($("#flag_my_menu").val() == 'true') {
 	} else {
 		$("#flag_my_menu").val("true");
