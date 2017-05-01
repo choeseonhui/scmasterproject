@@ -129,9 +129,9 @@ public class MakeBookController {
 
 	@ResponseBody
 	@RequestMapping(value = "first", method = RequestMethod.GET)
-	public ArrayList<Board> first(String fromDate, String toDate) {
-		
-		ArrayList<Board> myBoard = makeBookDAO.getMyBoardfromDatetoDate(fromDate, toDate);
+	public ArrayList<Board> first(String fromDate, String toDate, HttpSession session) {
+		String mem_id=(String) session.getAttribute("mem_id");
+		ArrayList<Board> myBoard = makeBookDAO.getMyBoardfromDatetoDate(fromDate, toDate, mem_id);
 
 		/*
 		 * Gson gson = new Gson(); gson.toJson(myBoard);
