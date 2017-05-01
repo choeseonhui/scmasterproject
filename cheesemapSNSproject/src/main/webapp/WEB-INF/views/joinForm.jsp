@@ -46,16 +46,18 @@
 					<div class="row control-group">
 						<div class="form-group col-xs-12 floating-label-form-group controls coco">
 							<span class="genderSection" id="gender">Gender</span>
+							<span class="gengen">
 							<span class="genderSection gender_sub">
-							<input type="radio"	name="mem_gender" value="Male" checked>Male</span>
+							<input type="radio" id="genderM" name="mem_gender" value="Male" >Male</span>
 							<span class="genderSection gender_sub">
-							<input type="radio"	name="mem_gender" value="Female">Female</span>
-							<span> 
-								<span id="imgDiv">
-									<img id="userPhoto" src="http://placehold.it/150x170">
-								</span>
-								<input type="file" id="upload" name="originalfile">
+							<input type="radio"	id="genderF" name="mem_gender" value="Female" >Female</span>
+						</span>
+						<span class="gengen">
+							<input type="file" id="upload" name="originalfile">
+							<span id="imgDiv">
+								<img id="userPhoto" src="http://placehold.it/150x170">
 							</span>
+						</span>
 							<p class="help-block text-danger"></p>
 						</div>
 					</div>
