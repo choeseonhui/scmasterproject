@@ -117,7 +117,7 @@ function mapList(){
 			success : function(mymapList) {
 				var html = "";
 				$.each(mymapList, function(index, item) {
-					html += "<div class='board' datano='" + item.map_id + "'><div class='start'><table class='j-table'><tr>";
+					html += "<div class='message-item' datano='" + item.map_id + "'><div class='message-inner'><table class='j-table'><tr>";
 					html +=	"<td rowspan='3'><img class='w3-circle selectImg' id='selectImg' src='./resources/img/planet-earth.png' width='120' height='120' datano='" +
 					+ item.map_id + "'></img></td>";
 					html += "<td>" + item.mem_nickname + "</td>";

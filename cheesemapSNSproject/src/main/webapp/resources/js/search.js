@@ -313,9 +313,10 @@ function startup(searchWord){
                               },
                               success: function(data){
                             	  mapList();
-	                        	  $("#searchWord").html("X "+searchMymap);
-	                        	  $("#searchWord").attr("timeLineFlag", true);
-	                        	  $("#tags").attr("style", "display : none");
+		                            $("#searchWord").html("&nbsp&nbsp&nbsp&nbsp&nbsp # &nbsp&nbsp "+searchMymap+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+		                            $("#searchWord").css("background-color","white");
+		          					$("#searchWord").attr("timeLineFlag", true);
+		          					$("#tags").attr("style", "display : none");
                               },
                               error : function(e){
                                  console.log(e);
