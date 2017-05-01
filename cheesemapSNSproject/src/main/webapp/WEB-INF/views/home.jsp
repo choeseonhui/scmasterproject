@@ -96,7 +96,7 @@
  
     <div class="fullBackground"></div>
     
-    <div  id="mainText" class="mainText animated"><h3 style="font-weight: 200;">치즈치즈는<br>빠르고 <br>간결하고<br> 편합니다</h3></div>
+    <div  id="mainText" class="mainText animated"><p style="font-family: font-weight: 200;">치즈치즈는<br><br>빠르고 <br><br>간결하고<br><br>편합니다</p></div>
     <!-- <h2 class="caption">Full Clip</h2> -->
   </section>
 		<!-- 	<div class="row">
