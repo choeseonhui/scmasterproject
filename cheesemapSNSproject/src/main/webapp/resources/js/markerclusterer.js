@@ -1259,7 +1259,7 @@ ClusterIcon.prototype.createCss = function(pos) {
 
   style.push('cursor:pointer; top:' + pos.y + 'px; left:' +
       pos.x + 'px; color:' + txtColor + '; position:absolute; font-size:' +
-      txtSize + 'px; font-family:Arial,sans-serif; font-weight:bold; padding-left:5.8px');
+      txtSize + 'px; font-family:Arial,sans-serif; font-weight:bold; padding-left:' + ((this.height_ * -0.5) + 32) + 'px;');
   return style.join('');
 };
 
