@@ -62,8 +62,12 @@ $(document).ready(function() {
 							routeList += '<i class="fa fa-check fa-3x"></i>';
 							routeList += '</div>';
 							routeList += '</div>';
-							routeList += "<img src='"+ item.boa_photo_savefile +"' class='alright j-img-responsive img-responsive'>";
-							routeList += "<span>"+selectedAddress[index]+"</span>";
+							if(item.boa_photo_savefile!=null){
+								routeList += "<img src='"+ item.boa_photo_savefile +"' class='alright j-img-responsive img-responsive'>";
+							}else{
+								routeList += "<img src='./resources/img/logo.png' class='alright j-img-responsive img-responsive'>";
+							}
+							routeList += "<span style='font-size: 18px'>"+selectedAddress[index]+"</span>";
 							routeList += '</a>'
 							routeList += '</div>';
 					});
