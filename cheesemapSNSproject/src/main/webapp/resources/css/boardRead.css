@@ -85,3 +85,6 @@ ul {
 	list-style: none;
 	padding-left: 0px;
 }
+#comContent{
+	text-align: left !important;
+}

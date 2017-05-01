@@ -5,9 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <!-- Include Editor style. -->
-    <link href=".\resources\froala_editor_2.5.1\css\froala_editor.pkgd.min.css" rel="stylesheet" type="text/css"/>
-    <link href=".\resources\froala_editor_2.5.1\css\froala_style.min.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 	<div id="wrapBoard">

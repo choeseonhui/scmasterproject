@@ -267,7 +267,7 @@ function searchMember(mem_id){
 			}else{
 				$("#profilePhotoBoa").html('<img id="memberPhoto" src="./resources/img/logo.png">');
 			}
-			$("#nickNameBoa").html("<span>"+member.mem_nickname+"</span>");
+			$("#nickNameBoa").html("<span style='font-size : 18px'>"+member.mem_nickname+"</span>");
 		},
 		error : function(e) {
 		console.log(e);
