@@ -108,7 +108,7 @@ function boardList() {
 	}, 50);
 }
 
-
+//마이맵
 function mapList(){
 	setTimeout(function(){
 		$.ajax({
@@ -155,7 +155,8 @@ function clickMyMap(map_id){
 			map_id : map_id
 		},
 		success : function(data){
-			console.log(data);
+            console.log(data);
+            dataToMapjs(data);
 			boardList();
 		},
 		error : function(e){
@@ -167,10 +168,10 @@ function clickMyMap(map_id){
 
 //검색어 태그 지우고 초기화
 $("#searchWord").click(function(){
-	$(this).attr("timeLineFlag", false);
-	$("#searchWord").html("");
-	$("#tags").attr("style", "visibility: visible");
-	refresh(map);
+    $(this).attr("timeLineFlag", false);
+    $("#searchWord").html("");
+    $("#tags").attr("style", "visibility: visible");
+    refresh(map);
 });
 
 // 로그인한 id

@@ -4,9 +4,11 @@ var markerClusterer = null;
 var service;
 var geocoder;
 var infowindow;
+var directionsService;
+var directionsDisplay;
 
 function initMap() {
-	
+
 	$('#pac-input').css('visibility','hidden');
 	
     // 지도 생성 및 기타 등에 필요한 값 선언
@@ -38,6 +40,10 @@ function initMap() {
     map.addListener('zoom_changed', function() {
 		refresh(map);
 	});
+
+    $("#searchWord").click(function(){
+        directionsDisplay.setMap(null);
+    });
 
     // 글쓰기 버튼(연필) 클릭했을 때 주소,장소 검색창 토글
     $('#write-button').on('click', function () {
@@ -99,9 +105,6 @@ function initMap() {
         map.fitBounds(bounds);
     });
     
-    
-    
-
     // 지도 스타일
     var styleControl = document.getElementById('style-selector-control');
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(styleControl);
@@ -112,6 +115,50 @@ function initMap() {
     styleSelector.addEventListener('change', function () {
         map.setOptions({styles: styles[styleSelector.value]});
     });
+}
+
+//마이맵 데이터 받아오기
+function dataToMapjs(data) {
+    directionsService = new google.maps.DirectionsService;
+    directionsDisplay = new google.maps.DirectionsRenderer;
+    directionsDisplay.setMap(map);
+    calculateAndDisplayRoute(directionsService, directionsDisplay, data);
+}
+
+//길찾긔
+function calculateAndDisplayRoute(directionsService, directionsDisplay, myMapList){
+
+    var waypts = [];
+    var origin = null;
+    var destination = null;
+
+    $.each(myMapList, function (index, item) {
+       var LatLng = new google.maps.LatLng(item.boa_latitude, item.boa_longitude);
+        if (item.mtb_route == 1) {
+            origin = LatLng;
+        } else if (item.mtb_route == myMapList.length) {
+            destination = LatLng;
+        } else {
+            waypts.push({
+                location: LatLng,
+                stopover: true
+            });
+        }
+    });
+
+    directionsService.route({
+        origin: origin,
+        destination: destination,
+        waypoints: waypts,
+        optimizeWaypoints: true,
+        travelMode: 'DRIVING',
+    }, function (response, status) {
+        if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    })
 }
 
 // 게시글 정보 불러오기
