@@ -87,6 +87,11 @@ function boardList() {
                         var newContent = '';
                         newContent += '장바구니에 ' + selectedMarker.length + '개가 담겨 있어요!';
                         $('#myBasket-content-div').html(newContent);
+                        if(selectedMarker.length>0){
+                        	$("#makeMyMapBtn").attr("style", "visibility: visible");
+                        }else{
+                        	$("#makeMyMapBtn").attr("style", "display: none");
+                        }
                     }
                 });
 			
