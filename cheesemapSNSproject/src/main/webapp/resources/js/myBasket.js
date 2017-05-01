@@ -16,6 +16,7 @@ $(document).ready(function () {
 
     $('#myBasket-exit-div').on('click', function(){
         $('#myBasket_div').css('display','none');
+        $("#makeMyMapBtn").attr("style", "display: none");
     });
 
 });

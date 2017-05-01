@@ -87,6 +87,11 @@ function boardList() {
                         var newContent = '';
                         newContent += '장바구니에 ' + selectedMarker.length + '개가 담겨 있어요!';
                         $('#myBasket-content-div').html(newContent);
+                        if(selectedMarker.length>0){
+                        	$("#makeMyMapBtn").attr("style", "visibility: visible");
+                        }else{
+                        	$("#makeMyMapBtn").attr("style", "display: none");
+                        }
                     }
                 });
 			
@@ -267,7 +272,7 @@ function searchMember(mem_id){
 			}else{
 				$("#profilePhotoBoa").html('<img id="memberPhoto" src="./resources/img/logo.png">');
 			}
-			$("#nickNameBoa").html("<span>"+member.mem_nickname+"</span>");
+			$("#nickNameBoa").html("<span style='font-size : 18px'>"+member.mem_nickname+"</span>");
 		},
 		error : function(e) {
 		console.log(e);
