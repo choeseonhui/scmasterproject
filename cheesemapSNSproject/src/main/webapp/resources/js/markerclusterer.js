@@ -1236,10 +1236,10 @@ ClusterIcon.prototype.createCss = function(pos) {
           'px; padding-top:' + this.anchor_[0] + 'px;');
     } else if (typeof this.anchor_[0] === 'number' && this.anchor_[0] < 0 &&
         -this.anchor_[0] < this.height_) {
-      style.push('height:' + this.height_ + 'px; line-height:' + (this.height_ + this.anchor_[0]) +
+      style.push('height:' + this.height_ + 'px; line-height:' + (this.height_ + this.anchor_[0] - 33) +
           'px;');
     } else {
-      style.push('height:' + this.height_ + 'px; line-height:' + this.height_ +
+      style.push('height:' + this.height_ + 'px; line-height:' + (this.height_ - 33) +
           'px;');
     }
     if (typeof this.anchor_[1] === 'number' && this.anchor_[1] > 0 &&
@@ -1247,11 +1247,11 @@ ClusterIcon.prototype.createCss = function(pos) {
       style.push('width:' + (this.width_ - this.anchor_[1]) +
           'px; padding-left:' + this.anchor_[1] + 'px;');
     } else {
-      style.push('width:' + this.width_ + 'px; text-align:center;');
+      style.push('width:' + this.width_ + 'px; text-align:left;');
     }
   } else {
     style.push('height:' + this.height_ + 'px; line-height:' +
-        this.height_ + 'px; width:' + this.width_ + 'px; text-align:center;');
+        (this.height_ - 33) + 'px; width:' + this.width_ + 'px; text-align:left;');
   }
 
   var txtColor = this.textColor_ ? this.textColor_ : 'black';
@@ -1259,7 +1259,7 @@ ClusterIcon.prototype.createCss = function(pos) {
 
   style.push('cursor:pointer; top:' + pos.y + 'px; left:' +
       pos.x + 'px; color:' + txtColor + '; position:absolute; font-size:' +
-      txtSize + 'px; font-family:Arial,sans-serif; font-weight:bold');
+      txtSize + 'px; font-family:Arial,sans-serif; font-weight:bold; padding-left:5.8px');
   return style.join('');
 };
 
