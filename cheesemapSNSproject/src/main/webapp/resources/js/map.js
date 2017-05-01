@@ -117,6 +117,41 @@ function initMap() {
     });
 }
 
+//게시물 마커 방방이 해제하긔!
+function goAwayBangbang(){
+	$.each(markers, function(index, item){
+		item.setAnimation(null);
+	});
+}
+
+//게시물 마커 방방이
+function bangbang(datano){
+	var selected_lat = '';
+	var selected_lng = '';
+	$.ajax({
+		type : "post",
+		url : "boardRead",
+		data : {
+			boa_id : datano
+		},
+		success : function(board){
+			selected_lat = board.boa_latitude;
+			selected_lng = board.boa_longitude;
+			$.each(markers, function(index, item){
+				if (item.position.lat() == selected_lat && item.position.lng() == selected_lng) {
+					item.setAnimation(google.maps.Animation.BOUNCE);
+				} else {
+					item.setAnimation(null);
+				}
+			});
+		},
+		error: function(e){
+			console.log(e);
+		}
+	});
+}
+
+
 //마이맵 데이터 받아오기
 function dataToMapjs(data) {
     directionsService = new google.maps.DirectionsService;
@@ -295,14 +330,14 @@ function addMarker(latlng, title, map) {
             });
         }
 
-        if ($("#hide_flag").val()== 'false' && $("#called").val() == 'false') {
+        /*if ($("#hide_flag").val()== 'false' && $("#called").val() == 'false') {
             console.log('글읽기 사라져라');
-           /* $('#write-slider').attr("class","animated fadeOutRight");       */	 
+            $('#write-slider').attr("class","animated fadeOutRight");       	 
         	 if( $("#called").val() == 'false'){
             $("#hide_flag").val('true');
             $("#called").val('true'); 
        	 };
-        }
+        }*/
 
     });
     markers.push(marker);

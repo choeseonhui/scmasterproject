@@ -64,6 +64,12 @@ function boardList() {
 					var boa_id = $(this).attr("datano");
 					clickBoard(boa_id);
 				});
+				$(".selectImg").on("mouseover", function() {
+					bangbang($(this).attr("datano"));
+				});
+				$(".selectImg").on("mouseleave", function() {
+					goAwayBangbang();
+				});
 				$(".selectImg").on('dragstart',function(){
                     console.log('드래그 시작');
                     $('#myBasket_div').attr('data-mouse-in',true);
