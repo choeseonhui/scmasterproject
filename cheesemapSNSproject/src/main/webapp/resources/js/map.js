@@ -298,14 +298,6 @@ function addMarker(latlng, title, map) {
         markers.pop(marker);
     });
     
-    marker.addListener('mouseover', function() {
-             marker.setAnimation(google.maps.Animation.BOUNCE);
-	});
-    
-    marker.addListener('mouseout', function() {
-             marker.setAnimation(null);
-	});
-
     marker.addListener('click', function (event) {
         var latitude = event.latLng.lat();
         var longitude = event.latLng.lng();
