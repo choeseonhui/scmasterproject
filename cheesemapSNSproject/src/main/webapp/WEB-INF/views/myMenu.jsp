@@ -24,15 +24,15 @@
 	</div>
 	
 	<!-- write btn -->
-	<div id="write-button" data-flag="false">
+	<div id="write-button" class="mymenu-buttons" data-flag="false">
 		<img src="./resources/img/crayons.png" width="60px"/>
 	</div>
 	
-	<div id="makebook-button" data-flag="false">
+	<div id="makebook-button" class="mymenu-buttons" data-flag="false">
 		<img src="./resources/img/reading.png" width="75px"/>
 	</div>
 	
-	<div id="myBasket-button" data-flag="false">
+	<div id="myBasket-button" class="mymenu-buttons" data-flag="false">
         <img src="./resources/img/easter-bunny.png" width="75px"/>
     </div>
 </div>
