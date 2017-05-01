@@ -29,34 +29,31 @@ $(document).ready(function(){
 			
 
 			$("#pin2").css("display","inline");
-		
+			$("#pin2").css("-webkit-filter","blur(2px)");
 			$("#pin2").css("height","200px");
 			$("#pin2").addClass('animated fadeInUp');
 			
 			
 			
-			$("#pin3").css("display","inline");
-			
+			$("#pin3").css("display","inline");			
 			$("#pin3").css("-webkit-filter","blur(2px)");
 			$("#pin3").css("height","100px");
 			$("#pin3").addClass('animated fadeInUp');
 			
 			
 			$("#pin4").css("display","inline");
-		
-			$("#pin4").css("height","350px");
+			$("#pin4").css("-webkit-filter","blur(1.5px)");
+			$("#pin4").css("height","450px");
 			$("#pin4").addClass('animated fadeInUp');
 			
 			$("#pin5").css("display","inline");
-			$("#pin5").css("-webkit-filter","blur(2px)");
-			
+			$("#pin5").css("-webkit-filter","blur(2px)");			
 			$("#pin5").css("height","90px");
 			$("#pin5").addClass('animated fadeInUp');
 			
 			
 			$("#pin6").css("display","inline");
-			$("#pin6").css("-webkit-filter","blur(2px)");
-			
+			$("#pin6").css("-webkit-filter","blur(2px)");			
 			$("#pin6").css("height","340px");
 			$("#pin6").addClass('animated fadeInUp');
 			
