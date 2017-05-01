@@ -298,12 +298,13 @@ function startup(searchWord){
              var mymaphtml = '';
             
              if(mymaplist.length != 0){
-             $.each(mymaplist, function(index, value) {            
-                mymaphtml += '<br><h2><a id="thir-mymap-search'+index+'" class="'+value.tag_name+'">#'+value.tag_name+'</a></h2><br>';
+             $.each(mymaplist, function(index, val) { 
+            	 $.map($(this), function(){ 
+            		 mymaphtml += '<br><h2><a id="thir-mymap-search'+index+'" class="'+val.TAG_NAME+'"> # '+val.TAG_NAME+'</a><h2><br>';
+            		 mymaphtml += '<h5>'+val.COUNT+'개의 게시글이 존재합니다.</h5><hr>';
+            	
                 $(document).on("click","#thir-mymap-search"+index+"",function(){
                       var  searchMymap= $("#thir-mymap-search"+index+"").attr("class");
-                      console.log(searchMymap);
-                      
                          $.ajax({                              
                               type:"GET",
                               url : "seachResult",
@@ -311,7 +312,10 @@ function startup(searchWord){
                               mymapTag : searchMymap                        
                               },
                               success: function(data){
-                                 boardList();
+                            	  mapList();
+	                        	  $("#searchWord").html("X "+searchMymap);
+	                        	  $("#searchWord").attr("timeLineFlag", true);
+	                        	  $("#tags").attr("style", "display : none");
                               },
                               error : function(e){
                                  console.log(e);
@@ -321,7 +325,7 @@ function startup(searchWord){
                         
                       });
                    
-                   
+            	 });
                 
                    });
              }else{
