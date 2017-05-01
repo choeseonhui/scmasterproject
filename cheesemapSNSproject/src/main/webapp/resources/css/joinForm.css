@@ -15,6 +15,13 @@
 	font: inherit !important;
 	float: left;
 }
+.gengen{
+	display : inline !important;
+}
+#genderMD{
+	color: black;
+	margin-right: 10% !important;
+}
 
 #gender {
 	margin-right: 10% !important;
@@ -25,14 +32,20 @@
 }
 
 #upload {
-	font: inherit !important;
-	font-size: small !important;
-	width: 200px !important;
-	display: inline !important;
-	vertical-align: bottom !important;
+font: inherit !important;
+    font-size: small !important;
+    width: 190px !important;
+    display: inline !important;
 }
 
 #userPhoto {
-	width: 150px;
-	height: 170px;
+	width: 150px !important;
+	height: 170px !important;
+    display: inline !important;
+}
+
+.mdlabel{
+	opacity: 1 !important;
+    text-align: left !important;
+    font-size: 18px !important;
 }
