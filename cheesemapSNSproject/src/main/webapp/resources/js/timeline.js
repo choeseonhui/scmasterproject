@@ -121,14 +121,14 @@ function mapList(){
 					html +=	"<td rowspan='3'><img class='w3-circle selectImg' id='selectImg' src='./resources/img/planet-earth.png' width='120' height='120' datano='" +
 					+ item.map_id + "'></img></td>";
 					html += "<td>" + item.mem_nickname + "</td>";
-					html += "<td>";
+					html += "<td style=' text-align: left'>";
 					if(item.map_tag_list.length > 0) {
 						$.each(item.map_tag_list, function(index2, map_tag) {
 							html += "#<a id='upup'>"+map_tag+"</a>";						
 						});
 					}
 					html += "</td></tr>";
-					html += "<tr><td align='left' colspan='2'>"+item.map_content+"</td></tr>";
+					html += "<tr><td align='left' colspan='2' style='width: 315px'>"+item.map_content+"</td></tr>";
 					html += "<tr><td align='right' colspan='2'><i class='glyphicon glyphicon-time'>" + item.map_create_date + "</i></td>";
 					html += "</tr></table></div></div>";
 				});
