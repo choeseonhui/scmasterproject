@@ -250,6 +250,8 @@ select * from CS_BOARD_COMMENT;
 select * from CS_BOARD_TAG;
 select * from CS_BOARD_LIKE;
 
+delete CS_FOLLOW;
+
 select
 	mem_id
 	, mem_nickname
