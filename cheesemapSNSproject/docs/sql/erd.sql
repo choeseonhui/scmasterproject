@@ -422,3 +422,4 @@ from
 where
 	mem_id = 'jwnamkung@naver.com';
 	
+delete cs_member;
