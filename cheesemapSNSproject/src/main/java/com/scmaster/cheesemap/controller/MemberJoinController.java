@@ -102,7 +102,7 @@ public class MemberJoinController {
 			MailTest mailtest = new MailTest();
 			String cheese_id = "cocohello010@gmail.net";// 보내는 사람
 			String subjectTxt = "[Cheese]본인인증확인 메일입니다";// 제목
-			String msgTxt = "본인 인증을 위하여 아래의 버튼을 눌러주세요." + "<br><a href='http://203.233.196.74:host:8888/cheesemap/authentication?"
+			String msgTxt = "본인 인증을 위하여 아래의 버튼을 눌러주세요." + "<br><a href='http://203.233.196.74:8888/cheesemap/authentication?"
 					+ "mem_id=" + mb.getMem_id() + "'>본인인증 확인</a>"; // 내용
 			mailtest.testMailSend(mb.getMem_id(), cheese_id, subjectTxt, msgTxt);
 		}

@@ -421,3 +421,4 @@ from
 	cs_board_like
 where
 	mem_id = 'jwnamkung@naver.com';
+	
