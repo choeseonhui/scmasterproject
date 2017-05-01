@@ -123,7 +123,8 @@ function clickUser() {
 		},
 		success: function(data) {
 			boardList();
-			$("#searchWord").html("X "+searchUser);
+			$("#searchWord").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+searchUser+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+			$("#searchWord").css("background-color","white");
 			$("#searchWord").attr("timeLineFlag", true);
 			$("#tags").attr("style", "display : none");
 		},
@@ -326,7 +327,8 @@ function clickMyPosts(){
     				});
     			}
     		};
-    		$("#searchWord").html("X MyPost");
+    		$("#searchWord").html(" &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMyPost&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+    		$("#searchWord").css("background-color","white");
 			$("#searchWord").attr("timeLineFlag", true);
 			$("#tags").attr("style", "display : none");
 		},
@@ -368,7 +370,8 @@ function clickCart(){
     				});
 	    		}
 	    	};
-	    	$("#searchWord").html("X LikeCart");
+	    	$("#searchWord").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp LikeCart &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+	    	$("#searchWord").css("background-color","white");
 			$("#searchWord").attr("timeLineFlag", true);
 			$("#tags").attr("style", "display : none");
 		},

@@ -14,9 +14,9 @@ function boardList() {
 					boardMarker.push(item.board);
 					$.each(item, function(index2, item2) {
 						if(item2.boa_create_date != undefined) {
-							html += "<div class='board' datano='" +
+							html += "<div class='message-item' datano='" +
 								+ item2.boa_id
-								+ "'><div class='start'><table class='j-table'><tr>";
+								+ "'><div class='message-inner'><table class='j-table' style=' width: 400px;'><tr style=' color:#a5a5a5;'>";
 							if(item2.boa_photo_savefile != undefined) {
 								html +=	"<td rowspan='3'><img class='w3-circle selectImg' id='selectImg' src='"+ item2.boa_photo_savefile +"' width='120' height='120' datano='" +
 								+ item2.boa_id
@@ -40,17 +40,17 @@ function boardList() {
 								cache : false,	// 한번에 여러번 실행 시켜주기 위한 key 
 								async : false,	// 한번에 여러번 실행 시켜주기 위한 key
 								success : function(member){
-									html += "<td>" + member.mem_nickname + "</td>";
+									html += "<td style='color: #5eb7ce;'>" + member.mem_nickname + "</td>";
 								},
 								error : function(e) {
 								console.log(e);
 								}
 							});	
 							html += "<td>좋아요" + item.boardLike.length + " 코멘트" + item.boardComment.length + "</td></tr>";
-							html += "<tr><td align='left' colspan='2'>";
+							html += "<tr><td align='left' colspan='2' style='border-top: 1px solid #d8d8d8; font-size: 25px;'>";
 							if(item.boardTag.length > 0) {
 								$.each(item.boardTag, function(index3, item3) {
-									html += "#<a id='upup'>"+item3.tag_name+"</a>";						
+									html += "#<a id='upup' style='color: #80cee0;'>"+item3.tag_name+"</a>";						
 								});
 							}
 							html += "</td></tr>";
@@ -87,11 +87,6 @@ function boardList() {
                         var newContent = '';
                         newContent += '장바구니에 ' + selectedMarker.length + '개가 담겨 있어요!';
                         $('#myBasket-content-div').html(newContent);
-                        if(selectedMarker.length>0){
-                        	$("#makeMyMapBtn").attr("style", "visibility: visible");
-                        }else{
-                        	$("#makeMyMapBtn").attr("style", "display: none");
-                        }
                     }
                 });
 			
@@ -107,7 +102,6 @@ function boardList() {
 		});
 	}, 50);
 }
-
 //마이맵
 function mapList(){
 	setTimeout(function(){
@@ -170,6 +164,7 @@ function clickMyMap(map_id){
 $("#searchWord").click(function(){
     $(this).attr("timeLineFlag", false);
     $("#searchWord").html("");
+    $("#searchWord").css("background-color","");
     $("#tags").attr("style", "visibility: visible");
     refresh(map);
 });

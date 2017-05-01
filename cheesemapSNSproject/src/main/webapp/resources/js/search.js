@@ -139,6 +139,10 @@ function openSilder(){
 
 
 function startup(searchWord){
+	 $("#tagList").css("height","");
+	 $("#userList").css("height","");
+	 $("#mymapList").css("height","");
+	 
     var divhtml = "";
     
        
@@ -191,6 +195,7 @@ function startup(searchWord){
             }
             
             }
+           
             
             var taghtml ='';
             
@@ -201,8 +206,8 @@ function startup(searchWord){
                       console.log(val.TAG_NAME);
                       
                
-                   taghtml += '<br><h2><a id="fir-tag-search'+index+'" class="'+val.TAG_NAME+'"> # '+val.TAG_NAME+'</a><h2><br>';
-                   taghtml += '<h5>'+val.COUNT+'개의 게시글이 존재합니다.</h5><hr>';         
+                   taghtml += '<br><h2><a id="fir-tag-search'+index+'" class="'+val.TAG_NAME+'" style="color: #4e9cab"> # '+val.TAG_NAME+'</a></h2><br>';
+                   taghtml += '<h5> 게시물 '+val.COUNT+'개</h5><hr>';         
                 
                 $(document).on("click","#fir-tag-search"+index+"",function(){               
                   var searchTag = $("#fir-tag-search"+index+"").attr("class");
@@ -216,7 +221,8 @@ function startup(searchWord){
                      },
                      success: function(data){
                         boardList();
-                        $("#searchWord").html("X "+searchTag);
+                        $("#searchWord").html("&nbsp&nbsp&nbsp&nbsp&nbsp # &nbsp&nbsp "+searchTag+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+                        $("#searchWord").css("background-color","white");
 						$("#searchWord").attr("timeLineFlag", true);
 						$("#tags").attr("style", "display : none");
                      },
@@ -234,7 +240,8 @@ function startup(searchWord){
             }else{
                
                console.log("ssss");
-                taghtml += '<h5>해당 검색 태그가 존재 하지 않습니다.</h5>';
+                taghtml += '<h2><br></h2><h5>해당 검색 태그가 존재 하지 않습니다.</h5>';
+               
                
             };
             
@@ -262,7 +269,8 @@ function startup(searchWord){
                      },
                      success: function(data){
                         boardList();
-                        $("#searchWord").html("X "+searchUser);
+                        $("#searchWord").html("&nbsp&nbsp"+searchUser+"&nbsp&nbsp");
+                        $("#searchWord").css("background-color","white");
 						$("#searchWord").attr("timeLineFlag", true);
 						$("#tags").attr("style", "display : none");
                         
@@ -276,7 +284,8 @@ function startup(searchWord){
                 });
              });
          } else{
-            userhtml += '<h5>해당 하는 유저가  존재 하지 않습니다.</h5>';
+            userhtml += '<h2><br></h2><h5>해당 하는 유저가  존재 하지 않습니다.</h5>';
+        
                
             };
              $("#userList").hide();
@@ -289,13 +298,12 @@ function startup(searchWord){
              var mymaphtml = '';
             
              if(mymaplist.length != 0){
-             $.each(mymaplist, function(index, val) { 
-            	 $.map($(this), function(){ 
-            		 mymaphtml += '<br><h2><a id="thir-mymap-search'+index+'" class="'+val.TAG_NAME+'"> # '+val.TAG_NAME+'</a><h2><br>';
-            		 mymaphtml += '<h5>'+val.COUNT+'개의 게시글이 존재합니다.</h5><hr>';
-            	
+             $.each(mymaplist, function(index, value) {            
+                mymaphtml += '<br><h2><a id="thir-mymap-search'+index+'" class="'+value.tag_name+'">#'+value.tag_name+'</a></h2><br>';
                 $(document).on("click","#thir-mymap-search"+index+"",function(){
                       var  searchMymap= $("#thir-mymap-search"+index+"").attr("class");
+                      console.log(searchMymap);
+                      
                          $.ajax({                              
                               type:"GET",
                               url : "seachResult",
@@ -303,10 +311,7 @@ function startup(searchWord){
                               mymapTag : searchMymap                        
                               },
                               success: function(data){
-                            	  mapList();
-	                        	  $("#searchWord").html("X "+searchMymap);
-	                        	  $("#searchWord").attr("timeLineFlag", true);
-	                        	  $("#tags").attr("style", "display : none");
+                                 boardList();
                               },
                               error : function(e){
                                  console.log(e);
@@ -316,12 +321,15 @@ function startup(searchWord){
                         
                       });
                    
-            	 });
+                   
                 
                    });
              }else{
                 
-                mymaphtml+= '<h5> 해당 하는 태그가 존재하지 않습니다.</h5>';
+                mymaphtml+= '<h2><br></h2><h5> 해당 하는 태그가 존재하지 않습니다.</h5>';
+                
+                
+               
              }
              $("#mymapList").hide();
              $("#mymapList").html(mymaphtml);

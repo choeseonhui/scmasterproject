@@ -1,23 +1,16 @@
-/* #input-group{
-	
-	position: fixed !important; 
-	width: 50px;
-	height: 100px;
-	right: 30px;
-	top: 15%;
-	
-} */
 
 #searchWord{
 	position: fixed !important;
-    width: 300px;
     height: 30px;
     right: 150px;
     top: 18%;
 	font-size: 19px;
-    color: rgb(248, 3, 125);
+    color: rgb(126, 184, 202);
     font-weight : bold;
+    opacity: 0.8;
+    border-radius :30px;
 }
+
 
 .searchClass{
 	
