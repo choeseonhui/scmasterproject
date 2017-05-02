@@ -255,12 +255,15 @@ function startup(searchWord){
             var userhtml ='';   
             
          if(userlist.length != 0 ){
-             $.each(userlist, function(index, value ) {
-               userhtml += '<br><h1><a id="sec-user-search'+index+'" class="'+value.mem_id+'">'+value.mem_id+'<br></a></h1><h5>유저 닉네임 : '+value.mem_nickname+'</h5><hr>';                
-               $(document).on("click","#sec-user-search"+index+"",function(){
-                  var searchUser = $("#sec-user-search"+index+"").attr("class");               
-                  $("#resultUserlist").val(searchUser);   
-                  
+        	 $.each(userlist, function(index, value ) {
+                 userhtml += '<div id="user" class="user" onclick="clickUser();"><div id="innerUser" style="padding: 30px;"><table class="j-table"><tr><td rowspan="2">';               
+                 userhtml += '<img user_id = "'+value.mem_id +'" class="w3-circle user_id" src="download?mem_id='+value.mem_id+'" width="90" height="90" onclick="clickUser();"></img>';
+                 userhtml += '<td style=" width: 200px; border-bottom: 1px solid gray;">'+value.mem_id+'</td></tr>';
+                 userhtml += '<tr><td>'+value.mem_nickname+'</td></tr></table></div></div>';
+                 $(document).on("click","#sec-user-search"+index+"",function(){
+                    var searchUser = $("#sec-user-search"+index+"").attr("class");               
+                    $("#resultUserlist").val(searchUser);   
+                    
                             $.ajax({
                      
                      type:"GET",

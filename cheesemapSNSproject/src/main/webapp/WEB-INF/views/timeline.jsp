@@ -8,6 +8,6 @@
 <br>
 <br>
 <br>
-<div id="userList" style='display: block;background: white;top: -20px;position: relative; height: 800px '></div>
+<div id="userList" style=' display: block;background: white;top: -20px;position: relative; height: 800px '></div>
 <div id="tagList" style='display: block;background: white;top: -20px;position: relative; height: 800px'></div>
 <div id="mymapList" style='display: block;background: white;top: -20px;position: relative; height: 800px;'></div>

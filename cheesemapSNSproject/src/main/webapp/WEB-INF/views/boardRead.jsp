@@ -12,10 +12,10 @@
 		<div id="sectionBoard">
 			<!-- 프로필사진 및 닉네임 -->
 			<div id="headerBoard">
-				<span id="profilePhotoBoa">프로필사진</span>
-				<span id="nickNameBoa">닉네임</span>
-				<span id="followState">팔로우</span>
-			</div>
+			<div style="float: left;align-items: center;"><span id="profilePhotoBoa">프로필사진</span></div>
+				<div style="float: left; padding-top: 25px;"><span id="nickNameBoa">닉네임</span></div>
+				<div style=" float: left; padding-top: 23px;padding-left: 20px;"><span id="followState">팔로우</span></div>
+		</div>
 			<!-- 좋아요 & 날짜 -->
 			<div id="likedate">
 				<span id="likeit">좋아요</span>

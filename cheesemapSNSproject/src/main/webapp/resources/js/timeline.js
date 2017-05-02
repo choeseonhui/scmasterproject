@@ -296,9 +296,9 @@ function followState() {
 		},
 		success : function(state){
 			if(state == 'ing') {
-				$("#followState").html('<a id="fol_cancel">-</a>');
+				$("#followState").html('<a id="fol_cancel"><img src="./resources/img/fol.png" style=" width: 25px; height: 25px;"></a>');
 			} else if(state == 'yet') {
-				$("#followState").html('<a id="fol_add">+</a>');
+				$("#followState").html('<a id="fol_add"><img src="./resources/img/foll.png" style=" width: 30px;"></a>');
 			} else if(state == 'i') {
 				$("#followState").html('<a id="delete_board">X</a>');
 			}
