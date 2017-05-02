@@ -151,6 +151,7 @@
         $('#hashtag').hashtags();
         $('.jqueryHashtags').css('text-align', 'left');
         $('#hashtag').css('height', '25px');
+        $('a[target="_blank"]').css('display','none');
 
     });
 
