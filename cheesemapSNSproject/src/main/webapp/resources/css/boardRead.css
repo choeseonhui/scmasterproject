@@ -88,3 +88,14 @@ ul {
 #comContent{
 	text-align: left !important;
 }
+.fr-emoticon.fr-emoticon-img{
+	background-repeat: no-repeat!important;
+    height: 1em !important;
+    width: 1em !important;
+    min-height: 20px !important;
+    min-width: 20px !important;
+    display: inline-block !important;
+    margin: -.1em .1em .1em !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+}
