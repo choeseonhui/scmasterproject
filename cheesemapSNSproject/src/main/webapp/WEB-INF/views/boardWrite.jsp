@@ -151,8 +151,6 @@
         $('#hashtag').hashtags();
         $('.jqueryHashtags').css('text-align', 'left');
         $('#hashtag').css('height', '25px');
-        $('a[target="_blank"]').css('display','none');
-
     });
 
     $(function () {
@@ -239,6 +237,6 @@
                 boa_video_savefile = response.substring(saveStart, saveEnd - 1);
                 boa_video_originalfile = response.substring(oriStart + 1, oriEnd);
             });
-
+        $('a[target="_blank"]').css('display','none');
     });
 </script>
