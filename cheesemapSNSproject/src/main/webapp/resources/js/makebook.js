@@ -104,7 +104,7 @@ $(document).ready(function(){
 		console.log("표지 이미지 :" + $("#mainPhoto").val());
 		console.log("유저의 책 이름 : "+ bookTitle);
 		sessionStorage.setItem("select_img", select_img);
-		window.open("preview", "책 만들기", "width=500, height=500, toolbar=no, scrollbars=no, resizable=no");
+		window.open("preview", "책 만들기", "left= 500, top=200, width=500, height=500, toolbar=no, scrollbars=no, resizable=no");
 	});
 
 });
