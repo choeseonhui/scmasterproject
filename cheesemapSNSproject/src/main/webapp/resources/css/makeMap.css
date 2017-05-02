@@ -97,3 +97,22 @@
 	word-break: break-word;
 	line-height: 20px;
 }
+
+.j-caption {
+	background: rgba(24, 188, 156, 0.9);
+	position: absolute;
+	opacity: 0;
+	transition: all ease 0.5s;
+	-webkit-transition: all ease 0.5s;
+	-moz-transition: all ease 0.5s;
+}
+
+.j-img-responsive {
+	display: block;
+	width: 360px;
+	height: 360px;
+}
+
+#portfolio {
+  padding: 100px 0;
+}
