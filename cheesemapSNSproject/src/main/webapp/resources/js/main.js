@@ -155,7 +155,7 @@ function clickFollower() {
 				follow += "'><table class='j-table'><tr><td rowspan='2'>";
 				follow += "<img user_id="+mem_id;
 				follow += " class='w3-circle user_id' src=download?mem_id="+ item.mem_id +" width='90' height='90' onclick='clickUser();'></img></td>"
-				follow += '<td>'+item.mem_nickname+'</td>'
+				follow += '<td style=" width: 200px;border-bottom: 1px solid #e6e0e0;">'+item.mem_nickname+'</td>'
 				follow += '<td id="fol_state" rowspan="2">';
 				if(stateNow.length > 0) {
 					follow += '<img id="folStateImg" src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
