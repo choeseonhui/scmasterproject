@@ -239,7 +239,7 @@ body{
 #post_top2_img{
 	z-index: 55;
 	position: relative;
-	top: -27cm;
+	top: -27.3cm;
 	left: 1.7cm;
 	width: 450px;
 	height: 375px;
@@ -307,6 +307,8 @@ body{
 	left: 1.38cm;
 	font-size: 17px;
 	font-weight: bold;
+	width: 630px;
+    height: 150px;
 }
 
 #post_top1_like{
@@ -317,7 +319,7 @@ body{
 	float: left;
 	width: 2cm;
 	text-align: center;
-	top:13.8cm;
+	top:10.5cm;
 	left: 3.5cm;
 }
 
@@ -328,7 +330,7 @@ body{
 	position: relative;
 	text-align: center;
 	width: 3cm;
-	top:13.8cm;
+	top:10.5cm;
 	left: 7.5cm;
 }
 
@@ -357,12 +359,14 @@ body{
 	top: -24.8cm;
 	left: 3cm;
 	font-weight: bold;
+	height: 125px;
+    width: 570px;
 }
 
 .post_hashtag{
 	z-index: 55;
 	position: relative;
-	top: -22cm;
+	top: -24.7cm;
 	left: 3cm;
 	font-weight: bold;
 	font-size: 16px;
@@ -377,7 +381,7 @@ body{
 	float: left;
 	font-size: 30px;
 	color: #5a5955;
-	top: -21.7cm;
+	top: -24.3cm;
 	left: 4cm;
 }
 
@@ -387,7 +391,7 @@ body{
 	text-align: center;
 	color: #5a5955;
 	width: 3cm;
-	top: -21.7cm;
+	top: -24.3cm;
 	left: 8.2cm;
 	font-size: 30px;
 }
@@ -395,10 +399,12 @@ body{
 .post_comment_div{
 	z-index: 55;
 	position: relative;
-	top: -21.3cm;
+	top: -24cm;
 	left: 1.5cm;
 	float: left;
 	color: black;
+	width: 680px;
+    height: 220px;
 }
 
 .post_comment_nick{
@@ -414,7 +420,7 @@ body{
 #back_img3_5{
 	z-index: 55;
 	position: relative;
-	top: -15.1cm;
+	top: -18cm;
 }
 
 #post_div{
