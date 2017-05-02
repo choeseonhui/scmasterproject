@@ -237,6 +237,8 @@
                 boa_video_savefile = response.substring(saveStart, saveEnd - 1);
                 boa_video_originalfile = response.substring(oriStart + 1, oriEnd);
             });
-        $('a[target="_blank"]').css('display','none');
+        $('#write-slider').on('click mouseover keydown keyup', function(){
+        	$('a[target="_blank"]').css('display','none');
+        });
     });
 </script>

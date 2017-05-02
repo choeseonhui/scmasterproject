@@ -19,7 +19,7 @@ public class ImageValidation extends FileValidation {
 	 * Allowed image validation default mimetypes.
 	 */
 	public static final String[] allowedImageMimeTypesDefault = new String[] { "image/gif", "image/jpeg", "image/pjpeg",
-			"image/x-png", "image/png", "image/svg+xml" };
+			"image/x-png", "image/png", "image/svg+xml", "image/jpg" };
 
 	/**
 	 * Init default image validation settings.
