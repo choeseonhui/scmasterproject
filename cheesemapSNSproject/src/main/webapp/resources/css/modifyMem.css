@@ -36,3 +36,10 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+
+.mdlabel {
+    opacity: 1 !important;
+    text-align: left !important;
+    font-size: 18px !important;
+    position: initial !important;
+}
