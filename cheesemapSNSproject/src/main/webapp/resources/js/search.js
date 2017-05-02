@@ -241,7 +241,7 @@ function startup(searchWord){
             }else{
                
                console.log("ssss");
-                taghtml += '<h2><br></h2><h5>해당 검색 태그가 존재 하지 않습니다.</h5>';
+                taghtml += '<h2><br></h2><h5 style="height: 100px;">해당 검색 태그가 존재 하지 않습니다.</h5>';
                
                
             };
@@ -286,7 +286,7 @@ function startup(searchWord){
                 });
              });
          } else{
-            userhtml += '<h2><br></h2><h5>해당 하는 유저가  존재 하지 않습니다.</h5>';
+            userhtml += '<h2><br></h2><h5 style="height: 100px;">해당 하는 유저가  존재 하지 않습니다.</h5>';
         
                
             };
@@ -333,7 +333,7 @@ function startup(searchWord){
                    });
              }else{
                 
-                mymaphtml+= '<h2><br></h2><h5> 해당 하는 태그가 존재하지 않습니다.</h5>';
+                mymaphtml+= '<h2><br></h2><h5 style="height: 100px;"> 해당 하는 태그가 존재하지 않습니다.</h5>';
                 
                 
                
