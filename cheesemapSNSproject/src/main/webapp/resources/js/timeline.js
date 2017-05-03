@@ -171,7 +171,6 @@ function clickMyMap(map_id){
 	});
 }
 
-
 //검색어 태그 지우고 초기화
 $("#searchWord").click(function(){
     $(this).attr("timeLineFlag", false);
