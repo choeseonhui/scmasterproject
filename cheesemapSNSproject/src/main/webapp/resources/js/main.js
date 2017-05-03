@@ -156,13 +156,13 @@ function clickFollower() {
 				follow += "<img user_id="+mem_id;
 				follow += " class='w3-circle user_id' src=download?mem_id="+ item.mem_id +" width='90' height='90' onclick='clickUser();'></img></td>"
 				follow += '<td style=" width: 200px;border-bottom: 1px solid #e6e0e0;">'+item.mem_nickname+'</td>'
-				follow += '<td id="fol_state" rowspan="2">';
+				follow += '<td class="fol_state" rowspan="2">';
 				if(stateNow.length > 0) {
-					follow += '<img id="folStateImg" src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
+					follow += '<img id="folStateImg" class="folStateImg" src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
 					follow += mem_id;
 					follow += '">';
 				} else {
-					follow += '<img id="folStateImg" src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25" fol_id="';
+					follow += '<img id="folStateImg" class="folStateImg" src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25" fol_id="';
 					follow += mem_id;
 					follow += '">';
 				}
@@ -171,6 +171,14 @@ function clickFollower() {
 			});
 			$("#userList").show();
 			$("#userList").html(follow);
+			$('.folStateImg').on('mouseover', function(){
+				$(this).attr('clicked','true');
+				$(this).parent().attr('clicked','true');
+			});
+			$('.folStateImg').on('mouseleave', function(){
+				$(this).attr('clicked','false');
+				$(this).parent().attr('clicked','false');
+			});
 		},
 		error : function(e) {
 			console.log(e);
@@ -215,13 +223,13 @@ function clickFollowing() {
 				follow += "<img user_id="+mem_id;
 				follow += " class='w3-circle user_id' src=download?mem_id="+ item.mem_id +" width='90' height='90' onclick='clickUser();'></img></td>"
 				follow += '<td>'+item.mem_nickname+'</td>'
-				follow += '<td id="fol_state" rowspan="2">';
+				follow += '<td class="fol_state" rowspan="2">';
 				if(stateNow.length > 0) {
-					follow += '<img id="folStateImg" src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
+					follow += '<img id="folStateImg" class="folStateImg" src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
 					follow += mem_id;
 					follow += '">';
 				} else {
-					follow += '<img id="folStateImg" src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25" fol_id="';
+					follow += '<img id="folStateImg" class="folStateImg" src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25" fol_id="';
 					follow += mem_id;
 					follow += '">';
 				}
@@ -230,6 +238,14 @@ function clickFollowing() {
 			});
 			$("#userList").show();
 			$("#userList").html(follow);
+			$('.folStateImg').on('mouseover', function(){
+				$(this).attr('clicked','true');
+				$(this).parent().attr('clicked','true');
+			});
+			$('.folStateImg').on('mouseleave', function(){
+				$(this).attr('clicked','false');
+				$(this).parent().attr('clicked','false');
+			});
 		},
 		error : function(e) {
 			console.log(e);
@@ -267,12 +283,12 @@ function sliderInit() {
 };
 
 function followAdd() {
-	var mem_id = $("#user").attr("fol_id");
+	var mem_id = $('.folStateImg[clicked="true"]').attr("fol_id");
 	var folDiv = '';
-	folDiv += '<img src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
+	folDiv += '<img class="folStateImg" src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
 	folDiv += mem_id;
 	folDiv += '">';
-	$("#fol_state").html(folDiv);
+	$(".fol_state[clicked='true']").html(folDiv);
 	$.ajax({
 		type : "get",
 		url : "followAdd",
@@ -280,21 +296,37 @@ function followAdd() {
 			board_id : mem_id
 		}
 	});
+	$('.folStateImg').on('mouseover', function(){
+		$(this).attr('clicked','true');
+		$(this).parent().attr('clicked','true');
+	});
+	$('.folStateImg').on('mouseleave', function(){
+		$(this).attr('clicked','false');
+		$(this).parent().attr('clicked','false');
+	});
 }
 
 function followRemove() {
-	var mem_id = $("#user").attr("fol_id");
+	var mem_id = $('.folStateImg[clicked="true"]').attr("fol_id");
 	var folDiv = '';
-	folDiv += '<img src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25" fol_id="';
+	folDiv += '<img class="folStateImg" src="./resources/img/plus.png" onclick="followAdd();" width="25" height="25" fol_id="';
 	folDiv += mem_id;
 	folDiv += '">';
-	$("#fol_state").html(folDiv);
+	$(".fol_state[clicked='true']").html(folDiv);
 	$.ajax({
 		type : "get",
 		url : "followRemove",
 		data : {
 			board_id : mem_id
 		}
+	});
+	$('.folStateImg').on('mouseover', function(){
+		$(this).attr('clicked','true');
+		$(this).parent().attr('clicked','true');
+	});
+	$('.folStateImg').on('mouseleave', function(){
+		$(this).attr('clicked','false');
+		$(this).parent().attr('clicked','false');
 	});
 }
 
