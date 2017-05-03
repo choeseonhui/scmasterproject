@@ -127,9 +127,9 @@ public final class File {
 
 		if (options.getValidation() != null
 				&& !options.getValidation().check(absoluteServerPath, filePart.getContentType())) {
-			/*System.out.println(filePart.getContentType());
+			System.out.println(filePart.getContentType());
 			delete(req, linkName);
-			throw new Exception("File does not meet the validation.");*/
+			throw new Exception("File does not meet the validation.");
 		}
 
 		Map<Object, Object> linkObject = new HashMap<Object, Object>();
