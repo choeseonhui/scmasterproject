@@ -185,12 +185,12 @@
 			});
 			
 	});
-	
+	//final_url
 	function book_download(){
 		var url = 'userUpload/';
 		var filename = userid + ".pdf";
 		var final_url = url + filename;
-		location.href=final_url;
+		window.open(final_url, "MybookPDF", "left=500, width=500, height=750, toolbar=no, scrollbars=yes, resizable=yes");
 	}
  
 </script>

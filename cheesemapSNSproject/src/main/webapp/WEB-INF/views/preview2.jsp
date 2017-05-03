@@ -15,12 +15,12 @@
 		 var userid = sessionStorage.getItem("mem_id");
 		 var book = "";
 			for (var i = 1; i <= count; i++) {
-				book += "<div><img src='userUpload/" + userid + "_" + i + ".png' width='637' height='900'></div>";
+				book += "<div><img src='userUpload/" + userid + "_" + i + ".png' width='354' height='500'></div>";
 			}
 			$('#mybook').html(book);
 			$('#mybook').wowBook({
-				height: 900,
-				width: 1273,
+				height: 500,
+				width: 707,
 				flipSound: false,
 				slideShow: false
 			});
