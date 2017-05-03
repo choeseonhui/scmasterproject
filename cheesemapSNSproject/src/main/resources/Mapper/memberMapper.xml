@@ -18,7 +18,8 @@
 	<select id="nicknameCheck" parameterType="String" resultType="int">
 		select
 			count(mem_nickname)
-		from cs_Member
+		from
+			cs_Member
 		where
 			mem_nickname = #{mem_nickname}
 	</select>
@@ -26,8 +27,8 @@
 	<!-- CS_MEMBER 회원가입 -->
 	<insert id="join" parameterType="Member">
 		insert into
-			CS_MEMBER
-				(mem_id	
+			CS_MEMBER (
+				mem_id	
 				, mem_pw
 				, mem_birth
 				, mem_gender

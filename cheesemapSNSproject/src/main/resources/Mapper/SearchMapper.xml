@@ -8,18 +8,16 @@
 
 	<select id="searchUser" parameterType="String" resultType="Member">
 		select
-		MEM_ID
-		, MEM_NICKNAME
-		, mem_originalfile
-		, mem_savefile
+			MEM_ID
+			, MEM_NICKNAME
+			, mem_originalfile
+			, mem_savefile
 		from
-		cs_member
+			cs_member
 		where
-		MEM_ID
-		like'%' || #{word}|| '%'
+			MEM_ID like '%' || #{word}|| '%'
 		or
-		mem_nickname
-		like '%' || #{word} ||'%'
+			mem_nickname like '%' || #{word} ||'%'
 	</select>
 
 	<select id="searchTag" parameterType="String" resultType="HashMap">
@@ -51,21 +49,31 @@
 
 	<select id="defaultList" parameterType="String" resultType="Board">
 		select
-		boa_id
-		, boa_latitude
-		, boa_longitude
+			boa_id
+			, boa_latitude
+			, boa_longitude
 		from
-		cs_board
-		where
-		(mem_id=#{0}
-		or mem_id in (
-		select fol_following
-		from cs_follow
-		where fol_follower=#{0}))
-		and to_number(boa_latitude) between #{3} and #{1}
-		and to_number(boa_longitude) between #{4} and #{2}
-		and boa_delete_date is null
-		order by boa_create_date desc
+			cs_board
+		where 
+			( mem_id=#{0}
+			or
+				mem_id in (
+					select
+						fol_following
+					from
+						cs_follow
+					where
+						fol_follower=#{0}
+					)
+			)
+		and
+			to_number(boa_latitude) between #{3} and #{1}
+		and
+			to_number(boa_longitude) between #{4} and #{2}
+		and
+			boa_delete_date is null
+		order by
+			boa_create_date desc
 	</select>
 
 	<select id="resultTag" parameterType="String" resultType="String">
@@ -117,12 +125,12 @@
 
 	<select id="autocomplete" parameterType="String" resultType="String">
 		select
-		distinct tag_name
+			distinct tag_name
 		from
-		cs_board_tag
-		 <if test = " _parameter != null " >
+			cs_board_tag
+		<if test = " _parameter != null " >
 		where
-		tag_name like '%' ||#{0}|| '%'		
+			tag_name like '%' ||#{0}|| '%'		
 		</if>
 	</select>
 

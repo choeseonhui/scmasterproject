@@ -12,60 +12,63 @@
 			, boa_longitude
 			, boa_photo_savefile
 			, boa_video_savefile
-		from cs_board
+		from
+			cs_board
 		<trim prefix="WHERE" prefixOverrides="AND|OR">
-				<if test="array != null">
-				and boa_id in (
-					<foreach collection="array" item="a" separator=",">
-				    	#{a}
-				    </foreach>
-				    )
-			    </if>
+		<if test="array != null">
+		and boa_id in (
+		<foreach collection="array" item="a" separator=",">
+		   	#{a}
+		</foreach>
+		)
+		</if>
 		</trim>     
 	</select>
 	
 	<select id="newMapID" resultType="String">
-		SELECT	CS_MYMAP_SEQ.NEXTVAL
+		SELECT
+			CS_MYMAP_SEQ.NEXTVAL
 		FROM DUAL
 	</select>
 	
 	<insert id="makeMyMap" parameterType="MyMyMy">
-		INSERT INTO CS_MYMAP(	
-			MAP_ID,
-			MAP_CONTENT,
-			MEM_ID
-		)VALUES(
-			#{map_id},
-			#{map_content},
-			#{mem_id}
+		INSERT INTO CS_MYMAP (	
+			MAP_ID
+			, MAP_CONTENT
+			, MEM_ID
+		) VALUES (
+			#{map_id}
+			, #{map_content}
+			, #{mem_id}
 		)
 	</insert>
 	
 	<insert id="makeMyMapTag" parameterType="MymapTag" >
-		insert into CS_MYMAP_TAG(
-			TAG_NAME,
-			MAP_ID
+		insert into
+			CS_MYMAP_TAG (
+				TAG_NAME
+				, MAP_ID
 			) 
    		<foreach close=")" collection="tag_name_list" item="a" index="index" open="(" separator="union">
         select
-        	trim(#{a}),
-			#{map_id}
+        	trim(#{a})
+        	, #{map_id}
         from dual
     	</foreach>
 	</insert>
 	
 	<insert id="makeMyMapToBoard" parameterType="MyMyMy">
-   		INSERT INTO CS_MAP_TO_BOARD(	
-				MTB_ROUTE,
-				BOA_ID,
-				MAP_ID
-			)
+   		INSERT INTO CS_MAP_TO_BOARD (	
+			MTB_ROUTE
+			, BOA_ID
+			, MAP_ID
+		)
 		<foreach close=")" collection="selectedMarker" item="boa_id" index="index" open="(" separator="union">
-			select
-				#{index}+1,
-				#{boa_id},
-				#{map_id}
-			from dual
+		select
+			#{index}+1
+			, #{boa_id}
+			, #{map_id}
+		from dual
         </foreach>
 	</insert>
 </mapper>
