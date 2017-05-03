@@ -199,42 +199,18 @@ function startup(searchWord){
            
             
             var taghtml ='';
-            
+            var tagindex=[];
             if(taglist.length != 0 ){
          
-                $.each(taglist, function() {
-                   $.map($(this), function(val,index){
+                $.each(taglist, function(index, val) {
+                   $.map($(this), function(){
                       console.log(val.TAG_NAME);
                       
-               
                    taghtml += '<br><h2><a id="fir-tag-search'+index+'" class="'+val.TAG_NAME+'" style="color: #4e9cab"> # '+val.TAG_NAME+'</a></h2><br>';
                    taghtml += '<h5> 게시물 '+val.COUNT+'개</h5><hr>';         
-                
-                $(document).on("click","#fir-tag-search"+index+"",function(){               
-                  var searchTag = $("#fir-tag-search"+index+"").attr("class");
-               console.log(searchTag);
-
-                  $.ajax({                     
-                     type:"GET",
-                     url : "seachResult",
-                     data: {
-                     tagName : searchTag                        
-                     },
-                     success: function(data){
-                        boardList();
-                        $("#searchWord").html("&nbsp&nbsp&nbsp&nbsp&nbsp # &nbsp&nbsp "+searchTag+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
-                        $("#searchWord").css("background-color","white");
-						$("#searchWord").attr("timeLineFlag", true);
-						$("#tags").attr("style", "display : none");
-                     },
-                     error : function(e){
-                        console.log(e);
-                     }
-                     
-                  });
-                        
-                });
-                
+                   tagindex.push(index);
+                   
+                   
                    });   
                 });
              
@@ -250,7 +226,35 @@ function startup(searchWord){
              $("#tagList").show();
              $("#tagList").html(taghtml);
              
-             
+             if(taglist.length != 0 ){
+                 $.each(taglist, function(index, val) {
+                     $("#fir-tag-search"+index).on("click", function(){               
+                         var searchTag = $("#fir-tag-search"+index+"").attr("class");
+                      console.log(searchTag);
+
+                         $.ajax({                     
+                            type:"GET",
+                            url : "seachResult",
+                            data: {
+                            tagName : searchTag                        
+                            },
+                            success: function(data){
+                               boardList();
+                               $("#searchWord").html("&nbsp&nbsp&nbsp&nbsp&nbsp # &nbsp&nbsp "+searchTag+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+                               $("#searchWord").css("background-color","white");
+        						$("#searchWord").attr("timeLineFlag", true);
+        						$("#tags").attr("style", "display : none");
+                            },
+                            error : function(e){
+                               console.log(e);
+                            }
+                            
+                         });
+                               
+                       });
+                 });
+                 tagindex=[];
+             }
              
             var userhtml ='';   
             
@@ -265,7 +269,6 @@ function startup(searchWord){
                     console.log(searchUser);
                     $("#resultUserlist").val(searchUser);   
                   
-                    
                             $.ajax({
                      
                      type:"GET",
@@ -303,36 +306,13 @@ function startup(searchWord){
             
             
              var mymaphtml = '';
-            
+             var mymapindex=[];
              if(mymaplist.length != 0){
              $.each(mymaplist, function(index, val) { 
             	 $.map($(this), function(){ 
             		 mymaphtml += '<br><h2><a id="thir-mymap-search'+index+'" class="'+val.TAG_NAME+'"> # '+val.TAG_NAME+'</a><h2><br>';
             		 mymaphtml += '<h5>'+val.COUNT+'개의 게시글이 존재합니다.</h5><hr>';
-            	
-                $(document).on("click","#thir-mymap-search"+index+"",function(){
-                      var  searchMymap= $("#thir-mymap-search"+index+"").attr("class");
-                         $.ajax({                              
-                              type:"GET",
-                              url : "seachResult",
-                              data: {
-                              mymapTag : searchMymap                        
-                              },
-                              success: function(data){
-                            	  mapList();
-		                            $("#searchWord").html("&nbsp&nbsp&nbsp&nbsp&nbsp # &nbsp&nbsp "+searchMymap+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
-		                            $("#searchWord").css("background-color","white");
-		          					$("#searchWord").attr("timeLineFlag", true);
-		          					$("#tags").attr("style", "display : none");
-                              },
-                              error : function(e){
-                                 console.log(e);
-                              }
-                              
-                           });
-                        
-                      });
-                   
+            		 mymapindex.push(index);
             	 });
                 
                    });
@@ -346,7 +326,33 @@ function startup(searchWord){
              $("#mymapList").hide();
              $("#mymapList").html(mymaphtml);
             
-             
+             if(mymaplist.length != 0){
+                 $.each(mymaplist, function(index, val) {
+                     $("#thir-mymap-search"+index).on("click", function(){
+                         var  searchMymap= $("#thir-mymap-search"+index+"").attr("class");
+                            $.ajax({                              
+                                 type:"GET",
+                                 url : "seachResult",
+                                 data: {
+                                 mymapTag : searchMymap                        
+                                 },
+                                 success: function(data){
+                               	  mapList();
+   		                            $("#searchWord").html("&nbsp&nbsp&nbsp&nbsp&nbsp # &nbsp&nbsp "+searchMymap+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+   		                            $("#searchWord").css("background-color","white");
+   		          					$("#searchWord").attr("timeLineFlag", true);
+   		          					$("#tags").attr("style", "display : none");
+                                 },
+                                 error : function(e){
+                                    console.log(e);
+                                 }
+                                 
+                              });
+                           
+                         });
+                 });
+                 mymapindex=[];
+             }
              
             
             
