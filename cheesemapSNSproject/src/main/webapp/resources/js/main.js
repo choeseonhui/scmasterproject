@@ -153,9 +153,9 @@ function clickFollower() {
 				follow += "<div id='user' class='user' fol_id='";
 				follow += mem_id; 	
 				follow += "'><table class='j-table'><tr><td rowspan='2'>";
-				follow += "<img user_id="+mem_id;
-				follow += " class='w3-circle user_id' src=download?mem_id="+ item.mem_id +" width='90' height='90' onclick='clickUser();'></img></td>"
-				follow += '<td style=" width: 200px;border-bottom: 1px solid #e6e0e0;">'+item.mem_nickname+'</td>'
+			
+	            follow += '<img id="sec-user-search'+index+'" user_id = "'+item.mem_id +'" class="w3-circle user_id" src="download?mem_id='+item.mem_id+'" width="90" height="90"></img>';			
+	            follow += '<td style=" width: 200px;border-bottom: 1px solid #e6e0e0;">'+item.mem_nickname+'</td>'
 				follow += '<td class="fol_state" rowspan="2">';
 				if(stateNow.length > 0) {
 					follow += '<img id="folStateImg" class="folStateImg" src="./resources/img/minus.png" onclick="followRemove();" width="25" height="25" fol_id="';
@@ -168,10 +168,33 @@ function clickFollower() {
 				}
 				follow += '</tr>';
 				follow += '<tr><td>'+item.mem_id+'</td></tr></table></div>';
+				$(document).on("click","#sec-user-search"+index+"",function(){                   
+					var searchUser = $("#sec-user-search"+index+"").attr("user_id");
+					$("#resultUserlist").val(searchUser);
+					console.log(searchUser);
+	                $.ajax({
+	                	type:"GET",
+	                	url : "seachResult",
+	                	data: {
+	                		userId : searchUser                        
+	                	},
+	                	success: function(data) {
+	                		boardList();
+	                		$("#searchWord").html("&nbsp&nbsp"+searchUser+"&nbsp&nbsp");
+	                		$("#searchWord").css("background-color","white");
+	                		$("#searchWord").attr("timeLineFlag", true);
+	                		$("#tags").attr("style", "display : none");
+	                		$(".dropdownMenu").css("display","none");
+	                	},
+	                	error : function(e){
+	                		console.log(e);
+	                	}
+	                });
+				});
 			});
 			$("#userList").show();
 			$("#userList").html(follow);
-			$('.folStateImg').on('mouseover', function(){
+			$('.folStateImg').on('mouseover', function() {
 				$(this).attr('clicked','true');
 				$(this).parent().attr('clicked','true');
 			});
@@ -220,8 +243,7 @@ function clickFollowing() {
 				follow += "<div id='user' class='user' fol_id='";
 				follow += mem_id; 	
 				follow += "'><table class='j-table'><tr><td rowspan='2'>";
-				follow += "<img user_id="+mem_id;
-				follow += " class='w3-circle user_id' src=download?mem_id="+ item.mem_id +" width='90' height='90' onclick='clickUser();'></img></td>"
+	            follow += '<img id="sec-user-search'+index+'" user_id = "'+item.mem_id +'" class="w3-circle user_id" src="download?mem_id='+item.mem_id+'" width="90" height="90"></img>';
 				follow += '<td>'+item.mem_nickname+'</td>'
 				follow += '<td class="fol_state" rowspan="2">';
 				if(stateNow.length > 0) {
@@ -235,45 +257,69 @@ function clickFollowing() {
 				}
 				follow += '</tr>';
 				follow += '<tr><td>'+item.mem_id+'</td></tr></table></div>';
-			});
-			$("#userList").show();
-			$("#userList").html(follow);
-			$('.folStateImg').on('mouseover', function(){
-				$(this).attr('clicked','true');
-				$(this).parent().attr('clicked','true');
-			});
-			$('.folStateImg').on('mouseleave', function(){
-				$(this).attr('clicked','false');
-				$(this).parent().attr('clicked','false');
-			});
-		},
-		error : function(e) {
-			console.log(e);
-		}
-	});
-}
+		
+				$(document).on("click","#sec-user-search"+index+"",function() {                   
+					var searchUser = $("#sec-user-search"+index+"").attr("user_id");               
+					$("#resultUserlist").val(searchUser);   
+						console.log(searchUser);
+						$.ajax({
+							type:"GET",
+							url : "seachResult",
+							data: {
+								userId : searchUser                        
+							},
+							success: function(data) {
+								boardList();
+								$("#searchWord").html("&nbsp&nbsp"+searchUser+"&nbsp&nbsp");
+								$("#searchWord").css("background-color","white");
+								$("#searchWord").attr("timeLineFlag", true);
+								$("#tags").attr("style", "display : none");
+								$(".dropdownMenu").css("display","none");
+							},
+							error : function(e){
+								console.log(e);
+							}
+						});
+					});
+				});
+				$("#userList").show();
+				$("#userList").html(follow);
+				$('.folStateImg').on('mouseover', function() {
+					$(this).attr('clicked','true');
+					$(this).parent().attr('clicked','true');
+				});
+				$('.folStateImg').on('mouseleave', function() {
+					$(this).attr('clicked','false');
+					$(this).parent().attr('clicked','false');
+				});
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	}
 
-function sliderInit() {
-	if ($("#flag_timeline").val() == 'true') {
-	} else {
-		$("#flag_timeline").val("true");
-		$('#pollSlider-button').animate({
-			"margin-right" : '-=500'
-		});
-		$('.pollSlider').animate({
-			"margin-right" : '-=500'
-		});
-		$('.searchClass').animate({
-			"margin-right" : '-=500'
-		});
-		$('#searchWord').animate({
-			"margin-right" : '-=500'
-		});
-	};
-	if ($("#flag_my_menu").val() == 'true') {
-	} else {
-		$("#flag_my_menu").val("true");
-		$('.menu-slider').animate({
+	function sliderInit() {
+		if ($("#flag_timeline").val() == 'true') {
+		} else {
+			$("#flag_timeline").val("true");
+			$('#pollSlider-button').animate({
+				"margin-right" : '-=500'
+			});
+			$('.pollSlider').animate({
+				"margin-right" : '-=500'
+			});
+			$('.searchClass').animate({
+				"margin-right" : '-=500'
+			});
+			$('#searchWord').animate({
+				"margin-right" : '-=500'
+			});
+		};
+		if ($("#flag_my_menu").val() == 'true') {
+		} else {
+			$("#flag_my_menu").val("true");
+			$('.menu-slider').animate({
 			"margin-left" : '-=500'
 		});
 		$('.map-control').animate({

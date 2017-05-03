@@ -141,6 +141,6 @@
 		and
 			boa_delete_date is null
 		order by
-			map_create_date desc
+			boa_create_date desc
 	</select>
 </mapper>
