@@ -18,35 +18,35 @@ function makepdf2() {
 			console.log('0');
 			doc.addPage();
 		});
-	}, 500);
+	}, 1000);
 	
 	setTimeout(function(){
 		doc.addHTML(document.getElementById('page0_5'), 0, 0, function() {
 			console.log('0.5');
 			doc.addPage();
 		});
-	}, 1500);
+	}, 2000);
 	
 	setTimeout(function(){
 		doc.addHTML(document.getElementById('page1'), 0, 0, function() {
 			console.log('1');
 			doc.addPage();
 		});
-	}, 2500);
+	}, 3000);
 	
 	setTimeout(function(){
 		doc.addHTML(document.getElementById('page2'), 0, 0, function() {
 			console.log('2');
 			doc.addPage();
 		});
-	}, 3500);
+	}, 4000);
 	
 	setTimeout(function(){
 		doc.addHTML(document.getElementById('page3'), 0, 0, function() {
 			console.log('3');
 			doc.addPage();
 		});
-	}, 4500);
+	}, 5000);
 	
 	function content_page_make(i, time){
 			setTimeout(function(){
@@ -63,7 +63,7 @@ function makepdf2() {
 			}, time);
 	}
 	
-	var time = 4500;	
+	var time = 5000;	
 	
 	for (var i = 0; i < page_count; i++) {
 		time += 1000;
