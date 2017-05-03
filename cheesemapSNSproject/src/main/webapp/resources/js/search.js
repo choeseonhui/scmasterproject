@@ -202,10 +202,10 @@ function startup(searchWord){
             
             if(taglist.length != 0 ){
          
-                $.each(taglist, function(index, val) {
-                   $.map($(this), function(){
+                $.each(taglist, function() {
+                   $.map($(this), function(val,index){
                       console.log(val.TAG_NAME);
-                      console.log(index);
+                      
                
                    taghtml += '<br><h2><a id="fir-tag-search'+index+'" class="'+val.TAG_NAME+'" style="color: #4e9cab"> # '+val.TAG_NAME+'</a></h2><br>';
                    taghtml += '<h5> 게시물 '+val.COUNT+'개</h5><hr>';         
@@ -256,13 +256,15 @@ function startup(searchWord){
             
          if(userlist.length != 0 ){
         	 $.each(userlist, function(index, value ) {
-                 userhtml += '<div id="user" class="user" onclick="clickUser();"><div id="innerUser" style="padding: 30px;"><table class="j-table"><tr><td rowspan="2">';               
-                 userhtml += '<img user_id = "'+value.mem_id +'" class="w3-circle user_id" src="download?mem_id='+value.mem_id+'" width="90" height="90" onclick="clickUser();"></img>';
+        		 userhtml += '<div id="user" class="user"><div id="innerUser" style="padding: 30px;"><table class="j-table"><tr><td rowspan="2">';               
+                 userhtml += '<img id="sec-user-search'+index+'" user_id = "'+value.mem_id +'" class="w3-circle user_id" src="download?mem_id='+value.mem_id+'" width="90" height="90"></img>';
                  userhtml += '<td style=" width: 200px; border-bottom: 1px solid gray;">'+value.mem_id+'</td></tr>';
                  userhtml += '<tr><td>'+value.mem_nickname+'</td></tr></table></div></div>';
                  $(document).on("click","#sec-user-search"+index+"",function(){
-                    var searchUser = $("#sec-user-search"+index+"").attr("class");               
+                    var searchUser = $("#sec-user-search"+index+"").attr("user_id");
+                    console.log(searchUser);
                     $("#resultUserlist").val(searchUser);   
+                  
                     
                             $.ajax({
                      
