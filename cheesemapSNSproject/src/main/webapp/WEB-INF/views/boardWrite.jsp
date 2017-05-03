@@ -48,7 +48,7 @@
             line-height: 20px;
         }
         .fr-box.fr-basic .fr-element {
-    		height: 640px !important;
+    		height: 580px !important;
         }
          .fr-element .fr-view{
             overflow-x: hidden !important;
