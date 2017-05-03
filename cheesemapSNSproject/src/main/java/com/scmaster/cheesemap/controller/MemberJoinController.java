@@ -66,8 +66,7 @@ public class MemberJoinController {
 				System.out.println("file length : " + mpf.getBytes().length);
 				System.out.println("file name : " + mpf.getOriginalFilename());
 				if (!mpf.isEmpty()) {
-					String savedfile = FileService.saveFile(mpf,
-							request.getServletContext().getRealPath("/resources/image/"));
+					String savedfile = FileService.saveFile(mpf, request.getServletContext().getRealPath("/resources/image/"));
 					fullpath = "./resources/image/" + savedfile;
 				}
 			} catch (IOException e) {
@@ -102,8 +101,9 @@ public class MemberJoinController {
 			MailTest mailtest = new MailTest();
 			String cheese_id = "cocohello010@gmail.net";// 보내는 사람
 			String subjectTxt = "[Cheese]본인인증확인 메일입니다";// 제목
-			String msgTxt = "본인 인증을 위하여 아래의 버튼을 눌러주세요." + "<br><a href='http://203.233.196.74:8888/cheesemap/authentication?"
-					+ "mem_id=" + mb.getMem_id() + "'>본인인증 확인</a>"; // 내용
+			String msgTxt = "본인 인증을 위하여 아래의 버튼을 눌러주세요."
+					+ "<br><a href='http://203.233.196.74:8888/cheesemap/authentication?" + "mem_id=" + mb.getMem_id()
+					+ "'>본인인증 확인</a>"; // 내용
 			mailtest.testMailSend(mb.getMem_id(), cheese_id, subjectTxt, msgTxt);
 		}
 		return "home";
@@ -124,7 +124,7 @@ public class MemberJoinController {
 		Member result = dao.searchMember(mem_id);
 		return result;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "searchMember", method = RequestMethod.GET)
 	public Member searchMember(HttpSession session, HttpServletResponse response, String mem_id) {

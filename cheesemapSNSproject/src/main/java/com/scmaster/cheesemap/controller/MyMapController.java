@@ -35,17 +35,14 @@ public class MyMapController {
 	@RequestMapping(value = "makeMyMap", method = RequestMethod.POST)
 	public int makeMyMap(@RequestBody MyMyMy mymymy, HttpSession session) {
 		int result = 0;
-
 		String newMapID = dao.newMapID();
-		
-		String tag=mymymy.getHashtagMap();
+		String tag = mymymy.getHashtagMap();
 		String test = tag.substring(1);
 		String[] tagList = test.split("#");
 		ArrayList<String> tag_name = new ArrayList<String>(Arrays.asList(tagList));
-		MymapTag myMapTag=new MymapTag();
+		MymapTag myMapTag = new MymapTag();
 		myMapTag.setTag_name_list(tag_name);
 		myMapTag.setMap_id(newMapID);
-		
 		if (newMapID != null) {
 			String mem_id = (String) session.getAttribute("mem_id");
 			mymymy.setMem_id(mem_id);
@@ -53,7 +50,7 @@ public class MyMapController {
 			int result1 = dao.makeMyMap(mymymy);
 			if (result1 == 1) {
 				int result2 = dao.makeMyMapTag(myMapTag);
-				if (result2 >0) {
+				if (result2 > 0) {
 					result = dao.makeMyMapToBoard(mymymy);
 				}
 			}

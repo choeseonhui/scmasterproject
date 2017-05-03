@@ -20,18 +20,18 @@ public class MemberLoginController {
 	@ResponseBody
 	@RequestMapping(value = "loginCheck", method = RequestMethod.POST)
 	public String loginCheck(String mem_id, String mem_pw, HttpSession session) {
-	String result = null;
+		String result = null;
 		Member member = memberdao.searchMember(mem_id);
-	if(member == null){
-		result = "a";
-	}else if(mem_id.equals(member.getMem_id())&&!mem_pw.equals(member.getMem_pw())){
-		result = "a";
-	}else if(mem_id.equals(member.getMem_id())&&mem_pw.equals(member.getMem_pw())){
-		session.setAttribute("mem_id", member.getMem_id());
-		session.setAttribute("mem_nickname", member.getMem_nickname());
-		session.setAttribute("mem_savefile", member.getMem_savefile());
-		result = "b";
-	}
+		if (member == null) {
+			result = "a";
+		} else if (mem_id.equals(member.getMem_id()) && !mem_pw.equals(member.getMem_pw())) {
+			result = "a";
+		} else if (mem_id.equals(member.getMem_id()) && mem_pw.equals(member.getMem_pw())) {
+			session.setAttribute("mem_id", member.getMem_id());
+			session.setAttribute("mem_nickname", member.getMem_nickname());
+			session.setAttribute("mem_savefile", member.getMem_savefile());
+			result = "b";
+		}
 		return result;
 	}
 }

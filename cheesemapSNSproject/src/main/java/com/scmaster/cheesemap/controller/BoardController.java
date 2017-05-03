@@ -62,16 +62,12 @@ public class BoardController {
 	@RequestMapping(value = "boardRead", method = RequestMethod.POST)
 	public Board boardRead(String boa_id) throws ParseException {
 		Board result = dao.boardRead(boa_id);
-	   String orignDate  = result.getBoa_create_date();
-		
+		String orignDate  = result.getBoa_create_date();
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
 		Date dateFrom = transFormat.parse(orignDate);
-		System.out.println(dateFrom);
 		convertFromDate convert = new convertFromDate();
 		String updateDate = convert.calculateTime(dateFrom);
 		result.setBoa_create_date(updateDate);
-		
 		return result;
 	}
 

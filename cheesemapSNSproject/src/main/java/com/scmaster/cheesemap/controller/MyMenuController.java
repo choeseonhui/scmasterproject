@@ -47,16 +47,13 @@ public class MyMenuController {
 	public String download(String mem_id, HttpServletResponse response) {
 		MyMenu myMenu = myMenuDao.getMyMenu(mem_id);
 		try {
-			response.setHeader("Content-Disposition",
-					"attachment;filename=" + URLEncoder.encode(myMenu.getMem_originalfile(), "UTF-8"));
+			response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(myMenu.getMem_originalfile(), "UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-
 		String fullPath = "C:/memberfile" + "/" + myMenu.getMem_savefile();
 		FileInputStream filein = null;
 		ServletOutputStream fileout = null;
-
 		try {
 			filein = new FileInputStream(fullPath);
 			fileout = response.getOutputStream();
