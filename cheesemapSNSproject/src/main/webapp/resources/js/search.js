@@ -202,10 +202,10 @@ function startup(searchWord){
             
             if(taglist.length != 0 ){
          
-                $.each(taglist, function() {
-                   $.map($(this), function(val,index){
+                $.each(taglist, function(index, val) {
+                   $.map($(this), function(){
                       console.log(val.TAG_NAME);
-                      
+                      console.log(index);
                
                    taghtml += '<br><h2><a id="fir-tag-search'+index+'" class="'+val.TAG_NAME+'" style="color: #4e9cab"> # '+val.TAG_NAME+'</a></h2><br>';
                    taghtml += '<h5> 게시물 '+val.COUNT+'개</h5><hr>';         
