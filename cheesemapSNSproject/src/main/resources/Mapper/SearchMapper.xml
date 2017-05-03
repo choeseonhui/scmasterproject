@@ -72,9 +72,16 @@
 		select
 			boa_id
 		from
-			cs_board_tag
+			CS_BOARD
 		where
-			tag_name=#{tagName}
+			boa_id IN (select
+							boa_id
+						from
+							cs_board_tag
+						where
+							tag_name=#{tagName})
+		and
+			boa_delete_date is null
 		order by
 			boa_create_date desc
 	</select>
@@ -94,9 +101,16 @@
 		select
 			map_id
 		from
-			cs_mymap_tag
+			cs_mymap
 		where
-			tag_name=#{mymapTag}
+			map_id in (
+				select
+					map_id
+				from
+					cs_mymap_tag
+				where
+					tag_name=#{mymapTag}
+			)
 		order by
 			map_create_date desc
 	</select>
