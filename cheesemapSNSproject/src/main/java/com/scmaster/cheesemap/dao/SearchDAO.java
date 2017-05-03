@@ -64,7 +64,6 @@ public class SearchDAO implements SearchMapper {
 	public ArrayList<String> resultCart(String mem_id) {
 		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);
 		ArrayList<String> result = mapper.resultCart(mem_id);
-		System.out.println(result);
 		return result;
 	}
 
