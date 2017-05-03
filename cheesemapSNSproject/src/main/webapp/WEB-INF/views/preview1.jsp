@@ -10,7 +10,7 @@
 <link href="./resources/css/animate.css" rel="stylesheet">
 <link href="./resources/css/style.css" rel="stylesheet">
 <script>
-function makepdf2() {
+function makepdf2() {	
 	var page_count = sessionStorage.getItem("page_count");
 	var doc = new jsPDF();
 	setTimeout(function(){
@@ -50,7 +50,13 @@ function makepdf2() {
 	
 	function content_page_make(i, time){
 			setTimeout(function(){
-				doc.addHTML(document.getElementById('page4_' + i), 0, 0, function() {
+				doc.addHTML(document.getElementById('page4_' + i), 0, 0,
+				{
+					allowTaint: true,
+					taintTest: false,
+					useCORS: true,
+					proxy: '/userUpload'
+				},function() {
 					console.log('page4_' + i);
 					doc.addPage();
 				});
@@ -90,8 +96,8 @@ function makepdf2() {
 						flipSound: false,
 						slideShow: true
 					}); */
-					window.opener.location.href="preview2?count=" + data; 
-					window.close();
+					/* window.opener.location.href="preview2?count=" + data; 
+					window.close(); */
 				},
 				error:function(e){
 					console.log(e);
