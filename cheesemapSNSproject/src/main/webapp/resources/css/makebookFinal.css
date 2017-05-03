@@ -1,5 +1,11 @@
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
+#pdf_download{
+	position: relative;
+	top: 30px;
+	left: 895px;
+}
+
 #mybook{
 	position: relative;
 	left: 315px;
