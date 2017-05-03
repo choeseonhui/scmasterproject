@@ -11,6 +11,12 @@
 <link href="./resources/css/style.css" rel="stylesheet">
 <script>
 function makepdf2() {	
+	var options = {
+			allowTaint: true,
+			taintTest: false,
+			useCORS: true,
+			proxy: '/userUpload'
+		};
 	var page_count = sessionStorage.getItem("page_count");
 	var doc = new jsPDF();
 	setTimeout(function(){
@@ -21,28 +27,28 @@ function makepdf2() {
 	}, 1000);
 	
 	setTimeout(function(){
-		doc.addHTML(document.getElementById('page0_5'), 0, 0, function() {
+		doc.addHTML(document.getElementById('page0_5'), 0, 0, options, function() {
 			console.log('0.5');
 			doc.addPage();
 		});
 	}, 2000);
 	
 	setTimeout(function(){
-		doc.addHTML(document.getElementById('page1'), 0, 0, function() {
+		doc.addHTML(document.getElementById('page1'), 0, 0, options, function() {
 			console.log('1');
 			doc.addPage();
 		});
 	}, 3000);
 	
 	setTimeout(function(){
-		doc.addHTML(document.getElementById('page2'), 0, 0, function() {
+		doc.addHTML(document.getElementById('page2'), 0, 0, options, function() {
 			console.log('2');
 			doc.addPage();
 		});
 	}, 4000);
 	
 	setTimeout(function(){
-		doc.addHTML(document.getElementById('page3'), 0, 0, function() {
+		doc.addHTML(document.getElementById('page3'), 0, 0, options, function() {
 			console.log('3');
 			doc.addPage();
 		});
@@ -50,13 +56,7 @@ function makepdf2() {
 	
 	function content_page_make(i, time){
 			setTimeout(function(){
-				doc.addHTML(document.getElementById('page4_' + i), 0, 0,
-				{
-					allowTaint: true,
-					taintTest: false,
-					useCORS: true,
-					proxy: '/userUpload'
-				},function() {
+				doc.addHTML(document.getElementById('page4_' + i), 0, 0, options, function() {
 					console.log('page4_' + i);
 					doc.addPage();
 				});
@@ -71,7 +71,7 @@ function makepdf2() {
 	}
 	
 	setTimeout(function(){
-		doc.addHTML(document.getElementById('page_last'), 0, 0, function() {
+		doc.addHTML(document.getElementById('page_last'), 0, 0, options, function() {
 			console.log('page_last');
 			var pdf = doc.output('datauristring');
 			var pdf2 = pdf.split(',');
