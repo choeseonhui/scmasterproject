@@ -37,7 +37,7 @@
 	</select>
 
 	<select id="searchmymapTag" parameterType="String" resultType="HashMap">
-			select
+		select
 			count(*) as COUNT
 			, tag_name
 		from
@@ -70,30 +70,35 @@
 
 	<select id="resultTag" parameterType="String" resultType="String">
 		select
-		boa_id
+			boa_id
 		from
-		cs_board_tag
+			cs_board_tag
 		where
-		tag_name
-		=#{tagName}
+			tag_name=#{tagName}
+		order by
+			boa_create_date desc
 	</select>
 
 	<select id="resultUser" parameterType="String" resultType="String">
 		select
-		boa_id
+			boa_id
 		from
-		cs_board
+			cs_board
 		where
-		mem_id =#{userId}
+			mem_id =#{userId}
+		order by
+			boa_create_date desc
 	</select>
 
 	<select id="resultMymap" parameterType="String" resultType="String">
 		select
-		map_id
+			map_id
 		from
-		cs_mymap_tag
+			cs_mymap_tag
 		where
-		tag_name=#{mymapTag}
+			tag_name=#{mymapTag}
+		order by
+			map_create_date desc
 	</select>
 
 	<select id="autocomplete" parameterType="String" resultType="String">
@@ -121,5 +126,7 @@
 							mem_id = #{mem_id})
 		and
 			boa_delete_date is null
+		order by
+			map_create_date desc
 	</select>
 </mapper>

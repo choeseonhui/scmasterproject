@@ -75,6 +75,7 @@ public class TimelineController {
 	public void seachResult(String tagName, String userId, String mymapTag, HttpSession session) {
 		if (tagName != null) {
 			ArrayList<String> result = searchDAO.resultTag(tagName);
+			System.out.println(result);
 			session.setAttribute("boa_id_list", result);
 		} else if (userId != null) {
 			ArrayList<String> result = searchDAO.resultUser(userId);
