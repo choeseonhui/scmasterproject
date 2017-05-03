@@ -96,8 +96,8 @@ function makepdf2() {
 						flipSound: false,
 						slideShow: true
 					}); */
-					/* window.opener.location.href="preview2?count=" + data; 
-					window.close(); */
+					window.opener.location.href="preview2?count=" + data; 
+					window.close();
 				},
 				error:function(e){
 					console.log(e);
