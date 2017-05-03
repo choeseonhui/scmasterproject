@@ -13,4 +13,5 @@ public interface MyMapMapper {
 	public String newMapID();
 	public int makeMyMapTag(MymapTag myMapTag);
 	public int makeMyMapToBoard(MyMyMy mymymy);
+	
 }

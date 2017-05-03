@@ -20,35 +20,30 @@ public class MyMapDAO implements MyMapMapper {
 
 	@Override
 	public ArrayList<Board> setMarkerList(String[] selectedMarker) {
-		// TODO Auto-generated method stub
 		mapper = sqlsession.getMapper(MyMapMapper.class);
 		return mapper.setMarkerList(selectedMarker);
 	}
 
 	@Override
 	public int makeMyMap(MyMyMy mymymy) {
-		// TODO Auto-generated method stub
 		mapper = sqlsession.getMapper(MyMapMapper.class);
 		return mapper.makeMyMap(mymymy);
 	}
 
 	@Override
 	public String newMapID() {
-		// TODO Auto-generated method stub
 		mapper = sqlsession.getMapper(MyMapMapper.class);
 		return mapper.newMapID();
 	}
 
 	@Override
 	public int makeMyMapTag(MymapTag myMapTag) {
-		// TODO Auto-generated method stub
 		mapper = sqlsession.getMapper(MyMapMapper.class);
 		return mapper.makeMyMapTag(myMapTag);
 	}
 
 	@Override
 	public int makeMyMapToBoard(MyMyMy mymymy) {
-		// TODO Auto-generated method stub
 		mapper = sqlsession.getMapper(MyMapMapper.class);
 		return mapper.makeMyMapToBoard(mymymy);
 	}

@@ -16,7 +16,6 @@ public class MyMenuDAO implements MyMenuMapper {
 	public MyMenu getMyMenu(String mem_id) {
 		MyMenuMapper mapper = sqlsession.getMapper(MyMenuMapper.class);
 		MyMenu result = mapper.getMyMenu(mem_id);
-		
 		return result;
 	}
 }

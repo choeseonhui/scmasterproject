@@ -13,29 +13,29 @@ import com.scmaster.cheesemap.vo.Member;
 import com.scmaster.cheesemap.vo.MymapTag;
 
 @Repository
-public class SearchDAO implements SearchMapper {	
-	
+public class SearchDAO implements SearchMapper {
+
 	@Autowired
 	private SqlSession sqlsession;
 
 	@Override
 	public ArrayList<Member> searchUser(String word) {
 		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);
-		ArrayList<Member> list = mapper.searchUser(word) ;			
+		ArrayList<Member> list = mapper.searchUser(word);
 		return list;
 	}
 
 	@Override
 	public ArrayList<HashMap<String, Object>> searchTag(String word) {
 		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);
-		ArrayList<HashMap<String, Object>> list = mapper.searchTag(word);	
+		ArrayList<HashMap<String, Object>> list = mapper.searchTag(word);
 		return list;
 	}
 
 	@Override
 	public ArrayList<HashMap<String, Object>> searchmymapTag(String word) {
 		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);
-		ArrayList<HashMap<String, Object>> list = mapper.searchmymapTag(word);			
+		ArrayList<HashMap<String, Object>> list = mapper.searchmymapTag(word);
 		return list;
 	}
 
@@ -45,11 +45,11 @@ public class SearchDAO implements SearchMapper {
 		ArrayList<Board> mylist = mapper.defaultList(mem_id, latNE, lngNE, latSW, lngSW);
 		return mylist;
 	}
-	
+
 	@Override
 	public ArrayList<String> resultTag(String tagName) {
 		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);
-		ArrayList<String> result  = mapper.resultTag(tagName);
+		ArrayList<String> result = mapper.resultTag(tagName);
 		return result;
 	}
 
@@ -59,7 +59,7 @@ public class SearchDAO implements SearchMapper {
 		ArrayList<String> result = mapper.resultUser(userId);
 		return result;
 	}
-	
+
 	@Override
 	public ArrayList<String> resultCart(String mem_id) {
 		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);
@@ -77,8 +77,8 @@ public class SearchDAO implements SearchMapper {
 
 	@Override
 	public ArrayList<String> autocomplete(String input) {
-		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);   
-		ArrayList<String> list = mapper.autocomplete(input);			
-			return list;
+		SearchMapper mapper = sqlsession.getMapper(SearchMapper.class);
+		ArrayList<String> list = mapper.autocomplete(input);
+		return list;
 	}
 }

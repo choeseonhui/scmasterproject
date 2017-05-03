@@ -46,10 +46,9 @@ public class memberDAO implements MemberMapper {
 		int result = mapper.authenticate(mem_id);
 		return result;
 	}
-	
+
 	@Override
 	public int modifyMem(Member mb) {
-		// TODO Auto-generated method stub
 		MemberMapper mapper = sqlsession.getMapper(MemberMapper.class);
 		int result = mapper.modifyMem(mb);
 		return result;
@@ -57,10 +56,9 @@ public class memberDAO implements MemberMapper {
 
 	@Override
 	public int closeAccount(String mem_id) {
-		// TODO Auto-generated method stub
 		MemberMapper mapper = sqlsession.getMapper(MemberMapper.class);
 		int result = mapper.closeAccount(mem_id);
 		return result;
 	}
-	
+
 }

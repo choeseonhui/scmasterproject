@@ -10,9 +10,9 @@ import com.scmaster.cheesemap.vo.Member;
 
 @Repository
 public class FollowDAO implements FollowMapper {
-	
+
 	@Autowired
-    SqlSession session;
+	SqlSession session;
 
 	@Override
 	public ArrayList<Member> clickFollower(String mem_id) {
