@@ -1,4 +1,5 @@
   <!-- animate.css -->
+  <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 	
     <style>

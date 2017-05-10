@@ -36,6 +36,7 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping(value = "boardSave", method = RequestMethod.POST)
 	public int boardSave(Board board, HttpSession session, String tag_name) {
+		System.out.println(tag_name);
 		String mem_id = (String) session.getAttribute("mem_id");
 		board.setMem_id(mem_id);
 		int result = dao.boardSave(board);
