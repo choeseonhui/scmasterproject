@@ -366,7 +366,7 @@ overflow : hidden;
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
 	<!-- map JavaScript -->
-	<script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApHkc_70xfMcN5SF0_8T6uNpspm-GXyDo&callback=initMap&libraries=places" async defer></script>
+	<script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApHkc_70xfMcN5SF0_8T6uNpspm-GXyDo&callback=initMap&libraries=places&language=ja&region=JP" async defer></script>
 	<script src="./resources/js/markerclusterer.js"></script>
 	<script src="./resources/js/map.js"></script>
 

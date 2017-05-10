@@ -81,17 +81,6 @@ CREATE TABLE CS_MEMBER
 	PRIMARY KEY (MEM_ID)
 );
 
-/*CREATE TABLE CS_MYMAP
-(
-	MAP_ID varchar2(15) NOT NULL,
-	MAP_NAME varchar2(50) NOT NULL,
-	MAP_CONTENT varchar2(1500) NOT NULL,
-	MAP_CREATE_DATE date DEFAULT sysdate,
-	MAP_MODIFY_DATE date,
-	MEM_ID varchar2(50) NOT NULL,
-	PRIMARY KEY (MAP_ID)
-);*/
-
 CREATE TABLE CS_MYMAP
 (
 	MAP_ID varchar2(15) NOT NULL,
@@ -425,3 +414,34 @@ where
 	mem_id = 'jwnamkung@naver.com';
 	
 delete cs_member;
+
+insert into	CS_FOLLOW values ('user1@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user2@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user3@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user4@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user5@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user6@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user7@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user8@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user9@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user10@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user11@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user12@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user13@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user14@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user15@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user16@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user17@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user18@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user19@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user20@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user21@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user22@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user23@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user24@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user25@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user26@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user27@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user28@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user29@test.com', 'xornjssla@gmail.com');
+insert into	CS_FOLLOW values ('user30@test.com', 'xornjssla@gmail.com');
