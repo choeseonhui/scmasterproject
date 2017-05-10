@@ -15,7 +15,6 @@ function makepdf2() {
 			allowTaint: true,
 			taintTest: false,
 			useCORS: true,
-			proxy: '/userUpload'
 		};
 	var page_count = sessionStorage.getItem("page_count");
 	var doc = new jsPDF();
